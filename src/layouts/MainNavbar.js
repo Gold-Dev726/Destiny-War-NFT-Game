@@ -50,7 +50,7 @@ export default function MainNavbar() {
             background: "rgba(255, 255, 255, 0.2)",
             height: 1,
             borderRadius: "0 0 10px 10px",
-            backdropFilter: 'blur(20px)'
+            backdropFilter: "blur(20px)",
           }}
         >
           <Stack
@@ -89,7 +89,7 @@ export default function MainNavbar() {
             </Typography>
             <Typography
               component={RouterLink}
-              to="/"
+              to="/presale"
               variant="h4"
               color="#28f0a5"
               sx={{ textDecoration: "none" }}

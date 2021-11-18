@@ -3,6 +3,7 @@ import { Navigate, useRoutes, useLocation } from "react-router-dom";
 
 import MainLayout from "layouts";
 import Homepage from "pages/Homepage";
+import Presalepage from "pages/Presalepage";
 import Loading from "components/Loading";
 
 const Loadable = (Component) => (props) => {
@@ -22,7 +23,10 @@ export default function Router() {
     {
       path: "/",
       element: <MainLayout />,
-      children: [{ path: "/", element: <Homepage /> }],
+      children: [
+        { path: "/", element: <Homepage /> },
+        { path: "/presale", element: <Presalepage /> },
+      ],
     },
   ]);
 }
