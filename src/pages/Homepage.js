@@ -18,7 +18,7 @@ import { varFadeInUp, MotionInView, varFadeInDown } from "components/animate";
 import { Icon } from "@iconify/react";
 import twitterFill from "@iconify/icons-cib/twitter";
 import linkedinFill from "@iconify/icons-cib/linkedin";
-
+import TeamComponent from "components/TeamComponent";
 const TEAMS = [
   {
     name: "Mohamed - Bengal Tiger",
@@ -149,14 +149,9 @@ export default function Detailpage() {
           </Typography>
           <Stack direction="row" justifyContent="space-between">
             {[...Array(7)].map((item, index) => (
-              <Box
-                component="img"
-                src={`/characters/${index + 1}.png`}
-                sx={{
-                  width: 135,
-                  cursor: "pointer",
-                }}
-                onClick={() => setCurrentTeam(index + 1)}
+              <TeamComponent
+                number={index + 1}
+                changeTeam={() => setCurrentTeam(index + 1)}
               />
             ))}
           </Stack>
