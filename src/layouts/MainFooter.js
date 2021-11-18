@@ -9,7 +9,7 @@ export default function MainFooter() {
   return (
     <Stack
       textAlign="center"
-      sx={{ background: "#2b2b2b", py: 8, borderTop: "1px solid #666666" }}
+      sx={{ background: "#2b2b2b", py: 2, borderTop: "1px solid #666666" }}
     >
       <Container maxWidth="lg">
         <Typography variant="h4" color="white">
@@ -19,7 +19,6 @@ export default function MainFooter() {
           direction="row"
           justifyContent="center"
           alignItems="center"
-          sx={{ mt: 2 }}
         >
           <Stack direction="row" spacing={3}>
             <IconButton
@@ -28,7 +27,7 @@ export default function MainFooter() {
                 "&:hover": { transform: "scale(1.2)" },
               }}
             >
-              <Icon icon={facebookIcon} fontSize={34} color="white" />
+              <Icon icon={facebookIcon} fontSize={24} color="white" />
             </IconButton>
             <IconButton
               sx={{
@@ -36,7 +35,7 @@ export default function MainFooter() {
                 "&:hover": { transform: "scale(1.2)" },
               }}
             >
-              <Icon icon={discordIcon} fontSize={34} color="white" />
+              <Icon icon={discordIcon} fontSize={24} color="white" />
             </IconButton>
             <IconButton
               sx={{
@@ -44,7 +43,7 @@ export default function MainFooter() {
                 "&:hover": { transform: "scale(1.2)" },
               }}
             >
-              <Icon icon={instagramIcon} fontSize={34} color="white" />
+              <Icon icon={instagramIcon} fontSize={24} color="white" />
             </IconButton>
             <IconButton
               sx={{
@@ -52,7 +51,7 @@ export default function MainFooter() {
                 "&:hover": { transform: "scale(1.2)" },
               }}
             >
-              <Icon icon={telegramIcon} fontSize={34} color="white" />
+              <Icon icon={telegramIcon} fontSize={24} color="white" />
             </IconButton>
             <IconButton
               sx={{
@@ -60,7 +59,7 @@ export default function MainFooter() {
                 "&:hover": { transform: "scale(1.2)" },
               }}
             >
-              <Icon icon={youtubeIcon} fontSize={34} color="white" />
+              <Icon icon={youtubeIcon} fontSize={24} color="white" />
             </IconButton>
           </Stack>
         </Stack>

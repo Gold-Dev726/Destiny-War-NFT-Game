@@ -188,7 +188,7 @@ export default function Detailpage() {
           </Stack>
         </Stack>
 
-        <Stack sx={{ px: 18, mt: 10 }}>
+        {/* <Stack sx={{ px: 18, mt: 10 }}>
           <Stack direction="row" spacing={5} alignItems="center">
             <Stack flex={1} alignItems="center">
               <Box
@@ -338,7 +338,7 @@ export default function Detailpage() {
               </Box>
             </Stack>
           </Stack>
-        </Stack>
+        </Stack> */}
 
         <Stack sx={{ mt: 10 }}>
           <Typography textAlign="center" variant="h1">
