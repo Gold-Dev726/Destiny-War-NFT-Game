@@ -94,7 +94,7 @@ export default function MainNavbar() {
               color="#28f0a5"
               sx={{ textDecoration: "none" }}
             >
-              GAME-WIKIPEDIA
+              PRE-SALE
             </Typography>
             <Typography
               component={RouterLink}
