@@ -47,7 +47,7 @@ export default function MainNavbar() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            background: "rgba(255, 255, 255, 0.2)",
+            background: "#42472b",
             height: 1,
             borderRadius: "0 0 10px 10px",
             backdropFilter: "blur(20px)",

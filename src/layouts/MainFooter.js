@@ -12,14 +12,7 @@ export default function MainFooter() {
       sx={{ background: "#2b2b2b", py: 2, borderTop: "1px solid #666666" }}
     >
       <Container maxWidth="lg">
-        <Typography variant="h4" color="white">
-          Copyright 2021 © All rights Reserved. Design by Destiny War Inc.
-        </Typography>
-        <Stack
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-        >
+        <Stack direction="row" justifyContent="center" alignItems="center">
           <Stack direction="row" spacing={3}>
             <IconButton
               sx={{
@@ -27,7 +20,7 @@ export default function MainFooter() {
                 "&:hover": { transform: "scale(1.2)" },
               }}
             >
-              <Icon icon={facebookIcon} fontSize={24} color="white" />
+              <Icon icon={facebookIcon} fontSize={24} color="grey" />
             </IconButton>
             <IconButton
               sx={{
@@ -35,7 +28,7 @@ export default function MainFooter() {
                 "&:hover": { transform: "scale(1.2)" },
               }}
             >
-              <Icon icon={discordIcon} fontSize={24} color="white" />
+              <Icon icon={discordIcon} fontSize={24} color="grey" />
             </IconButton>
             <IconButton
               sx={{
@@ -43,7 +36,7 @@ export default function MainFooter() {
                 "&:hover": { transform: "scale(1.2)" },
               }}
             >
-              <Icon icon={instagramIcon} fontSize={24} color="white" />
+              <Icon icon={instagramIcon} fontSize={24} color="grey" />
             </IconButton>
             <IconButton
               sx={{
@@ -51,7 +44,7 @@ export default function MainFooter() {
                 "&:hover": { transform: "scale(1.2)" },
               }}
             >
-              <Icon icon={telegramIcon} fontSize={24} color="white" />
+              <Icon icon={telegramIcon} fontSize={24} color="grey" />
             </IconButton>
             <IconButton
               sx={{
@@ -59,10 +52,13 @@ export default function MainFooter() {
                 "&:hover": { transform: "scale(1.2)" },
               }}
             >
-              <Icon icon={youtubeIcon} fontSize={24} color="white" />
+              <Icon icon={youtubeIcon} fontSize={24} color="grey" />
             </IconButton>
           </Stack>
         </Stack>
+        <Typography variant="h4" color="white">
+          Copyright 2021 © All rights Reserved. Design by Destiny War Inc.
+        </Typography>
       </Container>
     </Stack>
   );

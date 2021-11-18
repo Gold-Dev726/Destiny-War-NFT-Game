@@ -121,7 +121,7 @@ export default function Detailpage() {
     <>
       <Container maxWidth="xl">
         <Stack alignItems="center" sx={{ px: 18, mt: 10 }}>
-          {/* <Stack direction="row" spacing={5} alignItems="center">
+          <Stack direction="row" spacing={5} alignItems="center">
             <Stack flex={1} alignItems="center">
               <Box
                 component="img"
@@ -154,8 +154,8 @@ export default function Detailpage() {
                 }}
               />
             </Stack>
-          </Stack> */}
-          <Button
+          </Stack>
+          {/* <Button
             variant={show ? "contained" : "outlined"}
             color="warning"
             sx={{ mb: 5, width: 280, height: 80, fontSize: 32, borderWidth: 3 }}
@@ -187,7 +187,7 @@ export default function Detailpage() {
                 Character [Can use only one]
               </Typography>
             </Stack>
-          )}
+          )} */}
 
           <Stack
             direction="row"
@@ -195,7 +195,7 @@ export default function Detailpage() {
             alignItems="center"
             sx={{ mt: 10 }}
           >
-            <Stack flex={1} alignItems="center">
+            {/* <Stack flex={1} alignItems="center">
               <Box component="img" src="/buttons/dwar_character.png" />
               <Box
                 component="img"
@@ -208,22 +208,14 @@ export default function Detailpage() {
                 src="/buttons/buy.png"
                 // sx={{ width: 480 }}
               />
+            </Stack> */}
+            <Stack flex={1} alignItems="center">
+             <Box component="img" src="/dwar_pet.png" />
             </Stack>
             <Stack flex={1} alignItems="center">
-              <Box component="img" src="/buttons/pet.png" sx={{ height: 60 }} />
-              <Box
-                component="img"
-                src="/eggs/pet.gif"
-                sx={{ mt: -5, mb: -5 }}
-              />
-              <Box component="img" src="/texts/price.png" sx={{ mb: 2 }} />
-              <Box
-                component="img"
-                src="/buttons/buy.png"
-                // sx={{ width: 480 }}
-              />
+             <Box component="img" src="/dwar_pet.png" />
             </Stack>
-            <Stack flex={1} alignItems="center">
+            {/* <Stack flex={1} alignItems="center">
               <Box
                 component="img"
                 src="/buttons/mount.png"
@@ -240,7 +232,7 @@ export default function Detailpage() {
                 src="/buttons/buy.png"
                 // sx={{ width: 480 }}
               />
-            </Stack>
+            </Stack> */}
           </Stack>
 
           <Stack alignItems="center" sx={{ mt: 8 }}>
