@@ -9,7 +9,7 @@ export default function MainFooter() {
   return (
     <Stack
       textAlign="center"
-      sx={{ background: "#2b2b2b", py: 4, borderTop: "1px solid #666666" }}
+      sx={{ background: "#2b2b2b", py: 8, borderTop: "1px solid #666666" }}
     >
       <Container maxWidth="lg">
         <Typography variant="h4" color="white">
@@ -28,7 +28,7 @@ export default function MainFooter() {
                 "&:hover": { transform: "scale(1.2)" },
               }}
             >
-              <Icon icon={facebookIcon} fontSize={32} color="white" />
+              <Icon icon={facebookIcon} fontSize={34} color="white" />
             </IconButton>
             <IconButton
               sx={{
@@ -36,7 +36,7 @@ export default function MainFooter() {
                 "&:hover": { transform: "scale(1.2)" },
               }}
             >
-              <Icon icon={discordIcon} fontSize={32} color="white" />
+              <Icon icon={discordIcon} fontSize={34} color="white" />
             </IconButton>
             <IconButton
               sx={{
@@ -44,7 +44,7 @@ export default function MainFooter() {
                 "&:hover": { transform: "scale(1.2)" },
               }}
             >
-              <Icon icon={instagramIcon} fontSize={32} color="white" />
+              <Icon icon={instagramIcon} fontSize={34} color="white" />
             </IconButton>
             <IconButton
               sx={{
@@ -52,7 +52,7 @@ export default function MainFooter() {
                 "&:hover": { transform: "scale(1.2)" },
               }}
             >
-              <Icon icon={telegramIcon} fontSize={32} color="white" />
+              <Icon icon={telegramIcon} fontSize={34} color="white" />
             </IconButton>
             <IconButton
               sx={{
@@ -60,7 +60,7 @@ export default function MainFooter() {
                 "&:hover": { transform: "scale(1.2)" },
               }}
             >
-              <Icon icon={youtubeIcon} fontSize={32} color="white" />
+              <Icon icon={youtubeIcon} fontSize={34} color="white" />
             </IconButton>
           </Stack>
         </Stack>
