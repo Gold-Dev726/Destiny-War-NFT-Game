@@ -116,7 +116,7 @@ export default function Detailpage() {
   // useEffect(() => {
   //   setInterval(() => {
   //     setFlag(!flag);
-  //   }, 2000);
+  //   }, 5000);
   // });
   return (
     <>
@@ -151,7 +151,7 @@ export default function Detailpage() {
             {[...Array(7)].map((item, index) => (
               <Box
                 component="img"
-                src={`/characters/${flag ? index + 1 : index + 8}.png`}
+                src={`/characters/${index + 1}.png`}
                 sx={{
                   width: 135,
                   cursor: "pointer",

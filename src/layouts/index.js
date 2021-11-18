@@ -21,7 +21,8 @@ export default function MainLayout() {
           sx={{
             height: 1,
             background: "url(/bg.png)",
-            backgroundSize: "100% 100%",
+            backgroundSize: "150% 100%",
+            backgroundPosition: '-300px'
           }}
         >
           <MainNavbar />
