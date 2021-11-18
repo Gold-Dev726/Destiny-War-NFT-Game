@@ -122,7 +122,7 @@ export default function Detailpage() {
     <>
       <Container maxWidth="xl">
         <Stack sx={{ px: 18, mt: 10 }}>
-          <Stack direction="row" spacing={5} alignItems="center">
+          {/* <Stack direction="row" spacing={5} alignItems="center">
             <Stack flex={1} alignItems="center">
               <Box
                 component="img"
@@ -155,6 +155,21 @@ export default function Detailpage() {
                 }}
               />
             </Stack>
+          </Stack> */}
+
+          <Stack>
+            <Typography variant="h4" textAlign="center">
+              Player must have Character in order to play the game. <br />
+              Means you will have to buy at least 1 Destiny Warrior to play
+              Destiny War.
+            </Typography>
+            <Typography variant="h4" textAlign="center" sx={{mt: 5}}>
+              Each Character Contains <br />
+              Free Wings + 10% PA and MA <br />
+              Free Tail + 5% PD and MD <br />
+              Free Complete set every 10 Levels <br />
+              Free Change Hair Character [Can use only one]
+            </Typography>
           </Stack>
 
           <Stack
@@ -164,11 +179,11 @@ export default function Detailpage() {
             sx={{ mt: 10 }}
           >
             <Stack flex={1} alignItems="center">
-              <Box component="img" src="/buttons/pet.png" />
+              <Box component="img" src="/buttons/dwar_character.png" />
               <Box
                 component="img"
-                src="/eggs/pet.gif"
-                sx={{ mt: -10, mb: -10 }}
+                src="/eggs/character.gif"
+                sx={{ mt: -5, mb: -5 }}
               />
               <Box component="img" src="/texts/price.png" sx={{ mb: 2 }} />
               <Box
@@ -178,11 +193,29 @@ export default function Detailpage() {
               />
             </Stack>
             <Stack flex={1} alignItems="center">
-              <Box component="img" src="/buttons/mount.png" />
+              <Box component="img" src="/buttons/pet.png" sx={{ height: 60 }} />
+              <Box
+                component="img"
+                src="/eggs/pet.gif"
+                sx={{ mt: -5, mb: -5 }}
+              />
+              <Box component="img" src="/texts/price.png" sx={{ mb: 2 }} />
+              <Box
+                component="img"
+                src="/buttons/buy.png"
+                // sx={{ width: 480 }}
+              />
+            </Stack>
+            <Stack flex={1} alignItems="center">
+              <Box
+                component="img"
+                src="/buttons/mount.png"
+                sx={{ height: 60 }}
+              />
               <Box
                 component="img"
                 src="/eggs/mount.gif"
-                sx={{ mt: -10, mb: -10 }}
+                sx={{ mt: -5, mb: -5 }}
               />
               <Box component="img" src="/texts/price.png" sx={{ mb: 2 }} />
               <Box
@@ -194,8 +227,8 @@ export default function Detailpage() {
           </Stack>
 
           <Stack alignItems="center" sx={{ mt: 8 }}>
-            <Box component="img" src="/title.png" sx={{ width: 500, mb: 5 }} />
-            <Stack direction="row" alignItems="center">
+            <Box component="img" src="/title.png" sx={{ width: 500, mb: 10, mt: 5 }} />
+            <Stack direction="row" alignItems="center" spacing={5}>
               <Box sx={{ position: "relative" }}>
                 <Box
                   component="img"
