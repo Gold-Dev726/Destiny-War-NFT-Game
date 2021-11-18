@@ -128,14 +128,14 @@ export default function Detailpage() {
           sx={{ px: 18 }}
         >
           <Box component="img" src="/logo.png" />
-          <Typography variant="h4" sx={{ mt: 10 }}>
+          <Typography variant="h4" sx={{ mt: 5 }}>
             Destiny War is bringing back the classic MMORPG gameplay, Interact
             to many players, friends, and family to enjoy the excitement and
             intensity of being a warrior. Explore the new virtual world do your
             daily quest to collect rewards and grind digital assets and turn
             them into REAL MONEY!
           </Typography>
-          <Typography variant="h4" sx={{ mt: 5 }}>
+          <Typography variant="h4" sx={{ mt: 3 }}>
             We will be selling a total of 50000 Warriors in our pre-sale, Every
             warrior will get a random wing, random costume, and Destiny box. Our
             minimum target is to sell 20000 and after that we will be releasing
@@ -340,7 +340,7 @@ export default function Detailpage() {
           </Stack>
         </Stack> */}
 
-        <Stack sx={{ mt: 10 }}>
+        <Stack sx={{ mt: 3 }}>
           <Typography textAlign="center" variant="h1">
             ROADMAP
           </Typography>
