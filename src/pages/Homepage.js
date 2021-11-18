@@ -134,8 +134,29 @@ export default function Detailpage() {
               />
               <Box component="img" src="/eggs/character.gif" />
             </Stack>
-            <Stack flex={1}>
+            <Stack flex={1} sx={{ position: "relative" }}>
               <Box component="img" src="/description.png" />
+              <Box
+                component="img"
+                src="/buttons/1.png"
+                sx={{
+                  position: "absolute",
+                  top: "52%",
+                  left: "50%",
+                  transform: "translate3d(-50%,-50%,0)",
+                  width: 140,
+                }}
+              />
+              <Box
+                component="img"
+                src="/buttons/buy.png"
+                sx={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: "50%",
+                  transform: "translate3d(-50%,-50%,0)",
+                }}
+              />
             </Stack>
           </Stack>
 
@@ -178,28 +199,79 @@ export default function Detailpage() {
           <Stack alignItems="center" sx={{ mt: 8 }}>
             <Box component="img" src="/title.png" sx={{ width: 500, mb: 5 }} />
             <Stack direction="row" alignItems="center">
-              <Box
-                component="img"
-                src="/mint/egg-left.png"
-                sx={{ width: 150 }}
-              />
+              <Box sx={{ position: "relative" }}>
+                <Box
+                  component="img"
+                  src="/mint/egg-left.png"
+                  sx={{ width: 150 }}
+                />
+                <Typography
+                  variant="h2"
+                  sx={{
+                    position: "absolute",
+                    top: "40%",
+                    left: "50%",
+                    transform: "translate(-50%, 0)",
+                  }}
+                >
+                  50K
+                </Typography>
+              </Box>
               <Stack alignItems="center" spacing={3}>
-                <Box
-                  component="img"
-                  src="/texts/minted.png"
-                  sx={{ width: 200 }}
-                />
-                <Box
-                  component="img"
-                  src="/mint/slider-bg.png"
-                  sx={{ width: 600 }}
-                />
+                <Box sx={{ position: "relative" }}>
+                  <Box
+                    component="img"
+                    src="/texts/minted.png"
+                    sx={{ width: 200 }}
+                  />
+                  <Typography
+                    variant="h2"
+                    sx={{
+                      position: "absolute",
+                      top: "40%",
+                      left: "50%",
+                      transform: "translate(-50%, 0)",
+                    }}
+                  >
+                    0
+                  </Typography>
+                </Box>
+                <Box sx={{ position: "relative" }}>
+                  <Box
+                    component="img"
+                    src="/mint/slider-bg.png"
+                    sx={{ width: 600 }}
+                  />
+                  <Box
+                    component="img"
+                    src="/mint/slider.png"
+                    sx={{
+                      position: "absolute",
+                      width: 120,
+                      bottom: 0,
+                      left: "-5%",
+                    }}
+                  />
+                </Box>
               </Stack>
-              <Box
-                component="img"
-                src="/mint/egg-right.png"
-                sx={{ width: 150 }}
-              />
+              <Box sx={{ position: "relative" }}>
+                <Box
+                  component="img"
+                  src="/mint/egg-right.png"
+                  sx={{ width: 150 }}
+                />
+                <Typography
+                  variant="h2"
+                  sx={{
+                    position: "absolute",
+                    top: "40%",
+                    left: "50%",
+                    transform: "translate(-50%, 0)",
+                  }}
+                >
+                  50000
+                </Typography>
+              </Box>
             </Stack>
           </Stack>
         </Stack>
