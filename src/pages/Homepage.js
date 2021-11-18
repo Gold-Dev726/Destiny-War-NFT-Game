@@ -177,14 +177,9 @@ export default function Detailpage() {
                 </Typography>
               </Stack>
               <Typography>
-                In the distant past a warrior named Kuang Tu Nha helped the Chou
-                dynasty defeat Tru, a dangerous warrior that had threatened
-                everything. The legend of this battle has drawn hundreds of the
-                greatest Taoists to study his hand to hand style, hoping to
-                become as great as the legendary warrior. <br />
+                {TEAM_INFOS[currentTeam - 1].description1} <br />
                 <br />
-                Fighters are warriors who focus on close combat. They use their
-                fists to make rapid attacks to wear down their enemies.
+                {TEAM_INFOS[currentTeam - 1].description2}
               </Typography>
             </Stack>
             <Stack flex={1}>
