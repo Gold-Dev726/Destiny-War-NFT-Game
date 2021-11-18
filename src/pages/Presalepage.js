@@ -110,8 +110,7 @@ const TEAM_INFOS = [
 ];
 
 export default function Detailpage() {
-  const [currentTeam, setCurrentTeam] = useState(1);
-  const [flag, setFlag] = useState(true);
+  const [show, setShow] = useState(false);
 
   // useEffect(() => {
   //   setInterval(() => {
@@ -121,7 +120,7 @@ export default function Detailpage() {
   return (
     <>
       <Container maxWidth="xl">
-        <Stack sx={{ px: 18, mt: 10 }}>
+        <Stack alignItems="center" sx={{ px: 18, mt: 10 }}>
           {/* <Stack direction="row" spacing={5} alignItems="center">
             <Stack flex={1} alignItems="center">
               <Box
@@ -156,21 +155,39 @@ export default function Detailpage() {
               />
             </Stack>
           </Stack> */}
+          <Button
+            variant={show ? "contained" : "outlined"}
+            color="warning"
+            sx={{ mb: 5, width: 280, height: 80, fontSize: 32, borderWidth: 3 }}
+            onClick={() => setShow(!show)}
+          >
+            View Info
+          </Button>
 
-          <Stack>
-            <Typography variant="h4" textAlign="center">
-              Player must have Character in order to play the game. <br />
-              Means you will have to buy at least 1 Destiny Warrior to play
-              Destiny War.
-            </Typography>
-            <Typography variant="h4" textAlign="center" sx={{mt: 5}}>
-              Each Character Contains <br />
-              Free Wings + 10% PA and MA <br />
-              Free Tail + 5% PD and MD <br />
-              Free Complete set every 10 Levels <br />
-              Free Change Hair Character [Can use only one]
-            </Typography>
-          </Stack>
+          {show && (
+            <Stack
+              sx={{
+                border: "5px solid #9ffe20",
+                borderRadius: 2,
+                py: 2,
+                px: 10,
+              }}
+            >
+              <Typography variant="h3" textAlign="center">
+                Player must have Character in order to play the game. <br />
+                Means you will have to buy at least 1 Destiny Warrior to play
+                Destiny War.
+              </Typography>
+              <Typography variant="h4" textAlign="center" sx={{ mt: 5 }}>
+                <em style={{ fontSize: 30 }}>Each Character Contains:</em>{" "}
+                <br />
+                ✔ Free Wings + 10% PA and MA <br />
+                ✔ Free Tail + 5% PD and MD <br />
+                ✔ Free Complete set every 10 Levels <br />✔ Free Change Hair
+                Character [Can use only one]
+              </Typography>
+            </Stack>
+          )}
 
           <Stack
             direction="row"
@@ -227,7 +244,11 @@ export default function Detailpage() {
           </Stack>
 
           <Stack alignItems="center" sx={{ mt: 8 }}>
-            <Box component="img" src="/title.png" sx={{ width: 500, mb: 10, mt: 5 }} />
+            <Box
+              component="img"
+              src="/title.png"
+              sx={{ width: 500, mb: 10, mt: 5 }}
+            />
             <Stack direction="row" alignItems="center" spacing={5}>
               <Box sx={{ position: "relative" }}>
                 <Box
