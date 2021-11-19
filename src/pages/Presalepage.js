@@ -33,7 +33,7 @@ export default function Detailpage() {
         sx={{ background: "url(/presale/bg.png)", backgroundSize: "cover" }}
       >
         <Container maxWidth="lg" sx={{ }}>
-          <Stack sx={{ position: "relative", height: "85vh" }}>
+          <Stack sx={{ position: "relative", }}>
             <Box component="img" src="/presale/description.png" sx={{height: '100%'}} />
             <Stack
               alignItems="center"
