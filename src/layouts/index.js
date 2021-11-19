@@ -1,6 +1,7 @@
 import { useLocation, Outlet } from "react-router-dom";
 import { Box } from "@mui/material";
 //
+import MainSidebar from "./MainSidebar";
 import MainNavbar from "./MainNavbar";
 import MainFooter from "./MainFooter";
 import Scrollbar from "components/Scrollbar";
@@ -27,6 +28,7 @@ export default function MainLayout() {
             minHeight: "100vh",
           }}
         >
+          <MainSidebar />
           <MainNavbar />
           <Box sx={{ py: 4 }}>
             <Outlet />
