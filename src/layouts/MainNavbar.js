@@ -9,6 +9,7 @@ import {
   Toolbar,
   Container,
   Typography,
+  Link
 } from "@mui/material";
 import { Link as ScrollLink } from "react-scroll";
 import Logo from "components/Logo";
@@ -16,6 +17,7 @@ import ConnectButton from "components/ConnectButton";
 import { Icon } from "@iconify/react";
 import twitterFill from "@iconify/icons-cib/twitter";
 import discordFill from "@iconify/icons-cib/discord";
+import Whitepaper from "./whitepaper.pdf";
 // ----------------------------------------------------------------------
 
 const APP_BAR_MOBILE = 64;
@@ -79,8 +81,9 @@ export default function MainNavbar() {
               INVENTORY
             </Typography>
             <Typography
-              component={RouterLink}
-              to="/"
+              component={Link}
+              href={Whitepaper}
+              target="_blank"
               variant="h4"
               color="#28f0a5"
               sx={{ textDecoration: "none" }}
