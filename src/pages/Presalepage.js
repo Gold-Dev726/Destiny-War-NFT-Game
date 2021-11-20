@@ -46,7 +46,12 @@ export default function Detailpage() {
   return (
     <>
       <Stack
-        sx={{ background: "url(/presale/bg.png)", backgroundSize: "cover" }}
+        sx={{
+          background: "url(/presale/bg.png)",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: { xs: "cover", md: "120% 100%" },
+          backgroundPosition: { xs: "-100px 150px", md: "-300px" },
+        }}
       >
         <Hidden mdDown>
           <>
