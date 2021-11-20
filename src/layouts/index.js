@@ -1,5 +1,5 @@
 import { useLocation, Outlet } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Box, Hidden } from "@mui/material";
 //
 import MainSidebar from "./MainSidebar";
 import MainNavbar from "./MainNavbar";
@@ -28,7 +28,9 @@ export default function MainLayout() {
             minHeight: "100vh",
           }}
         >
-          <MainSidebar />
+          <Hidden smDown>
+            <MainSidebar />
+          </Hidden>
           <MainNavbar />
           <Box sx={{ py: 4 }}>
             <Outlet />

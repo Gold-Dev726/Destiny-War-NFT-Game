@@ -125,7 +125,7 @@ export default function Detailpage() {
           textAlign="center"
           justifyContent="center"
           alignItems="center"
-          sx={{ px: 18 }}
+          sx={{ px: { xs: 2, md: 18 } }}
         >
           <Box component="img" src="/logo.png" />
           <Typography variant="h4" sx={{ mt: 5 }}>
@@ -143,11 +143,14 @@ export default function Detailpage() {
           </Typography>
         </Stack>
 
-        <Stack sx={{ px: 18, mt: 10 }}>
+        <Stack sx={{ px: { xs: 2, md: 18 }, mt: 10 }}>
           <Typography variant="h2" textAlign="center">
             CHOOSE YOUR CLASS
           </Typography>
-          <Stack direction="row" justifyContent="space-between">
+          <Stack
+            // direction={{ xs: "column", md: "row" }}
+            justifyContent="space-between"
+          >
             {[...Array(7)].map((item, index) => (
               <TeamComponent
                 number={index + 1}
@@ -156,7 +159,7 @@ export default function Detailpage() {
             ))}
           </Stack>
           <Stack
-            direction="row"
+            direction={{ xs: "column", md: "row" }}
             alignItems="flex-start"
             spacing={5}
             sx={{ mt: 8 }}
@@ -197,7 +200,7 @@ export default function Detailpage() {
               <Box
                 component="img"
                 src={`/roadmap/${index + 1}.png`}
-                sx={{ width: "40%" }}
+                sx={{ width: { xs: "70%", md: "40%" } }}
               />
             </Stack>
           ))}
