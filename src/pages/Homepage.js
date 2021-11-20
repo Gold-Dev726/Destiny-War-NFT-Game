@@ -148,8 +148,10 @@ export default function Detailpage() {
             CHOOSE YOUR CLASS
           </Typography>
           <Stack
-            // direction={{ xs: "column", md: "row" }}
-            justifyContent="space-between"
+            spacing={1}
+            direction="row"
+            justifyContent={{ xs: "center", md: "space-between" }}
+            flexWrap="wrap"
           >
             {[...Array(7)].map((item, index) => (
               <TeamComponent

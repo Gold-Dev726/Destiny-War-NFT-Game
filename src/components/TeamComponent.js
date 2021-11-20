@@ -19,7 +19,7 @@ export default function TestComponent({ number, changeTeam }) {
       component="img"
       src={`/characters/${flag ? number : number + 7}.png`}
       sx={{
-        width: 135,
+        width: { xs: 68, md: 135 },
         cursor: "pointer",
       }}
       onClick={() => changeTeam(number)}

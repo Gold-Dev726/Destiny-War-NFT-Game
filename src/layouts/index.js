@@ -32,7 +32,7 @@ export default function MainLayout() {
             <MainSidebar />
           </Hidden>
           <MainNavbar />
-          <Box sx={{ py: 4 }}>
+          <Box>
             <Outlet />
           </Box>
           <MainFooter />

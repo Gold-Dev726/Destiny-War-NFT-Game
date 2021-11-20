@@ -1,11 +1,11 @@
 import { Button, Box, Stack, Typography } from "@mui/material";
 import { useEthers, useEtherBalance } from "@usedapp/core";
 import { ethers } from "ethers";
-export default function Logo() {
+
+export default function ConnectButton({ sx }) {
   const { activateBrowserWallet, deactivate, account } = useEthers();
   const balance = useEtherBalance(account);
   const bnbBalance = balance && ethers.utils.formatEther(balance);
-  console.log(balance && ethers.utils.formatEther(balance));
   return (
     <>
       {account ? (
@@ -17,13 +17,13 @@ export default function Logo() {
             startIcon={
               <Box component="img" src="/metamask.png" sx={{ width: 20 }} />
             }
-            sx={{ border: "1px solid white", color: "white" }}
+            sx={{ border: "1px solid white", color: "white", ...sx }}
           >
             Connected!
           </Button>
           <Stack>
-            <Typography>{Number(bnbBalance).toFixed(2)} BNB</Typography>
-            <Typography>{`${account.slice(0, 5)}...${account.slice(
+            <Typography fontSize={12}>{Number(bnbBalance).toFixed(2)} BNB</Typography>
+            <Typography fontSize={12}>{`${account.slice(0, 5)}...${account.slice(
               -5
             )}`}</Typography>
           </Stack>
@@ -36,7 +36,7 @@ export default function Logo() {
           startIcon={
             <Box component="img" src="/metamask.png" sx={{ width: 20 }} />
           }
-          sx={{ border: "1px solid white", color: "white" }}
+          sx={{ border: "1px solid white", color: "white", ...sx }}
         >
           Connect Wallet
         </Button>

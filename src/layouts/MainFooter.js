@@ -7,10 +7,7 @@ import telegramIcon from "@iconify/icons-cib/telegram";
 import youtubeIcon from "@iconify/icons-cib/youtube";
 export default function MainFooter() {
   return (
-    <Stack
-      textAlign="center"
-      sx={{ background: "#2b2b2b", py: 2, borderTop: "1px solid #666666" }}
-    >
+    <Stack textAlign="center" sx={{ background: "#2b2b2b", py: 2 }}>
       <Container maxWidth="lg">
         <Stack direction="row" justifyContent="center" alignItems="center">
           <Stack direction="row" spacing={3}>
