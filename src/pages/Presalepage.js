@@ -184,7 +184,8 @@ export default function Detailpage() {
                       position: "absolute",
                       bottom: "23%",
                       width: 1,
-                      px: 29,
+                      pl: 30,
+                      pr: 28,
                     }}
                   >
                     <Typography
@@ -199,7 +200,17 @@ export default function Detailpage() {
                       variant="h3"
                       sx={{ width: "92px" }}
                     >
-                      0
+                      49812
+                    </Typography>
+                  </Stack>
+                  <Stack sx={{ position: "absolute", bottom: "26%", width: 1 }}>
+                    <Typography
+                      textAlign="center"
+                      variant="h3"
+                      color="white"
+                      sx={{ ml: 2 }}
+                    >
+                      188
                     </Typography>
                   </Stack>
                 </Stack>
@@ -248,7 +259,8 @@ export default function Detailpage() {
                       position: "absolute",
                       bottom: "20%",
                       width: 1,
-                      px: 29,
+                      pl: 30,
+                      pr: 28,
                     }}
                   >
                     <Typography
@@ -263,7 +275,17 @@ export default function Detailpage() {
                       variant="h3"
                       sx={{ width: "92px" }}
                     >
-                      0
+                      49812
+                    </Typography>
+                  </Stack>
+                  <Stack sx={{ position: "absolute", bottom: "24%", width: 1 }}>
+                    <Typography
+                      textAlign="center"
+                      variant="h3"
+                      color="white"
+                      sx={{ ml: 2 }}
+                    >
+                      188
                     </Typography>
                   </Stack>
                 </Stack>
@@ -313,7 +335,8 @@ export default function Detailpage() {
                       position: "absolute",
                       bottom: "20%",
                       width: 1,
-                      px: 29,
+                      pl: 30,
+                      pr: 28,
                     }}
                   >
                     <Typography
@@ -328,7 +351,17 @@ export default function Detailpage() {
                       variant="h3"
                       sx={{ width: "92px" }}
                     >
-                      0
+                      49812
+                    </Typography>
+                  </Stack>
+                  <Stack sx={{ position: "absolute", bottom: "24%", width: 1 }}>
+                    <Typography
+                      textAlign="center"
+                      variant="h3"
+                      color="white"
+                      sx={{ ml: 2 }}
+                    >
+                      188
                     </Typography>
                   </Stack>
                 </Stack>
