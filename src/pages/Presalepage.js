@@ -182,28 +182,26 @@ export default function Detailpage() {
                     justifyContent="space-between"
                     sx={{
                       position: "absolute",
-                      bottom: "23%",
+                      bottom: "21%",
                       width: 1,
-                      pl: 30,
+                      pl: 29,
                       pr: 28,
                     }}
                   >
                     <Typography
                       textAlign="center"
-                      variant="h3"
-                      sx={{ width: "92px" }}
+                      sx={{ width: "92px", fontSize: 36 }}
                     >
                       50000
                     </Typography>
                     <Typography
                       textAlign="center"
-                      variant="h3"
-                      sx={{ width: "92px" }}
+                      sx={{ width: "92px", fontSize: 36 }}
                     >
-                      49812
+                      0
                     </Typography>
                   </Stack>
-                  <Stack sx={{ position: "absolute", bottom: "26%", width: 1 }}>
+                  {/* <Stack sx={{ position: "absolute", bottom: "26%", width: 1 }}>
                     <Typography
                       textAlign="center"
                       variant="h3"
@@ -212,7 +210,7 @@ export default function Detailpage() {
                     >
                       188
                     </Typography>
-                  </Stack>
+                  </Stack> */}
                 </Stack>
                 <Stack sx={{ position: "relative" }}>
                   <Box
@@ -257,28 +255,26 @@ export default function Detailpage() {
                     justifyContent="space-between"
                     sx={{
                       position: "absolute",
-                      bottom: "20%",
+                      bottom: "19%",
                       width: 1,
-                      pl: 30,
+                      pl: 29,
                       pr: 28,
                     }}
                   >
                     <Typography
                       textAlign="center"
-                      variant="h3"
-                      sx={{ width: "92px" }}
+                      sx={{ width: "92px", fontSize: 36 }}
                     >
                       50000
                     </Typography>
                     <Typography
                       textAlign="center"
-                      variant="h3"
-                      sx={{ width: "92px" }}
+                      sx={{ width: "92px", fontSize: 36 }}
                     >
-                      49812
+                      0
                     </Typography>
                   </Stack>
-                  <Stack sx={{ position: "absolute", bottom: "24%", width: 1 }}>
+                  {/* <Stack sx={{ position: "absolute", bottom: "24%", width: 1 }}>
                     <Typography
                       textAlign="center"
                       variant="h3"
@@ -287,7 +283,7 @@ export default function Detailpage() {
                     >
                       188
                     </Typography>
-                  </Stack>
+                  </Stack> */}
                 </Stack>
 
                 <Stack sx={{ position: "relative" }}>
@@ -333,28 +329,26 @@ export default function Detailpage() {
                     justifyContent="space-between"
                     sx={{
                       position: "absolute",
-                      bottom: "20%",
+                      bottom: "19%",
                       width: 1,
-                      pl: 30,
+                      pl: 29,
                       pr: 28,
                     }}
                   >
                     <Typography
                       textAlign="center"
-                      variant="h3"
-                      sx={{ width: "92px" }}
+                      sx={{ width: "92px", fontSize: 36 }}
                     >
                       50000
                     </Typography>
                     <Typography
                       textAlign="center"
-                      variant="h3"
-                      sx={{ width: "92px" }}
+                      sx={{ width: "92px", fontSize: 36 }}
                     >
-                      49812
+                      0
                     </Typography>
                   </Stack>
-                  <Stack sx={{ position: "absolute", bottom: "24%", width: 1 }}>
+                  {/* <Stack sx={{ position: "absolute", bottom: "24%", width: 1 }}>
                     <Typography
                       textAlign="center"
                       variant="h3"
@@ -363,7 +357,7 @@ export default function Detailpage() {
                     >
                       188
                     </Typography>
-                  </Stack>
+                  </Stack> */}
                 </Stack>
               </Slider>
             </Container>
