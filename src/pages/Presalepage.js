@@ -185,7 +185,7 @@ export default function Detailpage() {
                       bottom: "21%",
                       width: 1,
                       pl: 29,
-                      pr: 28,
+                      pr: 28.5,
                     }}
                   >
                     <Typography
@@ -198,7 +198,7 @@ export default function Detailpage() {
                       textAlign="center"
                       sx={{ width: "92px", fontSize: 36 }}
                     >
-                      0
+                      50000
                     </Typography>
                   </Stack>
                   {/* <Stack sx={{ position: "absolute", bottom: "26%", width: 1 }}>
@@ -258,7 +258,7 @@ export default function Detailpage() {
                       bottom: "19%",
                       width: 1,
                       pl: 29,
-                      pr: 28,
+                      pr: 28.5,
                     }}
                   >
                     <Typography
@@ -271,7 +271,7 @@ export default function Detailpage() {
                       textAlign="center"
                       sx={{ width: "92px", fontSize: 36 }}
                     >
-                      0
+                      50000
                     </Typography>
                   </Stack>
                   {/* <Stack sx={{ position: "absolute", bottom: "24%", width: 1 }}>
@@ -332,7 +332,7 @@ export default function Detailpage() {
                       bottom: "19%",
                       width: 1,
                       pl: 29,
-                      pr: 28,
+                      pr: 28.5,
                     }}
                   >
                     <Typography
@@ -345,7 +345,7 @@ export default function Detailpage() {
                       textAlign="center"
                       sx={{ width: "92px", fontSize: 36 }}
                     >
-                      0
+                      50000
                     </Typography>
                   </Stack>
                   {/* <Stack sx={{ position: "absolute", bottom: "24%", width: 1 }}>
