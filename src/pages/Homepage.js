@@ -174,12 +174,12 @@ export default function Detailpage() {
               >
                 <Box
                   component="img"
-                  src={`/teams/team${currentTeam}-logo.png`}
-                  sx={{ width: 140 }}
+                  src={`/teams/title${currentTeam}.png`}
+                  sx={{ width: 300 }}
                 />
-                <Typography variant="h1">
+                {/* <Typography variant="h1">
                   {TEAM_INFOS[currentTeam - 1].name}
-                </Typography>
+                </Typography> */}
               </Stack>
               <Typography>
                 {TEAM_INFOS[currentTeam - 1].description1} <br />
