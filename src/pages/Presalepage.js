@@ -25,7 +25,7 @@ function NextArrow(props) {
   const { onClick } = props;
   return (
     <Box
-      style={{
+      sx={{
         right: -100,
         display: "block",
         background: "url(/nextArrow.png)",
@@ -35,6 +35,8 @@ function NextArrow(props) {
         top: "50%",
         transform: "translate(0, -50%)",
         cursor: "pointer",
+        transition: "all 0.3s",
+        "&:hover": { transform: "translate(0, -50%) scale(1.2)" },
       }}
       onClick={onClick}
     />
@@ -45,7 +47,7 @@ function PrevArrow(props) {
   const { onClick } = props;
   return (
     <Box
-      style={{
+      sx={{
         left: -100,
         display: "block",
         background: "url(/prevArrow.png)",
@@ -55,6 +57,8 @@ function PrevArrow(props) {
         top: "50%",
         transform: "translate(0, -50%)",
         cursor: "pointer",
+        transition: "all 0.3s",
+        "&:hover": { transform: "translate(0, -50%) scale(1.2)" },
       }}
       onClick={onClick}
     />
@@ -96,8 +100,8 @@ export default function Detailpage() {
         sx={{
           background: "url(/presale/bg.png)",
           backgroundRepeat: "no-repeat",
-          backgroundSize: { xs: "cover", md: "120% 100%" },
-          backgroundPosition: { xs: "-100px 150px", md: "-300px" },
+          backgroundSize: { xs: "cover", md: "110% 100%" },
+          backgroundPosition: { xs: "-100px 150px", md: "-180px" },
         }}
       >
         <Hidden mdDown>
@@ -173,6 +177,31 @@ export default function Detailpage() {
                       left: "50%",
                     }}
                   />
+                  <Stack
+                    direction="row"
+                    justifyContent="space-between"
+                    sx={{
+                      position: "absolute",
+                      bottom: "23%",
+                      width: 1,
+                      px: 29,
+                    }}
+                  >
+                    <Typography
+                      textAlign="center"
+                      variant="h3"
+                      sx={{ width: "92px" }}
+                    >
+                      50000
+                    </Typography>
+                    <Typography
+                      textAlign="center"
+                      variant="h3"
+                      sx={{ width: "92px" }}
+                    >
+                      0
+                    </Typography>
+                  </Stack>
                 </Stack>
                 <Stack sx={{ position: "relative" }}>
                   <Box
@@ -212,6 +241,31 @@ export default function Detailpage() {
                       left: "50%",
                     }}
                   />
+                  <Stack
+                    direction="row"
+                    justifyContent="space-between"
+                    sx={{
+                      position: "absolute",
+                      bottom: "20%",
+                      width: 1,
+                      px: 29,
+                    }}
+                  >
+                    <Typography
+                      textAlign="center"
+                      variant="h3"
+                      sx={{ width: "92px" }}
+                    >
+                      50000
+                    </Typography>
+                    <Typography
+                      textAlign="center"
+                      variant="h3"
+                      sx={{ width: "92px" }}
+                    >
+                      0
+                    </Typography>
+                  </Stack>
                 </Stack>
 
                 <Stack sx={{ position: "relative" }}>
@@ -252,10 +306,35 @@ export default function Detailpage() {
                       left: "50%",
                     }}
                   />
+                  <Stack
+                    direction="row"
+                    justifyContent="space-between"
+                    sx={{
+                      position: "absolute",
+                      bottom: "20%",
+                      width: 1,
+                      px: 29,
+                    }}
+                  >
+                    <Typography
+                      textAlign="center"
+                      variant="h3"
+                      sx={{ width: "92px" }}
+                    >
+                      50000
+                    </Typography>
+                    <Typography
+                      textAlign="center"
+                      variant="h3"
+                      sx={{ width: "92px" }}
+                    >
+                      0
+                    </Typography>
+                  </Stack>
                 </Stack>
               </Slider>
             </Container>
-            <Stack
+            {/* <Stack
               direction="row"
               spacing={3}
               justifyContent="center"
@@ -277,7 +356,7 @@ export default function Detailpage() {
               >
                 Next
               </Button>
-            </Stack>
+            </Stack> */}
           </>
         </Hidden>
 
