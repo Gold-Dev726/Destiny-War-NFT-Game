@@ -21,6 +21,51 @@ import twitterFill from "@iconify/icons-cib/twitter";
 import linkedinFill from "@iconify/icons-cib/linkedin";
 import Slider from "react-slick";
 
+function NextArrow(props) {
+  const { onClick } = props;
+  return (
+    <Box
+      style={{
+        right: -100,
+        display: "block",
+        background: "url(/nextArrow.png)",
+        width: 130,
+        height: 95,
+        position: "absolute",
+        top: "50%",
+        transform: "translate(0, -50%)",
+        cursor: "pointer",
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+function PrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <Box
+      style={{
+        left: -100,
+        display: "block",
+        background: "url(/prevArrow.png)",
+        width: 130,
+        height: 95,
+        position: "absolute",
+        top: "50%",
+        transform: "translate(0, -50%)",
+        cursor: "pointer",
+      }}
+      onClick={onClick}
+    />
+  );
+}
+// export function NextArrow(props) {
+//   const { onClick } = props;
+//   return (
+//     <Box component="img" src="/nextArrow.png" sx={{ width: 40, height: 40 }} />
+//   );
+// }
 export default function Detailpage() {
   const [show, setShow] = useState(false);
 
@@ -33,6 +78,8 @@ export default function Detailpage() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
   const next = () => {
@@ -68,13 +115,13 @@ export default function Detailpage() {
                     sx={{ width: 600, position: "absolute", top: 0 }}
                   >
                     <Box component="img" src="/presale/character-egg.gif" />
-                    <Box
+                    {/* <Box
                       component="img"
                       src="/presale/buy.png"
                       sx={{ width: 150, mt: -10 }}
-                    />
+                    /> */}
                   </Stack>
-                  <Box
+                  {/* <Box
                     component="img"
                     src="/presale/1.png"
                     sx={{
@@ -83,6 +130,11 @@ export default function Detailpage() {
                       right: "29%",
                       top: "40%",
                     }}
+                  /> */}
+                  <Box
+                    component="img"
+                    src="/presale/buy.png"
+                    sx={{ position: "absolute", right: "26%", top: "42%" }}
                   />
                   <Stack
                     sx={{
