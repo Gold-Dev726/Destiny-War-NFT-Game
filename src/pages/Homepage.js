@@ -1,55 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // material
-import {
-  Box,
-  Stack,
-  Container,
-  Typography,
-  Button,
-  Divider,
-  OutlinedInput,
-  InputAdornment,
-  Grid,
-} from "@mui/material";
+import { Box, Stack, Container, Typography } from "@mui/material";
 
-import CountDown from "components/CountDown";
-import EnticementSlick from "components/EnticementSlick";
-import { varFadeInUp, MotionInView, varFadeInDown } from "components/animate";
-import { Icon } from "@iconify/react";
-import twitterFill from "@iconify/icons-cib/twitter";
-import linkedinFill from "@iconify/icons-cib/linkedin";
 import TeamComponent from "components/TeamComponent";
-const TEAMS = [
-  {
-    name: "Mohamed - Bengal Tiger",
-    image: "Kusama",
-    role: "Founder/Biz Lead",
-    twitter: "",
-    linkedin: "",
-  },
-  {
-    name: "Mohamed - Bengal Tiger",
-    image: "Kusama",
-    role: "Founder/Biz Lead",
-    twitter: "",
-    linkedin: "",
-  },
-  {
-    name: "Mohamed - Bengal Tiger",
-    image: "Kusama",
-    role: "Founder/Biz Lead",
-    twitter: "",
-    linkedin: "",
-  },
-  {
-    name: "Mohamed - Bengal Tiger",
-    image: "Kusama",
-    role: "Founder/Biz Lead",
-    twitter: "",
-    linkedin: "",
-  },
-];
-
+import Slider from "react-slick";
 const TEAM_INFOS = [
   {
     number: 1,
@@ -113,11 +67,14 @@ export default function Detailpage() {
   const [currentTeam, setCurrentTeam] = useState(1);
   const [flag, setFlag] = useState(true);
 
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     setFlag(!flag);
-  //   }, 5000);
-  // });
+  const sliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+  };
+
   return (
     <>
       <Container maxWidth="xl">
@@ -144,9 +101,9 @@ export default function Detailpage() {
         </Stack>
 
         <Stack sx={{ px: { xs: 2, md: 18 }, mt: 10 }}>
-          <Typography variant="h2" textAlign="center">
-            CHOOSE YOUR CLASS
-          </Typography>
+          <Stack direction="row" justifyContent="center">
+            <Box component="img" src="/texts/choose_class.png" />
+          </Stack>
           <Stack
             spacing={1}
             direction="row"
@@ -194,18 +151,16 @@ export default function Detailpage() {
         </Stack>
 
         <Stack sx={{ mt: 3 }}>
-          <Typography textAlign="center" variant="h1">
-            ROADMAP
-          </Typography>
-          {[...Array(9)].map((item, index) => (
-            <Stack alignItems={index % 2 === 0 ? "flex-start" : "flex-end"}>
-              <Box
-                component="img"
-                src={`/roadmap/${index + 1}.png`}
-                sx={{ width: { xs: "70%", md: "40%" } }}
-              />
-            </Stack>
-          ))}
+          <Stack direction="row" justifyContent="center" sx={{ mb: 5 }}>
+            <Box component="img" src="/texts/roadmap.png" />
+          </Stack>
+          <Slider {...sliderSettings}>
+            {[...Array(9)].map((item, index) => (
+              <Stack sx={{ px: 5 }}>
+                <Box component="img" src={`/roadmap/${index + 1}.png`} />
+              </Stack>
+            ))}
+          </Slider>
         </Stack>
       </Container>
     </>
