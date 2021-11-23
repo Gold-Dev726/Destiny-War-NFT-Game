@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Box, Stack, Container, Typography } from "@mui/material";
 
 import TeamComponent from "components/TeamComponent";
+import { varFadeInUp, MotionInView, varFadeInDown } from "components/animate";
 import Slider from "react-slick";
 const TEAM_INFOS = [
   {
@@ -63,16 +64,65 @@ const TEAM_INFOS = [
   },
 ];
 
+function NextArrow(props) {
+  const { onClick } = props;
+  return (
+    <Box
+      sx={{
+        right: -100,
+        display: "block",
+        background: "url(/nextArrow.png)",
+        width: 130,
+        height: 95,
+        position: "absolute",
+        top: "50%",
+        transform: "translate(0, -50%)",
+        cursor: "pointer",
+        transition: "all 0.3s",
+        "&:hover": { transform: "translate(0, -50%) scale(1.2)" },
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+function PrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <Box
+      sx={{
+        left: -100,
+        display: "block",
+        background: "url(/prevArrow.png)",
+        width: 130,
+        height: 95,
+        position: "absolute",
+        top: "50%",
+        transform: "translate(0, -50%)",
+        cursor: "pointer",
+        transition: "all 0.3s",
+        "&:hover": { transform: "translate(0, -50%) scale(1.2)" },
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
 export default function Detailpage() {
   const [currentTeam, setCurrentTeam] = useState(1);
   const [flag, setFlag] = useState(true);
 
   const sliderSettings = {
     dots: false,
+    // autoplay: true,
+    // autoplaySpeed: 2000,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
+    rtl: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
   return (
@@ -84,7 +134,7 @@ export default function Detailpage() {
           alignItems="center"
           sx={{ px: { xs: 2, md: 18 } }}
         >
-          <Box component="img" src="/logo.png" />
+          <Box component="img" src="/logo.png" sx={{ mt: 10 }} />
           <Typography variant="h4" sx={{ mt: 5 }}>
             Destiny War is bringing back the classic MMORPG gameplay, Interact
             to many players, friends, and family to enjoy the excitement and
@@ -102,7 +152,9 @@ export default function Detailpage() {
 
         <Stack sx={{ px: { xs: 2, md: 18 }, mt: 10 }}>
           <Stack direction="row" justifyContent="center">
-            <Box component="img" src="/texts/choose_class.png" />
+            <MotionInView variants={varFadeInUp}>
+              <Box component="img" src="/texts/choose_class.png" />
+            </MotionInView>
           </Stack>
           <Stack
             spacing={1}
@@ -152,15 +204,28 @@ export default function Detailpage() {
 
         <Stack sx={{ mt: 3 }}>
           <Stack direction="row" justifyContent="center" sx={{ mb: 5 }}>
-            <Box component="img" src="/texts/roadmap.png" />
+            <MotionInView variants={varFadeInUp}>
+              <Box component="img" src="/texts/roadmap.png" />
+            </MotionInView>
           </Stack>
-          <Slider {...sliderSettings}>
-            {[...Array(9)].map((item, index) => (
-              <Stack sx={{ px: 5 }}>
-                <Box component="img" src={`/roadmap/${index + 1}.png`} />
-              </Stack>
-            ))}
-          </Slider>
+          <Stack sx={{ "& .slick-slide:focus": { outline: "none" } }}>
+            <Slider {...sliderSettings}>
+              {[...Array(9)].map((item, index) => (
+                <Box sx={{ px: 5 }}>
+                  <Box
+                    // component="img"
+                    src={`/roadmap/${index + 1}.png`}
+                    sx={{
+                      width: 420,
+                      height: 460,
+                      background: `url(/roadmap/${index + 1}.png)`,
+                      backgroundSize: "cover",
+                    }}
+                  />
+                </Box>
+              ))}
+            </Slider>
+          </Stack>
         </Stack>
       </Container>
     </>
