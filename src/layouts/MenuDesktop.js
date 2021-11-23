@@ -13,18 +13,18 @@ export default function MainNavbar() {
       <Typography
         component={RouterLink}
         to="/"
-        variant="h5"
+        variant="h4"
         color="#47350b"
-        sx={{ textDecoration: "none" }}
+        sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}
       >
         HOME
       </Typography>
       <Typography
         component={RouterLink}
         to="/"
-        variant="h5"
+        variant="h4"
         color="#47350b"
-        sx={{ textDecoration: "none" }}
+        sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}
       >
         INVENTORY
       </Typography>
@@ -32,27 +32,27 @@ export default function MainNavbar() {
         component={Link}
         href={Whitepaper}
         target="_blank"
-        variant="h5"
+        variant="h4"
         color="#47350b"
-        sx={{ textDecoration: "none" }}
+        sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}
       >
         WHITEPAPER
       </Typography>
       <Typography
         component={RouterLink}
         to="/presale"
-        variant="h5"
+        variant="h4"
         color="#47350b"
-        sx={{ textDecoration: "none" }}
+        sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}
       >
         PRE-SALE
       </Typography>
       <Typography
         component={RouterLink}
         to="/#"
-        variant="h5"
+        variant="h4"
         color="#47350b"
-        sx={{ textDecoration: "none" }}
+        sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}
       >
         MARKETPLACE
       </Typography>

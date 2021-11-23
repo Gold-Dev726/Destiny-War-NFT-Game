@@ -4,3 +4,10 @@
   font-style: normal;
   src: url("BRLNSR.TTF");
 }
+
+@font-face {
+  font-family: "AmericanCaptain";
+  /* font-weight: 700; */
+  font-style: normal;
+  src: url("AmericanCaptain.otf");
+}

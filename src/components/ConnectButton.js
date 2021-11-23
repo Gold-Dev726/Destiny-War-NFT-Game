@@ -17,15 +17,28 @@ export default function ConnectButton({ sx }) {
             startIcon={
               <Box component="img" src="/metamask.png" sx={{ width: 20 }} />
             }
-            sx={{ border: "1px solid white", color: "white", ...sx }}
+            sx={{
+              fontStyle: "AmericanCaptain",
+              border: "1px solid #47350B",
+              color: "#47350B",
+              ...sx,
+            }}
           >
             Connected!
           </Button>
           <Stack>
-            <Typography fontSize={12}>{Number(bnbBalance).toFixed(2)} BNB</Typography>
-            <Typography fontSize={12}>{`${account.slice(0, 5)}...${account.slice(
-              -5
-            )}`}</Typography>
+            <Typography
+              color="#47350B"
+              fontSize={12}
+              fontStyle="AmericanCaptain"
+            >
+              {Number(bnbBalance).toFixed(2)} BNB
+            </Typography>
+            <Typography
+              color="#47350B"
+              fontSize={12}
+              fontStyle="AmericanCaptain"
+            >{`${account.slice(0, 5)}...${account.slice(-5)}`}</Typography>
           </Stack>
         </>
       ) : (
@@ -36,7 +49,12 @@ export default function ConnectButton({ sx }) {
           startIcon={
             <Box component="img" src="/metamask.png" sx={{ width: 20 }} />
           }
-          sx={{ border: "1px solid white", color: "white", ...sx }}
+          sx={{
+            fontStyle: "AmericanCaptain",
+            border: "1px solid #47350B",
+            color: "#47350B",
+            ...sx,
+          }}
         >
           Connect Wallet
         </Button>
