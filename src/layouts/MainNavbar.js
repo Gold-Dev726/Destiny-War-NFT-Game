@@ -24,7 +24,7 @@ import MenuMobile from "./MenuMobile";
 // ----------------------------------------------------------------------
 
 const APP_BAR_MOBILE = 64;
-const APP_BAR_DESKTOP = 100;
+const APP_BAR_DESKTOP = 146;
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
   height: APP_BAR_MOBILE,
@@ -51,11 +51,10 @@ export default function MainNavbar() {
           sx={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
-            background: "#42472b",
+            justifyContent: "center",
+            background: "url(/topbar.png)",
+            backgroundSize: "cover",
             height: 1,
-            borderRadius: "0 0 10px 10px",
-            backdropFilter: "blur(20px)",
           }}
         >
           <Hidden mdDown>
