@@ -29,6 +29,15 @@ export default function MainNavbar() {
         INVENTORY
       </Typography>
       <Typography
+        component={RouterLink}
+        to="/#roadmap"
+        variant="h4"
+        color="#47350b"
+        sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}
+      >
+        ROADMAP
+      </Typography>
+      <Typography
         component={Link}
         href={Whitepaper}
         target="_blank"

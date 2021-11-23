@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // material
 import { Box, Stack, Container, Typography } from "@mui/material";
 
 import TeamComponent from "components/TeamComponent";
 import { varFadeInUp, MotionInView, varFadeInDown } from "components/animate";
 import Slider from "react-slick";
+import { useLocation } from "react-router-dom";
+import { Link, Element, scroller } from "react-scroll";
 const TEAM_INFOS = [
   {
     number: 1,
@@ -110,7 +112,16 @@ function PrevArrow(props) {
 
 export default function Detailpage() {
   const [currentTeam, setCurrentTeam] = useState(1);
-  const [flag, setFlag] = useState(true);
+  const location = useLocation();
+  const target = location.hash.slice(1);
+  // console.log(target);
+  // useEffect(() => {
+  //   scroller.scrollTo(target, {
+  //     duration: 1500,
+  //     delay: 100,
+  //     smooth: true,
+  //   });
+  // }, [target]);
 
   const sliderSettings = {
     dots: false,
@@ -120,13 +131,32 @@ export default function Detailpage() {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    rtl: true,
+    // rtl: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
 
   return (
     <>
+      {/* <Link
+        to="roadmap"
+        spy={true}
+        smooth={true}
+        offset={50}
+        duration={500}
+      >
+        Test 1
+      </Link> */}
+      <li>
+        <Link to="test1" spy={true} smooth={true} duration={500}>
+          Test 1
+        </Link>
+      </li>
+      <li>
+        <Link to="test2" spy={true} smooth={true} duration={500}>
+          Test 2
+        </Link>
+      </li>
       <Container maxWidth="xl">
         <Stack
           textAlign="center"
@@ -201,32 +231,41 @@ export default function Detailpage() {
             </Stack>
           </Stack>
         </Stack>
+        <Element name="roadmap">
+          <Stack sx={{ mt: 3 }}>
+            <Stack direction="row" justifyContent="center" sx={{ mb: 5 }}>
+              <MotionInView variants={varFadeInUp}>
+                <Box component="img" src="/texts/roadmap.png" />
+              </MotionInView>
+            </Stack>
+            <Stack sx={{ "& .slick-slide:focus": { outline: "none" } }}>
+              <Slider {...sliderSettings}>
+                {[...Array(9)].map((item, index) => (
+                  <Box sx={{ px: 5 }}>
+                    <Box
+                      // component="img"
+                      src={`/roadmap/${index + 1}.png`}
+                      sx={{
+                        width: 420,
+                        height: 460,
+                        background: `url(/roadmap/${index + 1}.png)`,
+                        backgroundSize: "cover",
+                      }}
+                    />
+                  </Box>
+                ))}
+              </Slider>
+            </Stack>
+          </Stack>
+        </Element>
 
-        <Stack sx={{ mt: 3 }}>
-          <Stack direction="row" justifyContent="center" sx={{ mb: 5 }}>
-            <MotionInView variants={varFadeInUp}>
-              <Box component="img" src="/texts/roadmap.png" />
-            </MotionInView>
-          </Stack>
-          <Stack sx={{ "& .slick-slide:focus": { outline: "none" } }}>
-            <Slider {...sliderSettings}>
-              {[...Array(9)].map((item, index) => (
-                <Box sx={{ px: 5 }}>
-                  <Box
-                    // component="img"
-                    src={`/roadmap/${index + 1}.png`}
-                    sx={{
-                      width: 420,
-                      height: 460,
-                      background: `url(/roadmap/${index + 1}.png)`,
-                      backgroundSize: "cover",
-                    }}
-                  />
-                </Box>
-              ))}
-            </Slider>
-          </Stack>
-        </Stack>
+        <Element name="test1" className="element" >
+            test 1
+        </Element>
+
+          <Element name="test2" className="element">
+            test 2
+        </Element>
       </Container>
     </>
   );

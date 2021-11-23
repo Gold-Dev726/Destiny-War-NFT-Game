@@ -4,7 +4,6 @@ import { Box } from "@mui/material";
 export default function TestComponent({ number, changeTeam }) {
   const [flag, setFlag] = useState(true);
 
-  console.log("[flag]", flag);
   useEffect(() => {
     const intervalId = setInterval(() => {
       setFlag((flag) => !flag);
