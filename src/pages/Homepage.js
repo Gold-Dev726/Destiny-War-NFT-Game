@@ -115,13 +115,13 @@ export default function Detailpage() {
   const location = useLocation();
   const target = location.hash.slice(1);
   // console.log(target);
-  // useEffect(() => {
-  //   scroller.scrollTo(target, {
-  //     duration: 1500,
-  //     delay: 100,
-  //     smooth: true,
-  //   });
-  // }, [target]);
+  useEffect(() => {
+    scroller.scrollTo(target, {
+      duration: 1500,
+      delay: 100,
+      smooth: true,
+    });
+  }, [target]);
 
   const sliderSettings = {
     dots: false,
@@ -138,25 +138,6 @@ export default function Detailpage() {
 
   return (
     <>
-      {/* <Link
-        to="roadmap"
-        spy={true}
-        smooth={true}
-        offset={50}
-        duration={500}
-      >
-        Test 1
-      </Link> */}
-      <li>
-        <Link to="test1" spy={true} smooth={true} duration={500}>
-          Test 1
-        </Link>
-      </li>
-      <li>
-        <Link to="test2" spy={true} smooth={true} duration={500}>
-          Test 2
-        </Link>
-      </li>
       <Container maxWidth="xl">
         <Stack
           textAlign="center"
@@ -257,14 +238,6 @@ export default function Detailpage() {
               </Slider>
             </Stack>
           </Stack>
-        </Element>
-
-        <Element name="test1" className="element" >
-            test 1
-        </Element>
-
-          <Element name="test2" className="element">
-            test 2
         </Element>
       </Container>
     </>

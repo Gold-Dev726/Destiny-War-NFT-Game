@@ -17,15 +17,15 @@ export default function MainLayout() {
 
   return (
     <>
-      <Scrollbar>
+      {/* <Scrollbar> */}
         <Box
           sx={{
-            height: 1,
+            // height: 1,
             background: "url(/bg.png)",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "50% 50%",
-            minHeight: "100vh",
+            // minHeight: "100vh",
           }}
         >
           <Hidden smDown>
@@ -37,7 +37,7 @@ export default function MainLayout() {
           </Box>
           <MainFooter />
         </Box>
-      </Scrollbar>
+      {/* </Scrollbar> */}
       {/* <ParticlesBg num={12} color="#ffffff" type="square" bg={true} /> */}
     </>
   );
