@@ -20,7 +20,7 @@ function responsiveFontSizes({ sm, md, lg }) {
 
 const FONT_PRIMARY = "BRLNSR"; // Google Font
 // const FONT_PRIMARY = "Mochiy Pop P One, sans-serif"; // Google Font
-const FONT_SECONDARY = "Tribeca"; // Local Font
+const FONT_SECONDARY = "AmericanCaptain"; // Local Font
 
 const typography = {
   fontFamily: FONT_PRIMARY,
@@ -46,6 +46,7 @@ const typography = {
     ...responsiveFontSizes({ sm: 26, md: 30, lg: 32 }),
   },
   h4: {
+    // fontFamily: FONT_SECONDARY,
     fontWeight: 700,
     lineHeight: 1.5,
     fontSize: pxToRem(20),

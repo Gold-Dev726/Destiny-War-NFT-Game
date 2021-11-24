@@ -137,31 +137,53 @@ export default function Detailpage() {
   };
 
   return (
-    <>
-      <Container maxWidth="xl">
+    <Box
+      sx={{
+        mt: "-146px",
+      }}
+    >
+      <Box
+        sx={{
+          background: "url(/bg.png)",
+          backgroundSize: "100% 100%",
+          mt: "-146px",
+          height: "140vh",
+        }}
+      >
         <Stack
           textAlign="center"
           justifyContent="center"
           alignItems="center"
           sx={{ px: { xs: 2, md: 18 } }}
         >
-          <Box component="img" src="/logo.png" sx={{ mt: 10 }} />
-          <Typography variant="h4" sx={{ mt: 5 }}>
-            Destiny War is bringing back the classic MMORPG gameplay, Interact
-            to many players, friends, and family to enjoy the excitement and
-            intensity of being a warrior. Explore the new virtual world do your
-            daily quest to collect rewards and grind digital assets and turn
-            them into REAL MONEY!
-          </Typography>
-          <Typography variant="h4" sx={{ mt: 3 }}>
-            We will be selling a total of 50000 Warriors in our pre-sale, Every
-            warrior will get a random wing, random costume, and Destiny box. Our
-            minimum target is to sell 20000 and after that we will be releasing
-            the beta game after 1 month.
-          </Typography>
+          <Box component="img" src="/logo.png" sx={{ mt: 15, width: 800 }} />
         </Stack>
+      </Box>
+      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-62px" }} />
+      <Stack sx={{ bgcolor: "#523f8e" }}>
+        <Container maxWidth="xl">
+          <Stack
+            textAlign="center"
+            justifyContent="center"
+            alignItems="center"
+            sx={{ px: { xs: 2, md: 18 }, py: 5 }}
+          >
+            <Typography variant="h4" color="white" sx={{ mt: 5 }}>
+              Destiny War is bringing back the classic MMORPG gameplay, Interact
+              to many players, friends, and family to enjoy the excitement and
+              intensity of being a warrior. Explore the new virtual world do
+              your daily quest to collect rewards and grind digital assets and
+              turn them into REAL MONEY!
+            </Typography>
+            <Typography variant="h4" color="white" sx={{ mt: 3 }}>
+              We will be selling a total of 50000 Warriors in our pre-sale,
+              Every warrior will get a random wing, random costume, and Destiny
+              box. Our minimum target is to sell 20000 and after that we will be
+              releasing the beta game after 1 month.
+            </Typography>
+          </Stack>
 
-        <Stack sx={{ px: { xs: 2, md: 18 }, mt: 10 }}>
+          {/* <Stack sx={{ px: { xs: 2, md: 18 }, mt: 10 }}>
           <Stack direction="row" justifyContent="center">
             <MotionInView variants={varFadeInUp}>
               <Box component="img" src="/texts/choose_class.png" />
@@ -197,9 +219,6 @@ export default function Detailpage() {
                   src={`/teams/title${currentTeam}.png`}
                   sx={{ width: 300 }}
                 />
-                {/* <Typography variant="h1">
-                  {TEAM_INFOS[currentTeam - 1].name}
-                </Typography> */}
               </Stack>
               <Typography>
                 {TEAM_INFOS[currentTeam - 1].description1} <br />
@@ -238,8 +257,10 @@ export default function Detailpage() {
               </Slider>
             </Stack>
           </Stack>
-        </Element>
-      </Container>
-    </>
+        </Element> */}
+        </Container>
+      </Stack>
+      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-62px" }} />
+    </Box>
   );
 }
