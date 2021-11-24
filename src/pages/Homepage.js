@@ -131,14 +131,14 @@ export default function Detailpage() {
             alignItems="center"
             sx={{ px: { xs: 2, md: 18 }, py: 10 }}
           >
-            <Typography variant="h4" color="white" sx={{ mt: 5 }}>
+            <Typography variant="h4" sx={{ mt: 5 }}>
               Destiny War is bringing back the classic MMORPG gameplay, Interact
               to many players, friends, and family to enjoy the excitement and
               intensity of being a warrior. Explore the new virtual world do
               your daily quest to collect rewards and grind digital assets and
               turn them into REAL MONEY!
             </Typography>
-            <Typography variant="h4" color="white" sx={{ mt: 3 }}>
+            <Typography variant="h4" sx={{ mt: 3 }}>
               We will be selling a total of 50000 Warriors in our pre-sale,
               Every warrior will get a random wing, random costume, and Destiny
               box. Our minimum target is to sell 20000 and after that we will be
@@ -153,7 +153,11 @@ export default function Detailpage() {
       <Stack sx={{ px: { xs: 2, md: 18 }, bgcolor: "#cdd5b0", mt: "-16px" }}>
         <Stack direction="row" justifyContent="center" sx={{ my: 10 }}>
           <MotionInView variants={varFadeInUp}>
-            <Box component="img" src="/texts/choose_class.png" />
+            <Box
+              component="img"
+              src="/texts/choose_class.png"
+              sx={{ transform: "scale(0.8)" }}
+            />
           </MotionInView>
         </Stack>
         <Stack
@@ -166,13 +170,21 @@ export default function Detailpage() {
             component="img"
             src="/prevArrow.png"
             onClick={() => TeamSliderRef.current.slickPrev()}
-            sx={{ cursor: "pointer" }}
+            sx={{
+              cursor: "pointer",
+              transition: "all 0.3s",
+              "&:hover": { transform: "scale(1.1)" },
+            }}
           />
           <Box
             component="img"
             src="/nextArrow.png"
             onClick={() => TeamSliderRef.current.slickNext()}
-            sx={{ cursor: "pointer" }}
+            sx={{
+              cursor: "pointer",
+              transition: "all 0.3s",
+              "&:hover": { transform: "scale(1.1)" },
+            }}
           />
         </Stack>
         <Slider {...TeamSliderSettings} ref={TeamSliderRef}>
@@ -230,13 +242,21 @@ export default function Detailpage() {
               component="img"
               src="/prevArrow.png"
               onClick={() => RoadmapSliderRef.current.slickPrev()}
-              sx={{ cursor: "pointer" }}
+              sx={{
+                cursor: "pointer",
+                transition: "all 0.3s",
+                "&:hover": { transform: "scale(1.1)" },
+              }}
             />
             <Box
               component="img"
               src="/nextArrow.png"
               onClick={() => RoadmapSliderRef.current.slickNext()}
-              sx={{ cursor: "pointer" }}
+              sx={{
+                cursor: "pointer",
+                transition: "all 0.3s",
+                "&:hover": { transform: "scale(1.1)" },
+              }}
             />
           </Stack>
           <Container maxWidth="xl">
