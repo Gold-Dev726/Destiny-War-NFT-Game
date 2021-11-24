@@ -20,12 +20,8 @@ export default function MainLayout() {
       {/* <Scrollbar> */}
         <Box
           sx={{
-            // height: 1,
-            background: "url(/bg.png)",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "50% 50%",
-            // minHeight: "100vh",
+            height: 1,
+            minHeight: "100vh",
           }}
         >
           <Hidden smDown>

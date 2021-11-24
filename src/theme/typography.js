@@ -18,9 +18,9 @@ function responsiveFontSizes({ sm, md, lg }) {
   };
 }
 
-const FONT_PRIMARY = "BRLNSR"; // Google Font
+// const FONT_PRIMARY = "BRLNSR"; // Google Font
 // const FONT_PRIMARY = "Mochiy Pop P One, sans-serif"; // Google Font
-const FONT_SECONDARY = "AmericanCaptain"; // Local Font
+const FONT_PRIMARY = "AmericanCaptain"; // Local Font
 
 const typography = {
   fontFamily: FONT_PRIMARY,

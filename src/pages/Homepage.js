@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 // material
 import { Box, Stack, Container, Typography } from "@mui/material";
 
@@ -66,50 +66,6 @@ const TEAM_INFOS = [
   },
 ];
 
-function NextArrow(props) {
-  const { onClick } = props;
-  return (
-    <Box
-      sx={{
-        right: -100,
-        display: "block",
-        background: "url(/nextArrow.png)",
-        width: 130,
-        height: 95,
-        position: "absolute",
-        top: "50%",
-        transform: "translate(0, -50%)",
-        cursor: "pointer",
-        transition: "all 0.3s",
-        "&:hover": { transform: "translate(0, -50%) scale(1.2)" },
-      }}
-      onClick={onClick}
-    />
-  );
-}
-
-function PrevArrow(props) {
-  const { onClick } = props;
-  return (
-    <Box
-      sx={{
-        left: -100,
-        display: "block",
-        background: "url(/prevArrow.png)",
-        width: 130,
-        height: 95,
-        position: "absolute",
-        top: "50%",
-        transform: "translate(0, -50%)",
-        cursor: "pointer",
-        transition: "all 0.3s",
-        "&:hover": { transform: "translate(0, -50%) scale(1.2)" },
-      }}
-      onClick={onClick}
-    />
-  );
-}
-
 export default function Detailpage() {
   const [currentTeam, setCurrentTeam] = useState(1);
   const location = useLocation();
@@ -123,31 +79,36 @@ export default function Detailpage() {
     });
   }, [target]);
 
-  const sliderSettings = {
+  const TeamSliderRef = useRef();
+  const RoadmapSliderRef = useRef();
+
+  const RoadmapSliderSettings = {
     dots: false,
-    // autoplay: true,
-    // autoplaySpeed: 2000,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    // rtl: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    arrows: false,
+  };
+
+  const TeamSliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
   };
 
   return (
-    <Box
-      sx={{
-        mt: "-146px",
-      }}
-    >
-      <Box
+    <Box sx={{ mt: "-146px" }}>
+      <Stack
         sx={{
           background: "url(/bg.png)",
           backgroundSize: "100% 100%",
-          mt: "-146px",
-          height: "140vh",
+          height: "160vh",
+          // position: "relative",
+          // mt: "-146px"
         }}
       >
         <Stack
@@ -158,15 +119,17 @@ export default function Detailpage() {
         >
           <Box component="img" src="/logo.png" sx={{ mt: 15, width: 800 }} />
         </Stack>
-      </Box>
-      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-62px" }} />
-      <Stack sx={{ bgcolor: "#523f8e" }}>
+      </Stack>
+
+      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+
+      <Stack sx={{ bgcolor: "#523f8e", mt: "-16px" }}>
         <Container maxWidth="xl">
           <Stack
             textAlign="center"
             justifyContent="center"
             alignItems="center"
-            sx={{ px: { xs: 2, md: 18 }, py: 5 }}
+            sx={{ px: { xs: 2, md: 18 }, py: 10 }}
           >
             <Typography variant="h4" color="white" sx={{ mt: 5 }}>
               Destiny War is bringing back the classic MMORPG gameplay, Interact
@@ -182,85 +145,119 @@ export default function Detailpage() {
               releasing the beta game after 1 month.
             </Typography>
           </Stack>
+        </Container>
+      </Stack>
 
-          {/* <Stack sx={{ px: { xs: 2, md: 18 }, mt: 10 }}>
-          <Stack direction="row" justifyContent="center">
+      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+
+      <Stack sx={{ px: { xs: 2, md: 18 }, bgcolor: "#cdd5b0", mt: "-16px" }}>
+        <Stack direction="row" justifyContent="center" sx={{ my: 10 }}>
+          <MotionInView variants={varFadeInUp}>
+            <Box component="img" src="/texts/choose_class.png" />
+          </MotionInView>
+        </Stack>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          sx={{ mb: 5 }}
+          spacing={5}
+        >
+          <Box
+            component="img"
+            src="/prevArrow.png"
+            onClick={() => TeamSliderRef.current.slickPrev()}
+            sx={{ cursor: "pointer" }}
+          />
+          <Box
+            component="img"
+            src="/nextArrow.png"
+            onClick={() => TeamSliderRef.current.slickNext()}
+            sx={{ cursor: "pointer" }}
+          />
+        </Stack>
+        <Slider {...TeamSliderSettings} ref={TeamSliderRef}>
+          {TEAM_INFOS.map((team, index) => (
+            <Container maxWidth="xl">
+              <Stack
+                direction={{ xs: "column", md: "row" }}
+                alignItems="flex-start"
+                spacing={5}
+                sx={{ mt: 8 }}
+              >
+                <Stack flex={1}>
+                  <Stack
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <Box
+                      component="img"
+                      src={`/teams/title${index + 1}.png`}
+                      sx={{ width: 300 }}
+                    />
+                  </Stack>
+                  <Typography>
+                    {team.description1} <br />
+                    <br />
+                    {team.description2}
+                  </Typography>
+                </Stack>
+                <Stack flex={1}>
+                  <Box component="img" src={`/teams/team${index + 1}.png`} />
+                </Stack>
+              </Stack>
+            </Container>
+          ))}
+        </Slider>
+      </Stack>
+
+      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+
+      <Element name="roadmap">
+        <Stack sx={{ mt: 10 }}>
+          <Stack direction="row" justifyContent="center" sx={{ mb: 5 }}>
             <MotionInView variants={varFadeInUp}>
-              <Box component="img" src="/texts/choose_class.png" />
+              <Box component="img" src="/texts/roadmap.png" />
             </MotionInView>
           </Stack>
           <Stack
-            spacing={1}
             direction="row"
-            justifyContent={{ xs: "center", md: "space-between" }}
-            flexWrap="wrap"
-          >
-            {[...Array(7)].map((item, index) => (
-              <TeamComponent
-                number={index + 1}
-                changeTeam={() => setCurrentTeam(index + 1)}
-              />
-            ))}
-          </Stack>
-          <Stack
-            direction={{ xs: "column", md: "row" }}
-            alignItems="flex-start"
+            justifyContent="center"
+            sx={{ mb: 5 }}
             spacing={5}
-            sx={{ mt: 8 }}
           >
-            <Stack flex={1}>
-              <Stack
-                direction="row"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Box
-                  component="img"
-                  src={`/teams/title${currentTeam}.png`}
-                  sx={{ width: 300 }}
-                />
-              </Stack>
-              <Typography>
-                {TEAM_INFOS[currentTeam - 1].description1} <br />
-                <br />
-                {TEAM_INFOS[currentTeam - 1].description2}
-              </Typography>
-            </Stack>
-            <Stack flex={1}>
-              <Box component="img" src={`/teams/team${currentTeam}.png`} />
-            </Stack>
+            <Box
+              component="img"
+              src="/prevArrow.png"
+              onClick={() => RoadmapSliderRef.current.slickPrev()}
+              sx={{ cursor: "pointer" }}
+            />
+            <Box
+              component="img"
+              src="/nextArrow.png"
+              onClick={() => RoadmapSliderRef.current.slickNext()}
+              sx={{ cursor: "pointer" }}
+            />
           </Stack>
+          <Container maxWidth="xl">
+            <Slider {...RoadmapSliderSettings} ref={RoadmapSliderRef}>
+              {[...Array(9)].map((item, index) => (
+                <Box sx={{ px: 5 }}>
+                  <Box
+                    src={`/roadmap/${index + 1}.png`}
+                    sx={{
+                      width: 420,
+                      height: 460,
+                      background: `url(/roadmap/${index + 1}.png)`,
+                      backgroundSize: "cover",
+                    }}
+                  />
+                </Box>
+              ))}
+            </Slider>
+          </Container>
         </Stack>
-        <Element name="roadmap">
-          <Stack sx={{ mt: 3 }}>
-            <Stack direction="row" justifyContent="center" sx={{ mb: 5 }}>
-              <MotionInView variants={varFadeInUp}>
-                <Box component="img" src="/texts/roadmap.png" />
-              </MotionInView>
-            </Stack>
-            <Stack sx={{ "& .slick-slide:focus": { outline: "none" } }}>
-              <Slider {...sliderSettings}>
-                {[...Array(9)].map((item, index) => (
-                  <Box sx={{ px: 5 }}>
-                    <Box
-                      // component="img"
-                      src={`/roadmap/${index + 1}.png`}
-                      sx={{
-                        width: 420,
-                        height: 460,
-                        background: `url(/roadmap/${index + 1}.png)`,
-                        backgroundSize: "cover",
-                      }}
-                    />
-                  </Box>
-                ))}
-              </Slider>
-            </Stack>
-          </Stack>
-        </Element> */}
-        </Container>
-      </Stack>
-      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-62px" }} />
+      </Element>
     </Box>
   );
 }
