@@ -12,13 +12,10 @@ import {
   InputAdornment,
   Grid,
 } from "@mui/material";
-
-import CountDown from "components/CountDown";
-import EnticementSlick from "components/EnticementSlick";
-import { varFadeInUp, MotionInView, varFadeInDown } from "components/animate";
-import { Icon } from "@iconify/react";
-import twitterFill from "@iconify/icons-cib/twitter";
-import linkedinFill from "@iconify/icons-cib/linkedin";
+import { getDwarCharacterContract } from "utils/contractHelpers";
+import { ethers } from "ethers";
+import { toast } from "react-toastify";
+import { useEthers } from "@usedapp/core";
 import Slider from "react-slick";
 
 function NextArrow(props) {
@@ -70,9 +67,24 @@ function PrevArrow(props) {
 //     <Box component="img" src="/nextArrow.png" sx={{ width: 40, height: 40 }} />
 //   );
 // }
-export default function Detailpage() {
-  const [show, setShow] = useState(false);
+export default function PresalePage() {
+  const { library, account } = useEthers();
+  const signer = library?.getSigner();
+  const DwarCharacterContract = getDwarCharacterContract(signer);
 
+  const handleBuyCharacter = async () => {
+    try {
+      const options = { value: ethers.utils.parseEther("0.035") };
+      const result = await DwarCharacterContract.DwarCharacter(1, options);
+      toast.success("You minted a character successfully!");
+      console.log(result);
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error(error.data.message);
+    }
+  };
+
+  // Slider Part
   const sliderRef = useRef();
 
   const sliderSettings = {
@@ -138,7 +150,13 @@ export default function Detailpage() {
                   <Box
                     component="img"
                     src="/presale/buy.png"
-                    sx={{ position: "absolute", right: "26%", top: "42%" }}
+                    sx={{
+                      position: "absolute",
+                      right: "26%",
+                      top: "42%",
+                      cursor: "pointer",
+                    }}
+                    onClick={handleBuyCharacter}
                   />
                   <Stack
                     sx={{

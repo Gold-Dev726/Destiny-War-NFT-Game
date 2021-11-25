@@ -21,7 +21,7 @@ export default function MainNavbar() {
       </Typography>
       <Typography
         component={RouterLink}
-        to="/"
+        to="/inventory"
         variant="h4"
         color="#47350b"
         sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}

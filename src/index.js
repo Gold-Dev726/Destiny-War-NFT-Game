@@ -24,7 +24,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { ToastContainer } from "react-toastify";
 
 const config = {
-  readOnlyChainId: ChainId.Mainnet,
+  // readOnlyChainId: ChainId.BSCTestnet,
 };
 
 ReactDOM.render(
