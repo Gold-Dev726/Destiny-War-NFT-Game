@@ -269,8 +269,8 @@ export default function Detailpage() {
                       width: 496,
                       height: 460,
                       background: `url(/roadmap/${index + 1}.png)`,
-                      backgroundSize: "cover",
-                      backgroundPosition: '-50px'
+                      backgroundSize: "180% 140%",
+                      backgroundPosition: '-160px'
                     }}
                   />
                 </Box>
