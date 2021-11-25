@@ -156,7 +156,7 @@ export default function Detailpage() {
             <Box
               component="img"
               src="/texts/choose_class.png"
-              sx={{ transform: "scale(0.8)" }}
+              sx={{ transform: "scale(0.6)" }}
             />
           </MotionInView>
         </Stack>
@@ -262,14 +262,15 @@ export default function Detailpage() {
           <Container maxWidth="xl">
             <Slider {...RoadmapSliderSettings} ref={RoadmapSliderRef}>
               {[...Array(9)].map((item, index) => (
-                <Box sx={{ px: 5 }}>
+                <Box sx={{ }}>
                   <Box
                     src={`/roadmap/${index + 1}.png`}
                     sx={{
-                      width: 420,
+                      width: 496,
                       height: 460,
                       background: `url(/roadmap/${index + 1}.png)`,
                       backgroundSize: "cover",
+                      backgroundPosition: '-50px'
                     }}
                   />
                 </Box>
