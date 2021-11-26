@@ -66,7 +66,7 @@ const TEAM_INFOS = [
   },
 ];
 
-export default function Detailpage() {
+export default function Homepage() {
   const [currentTeam, setCurrentTeam] = useState(1);
   const location = useLocation();
   const target = location.hash.slice(1);
@@ -226,8 +226,14 @@ export default function Detailpage() {
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
 
       <Element name="roadmap">
-        <Stack sx={{ mt: 10 }}>
-          <Stack direction="row" justifyContent="center" sx={{ mb: 5 }}>
+        <Stack
+          sx={{
+            mt: "-16px",
+            background: "url(/mapbg.jpg)",
+            backgroundSize: "cover",
+          }}
+        >
+          <Stack direction="row" justifyContent="center" sx={{ mt: 10, mb: 5 }}>
             <MotionInView variants={varFadeInUp}>
               <Box component="img" src="/texts/roadmap.png" />
             </MotionInView>
@@ -262,7 +268,7 @@ export default function Detailpage() {
           <Container maxWidth="xl">
             <Slider {...RoadmapSliderSettings} ref={RoadmapSliderRef}>
               {[...Array(9)].map((item, index) => (
-                <Box sx={{ }}>
+                <Box key={index}>
                   <Box
                     src={`/roadmap/${index + 1}.png`}
                     sx={{
@@ -270,12 +276,19 @@ export default function Detailpage() {
                       height: 460,
                       background: `url(/roadmap/${index + 1}.png)`,
                       backgroundSize: "180% 140%",
-                      backgroundPosition: '-160px'
+                      backgroundPosition: "-160px",
                     }}
                   />
                 </Box>
               ))}
             </Slider>
+            <Stack direction="row">
+              <Box
+                component="img"
+                src="/walking_character.gif"
+                sx={{ width: 400 }}
+              />
+            </Stack>
           </Container>
         </Stack>
       </Element>

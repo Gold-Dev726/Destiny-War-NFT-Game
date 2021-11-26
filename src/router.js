@@ -5,6 +5,7 @@ import MainLayout from "layouts";
 import Homepage from "pages/Homepage";
 import Presalepage from "pages/Presalepage";
 import Inventorypage from "pages/Inventorypage";
+import Itempage from "pages/Itempage";
 import Loading from "components/Loading";
 
 const Loadable = (Component) => (props) => {
@@ -28,6 +29,7 @@ export default function Router() {
         { path: "/", element: <Homepage /> },
         { path: "/presale", element: <Presalepage /> },
         { path: "/inventory", element: <Inventorypage /> },
+        { path: "/items/character/:id", element: <Itempage /> },
       ],
     },
   ]);
