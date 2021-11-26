@@ -18,3 +18,10 @@
   font-style: normal;
   src: url("AgencyFB_bold.ttf");
 }
+
+@font-face {
+  font-family: "BerlinFB";
+  /* font-weight: 700; */
+  font-style: normal;
+  src: url("BerlinFB.ttf");
+}

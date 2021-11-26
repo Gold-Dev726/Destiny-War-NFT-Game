@@ -79,16 +79,26 @@ export default function Inventorypage() {
         </Stack>
         <Stack direction="row" spacing={10}>
           <Stack flex={1} alignItems="center">
-            <Box
-              component="img"
-              // src="/cha.png"
-              src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${ownedCharacter}.png`}
-              sx={{
-                width: 400,
-                height: 400,
-                my: 5,
-              }}
-            />
+            <Box sx={{ position: "relative", my: 5 }}>
+              <Box
+                component="img"
+                // src="/cha.png"
+                src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${ownedCharacter}.png`}
+                sx={{ width: 400 }}
+              />
+              <Typography
+                variant="h3"
+                fontFamily="BerlinFB"
+                sx={{
+                  position: "absolute",
+                  top: "25%",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                }}
+              >
+                #{ownedCharacter}
+              </Typography>
+            </Box>
             <Stack direction="row" alignItems="center">
               <Box component="img" src="/hatch/egg.png" sx={{ width: 50 }} />
               <Stack alignItems="center" spacing={1}>

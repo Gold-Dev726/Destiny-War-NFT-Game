@@ -67,6 +67,7 @@ export default function Inventorypage() {
               />
               <Typography
                 variant="h3"
+                fontFamily="BerlinFB"
                 sx={{
                   position: "absolute",
                   top: "25%",
