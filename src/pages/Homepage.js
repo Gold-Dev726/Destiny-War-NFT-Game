@@ -131,14 +131,14 @@ export default function Homepage() {
             alignItems="center"
             sx={{ px: { xs: 2, md: 18 }, py: 10 }}
           >
-            <Typography variant="h4" sx={{ mt: 5 }}>
+            <Typography variant="h4" sx={{ mt: 5, color: "white" }}>
               Destiny War is bringing back the classic MMORPG gameplay, Interact
               to many players, friends, and family to enjoy the excitement and
               intensity of being a warrior. Explore the new virtual world do
               your daily quest to collect rewards and grind digital assets and
               turn them into REAL MONEY!
             </Typography>
-            <Typography variant="h4" sx={{ mt: 3 }}>
+            <Typography variant="h4" sx={{ mt: 3, color: "white" }}>
               We will be selling a total of 50000 Warriors in our pre-sale,
               Every warrior will get a random wing, random costume, and Destiny
               box. Our minimum target is to sell 20000 and after that we will be
