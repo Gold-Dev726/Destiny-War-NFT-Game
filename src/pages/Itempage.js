@@ -1,5 +1,6 @@
 // material
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Box, Typography, Container, Stack, Link, Button } from "@mui/material";
 import { getDwarCharacterContract } from "utils/contractHelpers";
 import { useEthers } from "@usedapp/core";
@@ -34,9 +35,11 @@ function StatsItem({ title, min, max, showMax = true, isPercent = false }) {
 }
 
 export default function Inventorypage() {
+  const { id } = useParams();
   const [modalOpen, setModalOpen] = useState(false);
   const { library, account } = useEthers();
   const [ownedCharacter, setOwnedCharacter] = useState();
+  const [ownerOfCharacter, setOwnerOfCharacter] = useState();
   const signer = library?.getSigner();
   const DwarCharacterContract = getDwarCharacterContract(signer);
 
@@ -47,22 +50,20 @@ export default function Inventorypage() {
           account,
           0
         );
+        const OwnerOfCharacter = await DwarCharacterContract.ownerOf(id);
+
         setOwnedCharacter(formatBigNumber(OwnedCharacter));
+        setOwnerOfCharacter(OwnerOfCharacter);
       } catch (error) {
         setOwnedCharacter(null);
+        setOwnerOfCharacter(null);
       }
     };
     if (account) fetchData();
-  }, [DwarCharacterContract, account]);
+  }, [DwarCharacterContract, account, id]);
 
-  // const normalImgUri = async () => {
-  //   const uri = await DwarCharacterContract.normalImgUri();
-  //   // console.log("[Function_URI]", uri);
-  //   return uri;
-  // };
-
-  // normalImgUri();
-  console.log("ownedChar", ownedCharacter);
+  const isOwner = account === ownerOfCharacter;
+  console.log(isOwner);
   return (
     <Box sx={{ background: "#2e311e", mt: "-146px" }}>
       <Container maxWidth="xl" sx={{ pt: 20, pb: 10 }}>
@@ -83,7 +84,7 @@ export default function Inventorypage() {
               <Box
                 component="img"
                 // src="/cha.png"
-                src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${ownedCharacter}.png`}
+                src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${id}.png`}
                 sx={{ width: 400 }}
               />
               <Typography
@@ -96,27 +97,29 @@ export default function Inventorypage() {
                   transform: "translateX(-50%)",
                 }}
               >
-                #{ownedCharacter}
+                #{id}
               </Typography>
             </Box>
             <Stack direction="row" alignItems="center">
               <Box component="img" src="/hatch/egg.png" sx={{ width: 50 }} />
               <Stack alignItems="center" spacing={1}>
-                <Button
-                  onClick={() => setModalOpen(true)}
-                  variant="contained"
-                  sx={{
-                    color: "#28f0a5",
-                    bgcolor: "#3b4721",
-                    px: 2,
-                    py: 0,
-                    fontSize: 16,
-                    borderRadius: 1,
-                    border: "1px solid #4c7718",
-                  }}
-                >
-                  HATCH
-                </Button>
+                {isOwner && (
+                  <Button
+                    onClick={() => setModalOpen(true)}
+                    variant="contained"
+                    sx={{
+                      color: "#28f0a5",
+                      bgcolor: "#3b4721",
+                      px: 2,
+                      py: 0,
+                      fontSize: 16,
+                      borderRadius: 1,
+                      border: "1px solid #4c7718",
+                    }}
+                  >
+                    HATCH
+                  </Button>
+                )}
                 <Box
                   sx={{
                     width: 400,
@@ -138,49 +141,39 @@ export default function Inventorypage() {
           </Stack>
 
           <Stack flex={1} alignItems="center" spacing={3}>
-            <Stack direction="row" justifyContent="center" spacing={3}>
-              <Button
-                onClick={() => setModalOpen(true)}
-                variant="contained"
-                sx={{
-                  color: "#28f0a5",
-                  bgcolor: "#3b4721",
-                  px: 4,
-                  fontSize: 20,
-                  borderRadius: 1,
-                  border: "1px solid #4c7718",
-                }}
-              >
-                SALE
-              </Button>
-              <Button
-                onClick={() => setModalOpen(true)}
-                variant="contained"
-                sx={{
-                  color: "#28f0a5",
-                  bgcolor: "#3b4721",
-                  px: 4,
-                  fontSize: 20,
-                  borderRadius: 1,
-                  border: "1px solid #4c7718",
-                }}
-                startIcon={<AllInboxIcon />}
-              >
-                GIFT
-              </Button>
-            </Stack>
-            {/* <Typography
-              sx={{
-                color: "yellow",
-                bgcolor: "#3b4721",
-                borderRadius: 1,
-                fontSize: 16,
-                px: 1,
-                border: "1px solid #4c7718",
-              }}
-            >
-              This feature is not yet avalable
-            </Typography> */}
+            {isOwner && (
+              <Stack direction="row" justifyContent="center" spacing={3}>
+                <Button
+                  onClick={() => setModalOpen(true)}
+                  variant="contained"
+                  sx={{
+                    color: "#28f0a5",
+                    bgcolor: "#3b4721",
+                    px: 4,
+                    fontSize: 20,
+                    borderRadius: 1,
+                    border: "1px solid #4c7718",
+                  }}
+                >
+                  SALE
+                </Button>
+                <Button
+                  onClick={() => setModalOpen(true)}
+                  variant="contained"
+                  sx={{
+                    color: "#28f0a5",
+                    bgcolor: "#3b4721",
+                    px: 4,
+                    fontSize: 20,
+                    borderRadius: 1,
+                    border: "1px solid #4c7718",
+                  }}
+                  startIcon={<AllInboxIcon />}
+                >
+                  GIFT
+                </Button>
+              </Stack>
+            )}
             <Stack
               sx={{
                 color: "#28f0a5",
@@ -191,7 +184,12 @@ export default function Inventorypage() {
               }}
             >
               <Typography>Breed Count: 0</Typography>
-              <Typography>Owner: {account}</Typography>
+              <Typography>
+                Owner:{" "}
+                {ownerOfCharacter
+                  ? ownerOfCharacter
+                  : "There is no owners of this character"}
+              </Typography>
             </Stack>
             <Typography color="#28f0a5">STATS</Typography>
             <Stack direction="row" spacing={5}>
