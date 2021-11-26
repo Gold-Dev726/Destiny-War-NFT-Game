@@ -4,12 +4,15 @@ import { Box, Typography, Container, Stack, Link, Button } from "@mui/material";
 import { getDwarCharacterContract } from "utils/contractHelpers";
 import { useEthers } from "@usedapp/core";
 import { ethers } from "ethers";
+import Dialog from "@mui/material/Dialog";
 import formatBigNumber from "utils/formatBigNumber";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import AllInboxIcon from "@mui/icons-material/AllInbox";
 
-function StatsItem({ title, min, max }) {
+function StatsItem({ title, min, max, showMax = true, isPercent = false }) {
   const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+  const randomPercent = (min, max) =>
+    (Math.random() * (max - min) + min).toFixed(2);
   return (
     <Stack direction="row" sx={{ width: 160 }} spacing={1}>
       <Typography color="#28f0a5">{title}</Typography>
@@ -24,12 +27,14 @@ function StatsItem({ title, min, max }) {
           border: "1px solid #4c7718",
         }}
       >
-        {random(min, max + 1)}/{max}
+        {showMax ? `${random(min, max + 1)}/${max}` : random(min, max + 1)}
       </Typography>
     </Stack>
   );
 }
+
 export default function Inventorypage() {
+  const [modalOpen, setModalOpen] = useState(false);
   const { library, account } = useEthers();
   const [ownedCharacter, setOwnedCharacter] = useState();
   const signer = library?.getSigner();
@@ -75,18 +80,20 @@ export default function Inventorypage() {
         <Stack direction="row" spacing={10}>
           <Stack flex={1} alignItems="center">
             <Box
+              component="img"
+              // src="/cha.png"
+              src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${ownedCharacter}.png`}
               sx={{
                 width: 400,
                 height: 400,
-                bgcolor: "red",
                 my: 5,
-                visibility: "hidden",
               }}
             />
             <Stack direction="row" alignItems="center">
               <Box component="img" src="/hatch/egg.png" sx={{ width: 50 }} />
               <Stack alignItems="center" spacing={1}>
                 <Button
+                  onClick={() => setModalOpen(true)}
                   variant="contained"
                   sx={{
                     color: "#28f0a5",
@@ -123,6 +130,7 @@ export default function Inventorypage() {
           <Stack flex={1} alignItems="center" spacing={3}>
             <Stack direction="row" justifyContent="center" spacing={3}>
               <Button
+                onClick={() => setModalOpen(true)}
                 variant="contained"
                 sx={{
                   color: "#28f0a5",
@@ -136,6 +144,7 @@ export default function Inventorypage() {
                 SALE
               </Button>
               <Button
+                onClick={() => setModalOpen(true)}
                 variant="contained"
                 sx={{
                   color: "#28f0a5",
@@ -150,7 +159,7 @@ export default function Inventorypage() {
                 GIFT
               </Button>
             </Stack>
-            <Typography
+            {/* <Typography
               sx={{
                 color: "yellow",
                 bgcolor: "#3b4721",
@@ -161,7 +170,7 @@ export default function Inventorypage() {
               }}
             >
               This feature is not yet avalable
-            </Typography>
+            </Typography> */}
             <Stack
               sx={{
                 color: "#28f0a5",
@@ -183,20 +192,50 @@ export default function Inventorypage() {
                 <StatsItem title="PD" min={10} max={50} />
                 <StatsItem title="MA" min={10} max={20} />
                 <StatsItem title="MD" min={10} max={50} />
-                <StatsItem title="Dodge" min={30} max={50} />
-                <StatsItem title="CH" min={2} max={5} />
+                <StatsItem title="Dodge" min={30} max={50} showMax={false} />
+                <Stack direction="row" sx={{ width: 160 }} spacing={1}>
+                  <Typography color="#28f0a5">CH</Typography>
+                  <Typography
+                    textAlign="right"
+                    color="#28f0a5"
+                    sx={{
+                      bgcolor: "#181b0f",
+                      flexGrow: 1,
+                      pr: 1,
+                      borderRadius: 1,
+                      border: "1px solid #4c7718",
+                    }}
+                  >
+                    {(Math.random() * 3 + 2).toFixed(2)}%
+                  </Typography>
+                </Stack>
               </Stack>
               <Stack spacing={1}>
-                <StatsItem title="CON" min={20} max={30} />
-                <StatsItem title="SPI" min={20} max={30} />
-                <StatsItem title="STR" min={20} max={30} />
-                <StatsItem title="CPS" min={20} max={30} />
-                <StatsItem title="DEX" min={20} max={30} />
+                <StatsItem title="CON" min={20} max={30} showMax={false} />
+                <StatsItem title="SPI" min={20} max={30} showMax={false} />
+                <StatsItem title="STR" min={20} max={30} showMax={false} />
+                <StatsItem title="CPS" min={20} max={30} showMax={false} />
+                <StatsItem title="DEX" min={20} max={30} showMax={false} />
               </Stack>
             </Stack>
           </Stack>
         </Stack>
       </Container>
+
+      <Dialog onClose={() => setModalOpen(false)} open={modalOpen}>
+        <Typography
+          sx={{
+            color: "yellow",
+            bgcolor: "#3b4721",
+            borderRadius: 1,
+            fontSize: 16,
+            px: 1,
+            border: "1px solid #4c7718",
+          }}
+        >
+          This feature is not yet avalable
+        </Typography>
+      </Dialog>
     </Box>
   );
 }

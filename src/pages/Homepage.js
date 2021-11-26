@@ -286,7 +286,14 @@ export default function Homepage() {
               <Box
                 component="img"
                 src="/walking_character.gif"
-                sx={{ width: 400 }}
+                sx={{
+                  width: 400,
+                  animation: "walk 10s linear infinite alternate",
+                  "@keyframes walk": {
+                    from: { transform: "translateX(0)" },
+                    to: { transform: "translateX(300%)" },
+                  },
+                }}
               />
             </Stack>
           </Container>
