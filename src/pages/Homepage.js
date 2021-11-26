@@ -275,8 +275,8 @@ export default function Homepage() {
                       width: 496,
                       height: 460,
                       background: `url(/roadmap/${index + 1}.png)`,
-                      backgroundSize: "180% 140%",
-                      backgroundPosition: "-160px",
+                      backgroundSize: "cover",
+                      backgroundPosition: "-80px",
                     }}
                   />
                 </Box>
