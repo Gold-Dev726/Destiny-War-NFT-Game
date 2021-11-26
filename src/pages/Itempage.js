@@ -188,7 +188,7 @@ export default function Inventorypage() {
                 Owner:{" "}
                 {ownerOfCharacter
                   ? ownerOfCharacter
-                  : "There is no owners of this character"}
+                  : "Private"}
               </Typography>
             </Stack>
             <Typography color="#28f0a5">STATS</Typography>
