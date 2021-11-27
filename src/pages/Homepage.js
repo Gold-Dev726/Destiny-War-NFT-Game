@@ -419,6 +419,19 @@ export default function Homepage() {
           </Stack>
         </Container>
       </Stack>
+
+      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+
+      <Stack
+        sx={{
+          mt: "-16px",
+          backgroundSize: "contained",
+        }}
+      >
+        <Stack direction="row" justifyContent="center" sx={{ mt: 20, mb: 25 }}>
+         
+        </Stack>
+      </Stack>
     </Box>
   );
 }
