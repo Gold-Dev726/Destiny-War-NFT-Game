@@ -415,7 +415,11 @@ export default function Homepage() {
         </Stack>
         <Container maxWidth="xl">
           <Stack direction="row" justifyContent="center" sx={{ mb: 10 }}>
-            <Box component="img" src="/tokenomics/tokenomic.png" />
+            <Box
+              component="img"
+              src="/tokenomics/tokenomic.png"
+              sx={{ width: "60%" }}
+            />
           </Stack>
         </Container>
       </Stack>
@@ -428,9 +432,11 @@ export default function Homepage() {
           backgroundSize: "contained",
         }}
       >
-        <Stack direction="row" justifyContent="center" sx={{ mt: 20, mb: 25 }}>
-         
-        </Stack>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          sx={{ mt: 20, mb: 25 }}
+        ></Stack>
       </Stack>
     </Box>
   );

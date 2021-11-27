@@ -40,6 +40,7 @@ export default function Inventorypage() {
   const { library, account } = useEthers();
   const [ownedCharacter, setOwnedCharacter] = useState();
   const [ownerOfCharacter, setOwnerOfCharacter] = useState();
+  const [statsOfCharacter, setStatsOfCharacter] = useState();
   const signer = library?.getSigner();
   const DwarCharacterContract = getDwarCharacterContract(signer);
 
@@ -51,19 +52,24 @@ export default function Inventorypage() {
           0
         );
         const OwnerOfCharacter = await DwarCharacterContract.ownerOf(id);
+        const StatsOfCharacter = await DwarCharacterContract.getItemProperty(
+          id
+        );
+        console.log(StatsOfCharacter)
 
         setOwnedCharacter(formatBigNumber(OwnedCharacter));
         setOwnerOfCharacter(OwnerOfCharacter);
+        setStatsOfCharacter(StatsOfCharacter);
       } catch (error) {
         setOwnedCharacter(null);
         setOwnerOfCharacter(null);
       }
     };
     if (account) fetchData();
-  }, [DwarCharacterContract, account, id]);
+  }, [account, id]);
 
   const isOwner = account === ownerOfCharacter;
-  console.log(isOwner);
+  console.log(statsOfCharacter);
   return (
     <Box sx={{ background: "#2e311e", mt: "-146px" }}>
       <Container maxWidth="xl" sx={{ pt: 20, pb: 10 }}>
@@ -185,10 +191,7 @@ export default function Inventorypage() {
             >
               <Typography>Breed Count: 0</Typography>
               <Typography>
-                Owner:{" "}
-                {ownerOfCharacter
-                  ? ownerOfCharacter
-                  : "Private"}
+                Owner: {ownerOfCharacter ? ownerOfCharacter : "Private"}
               </Typography>
             </Stack>
             <Typography color="#28f0a5">STATS</Typography>
