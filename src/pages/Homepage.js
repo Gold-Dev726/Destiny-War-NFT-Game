@@ -299,6 +299,68 @@ export default function Homepage() {
           </Container>
         </Stack>
       </Element>
+
+      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+
+      <Stack
+        sx={{
+          mt: "-16px",
+          background: "url(/scrolls/scroll_bg.png)",
+          backgroundSize: "contained",
+        }}
+      >
+        <Stack direction="row" justifyContent="center" sx={{ mt: 10, mb: 5 }}>
+          <MotionInView variants={varFadeInUp}>
+            <Typography
+              variant="h1"
+              fontFamily="AmericanCaptain"
+              color="#fed114"
+            >
+              NFT CRAFTING SCROLL
+            </Typography>
+          </MotionInView>
+        </Stack>
+        <Container maxWidth="xl">
+          <Stack direction="row" justifyContent="space-between" sx={{ mb: 10 }}>
+            <Stack alignItems="center" spacing={4}>
+              <Box
+                component="img"
+                src="/scrolls/weapon.png"
+                sx={{ width: 300 }}
+              />
+              <Box
+                component="img"
+                src="/scrolls/weapon_text.png"
+                sx={{ width: 260 }}
+              />
+            </Stack>
+            <Stack alignItems="center" spacing={4}>
+              <Box
+                component="img"
+                src="/scrolls/armor.png"
+                sx={{ width: 300 }}
+              />
+              <Box
+                component="img"
+                src="/scrolls/armor_text.png"
+                sx={{ width: 260 }}
+              />
+            </Stack>
+            <Stack alignItems="center" spacing={4}>
+              <Box
+                component="img"
+                src="/scrolls/accessory.png"
+                sx={{ width: 300 }}
+              />
+              <Box
+                component="img"
+                src="/scrolls/accessory_text.png"
+                sx={{ width: 260 }}
+              />
+            </Stack>
+          </Stack>
+        </Container>
+      </Stack>
     </Box>
   );
 }
