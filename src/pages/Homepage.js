@@ -2,11 +2,22 @@ import { useState, useEffect, useRef } from "react";
 // material
 import { Box, Stack, Container, Typography } from "@mui/material";
 
-import TeamComponent from "components/TeamComponent";
 import { varFadeInUp, MotionInView, varFadeInDown } from "components/animate";
 import Slider from "react-slick";
 import { useLocation } from "react-router-dom";
 import { Link, Element, scroller } from "react-scroll";
+import { makeStyles } from "@mui/styles";
+import { keyframes } from "@mui/system";
+
+const zoomIn = keyframes`
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+`;
+
 const TEAM_INFOS = [
   {
     number: 1,
@@ -66,11 +77,17 @@ const TEAM_INFOS = [
   },
 ];
 
+const useStyles = makeStyles({
+  root: {
+    cursor: "pointer",
+    animation: `${zoomIn} 1s linear infinite`,
+  },
+});
+
 export default function Homepage() {
-  const [currentTeam, setCurrentTeam] = useState(1);
+  const classes = useStyles();
   const location = useLocation();
   const target = location.hash.slice(1);
-  // console.log(target);
   useEffect(() => {
     scroller.scrollTo(target, {
       duration: 1500,
@@ -189,7 +206,7 @@ export default function Homepage() {
         </Stack>
         <Slider {...TeamSliderSettings} ref={TeamSliderRef}>
           {TEAM_INFOS.map((team, index) => (
-            <Container maxWidth="xl">
+            <Container maxWidth="xl" key={index}>
               <Stack
                 direction={{ xs: "column", md: "row" }}
                 alignItems="flex-start"
@@ -288,7 +305,7 @@ export default function Homepage() {
                 src="/walking_character.gif"
                 sx={{
                   width: 400,
-                  animation: "walk 10s linear infinite alternate",
+                  animation: "walk 10s linear infinite",
                   "@keyframes walk": {
                     from: { transform: "translateX(0)" },
                     to: { transform: "translateX(300%)" },
@@ -311,13 +328,11 @@ export default function Homepage() {
       >
         <Stack direction="row" justifyContent="center" sx={{ mt: 10, mb: 5 }}>
           <MotionInView variants={varFadeInUp}>
-            <Typography
-              variant="h1"
-              fontFamily="AmericanCaptain"
-              color="#fed114"
-            >
-              NFT CRAFTING SCROLL
-            </Typography>
+            <Box
+              component="img"
+              src="/scrolls/crafting_scroll.png"
+              sx={{ width: 400 }}
+            />
           </MotionInView>
         </Stack>
         <Container maxWidth="xl">
@@ -326,7 +341,13 @@ export default function Homepage() {
               <Box
                 component="img"
                 src="/scrolls/weapon.png"
-                sx={{ width: 300 }}
+                sx={{
+                  width: 300,
+                  cursor: "pointer",
+                  "&:hover": {
+                    animation: `${zoomIn} 0.7s linear infinite alternate`,
+                  },
+                }}
               />
               <Box
                 component="img"
@@ -338,7 +359,13 @@ export default function Homepage() {
               <Box
                 component="img"
                 src="/scrolls/armor.png"
-                sx={{ width: 300 }}
+                sx={{
+                  width: 300,
+                  cursor: "pointer",
+                  "&:hover": {
+                    animation: `${zoomIn} 0.7s linear infinite alternate`,
+                  },
+                }}
               />
               <Box
                 component="img"
@@ -350,7 +377,13 @@ export default function Homepage() {
               <Box
                 component="img"
                 src="/scrolls/accessory.png"
-                sx={{ width: 300 }}
+                sx={{
+                  width: 300,
+                  cursor: "pointer",
+                  "&:hover": {
+                    animation: `${zoomIn} 0.7s linear infinite alternate`,
+                  },
+                }}
               />
               <Box
                 component="img"
@@ -358,6 +391,31 @@ export default function Homepage() {
                 sx={{ width: 260 }}
               />
             </Stack>
+          </Stack>
+        </Container>
+      </Stack>
+
+      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+
+      <Stack
+        sx={{
+          mt: "-16px",
+          background: "url(/tokenomics/tokenomic_bg.png)",
+          backgroundSize: "contained",
+        }}
+      >
+        <Stack direction="row" justifyContent="center" sx={{ mt: 10, mb: 5 }}>
+          <MotionInView variants={varFadeInUp}>
+            <Box
+              component="img"
+              src="/tokenomics/tokenomic_text.png"
+              sx={{ width: 400 }}
+            />
+          </MotionInView>
+        </Stack>
+        <Container maxWidth="xl">
+          <Stack direction="row" justifyContent="center" sx={{ mb: 10 }}>
+            <Box component="img" src="/tokenomics/tokenomic.png" />
           </Stack>
         </Container>
       </Stack>
