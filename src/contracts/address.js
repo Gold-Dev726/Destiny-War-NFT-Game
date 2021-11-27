@@ -1,2 +1,2 @@
 export const DwarCharacterAddress =
-  "0xB566AFc04ED4b65BCC840ab585fa8023a3DB56CE";
+  "0x405922C82AdaEeAB51fdA59f637572F9A7703e46";
