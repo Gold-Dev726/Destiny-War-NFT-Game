@@ -1,11 +1,19 @@
 import { useState, useEffect, useRef } from "react";
 // material
-import { Box, Stack, Container, Typography } from "@mui/material";
+import {
+  Box,
+  Stack,
+  Container,
+  Typography,
+  Dialog,
+  Button,
+} from "@mui/material";
 
 import { varFadeInUp, MotionInView, varFadeInDown } from "components/animate";
 import Slider from "react-slick";
 import { useLocation } from "react-router-dom";
 import { Link, Element, scroller } from "react-scroll";
+import Presale from "components/Homepage/Presale";
 import { makeStyles } from "@mui/styles";
 import { keyframes } from "@mui/system";
 
@@ -85,7 +93,8 @@ const useStyles = makeStyles({
 });
 
 export default function Homepage() {
-  const classes = useStyles();
+  const [presaleModal, setPresaleModal] = useState(false);
+  const [currentPresale, setCurrentPresale] = useState(0);
   const location = useLocation();
   const target = location.hash.slice(1);
   useEffect(() => {
@@ -432,11 +441,7 @@ export default function Homepage() {
           backgroundSize: "contained",
         }}
       >
-        <Stack
-          direction="row"
-          justifyContent="center"
-          sx={{ mt: 20, mb: 25 }}
-        ></Stack>
+        <Presale />
       </Stack>
     </Box>
   );
