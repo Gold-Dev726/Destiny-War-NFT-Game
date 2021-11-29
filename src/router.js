@@ -6,7 +6,7 @@ import Homepage from "pages/Homepage";
 import Presalepage from "pages/Presalepage";
 import Inventorypage from "pages/Inventorypage";
 import Itempage from "pages/Itempage";
-// import Videopage from "pages/Videopage";
+import Videopage from "pages/Videopage";
 import Loading from "components/Loading";
 
 const Loadable = (Component) => (props) => {
@@ -31,7 +31,7 @@ export default function Router() {
         { path: "/presale", element: <Presalepage /> },
         { path: "/inventory", element: <Inventorypage /> },
         { path: "/items/character/:id", element: <Itempage /> },
-        // { path: "/landing", element: <Videopage /> },
+        { path: "/landing", element: <Videopage /> },
       ],
     },
   ]);

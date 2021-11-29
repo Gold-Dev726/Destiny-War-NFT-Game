@@ -7,6 +7,7 @@ import {
   Typography,
   Dialog,
   Button,
+  Grid,
 } from "@mui/material";
 
 import { varFadeInUp, MotionInView, varFadeInDown } from "components/animate";
@@ -145,6 +146,36 @@ export default function Homepage() {
         >
           <Box component="img" src="/logo.png" sx={{ mt: 15, width: 800 }} />
         </Stack>
+      </Stack>
+
+      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+
+      <Stack
+        sx={{
+          mt: "-16px",
+          background: "linear-gradient(#5b3342, #8d532a)",
+        }}
+        alignItems="center"
+      >
+        <Box component="img" src="/presale/presale_btn.png" sx={{mt: -4}} />
+        <Grid container sx={{ px: 20 }} alignItems="center">
+          <Grid item md={3} sm={6}>
+            <Box component="img" src="/presale/character-egg.gif" />
+          </Grid>
+          <Grid item md={3} sm={6}>
+            <Box component="img" src="/presale/mount-egg.gif" />
+          </Grid>
+          <Grid item md={3} sm={6}>
+            <Box component="img" src="/presale/pet-egg.gif" />
+          </Grid>
+          <Grid item md={3} sm={6}>
+            <Box
+              component="img"
+              src="/presale/dwar_token.png"
+              sx={{ width: 250 }}
+            />
+          </Grid>
+        </Grid>
       </Stack>
 
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />

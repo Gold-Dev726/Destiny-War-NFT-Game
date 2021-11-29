@@ -131,7 +131,7 @@ export default function Homepage() {
       </Stack>
 
       <video width="50%" ref={videoEl} loop muted="muted" autoplay="true">
-        <source src="/scrolls/2.mp4" type="video/mp4" />
+        <source src="/1.mp4" type="video/mp4" />
       </video>
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
     </Box>
