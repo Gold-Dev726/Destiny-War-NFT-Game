@@ -82,17 +82,32 @@ export default function Homepage() {
               transform: "translateX(-50%)",
             }}
           />
-          <Box
-            component="img"
-            src={`/presale/${currentPresale}-egg.gif`}
-            sx={{
-              position: "absolute",
-              left: "50%",
-              top: 0,
-              transform: "translateX(-50%)",
-              width: 320,
-            }}
-          />
+          {currentPresale === "character" ? (
+            <Box
+              component="img"
+              src={`/presale/${currentPresale}-egg.gif`}
+              sx={{
+                position: "absolute",
+                left: "50%",
+                top: 0,
+                transform: "translateX(-50%)",
+                width: 320,
+              }}
+            />
+          ) : (
+            <Box
+              component="img"
+              src={`/presale/${currentPresale}-egg.png`}
+              sx={{
+                position: "absolute",
+                left: "50%",
+                top: 100,
+                transform: "translateX(-50%)",
+                width: 180,
+              }}
+            />
+          )}
+
           <Box
             component="img"
             src={`/presale/buy.png`}
@@ -108,7 +123,7 @@ export default function Homepage() {
             direction="row"
             alignItems="center"
             justifyContent="space-between"
-            sx={{ position: "absolute", bottom: 20, width: 1, px: 7 }}
+            sx={{ position: "absolute", bottom: 20, width: 1, px: "58px" }}
           >
             <Stack
               alignItems="center"
