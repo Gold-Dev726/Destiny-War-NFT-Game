@@ -158,24 +158,7 @@ export default function Homepage() {
         alignItems="center"
       >
         <Box component="img" src="/presale/presale_btn.png" sx={{mt: -4}} />
-        <Grid container sx={{ px: 20 }} alignItems="center">
-          <Grid item md={3} sm={6}>
-            <Box component="img" src="/presale/character-egg.gif" />
-          </Grid>
-          <Grid item md={3} sm={6}>
-            <Box component="img" src="/presale/mount-egg.gif" />
-          </Grid>
-          <Grid item md={3} sm={6}>
-            <Box component="img" src="/presale/pet-egg.gif" />
-          </Grid>
-          <Grid item md={3} sm={6}>
-            <Box
-              component="img"
-              src="/presale/dwar_token.png"
-              sx={{ width: 250 }}
-            />
-          </Grid>
-        </Grid>
+        <Presale />
       </Stack>
 
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
