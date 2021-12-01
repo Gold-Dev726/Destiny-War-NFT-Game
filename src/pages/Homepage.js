@@ -157,7 +157,7 @@ export default function Homepage() {
         }}
         alignItems="center"
       >
-        <Box component="img" src="/presale/presale_btn.png" sx={{mt: -4}} />
+        <Box component="img" src="/presale/presale_btn.png" sx={{ mt: -4 }} />
         <Presale />
       </Stack>
 
@@ -228,7 +228,12 @@ export default function Homepage() {
           />
         </Stack>
         <Slider {...TeamSliderSettings} ref={TeamSliderRef}>
-          {TEAM_INFOS.map((team, index) => (
+          {[...Array(7)].map((item, index) => (
+            <Stack>
+              <Box component="img" src={`/teams/${index + 1}.png`} />
+            </Stack>
+          ))}
+          {/* {TEAM_INFOS.map((team, index) => (
             <Container maxWidth="xl" key={index}>
               <Stack
                 direction={{ xs: "column", md: "row" }}
@@ -259,7 +264,7 @@ export default function Homepage() {
                 </Stack>
               </Stack>
             </Container>
-          ))}
+          ))} */}
         </Slider>
       </Stack>
 
