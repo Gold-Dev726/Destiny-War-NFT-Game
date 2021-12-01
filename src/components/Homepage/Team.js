@@ -29,36 +29,45 @@ export default function Homepage() {
   };
   return (
     <>
-      <Stack direction="row" justifyContent="center" sx={{ my: 10 }}>
-        {/* <MotionInView variants={varFadeInUp}> */}
-        <Box
-          component="img"
-          src="/texts/choose_class.png"
-          sx={{ transform: "scale(0.6)" }}
-        />
-        {/* </MotionInView> */}
-      </Stack>
-      <Stack direction="row" justifyContent="center" sx={{ mb: 5 }} spacing={5}>
-        <Box
-          component="img"
-          src="/prevArrow.png"
-          onClick={handleBack}
-          sx={{
-            cursor: "pointer",
-            transition: "all 0.3s",
-            "&:hover": { transform: "scale(1.1)" },
-          }}
-        />
-        <Box
-          component="img"
-          src="/nextArrow.png"
-          onClick={handleNext}
-          sx={{
-            cursor: "pointer",
-            transition: "all 0.3s",
-            "&:hover": { transform: "scale(1.1)" },
-          }}
-        />
+      <Stack sx={{ position: "relative", zIndex: 10 }}>
+        <Stack alignItems="center" sx={{ width: 1, position: "absolute", top: 0 }}>
+          <Stack direction="row" justifyContent="center" sx={{ my: 3 }}>
+            {/* <MotionInView variants={varFadeInUp}> */}
+            <Box
+              component="img"
+              src="/texts/choose_class.png"
+              sx={{ transform: "scale(0.6)" }}
+            />
+            {/* </MotionInView> */}
+          </Stack>
+          <Stack
+            direction="row"
+            justifyContent="center"
+            sx={{ mb: 5 }}
+            spacing={5}
+          >
+            <Box
+              component="img"
+              src="/prevArrow.png"
+              onClick={handleBack}
+              sx={{
+                cursor: "pointer",
+                transition: "all 0.3s",
+                "&:hover": { transform: "scale(1.1)" },
+              }}
+            />
+            <Box
+              component="img"
+              src="/nextArrow.png"
+              onClick={handleNext}
+              sx={{
+                cursor: "pointer",
+                transition: "all 0.3s",
+                "&:hover": { transform: "scale(1.1)" },
+              }}
+            />
+          </Stack>
+        </Stack>
       </Stack>
       <SwipeableViews
         enableMouseEvents
