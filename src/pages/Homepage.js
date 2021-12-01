@@ -190,7 +190,7 @@ export default function Homepage() {
 
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
 
-      <Stack sx={{ px: { xs: 2, md: 18 }, bgcolor: "#cdd5b0", mt: "-16px" }}>
+      <Stack sx={{ bgcolor: "#cdd5b0", mt: "-16px" }}>
         <Stack direction="row" justifyContent="center" sx={{ my: 10 }}>
           <MotionInView variants={varFadeInUp}>
             <Box
@@ -230,7 +230,9 @@ export default function Homepage() {
         <Slider {...TeamSliderSettings} ref={TeamSliderRef}>
           {[...Array(7)].map((item, index) => (
             <Stack>
-              <Box component="img" src={`/teams/${index + 1}.png`} />
+              <Box
+                sx={{ height: 1000, background: `url(/teams/${index + 1}.png)`, backgroundSize: '100% 100%' }}
+              />
             </Stack>
           ))}
           {/* {TEAM_INFOS.map((team, index) => (
@@ -268,7 +270,7 @@ export default function Homepage() {
         </Slider>
       </Stack>
 
-      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px", zIndex: 9999 }} />
 
       <Element name="roadmap">
         <Stack
@@ -454,14 +456,14 @@ export default function Homepage() {
 
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
 
-      <Stack
+      {/* <Stack
         sx={{
           mt: "-16px",
           backgroundSize: "contained",
         }}
       >
         <Presale />
-      </Stack>
+      </Stack> */}
     </Box>
   );
 }
