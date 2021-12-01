@@ -17,11 +17,15 @@ export default function Homepage() {
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if (activeStep !== 2) {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    if (activeStep !== 0) {
+      setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    }
   };
   return (
     <>
@@ -39,7 +43,6 @@ export default function Homepage() {
           component="img"
           src="/prevArrow.png"
           onClick={handleBack}
-          disabled={activeStep === 0}
           sx={{
             cursor: "pointer",
             transition: "all 0.3s",
@@ -50,7 +53,6 @@ export default function Homepage() {
           component="img"
           src="/nextArrow.png"
           onClick={handleNext}
-          disabled={activeStep === 2}
           sx={{
             cursor: "pointer",
             transition: "all 0.3s",
