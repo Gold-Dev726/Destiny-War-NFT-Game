@@ -1,0 +1,72 @@
+import { useState } from "react";
+// material
+import { Box, Stack, Dialog, Button, Grid, Typography } from "@mui/material";
+
+import SwipeableViews from "react-swipeable-views";
+import { virtualize, bindKeyboard } from "react-swipeable-views-utils";
+
+// function slideRenderer(params) {
+//   const { index, key } = params;
+//   console.log(index);
+//   return (
+//   );
+// }
+
+export default function Homepage() {
+  const [presaleModal, setPresaleModal] = useState(false);
+  const [activeStep, setActiveStep] = useState(0);
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+  return (
+    <>
+      <Stack direction="row" justifyContent="center" sx={{ my: 10 }}>
+        {/* <MotionInView variants={varFadeInUp}> */}
+        <Box
+          component="img"
+          src="/texts/choose_class.png"
+          sx={{ transform: "scale(0.6)" }}
+        />
+        {/* </MotionInView> */}
+      </Stack>
+      <Stack direction="row" justifyContent="center" sx={{ mb: 5 }} spacing={5}>
+        <Box
+          component="img"
+          src="/prevArrow.png"
+          onClick={handleBack}
+          disabled={activeStep === 0}
+          sx={{
+            cursor: "pointer",
+            transition: "all 0.3s",
+            "&:hover": { transform: "scale(1.1)" },
+          }}
+        />
+        <Box
+          component="img"
+          src="/nextArrow.png"
+          onClick={handleNext}
+          disabled={activeStep === 2}
+          sx={{
+            cursor: "pointer",
+            transition: "all 0.3s",
+            "&:hover": { transform: "scale(1.1)" },
+          }}
+        />
+      </Stack>
+      <SwipeableViews
+        enableMouseEvents
+        index={activeStep}
+        onChangeIndex={(index) => setActiveStep(index)}
+      >
+        <Box component="img" src={`/teams/1.png`} />
+        <Box component="img" src={`/teams/2.png`} />
+        <Box component="img" src={`/teams/3.png`} />
+      </SwipeableViews>
+    </>
+  );
+}

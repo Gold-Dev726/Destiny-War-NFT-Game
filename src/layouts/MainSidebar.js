@@ -47,7 +47,7 @@ export default function MainNavbar() {
   const isHome = pathname === "/";
 
   return (
-    <Stack spacing={4} sx={{ position: "fixed", top: "50%", transform: 'translateY(-50%)' }}>
+    <Stack spacing={4} sx={{ zIndex: 9999, position: "fixed", top: "50%", transform: 'translateY(-50%)' }}>
       <SocialIcon>
         <Typography color="white">FaceBook</Typography>
         <Icon icon={facebookIcon} fontSize={40} color="#28f0a5" />

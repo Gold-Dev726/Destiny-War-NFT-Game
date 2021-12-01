@@ -15,6 +15,7 @@ import Slider from "react-slick";
 import { useLocation } from "react-router-dom";
 import { Link, Element, scroller } from "react-scroll";
 import Presale from "components/Homepage/Presale";
+import Team from "components/Homepage/Team";
 import { makeStyles } from "@mui/styles";
 import { keyframes } from "@mui/system";
 
@@ -191,7 +192,7 @@ export default function Homepage() {
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
 
       <Stack sx={{ bgcolor: "#cdd5b0", mt: "-16px" }}>
-        <Stack direction="row" justifyContent="center" sx={{ my: 10 }}>
+        {/* <Stack direction="row" justifyContent="center" sx={{ my: 10 }}>
           <MotionInView variants={varFadeInUp}>
             <Box
               component="img"
@@ -231,11 +232,18 @@ export default function Homepage() {
           {[...Array(7)].map((item, index) => (
             <Stack>
               <Box
-                sx={{ height: 1000, background: `url(/teams/${index + 1}.png)`, backgroundSize: '100% 100%' }}
+                sx={{
+                  height: 1000,
+                  background: `url(/teams/${index + 1}.png)`,
+                  backgroundSize: "100% 100%",
+                }}
               />
             </Stack>
           ))}
-          {/* {TEAM_INFOS.map((team, index) => (
+        </Slider> */}
+
+        <Team />
+        {/* {TEAM_INFOS.map((team, index) => (
             <Container maxWidth="xl" key={index}>
               <Stack
                 direction={{ xs: "column", md: "row" }}
@@ -267,10 +275,13 @@ export default function Homepage() {
               </Stack>
             </Container>
           ))} */}
-        </Slider>
       </Stack>
 
-      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px", zIndex: 9999 }} />
+      <Box
+        component="img"
+        src="/divider.png"
+        sx={{ width: 1, mt: "-65px", zIndex: 999 }}
+      />
 
       <Element name="roadmap">
         <Stack
