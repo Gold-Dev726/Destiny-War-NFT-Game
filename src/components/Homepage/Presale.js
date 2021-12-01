@@ -28,7 +28,7 @@ export default function Homepage() {
             component="img"
             src="/presale/character-egg.gif"
             onClick={() => handleModal("character")}
-            sx={{ cursor: "pointer" }}
+            sx={{ cursor: "pointer", mt: -3 }}
           />
         </Grid>
         <Grid item md={3} sm={6}>
@@ -44,7 +44,7 @@ export default function Homepage() {
             component="img"
             src="/presale/pet-egg.gif"
             onClick={() => handleModal("pet")}
-            sx={{ cursor: "pointer" }}
+            sx={{ cursor: "pointer", mt: "45px" }}
           />
         </Grid>
         <Grid item md={3} sm={6}>
