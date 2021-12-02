@@ -371,7 +371,11 @@ export default function Homepage() {
             />
           </Box>
         </Container>
-        <Stack direction="row" justifyContent="center" sx={{ mb: 10 }}>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          sx={{ mt: -10, mb: 10, ml: 4 }}
+        >
           <MotionInView variants={varFadeInUp}>
             <Box
               component="img"
