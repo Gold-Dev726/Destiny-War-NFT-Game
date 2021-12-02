@@ -60,7 +60,7 @@ export default function MainNavbar() {
         // onMouseLeave={handleClose}
         sx={{ cursor: "pointer", fontFamily: "AmericanCaptain" }}
       >
-        CLASS
+        MORE
         <ArrowDropDownIcon
           sx={{ color: "#47350b", transform: "scaleY(2.5)" }}
         />
@@ -75,6 +75,19 @@ export default function MainNavbar() {
         MenuListProps={{ onMouseLeave: handleClose }}
         PaperProps={{ sx: { borderRadius: 0, bgcolor: "#ddd58e" } }}
       >
+        <MenuItem>
+          <Typography
+            onClick={handleClose}
+            variant="h4"
+            component={ScrollLink}
+            to="class"
+            spy
+            smooth
+            sx={{ color: "#47350b", fontFamily: "AmericanCaptain" }}
+          >
+            CLASS
+          </Typography>
+        </MenuItem>
         <MenuItem>
           <Typography
             onClick={handleClose}
