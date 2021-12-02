@@ -192,93 +192,9 @@ export default function Homepage() {
 
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
 
-      <Stack sx={{ bgcolor: "#cdd5b0", mt: "-16px" }}>
-        {/* <Stack direction="row" justifyContent="center" sx={{ my: 10 }}>
-          <MotionInView variants={varFadeInUp}>
-            <Box
-              component="img"
-              src="/texts/choose_class.png"
-              sx={{ transform: "scale(0.6)" }}
-            />
-          </MotionInView>
-        </Stack>
-        <Stack
-          direction="row"
-          justifyContent="center"
-          sx={{ mb: 5 }}
-          spacing={5}
-        >
-          <Box
-            component="img"
-            src="/prevArrow.png"
-            onClick={() => TeamSliderRef.current.slickPrev()}
-            sx={{
-              cursor: "pointer",
-              transition: "all 0.3s",
-              "&:hover": { transform: "scale(1.1)" },
-            }}
-          />
-          <Box
-            component="img"
-            src="/nextArrow.png"
-            onClick={() => TeamSliderRef.current.slickNext()}
-            sx={{
-              cursor: "pointer",
-              transition: "all 0.3s",
-              "&:hover": { transform: "scale(1.1)" },
-            }}
-          />
-        </Stack>
-        <Slider {...TeamSliderSettings} ref={TeamSliderRef}>
-          {[...Array(7)].map((item, index) => (
-            <Stack>
-              <Box
-                sx={{
-                  height: 1000,
-                  background: `url(/teams/${index + 1}.png)`,
-                  backgroundSize: "100% 100%",
-                }}
-              />
-            </Stack>
-          ))}
-        </Slider> */}
-
+      <Stack id="class" sx={{ bgcolor: "#cdd5b0", mt: "-16px" }}>
         <Team />
-        {/* {TEAM_INFOS.map((team, index) => (
-            <Container maxWidth="xl" key={index}>
-              <Stack
-                direction={{ xs: "column", md: "row" }}
-                alignItems="flex-start"
-                spacing={5}
-                sx={{ mt: 8 }}
-              >
-                <Stack flex={1}>
-                  <Stack
-                    direction="row"
-                    justifyContent="center"
-                    alignItems="center"
-                  >
-                    <Box
-                      component="img"
-                      src={`/teams/title${index + 1}.png`}
-                      sx={{ width: 300 }}
-                    />
-                  </Stack>
-                  <Typography>
-                    {team.description1} <br />
-                    <br />
-                    {team.description2}
-                  </Typography>
-                </Stack>
-                <Stack flex={1}>
-                  <Box component="img" src={`/teams/team${index + 1}.png`} />
-                </Stack>
-              </Stack>
-            </Container>
-          ))} */}
       </Stack>
-
-      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
 
       <Stack
         id="expedition"

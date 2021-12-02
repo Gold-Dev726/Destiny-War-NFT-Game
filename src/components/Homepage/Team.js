@@ -17,7 +17,7 @@ export default function Homepage() {
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
-    if (activeStep !== 2) {
+    if (activeStep !== 4) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }
   };
@@ -29,7 +29,7 @@ export default function Homepage() {
   };
   return (
     <>
-      <Stack id="class" sx={{ position: "relative", zIndex: 10 }}>
+      <Stack sx={{ position: "relative", zIndex: 10 }}>
         <Stack alignItems="center" sx={{ width: 1, position: "absolute", top: 0 }}>
           <Stack direction="row" justifyContent="center" sx={{ my: 3 }}>
             {/* <MotionInView variants={varFadeInUp}> */}
@@ -77,6 +77,7 @@ export default function Homepage() {
         <Box component="img" src={`/teams/1.png`} />
         <Box component="img" src={`/teams/2.png`} />
         <Box component="img" src={`/teams/3.png`} />
+        <Box component="img" src={`/teams/4.png`} />
       </SwipeableViews>
     </>
   );
