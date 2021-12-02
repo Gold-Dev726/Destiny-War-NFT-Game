@@ -29,7 +29,7 @@ export default function Homepage() {
   };
   return (
     <>
-      <Stack sx={{ position: "relative", zIndex: 10 }}>
+      <Stack id="class" sx={{ position: "relative", zIndex: 10 }}>
         <Stack alignItems="center" sx={{ width: 1, position: "absolute", top: 0 }}>
           <Stack direction="row" justifyContent="center" sx={{ my: 3 }}>
             {/* <MotionInView variants={varFadeInUp}> */}

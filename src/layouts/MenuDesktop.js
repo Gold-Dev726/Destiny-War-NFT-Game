@@ -1,14 +1,33 @@
+import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 // material
-import { Stack, Container, Typography, Link } from "@mui/material";
+import {
+  Stack,
+  Container,
+  Typography,
+  Link,
+  Paper,
+  Menu,
+  MenuItem,
+} from "@mui/material";
 import ConnectButton from "components/ConnectButton";
 import Whitepaper from "./whitepaper.pdf";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 // ----------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
 
 export default function MainNavbar() {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <Stack direction="row" alignItems="center" spacing={5} sx={{ mt: -4 }}>
       <Typography
@@ -30,14 +49,86 @@ export default function MainNavbar() {
         INVENTORY
       </Typography>
       <Typography
-        component={RouterLink}
-        to="/#roadmap"
+        // component={ScrollLink}
+        to="class"
         variant="h4"
         color="#47350b"
-        sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}
+        spy
+        smooth
+        // onMouseOver={handleClick}
+        onClick={handleClick}
+        // onMouseLeave={handleClose}
+        sx={{ cursor: "pointer", fontFamily: "AmericanCaptain" }}
       >
-        ROADMAP
+        CLASS
+        <ArrowDropDownIcon
+          sx={{ color: "#47350b", transform: "scaleY(2.5)" }}
+        />
       </Typography>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        keepMounted
+        // onMouseLeave={handleClose}
+        onClose={handleClose}
+        MenuListProps={{ onMouseLeave: handleClose }}
+        PaperProps={{ sx: { borderRadius: 0, bgcolor: "#ddd58e" } }}
+      >
+        <MenuItem>
+          <Typography
+            onClick={handleClose}
+            variant="h4"
+            component={ScrollLink}
+            to="scroll"
+            spy
+            smooth
+            sx={{ color: "#47350b", fontFamily: "AmericanCaptain" }}
+          >
+            NFT SCROLL
+          </Typography>
+        </MenuItem>
+        <MenuItem>
+          <Typography
+            onClick={handleClose}
+            variant="h4"
+            component={ScrollLink}
+            to="tokenomic"
+            spy
+            smooth
+            sx={{ color: "#47350b", fontFamily: "AmericanCaptain" }}
+          >
+            TOKENOMICS
+          </Typography>
+        </MenuItem>
+        <MenuItem>
+          <Typography
+            onClick={handleClose}
+            variant="h4"
+            component={ScrollLink}
+            to="expedition"
+            spy
+            smooth
+            sx={{ color: "#47350b", fontFamily: "AmericanCaptain" }}
+          >
+            EXPEDITION
+          </Typography>
+        </MenuItem>
+        <MenuItem>
+          <Typography
+            onClick={handleClose}
+            variant="h4"
+            component={ScrollLink}
+            to="roadmap"
+            spy
+            smooth
+            sx={{ color: "#47350b", fontFamily: "AmericanCaptain" }}
+          >
+            ROADMAP
+          </Typography>
+        </MenuItem>
+      </Menu>
+
       <Typography
         component={Link}
         href={Whitepaper}

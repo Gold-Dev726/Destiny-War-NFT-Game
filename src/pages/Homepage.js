@@ -278,90 +278,10 @@ export default function Homepage() {
           ))} */}
       </Stack>
 
-      <Box
-        component="img"
-        src="/divider.png"
-        sx={{ width: 1, mt: "-65px", zIndex: 999 }}
-      />
-
-      <Element name="roadmap">
-        <Stack
-          sx={{
-            mt: "-16px",
-            background: "url(/mapbg.jpg)",
-            backgroundSize: "cover",
-          }}
-        >
-          <Stack direction="row" justifyContent="center" sx={{ mt: 10, mb: 5 }}>
-            <MotionInView variants={varFadeInUp}>
-              <Box component="img" src="/texts/roadmap.png" />
-            </MotionInView>
-          </Stack>
-          <Stack
-            direction="row"
-            justifyContent="center"
-            sx={{ mb: 5 }}
-            spacing={5}
-          >
-            <Box
-              component="img"
-              src="/prevArrow.png"
-              onClick={() => RoadmapSliderRef.current.slickPrev()}
-              sx={{
-                cursor: "pointer",
-                transition: "all 0.3s",
-                "&:hover": { transform: "scale(1.1)" },
-              }}
-            />
-            <Box
-              component="img"
-              src="/nextArrow.png"
-              onClick={() => RoadmapSliderRef.current.slickNext()}
-              sx={{
-                cursor: "pointer",
-                transition: "all 0.3s",
-                "&:hover": { transform: "scale(1.1)" },
-              }}
-            />
-          </Stack>
-          <Container maxWidth="xl">
-            <Slider {...RoadmapSliderSettings} ref={RoadmapSliderRef}>
-              {[...Array(9)].map((item, index) => (
-                <Box key={index}>
-                  <Box
-                    src={`/roadmap/${index + 1}.png`}
-                    sx={{
-                      width: 496,
-                      height: 460,
-                      background: `url(/roadmap/${index + 1}.png)`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "-80px",
-                    }}
-                  />
-                </Box>
-              ))}
-            </Slider>
-            <Stack direction="row">
-              <Box
-                component="img"
-                src="/walking_character.gif"
-                sx={{
-                  width: 400,
-                  animation: "walk 10s linear infinite",
-                  "@keyframes walk": {
-                    from: { transform: "translateX(0)" },
-                    to: { transform: "translateX(300%)" },
-                  },
-                }}
-              />
-            </Stack>
-          </Container>
-        </Stack>
-      </Element>
-
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
 
       <Stack
+        id="scroll"
         sx={{
           mt: "-16px",
           background: "url(/scrolls/scroll_bg.png)",
@@ -440,6 +360,7 @@ export default function Homepage() {
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
 
       <Stack
+        id="tokenomic"
         sx={{
           mt: "-16px",
           background: "url(/tokenomics/tokenomic_bg.png)",
@@ -524,6 +445,86 @@ export default function Homepage() {
               }}
             />
           </Box>
+        </Container>
+      </Stack>
+
+      <Box
+        component="img"
+        src="/divider.png"
+        sx={{ width: 1, mt: "-65px", zIndex: 999 }}
+      />
+
+      <Stack
+        id="roadmap"
+        sx={{
+          mt: "-16px",
+          background: "url(/mapbg.jpg)",
+          backgroundSize: "cover",
+        }}
+      >
+        <Stack direction="row" justifyContent="center" sx={{ mt: 10, mb: 5 }}>
+          <MotionInView variants={varFadeInUp}>
+            <Box component="img" src="/texts/roadmap.png" />
+          </MotionInView>
+        </Stack>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          sx={{ mb: 5 }}
+          spacing={5}
+        >
+          <Box
+            component="img"
+            src="/prevArrow.png"
+            onClick={() => RoadmapSliderRef.current.slickPrev()}
+            sx={{
+              cursor: "pointer",
+              transition: "all 0.3s",
+              "&:hover": { transform: "scale(1.1)" },
+            }}
+          />
+          <Box
+            component="img"
+            src="/nextArrow.png"
+            onClick={() => RoadmapSliderRef.current.slickNext()}
+            sx={{
+              cursor: "pointer",
+              transition: "all 0.3s",
+              "&:hover": { transform: "scale(1.1)" },
+            }}
+          />
+        </Stack>
+        <Container maxWidth="xl">
+          <Slider {...RoadmapSliderSettings} ref={RoadmapSliderRef}>
+            {[...Array(9)].map((item, index) => (
+              <Box key={index}>
+                <Box
+                  src={`/roadmap/${index + 1}.png`}
+                  sx={{
+                    width: 496,
+                    height: 460,
+                    background: `url(/roadmap/${index + 1}.png)`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "-80px",
+                  }}
+                />
+              </Box>
+            ))}
+          </Slider>
+          <Stack direction="row">
+            <Box
+              component="img"
+              src="/walking_character.gif"
+              sx={{
+                width: 400,
+                animation: "walk 10s linear infinite",
+                "@keyframes walk": {
+                  from: { transform: "translateX(0)" },
+                  to: { transform: "translateX(300%)" },
+                },
+              }}
+            />
+          </Stack>
         </Container>
       </Stack>
 
