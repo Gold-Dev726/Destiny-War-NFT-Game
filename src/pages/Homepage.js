@@ -280,10 +280,17 @@ export default function Homepage() {
 
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
 
-      <Stack id="expedition">
+      <Stack
+        id="expedition"
+        sx={{
+          mt: "-16px",
+        }}
+      >
         <Box component="img" src="/expedition.png" />
       </Stack>
 
+      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+      
       <Stack
         id="scroll"
         sx={{
