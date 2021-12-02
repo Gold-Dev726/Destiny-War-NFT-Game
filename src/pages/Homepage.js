@@ -190,7 +190,6 @@ export default function Homepage() {
         <Presale />
       </Stack>
 
-
       <Stack id="class">
         <Team />
       </Stack>
@@ -205,7 +204,7 @@ export default function Homepage() {
       </Stack>
 
       {/* <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} /> */}
-      
+
       <Stack
         id="scroll"
         sx={{
@@ -372,6 +371,15 @@ export default function Homepage() {
             />
           </Box>
         </Container>
+        <Stack direction="row" justifyContent="center" sx={{ mb: 10 }}>
+          <MotionInView variants={varFadeInUp}>
+            <Box
+              component="img"
+              src="/tokenomics/token_supply.png"
+              sx={{ width: 400 }}
+            />
+          </MotionInView>
+        </Stack>
       </Stack>
 
       <Box
