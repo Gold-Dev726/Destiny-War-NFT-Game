@@ -57,6 +57,41 @@ export default function Homepage() {
         </Grid>
       </Grid>
 
+      <Grid container sx={{ px: 20, pb: 10 }} alignItems="center">
+        <Grid item md={3} sm={6}>
+          <Box
+            component="img"
+            src="/presale/buy.png"
+            onClick={() => handleModal("character")}
+            sx={{ cursor: "pointer", width: 120, mx: "auto" }}
+          />
+        </Grid>
+        <Grid item md={3} sm={6}>
+          <Box
+            component="img"
+            src="/presale/buy.png"
+            onClick={() => handleModal("character")}
+            sx={{ cursor: "pointer", width: 120, ml: 20 }}
+          />
+        </Grid>
+        <Grid item md={3} sm={6}>
+          <Box
+            component="img"
+            src="/presale/buy.png"
+            onClick={() => handleModal("character")}
+            sx={{ cursor: "pointer", width: 120, ml: 14 }}
+          />
+        </Grid>
+        <Grid item md={3} sm={6}>
+          <Box
+            component="img"
+            src="/presale/buy.png"
+            onClick={() => handleModal("character")}
+            sx={{ cursor: "pointer", width: 120, ml: 8 }}
+          />
+        </Grid>
+      </Grid>
+
       <Dialog
         open={presaleModal}
         onClose={() => setPresaleModal(false)}
