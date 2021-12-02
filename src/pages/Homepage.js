@@ -152,6 +152,7 @@ export default function Homepage() {
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
 
       <Stack
+        id="presale"
         sx={{
           mt: "-16px",
           background: "linear-gradient(#5b3342, #8d532a)",

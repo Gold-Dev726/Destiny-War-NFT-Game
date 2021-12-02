@@ -1,4 +1,5 @@
 import { Link as RouterLink } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 // material
 import { Stack, Container, Typography, Link } from "@mui/material";
 import ConnectButton from "components/ConnectButton";
@@ -48,11 +49,17 @@ export default function MainNavbar() {
         WHITEPAPER
       </Typography>
       <Typography
-        component={RouterLink}
-        to="/presale"
+        component={ScrollLink}
+        to="presale"
+        spy
+        smooth
         variant="h4"
         color="#47350b"
-        sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}
+        sx={{
+          textDecoration: "none",
+          fontFamily: "AmericanCaptain",
+          cursor: "pointer",
+        }}
       >
         PRE-SALE
       </Typography>
