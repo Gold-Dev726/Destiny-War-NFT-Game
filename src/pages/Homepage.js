@@ -463,7 +463,7 @@ export default function Homepage() {
               sx={{ width: "60%" }}
             />
           </Stack> */}
-          <Box sx={{ position: "relative", height: 800 }}>
+          <Box sx={{ position: "relative", height: 800, ml: -5 }}>
             <Box
               component="img"
               src="/tokenomics/1.png"
@@ -472,7 +472,7 @@ export default function Homepage() {
                 position: "absolute",
                 top: 0,
                 transition: "all 0.3s",
-                "&:hover": { transform: "scale(0.8)" },
+                "&:hover": { transform: "scale(0.9)" },
               }}
             />
             <Box
@@ -484,7 +484,7 @@ export default function Homepage() {
                 top: 230,
                 left: 40,
                 transition: "all 0.3s",
-                "&:hover": { transform: "scale(0.8)" },
+                "&:hover": { transform: "scale(0.9)" },
               }}
             />
             <Box
@@ -496,7 +496,7 @@ export default function Homepage() {
                 top: 300,
                 left: 0,
                 transition: "all 0.3s",
-                "&:hover": { transform: "scale(0.8)" },
+                "&:hover": { transform: "scale(0.9)" },
               }}
             />
             <Box
@@ -506,9 +506,9 @@ export default function Homepage() {
                 transform: "scale(0.7)",
                 position: "absolute",
                 top: 280,
-                right: -110,
+                right: -78,
                 transition: "all 0.3s",
-                "&:hover": { transform: "scale(0.8)" },
+                "&:hover": { transform: "scale(0.9)" },
               }}
             />
             <Box
@@ -518,9 +518,9 @@ export default function Homepage() {
                 transform: "scale(0.7)",
                 position: "absolute",
                 top: 40,
-                right: -60,
+                right: -20,
                 transition: "all 0.3s",
-                "&:hover": { transform: "scale(0.8)" },
+                "&:hover": { transform: "scale(0.9)" },
               }}
             />
           </Box>
