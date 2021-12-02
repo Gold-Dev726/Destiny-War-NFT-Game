@@ -151,20 +151,6 @@ export default function Homepage() {
 
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
 
-      <Stack
-        id="presale"
-        sx={{
-          mt: "-16px",
-          background: "linear-gradient(#5b3342, #8d532a)",
-        }}
-        alignItems="center"
-      >
-        <Box component="img" src="/presale/presale_btn.png" sx={{ mt: -4 }} />
-        <Presale />
-      </Stack>
-
-      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
-
       <Stack sx={{ bgcolor: "#523f8e", mt: "-16px" }}>
         <Container maxWidth="xl">
           <Stack
@@ -188,6 +174,20 @@ export default function Homepage() {
             </Typography>
           </Stack>
         </Container>
+      </Stack>
+
+      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+
+      <Stack
+        id="presale"
+        sx={{
+          mt: "-16px",
+          background: "linear-gradient(#5b3342, #8d532a)",
+        }}
+        alignItems="center"
+      >
+        <Box component="img" src="/presale/presale_btn.png" sx={{ mt: -4 }} />
+        <Presale />
       </Stack>
 
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
@@ -279,6 +279,10 @@ export default function Homepage() {
       </Stack>
 
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+
+      <Stack id="expedition">
+        <Box component="img" src="/expedition.png" />
+      </Stack>
 
       <Stack
         id="scroll"
