@@ -472,7 +472,7 @@ export default function Homepage() {
                 position: "absolute",
                 top: 0,
                 transition: "all 0.3s",
-                "&:hover": { transform: "scale(0.8)" },
+                "&:hover": { transform: "scale(0.9)", zIndex: 5 },
               }}
             />
             <Box
@@ -484,7 +484,7 @@ export default function Homepage() {
                 top: 230,
                 left: 40,
                 transition: "all 0.3s",
-                "&:hover": { transform: "scale(0.8)" },
+                "&:hover": { transform: "scale(0.9)", zIndex: 5 },
               }}
             />
             <Box
@@ -496,7 +496,7 @@ export default function Homepage() {
                 top: 300,
                 left: 0,
                 transition: "all 0.3s",
-                "&:hover": { transform: "scale(0.8)" },
+                "&:hover": { transform: "scale(0.9)", zIndex: 5 },
               }}
             />
             <Box
@@ -508,7 +508,7 @@ export default function Homepage() {
                 top: 280,
                 right: -78,
                 transition: "all 0.3s",
-                "&:hover": { transform: "scale(0.8)" },
+                "&:hover": { transform: "scale(0.9)", zIndex: 5 },
               }}
             />
             <Box
@@ -520,7 +520,7 @@ export default function Homepage() {
                 top: 40,
                 right: -20,
                 transition: "all 0.3s",
-                "&:hover": { transform: "scale(0.8)" },
+                "&:hover": { transform: "scale(0.9)", zIndex: 5 },
               }}
             />
           </Box>
