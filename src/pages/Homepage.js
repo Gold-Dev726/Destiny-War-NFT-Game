@@ -374,7 +374,7 @@ export default function Homepage() {
         <Stack
           direction="row"
           justifyContent="center"
-          sx={{ mt: -10, mb: 10, ml: 4 }}
+          sx={{ mt: -10, mb: 5, ml: 4 }}
         >
           <MotionInView variants={varFadeInUp}>
             <Box
