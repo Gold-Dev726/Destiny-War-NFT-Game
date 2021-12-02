@@ -446,7 +446,7 @@ export default function Homepage() {
           backgroundSize: "contained",
         }}
       >
-        <Stack direction="row" justifyContent="center" sx={{ mt: 10, mb: 5 }}>
+        <Stack direction="row" justifyContent="center" sx={{ mt: 10 }}>
           <MotionInView variants={varFadeInUp}>
             <Box
               component="img"
@@ -456,13 +456,74 @@ export default function Homepage() {
           </MotionInView>
         </Stack>
         <Container maxWidth="xl">
-          <Stack direction="row" justifyContent="center" sx={{ mb: 10 }}>
+          {/* <Stack direction="row" justifyContent="center" sx={{ mb: 10 }}>
             <Box
               component="img"
               src="/tokenomics/tokenomic.png"
               sx={{ width: "60%" }}
             />
-          </Stack>
+          </Stack> */}
+          <Box sx={{ position: "relative", height: 800 }}>
+            <Box
+              component="img"
+              src="/tokenomics/1.png"
+              sx={{
+                transform: "scale(0.7)",
+                position: "absolute",
+                top: 0,
+                transition: "all 0.3s",
+                "&:hover": { transform: "scale(0.8)" },
+              }}
+            />
+            <Box
+              component="img"
+              src="/tokenomics/2.png"
+              sx={{
+                transform: "scale(0.7)",
+                position: "absolute",
+                top: 230,
+                left: 40,
+                transition: "all 0.3s",
+                "&:hover": { transform: "scale(0.8)" },
+              }}
+            />
+            <Box
+              component="img"
+              src="/tokenomics/3.png"
+              sx={{
+                transform: "scale(0.7)",
+                position: "absolute",
+                top: 300,
+                left: 0,
+                transition: "all 0.3s",
+                "&:hover": { transform: "scale(0.8)" },
+              }}
+            />
+            <Box
+              component="img"
+              src="/tokenomics/4.png"
+              sx={{
+                transform: "scale(0.7)",
+                position: "absolute",
+                top: 280,
+                right: -110,
+                transition: "all 0.3s",
+                "&:hover": { transform: "scale(0.8)" },
+              }}
+            />
+            <Box
+              component="img"
+              src="/tokenomics/5.png"
+              sx={{
+                transform: "scale(0.7)",
+                position: "absolute",
+                top: 40,
+                right: -60,
+                transition: "all 0.3s",
+                "&:hover": { transform: "scale(0.8)" },
+              }}
+            />
+          </Box>
         </Container>
       </Stack>
 
