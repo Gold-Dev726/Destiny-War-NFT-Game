@@ -70,7 +70,7 @@ export default function Homepage() {
           <Box
             component="img"
             src="/presale/buy.png"
-            onClick={() => handleModal("character")}
+            onClick={() => handleModal("mount")}
             sx={{ cursor: "pointer", width: 120, ml: 20 }}
           />
         </Grid>
@@ -78,7 +78,7 @@ export default function Homepage() {
           <Box
             component="img"
             src="/presale/buy.png"
-            onClick={() => handleModal("character")}
+            onClick={() => handleModal("pet")}
             sx={{ cursor: "pointer", width: 120, ml: 14 }}
           />
         </Grid>
@@ -86,7 +86,7 @@ export default function Homepage() {
           <Box
             component="img"
             src="/presale/buy.png"
-            onClick={() => handleModal("character")}
+            onClick={() => handleModal("dwar")}
             sx={{ cursor: "pointer", width: 120, ml: 8 }}
           />
         </Grid>
