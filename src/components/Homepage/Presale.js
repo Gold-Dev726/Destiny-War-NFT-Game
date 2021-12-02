@@ -57,7 +57,7 @@ export default function Homepage() {
         </Grid>
       </Grid>
 
-      <Grid container sx={{ px: 20, pb: 10 }} alignItems="center">
+      <Grid container sx={{ px: 20, pb: 10, mt: -8 }} alignItems="center">
         <Grid item md={3} sm={6}>
           <Box
             component="img"
