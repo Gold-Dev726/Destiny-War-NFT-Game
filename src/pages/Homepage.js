@@ -190,9 +190,8 @@ export default function Homepage() {
         <Presale />
       </Stack>
 
-      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
 
-      <Stack id="class" sx={{ bgcolor: "#cdd5b0", mt: "-16px" }}>
+      <Stack id="class">
         <Team />
       </Stack>
 

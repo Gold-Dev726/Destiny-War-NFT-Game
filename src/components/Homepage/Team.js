@@ -29,8 +29,13 @@ export default function Homepage() {
   };
   return (
     <>
-      <Stack sx={{ position: "relative", zIndex: 10 }}>
-        <Stack alignItems="center" sx={{ width: 1, position: "absolute", top: 0 }}>
+      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px", zIndex: 10 }} />
+
+      <Stack sx={{ position: "relative", zIndex: 10, mt: "-16px" }}>
+        <Stack
+          alignItems="center"
+          sx={{ width: 1, position: "absolute", top: 0 }}
+        >
           <Stack direction="row" justifyContent="center" sx={{ my: 3 }}>
             {/* <MotionInView variants={varFadeInUp}> */}
             <Box
@@ -78,7 +83,14 @@ export default function Homepage() {
         <Box component="img" src={`/teams/2.png`} />
         <Box component="img" src={`/teams/3.png`} />
         <Box component="img" src={`/teams/4.png`} />
+        <Box component="img" src={`/teams/5.png`} />
       </SwipeableViews>
+
+      <Box
+        component="img"
+        src="/divider.png"
+        sx={{ width: 1, mt: "-65px", zIndex: 10 }}
+      />
     </>
   );
 }
