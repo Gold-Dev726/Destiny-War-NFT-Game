@@ -40,105 +40,107 @@ export default function Inventorypage() {
   // normalImgUri();
   console.log("ownedChar", ownedCharacter);
   return (
-    <Container
-      maxWidth="xl"
-      sx={{
-        height: "80vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Stack direction="row" justifyContent="space-between" sx={{ width: 1 }}>
-        <Stack
-          sx={{ cursor: "pointer" }}
-          onClick={() => navigate(`/items/character/${ownedCharacter}`)}
-        >
-          <Typography variant="h3" textAlign="center">
-            Character
-          </Typography>
-          {ownedCharacter ? (
-            <Box sx={{ position: "relative" }}>
-              <Box
-                component="img"
-                // src="/cha.png"
-                src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${ownedCharacter}.png`}
-                sx={{ width: 400 }}
-              />
-              <Typography
-                variant="h3"
-                fontFamily="BerlinFB"
-                sx={{
-                  position: "absolute",
-                  top: "25%",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                }}
-              >
-                #{ownedCharacter}
-              </Typography>
-            </Box>
-          ) : (
-            <Typography>No Character</Typography>
-          )}
+    <Box sx={{ background: "linear-gradient(#979e3f, #78b659)", mt: "-146px" }}>
+      <Container
+        maxWidth="xl"
+        sx={{
+          height: "90vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Stack direction="row" justifyContent="space-between" sx={{ width: 1 }}>
+          <Stack
+            sx={{ cursor: "pointer" }}
+            onClick={() => navigate(`/items/character/${ownedCharacter}`)}
+          >
+            <Typography variant="h3" textAlign="center">
+              Character
+            </Typography>
+            {ownedCharacter ? (
+              <Box sx={{ position: "relative" }}>
+                <Box
+                  component="img"
+                  // src="/cha.png"
+                  src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${ownedCharacter}.png`}
+                  sx={{ width: 400 }}
+                />
+                <Typography
+                  variant="h3"
+                  fontFamily="BerlinFB"
+                  sx={{
+                    position: "absolute",
+                    top: "25%",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                  }}
+                >
+                  #{ownedCharacter}
+                </Typography>
+              </Box>
+            ) : (
+              <Typography>No Character</Typography>
+            )}
+          </Stack>
+          <Stack>
+            <Typography variant="h3" textAlign="center">
+              Mount
+            </Typography>
+            {ownedMount ? (
+              <Box sx={{ position: "relative" }}>
+                <Box
+                  component="img"
+                  // src="/cha.png"
+                  src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${ownedMount}.png`}
+                  sx={{ width: 400 }}
+                />
+                <Typography
+                  variant="h3"
+                  sx={{
+                    position: "absolute",
+                    top: "25%",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                  }}
+                >
+                  #{ownedMount}
+                </Typography>
+              </Box>
+            ) : (
+              <Typography>No Mount</Typography>
+            )}
+          </Stack>
+          <Stack>
+            <Typography variant="h3" textAlign="center">
+              Pet
+            </Typography>
+            {ownedPet ? (
+              <Box sx={{ position: "relative" }}>
+                <Box
+                  component="img"
+                  // src="/cha.png"
+                  src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${ownedPet}.png`}
+                  sx={{ width: 400 }}
+                />
+                <Typography
+                  variant="h3"
+                  sx={{
+                    position: "absolute",
+                    top: "25%",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                  }}
+                >
+                  #{ownedPet}
+                </Typography>
+              </Box>
+            ) : (
+              <Typography>No Pet</Typography>
+            )}
+          </Stack>
         </Stack>
-        <Stack>
-          <Typography variant="h3" textAlign="center">
-            Mount
-          </Typography>
-          {ownedMount ? (
-            <Box sx={{ position: "relative" }}>
-              <Box
-                component="img"
-                // src="/cha.png"
-                src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${ownedMount}.png`}
-                sx={{ width: 400 }}
-              />
-              <Typography
-                variant="h3"
-                sx={{
-                  position: "absolute",
-                  top: "25%",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                }}
-              >
-                #{ownedMount}
-              </Typography>
-            </Box>
-          ) : (
-            <Typography>No Mount</Typography>
-          )}
-        </Stack>
-        <Stack>
-          <Typography variant="h3" textAlign="center">
-            Pet
-          </Typography>
-          {ownedPet ? (
-            <Box sx={{ position: "relative" }}>
-              <Box
-                component="img"
-                // src="/cha.png"
-                src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${ownedPet}.png`}
-                sx={{ width: 400 }}
-              />
-              <Typography
-                variant="h3"
-                sx={{
-                  position: "absolute",
-                  top: "25%",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                }}
-              >
-                #{ownedPet}
-              </Typography>
-            </Box>
-          ) : (
-            <Typography>No Pet</Typography>
-          )}
-        </Stack>
-      </Stack>
-    </Container>
+      </Container>
+    </Box>
   );
 }
