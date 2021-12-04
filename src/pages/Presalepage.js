@@ -12,7 +12,10 @@ import {
   InputAdornment,
   Grid,
 } from "@mui/material";
-import { getDwarCharacterContract } from "utils/contractHelpers";
+import {
+  getDwarCharacterContract,
+  getDwarTokenContract,
+} from "utils/contractHelpers";
 import { ethers } from "ethers";
 import { toast } from "react-toastify";
 import { useEthers } from "@usedapp/core";
@@ -71,6 +74,7 @@ export default function PresalePage() {
   const { library, account } = useEthers();
   const signer = library?.getSigner();
   const DwarCharacterContract = getDwarCharacterContract(signer);
+  const DwarTokenContract = getDwarTokenContract(signer);
 
   const handleBuyCharacter = async () => {
     try {
@@ -83,6 +87,7 @@ export default function PresalePage() {
       toast.error(error.data.message);
     }
   };
+
 
   // Slider Part
   const sliderRef = useRef();

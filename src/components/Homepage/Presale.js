@@ -1,10 +1,24 @@
 import { useState } from "react";
 // material
-import { Box, Stack, Dialog, Button, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Stack,
+  Dialog,
+  Button,
+  Grid,
+  Typography,
+  TextField,
+} from "@mui/material";
 
 import SwipeableViews from "react-swipeable-views";
 import { virtualize, bindKeyboard } from "react-swipeable-views-utils";
-
+import {
+  getDwarCharacterContract,
+  getDwarTokenContract,
+} from "utils/contractHelpers";
+import { ethers } from "ethers";
+import { toast } from "react-toastify";
+import { useEthers } from "@usedapp/core";
 // function slideRenderer(params) {
 //   const { index, key } = params;
 //   console.log(index);
@@ -15,11 +29,32 @@ import { virtualize, bindKeyboard } from "react-swipeable-views-utils";
 export default function Homepage() {
   const [presaleModal, setPresaleModal] = useState(false);
   const [currentPresale, setCurrentPresale] = useState();
+  const [tokenAmount, setTokenAmount] = useState();
+  const { library, account } = useEthers();
+  const signer = library?.getSigner();
+  const DwarCharacterContract = getDwarCharacterContract(signer);
+  const DwarTokenContract = getDwarTokenContract(signer);
 
   const handleModal = (type) => {
     setPresaleModal(true);
     setCurrentPresale(type);
   };
+
+  const handleBuyToken = async () => {
+    console.log(DwarTokenContract);
+    try {
+      const options = {
+        value: ethers.utils.parseEther((0.000008 * tokenAmount).toString()),
+      };
+      const result = await DwarTokenContract.buyTokens(tokenAmount, options);
+      toast.success("You bought dwar tokens successfully!");
+      console.log(result);
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error(error.data.message);
+    }
+  };
+
   return (
     <>
       <Grid container sx={{ px: 20 }} alignItems="center">
@@ -143,6 +178,21 @@ export default function Homepage() {
             />
           )}
 
+          <TextField
+            type="number"
+            label="Token Amount"
+            sx={{
+              position: "absolute",
+              left: "50%",
+              top: "40%",
+              transform: "translateX(-50%)",
+              width: 0.8,
+            }}
+            value={tokenAmount}
+            onChange={(e) => setTokenAmount(e.target.value)}
+            placeholder="Please input the token number you want to buy"
+          />
+
           <Box
             component="img"
             src={`/presale/buy.png`}
@@ -153,6 +203,7 @@ export default function Homepage() {
               transform: "translateX(-50%)",
               width: 100,
             }}
+            onClick={handleBuyToken}
           />
           <Stack
             direction="row"
