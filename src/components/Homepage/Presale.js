@@ -202,7 +202,7 @@ export default function Homepage() {
               top: "60%",
               transform: "translateX(-50%)",
               width: 100,
-              cursor: 'pointer'
+              cursor: "pointer",
             }}
             onClick={handleBuyToken}
           />
