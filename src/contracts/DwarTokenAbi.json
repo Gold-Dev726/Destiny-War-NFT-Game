@@ -5,6 +5,11 @@
         "internalType": "uint256",
         "name": "initialSupply",
         "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "busdAddress",
+        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",
@@ -80,6 +85,19 @@
     "type": "event"
   },
   {
+    "inputs": [],
+    "name": "BUSD",
+    "outputs": [
+      {
+        "internalType": "contract IERC20",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "address",
@@ -150,13 +168,13 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_amount",
+        "name": "busdAmount",
         "type": "uint256"
       }
     ],
     "name": "buyTokens",
     "outputs": [],
-    "stateMutability": "payable",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {

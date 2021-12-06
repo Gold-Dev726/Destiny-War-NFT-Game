@@ -1,6 +1,24 @@
 import { Button, Box, Stack, Typography } from "@mui/material";
-import { useEthers, useEtherBalance } from "@usedapp/core";
+import { useEthers, useEtherBalance, useTokenBalance } from "@usedapp/core";
+import { TestBusdAddress } from "contracts/address";
 import { ethers } from "ethers";
+
+// export function DwarBalance() {
+//   const { account } = useEthers();
+//   const dwarBalanceBigNumber = useTokenBalance(DwarAddress, account);
+//   const dwarBalance =
+//     dwarBalanceBigNumber &&
+//     ethers.utils.formatUnits(dwarBalanceBigNumber, 9);
+//   return dwarBalance;
+// }
+
+export function BusdBalance() {
+  const { account } = useEthers();
+  const busdBalanceBigNumber = useTokenBalance(TestBusdAddress, account);
+  const busdBalance =
+    busdBalanceBigNumber && ethers.utils.formatUnits(busdBalanceBigNumber, 18);
+  return busdBalance;
+}
 
 export default function ConnectButton({ sx }) {
   const { activateBrowserWallet, deactivate, account } = useEthers();

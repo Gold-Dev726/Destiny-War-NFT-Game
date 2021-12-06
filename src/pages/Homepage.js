@@ -14,6 +14,7 @@ import { varFadeInUp, MotionInView, varFadeInDown } from "components/animate";
 import Slider from "react-slick";
 import { useLocation } from "react-router-dom";
 import { Link, Element, scroller } from "react-scroll";
+import TokenPresale from "components/Homepage/TokenPresale";
 import Presale from "components/Homepage/Presale";
 import Team from "components/Homepage/Team";
 import { makeStyles } from "@mui/styles";
@@ -115,6 +116,21 @@ export default function Homepage() {
             </Typography>
           </Stack>
         </Container>
+      </Stack>
+
+      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+
+      <Stack
+        id="presale"
+        sx={{
+          mt: "-16px",
+          background: "url(token_presale/bg.png)",
+          backgroundSize: '120% 100%'
+        }}
+        alignItems="center"
+      >
+        <Box component="img" src="/presale/presale_btn.png" sx={{ mt: -4 }} />
+        <TokenPresale />
       </Stack>
 
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
@@ -312,11 +328,7 @@ export default function Homepage() {
             />
           </Box>
         </Container>
-        <Stack
-          direction="row"
-          justifyContent="center"
-          sx={{ mt: -10, mb: 5}}
-        >
+        <Stack direction="row" justifyContent="center" sx={{ mt: -10, mb: 5 }}>
           <MotionInView variants={varFadeInUp}>
             <Box
               component="img"

@@ -1,7 +1,12 @@
 import { ethers } from "ethers";
 import DwarCharacterAbi from "contracts/DwarCharacterAbi.json";
 import DwarTokenAbi from "contracts/DwarTokenAbi.json";
-import { DwarCharacterAddress, DwarTokenAddress } from "contracts/address.js";
+import ERC20Abi from "contracts/ERC20Abi.json";
+import {
+  DwarCharacterAddress,
+  DwarTokenAddress,
+  TestBusdAddress,
+} from "contracts/address.js";
 import getRpcUrl from "utils/getRpcUrl";
 
 // const RPC_URL = getRpcUrl()
@@ -18,4 +23,8 @@ export const getDwarCharacterContract = (signer) => {
 
 export const getDwarTokenContract = (signer) => {
   return getContract(DwarTokenAbi, DwarTokenAddress, signer);
+};
+
+export const getERC20Contract = (signer) => {
+  return getContract(ERC20Abi, TestBusdAddress, signer);
 };

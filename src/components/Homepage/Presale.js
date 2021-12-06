@@ -19,6 +19,7 @@ import {
 import { ethers } from "ethers";
 import { toast } from "react-toastify";
 import { useEthers } from "@usedapp/core";
+import { BusdBalance } from "components/ConnectButton";
 // function slideRenderer(params) {
 //   const { index, key } = params;
 //   console.log(index);
@@ -43,10 +44,11 @@ export default function Homepage() {
   const handleBuyToken = async () => {
     console.log(DwarTokenContract);
     try {
-      const options = {
-        value: ethers.utils.parseEther((0.000008 * tokenAmount).toString()),
-      };
-      const result = await DwarTokenContract.buyTokens(tokenAmount, options);
+      // const options = {
+      //   value: ethers.utils.parseEther((0.000008 * tokenAmount).toString()),
+      // };
+      // const result = await DwarTokenContract.buyTokens(tokenAmount, options);
+      const result = await DwarTokenContract.buyTokens(20);
       toast.success("You bought dwar tokens successfully!");
       console.log(result);
     } catch (error) {
@@ -54,6 +56,8 @@ export default function Homepage() {
       toast.error(error.data.message);
     }
   };
+
+  const busdBalance = BusdBalance();
 
   return (
     <>
@@ -192,6 +196,20 @@ export default function Homepage() {
             onChange={(e) => setTokenAmount(e.target.value)}
             placeholder="Please input the token number you want to buy"
           />
+
+          <Typography
+            variant="h5"
+            sx={{
+              position: "absolute",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: 100,
+              top: '70%',
+              cursor: "pointer",
+            }}
+          >
+            BusdBalance: {busdBalance && busdBalance}
+          </Typography>
 
           <Box
             component="img"
