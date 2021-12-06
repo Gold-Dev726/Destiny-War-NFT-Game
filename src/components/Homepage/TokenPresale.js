@@ -38,10 +38,17 @@ export default function Homepage() {
   const DwarCharacterContract = getDwarCharacterContract(signer);
   const DwarTokenContract = getDwarTokenContract(signer);
 
+  const busdBalance = BusdBalance();
+
+
   const handleModal = (type) => {
     setPresaleModal(true);
     setCurrentPresale(type);
   };
+
+  const handleBuyMax = () => {
+    setBusdAmount(busdBalance)
+  }
 
   const handleBuyToken = async () => {
     console.log(DwarTokenContract);
@@ -59,35 +66,67 @@ export default function Homepage() {
     }
   };
 
-  const busdBalance = BusdBalance();
 
   return (
     <Stack direction="row" sx={{ py: 10 }}>
       <Stack sx={{ position: "relative" }}>
         <Box component="img" src="/token_presale/1.png" />
-        <InputBase
-          type="number"
-          value={busdAmount}
-          onChange={(e) => setBusdAmount(e.target.value)}
+        <Stack
           fullWidth
+          direction="row"
+          justifyContent="flex-end"
           sx={{
             position: "absolute",
-            border: "1px solid red",
-            top: "53%",
+            // border: "1px solid red",
+            top: "46%",
             left: "50%",
             transform: "translateX(-50%)",
             fontSize: 40,
             width: 0.8,
-            height: 50,
           }}
-        />
+        >
+          <Typography color="black">Balance: {busdBalance}</Typography>
+        </Stack>
+        <Stack
+          direction="row"
+          fullWidth
+          spacing={5}
+          alignItems="center"
+          sx={{
+            position: "absolute",
+            top: "53%",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: 0.8,
+          }}
+        >
+          <InputBase
+            type="number"
+            value={busdAmount}
+            onChange={(e) => setBusdAmount(e.target.value)}
+            sx={{ fontSize: 40, height: 50 }}
+            fullWidth
+          />
+          <Typography
+            variant="h3"
+            color="#a75108"
+            sx={{
+              cursor: "pointer",
+              transition: "all 0.3s",
+              "&:hover": { transform: "scale(1.05)" },
+            }}
+            onClick={handleBuyMax}
+          >
+            BUY&nbsp;MAX
+          </Typography>
+        </Stack>
         <InputBase
           type="number"
           value={busdAmount * 100}
           fullWidth
           sx={{
             position: "absolute",
-            border: "1px solid red",
+            // border: "1px solid red",
             top: "72%",
             left: "50%",
             transform: "translateX(-50%)",
