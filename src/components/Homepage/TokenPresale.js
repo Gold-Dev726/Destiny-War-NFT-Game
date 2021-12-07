@@ -54,15 +54,24 @@ export default function Homepage() {
   const handleBuyToken = async () => {
     console.log(DwarTokenContract);
     try {
-      // const approvedResult = await BusdContract.approve("0xB913Ed11814Fd42881883ceFEb71370e0A3F66aa", ethers.constants.MaxUint256);
-      // console.log("approvedResult", approvedResult);
-      // const options = {
-      //   value: ethers.utils.parseEther((0.000008 * tokenAmount).toString()),
-      // };
-      // const result = await DwarTokenContract.buyTokens(tokenAmount, options);
-      const result = await DwarTokenContract.buyTokens("20000000000000000000");
+      const result = await DwarTokenContract.buyTokens(
+        (busdAmount * 10 ** 18).toString()
+      );
       toast.success("You bought dwar tokens successfully!");
       console.log(result);
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error(error.data.message);
+    }
+  };
+
+  const handleApprove = async () => {
+    try {
+      const approvedResult = await BusdContract.approve(
+        "0xB913Ed11814Fd42881883ceFEb71370e0A3F66aa",
+        ethers.constants.MaxUint256
+      );
+      console.log("approvedResult", approvedResult);
     } catch (error) {
       console.error("Error:", error);
       toast.error(error.data.message);
@@ -151,6 +160,21 @@ export default function Homepage() {
           }}
           onClick={handleBuyToken}
         />
+        <Button
+          variant="contained"
+          sx={{
+            position: "absolute",
+            left: "50%",
+            bottom: "0",
+            transform: "translateX(-50%)",
+            width: 150,
+            cursor: "pointer",
+          }}
+          onClick={handleApprove}
+        >
+          {" "}
+          APPROVE{" "}
+        </Button>
       </Stack>
       <Stack sx={{ position: "relative" }}>
         <Box component="img" src="/token_presale/2.png" />
