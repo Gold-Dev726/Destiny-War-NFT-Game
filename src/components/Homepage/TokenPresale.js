@@ -16,6 +16,7 @@ import { virtualize, bindKeyboard } from "react-swipeable-views-utils";
 import {
   getDwarCharacterContract,
   getDwarTokenContract,
+  getERC20Contract,
 } from "utils/contractHelpers";
 import { ethers } from "ethers";
 import { toast } from "react-toastify";
@@ -37,9 +38,9 @@ export default function Homepage() {
   const signer = library?.getSigner();
   const DwarCharacterContract = getDwarCharacterContract(signer);
   const DwarTokenContract = getDwarTokenContract(signer);
+  const BusdContract = getERC20Contract(signer);
 
   const busdBalance = BusdBalance();
-
 
   const handleModal = (type) => {
     setPresaleModal(true);
@@ -47,17 +48,19 @@ export default function Homepage() {
   };
 
   const handleBuyMax = () => {
-    setBusdAmount(busdBalance)
-  }
+    setBusdAmount(busdBalance);
+  };
 
   const handleBuyToken = async () => {
     console.log(DwarTokenContract);
     try {
+      // const approvedResult = await BusdContract.approve("0xB913Ed11814Fd42881883ceFEb71370e0A3F66aa", ethers.constants.MaxUint256);
+      // console.log("approvedResult", approvedResult);
       // const options = {
       //   value: ethers.utils.parseEther((0.000008 * tokenAmount).toString()),
       // };
       // const result = await DwarTokenContract.buyTokens(tokenAmount, options);
-      const result = await DwarTokenContract.buyTokens(20);
+      const result = await DwarTokenContract.buyTokens("20000000000000000000");
       toast.success("You bought dwar tokens successfully!");
       console.log(result);
     } catch (error) {
@@ -65,7 +68,6 @@ export default function Homepage() {
       toast.error(error.data.message);
     }
   };
-
 
   return (
     <Stack direction="row" sx={{ py: 10 }}>
