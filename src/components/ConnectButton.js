@@ -1,6 +1,6 @@
 import { Button, Box, Stack, Typography } from "@mui/material";
 import { useEthers, useEtherBalance, useTokenBalance } from "@usedapp/core";
-import { TestBusdAddress } from "contracts/address";
+import { TestBusdAddress, BusdAddress } from "contracts/address";
 import { ethers } from "ethers";
 
 // export function DwarBalance() {

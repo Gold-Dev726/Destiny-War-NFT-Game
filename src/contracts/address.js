@@ -3,3 +3,4 @@ export const DwarCharacterAddress =
 export const DwarTokenAddress = "0xB913Ed11814Fd42881883ceFEb71370e0A3F66aa";
 
 export const TestBusdAddress = "0xbe1056D64F22F3075cb05629C006Eb75C543c878";
+export const BusdAddress = "0xe9e7cea3dedca5984780bafc599bd69add087d56";

@@ -18,6 +18,7 @@ import {
   getDwarTokenContract,
   getERC20Contract,
 } from "utils/contractHelpers";
+import { BusdAddress, DwarTokenAddress } from "../../contracts/address";
 import { ethers } from "ethers";
 import { toast } from "react-toastify";
 import { useEthers } from "@usedapp/core";
@@ -68,7 +69,7 @@ export default function Homepage() {
   const handleApprove = async () => {
     try {
       const approvedResult = await BusdContract.approve(
-        "0xB913Ed11814Fd42881883ceFEb71370e0A3F66aa",
+        DwarTokenAddress,
         ethers.constants.MaxUint256
       );
       console.log("approvedResult", approvedResult);
