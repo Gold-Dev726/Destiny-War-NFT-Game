@@ -17,7 +17,7 @@ export default function Homepage() {
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
-    if (activeStep !== 4) {
+    if (activeStep !== 6) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }
   };
@@ -84,6 +84,8 @@ export default function Homepage() {
         <Box component="img" src={`/teams/3.png`} />
         <Box component="img" src={`/teams/4.png`} />
         <Box component="img" src={`/teams/5.png`} />
+        <Box component="img" src={`/teams/6.png`} />
+        <Box component="img" src={`/teams/7.png`} />
       </SwipeableViews>
 
       <Box

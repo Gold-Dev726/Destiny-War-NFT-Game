@@ -20,6 +20,7 @@ import { ethers } from "ethers";
 import { toast } from "react-toastify";
 import { useEthers } from "@usedapp/core";
 import { BusdBalance } from "components/ConnectButton";
+import { DwarCharacterAddress } from "contracts/address";
 // function slideRenderer(params) {
 //   const { index, key } = params;
 //   console.log(index);
@@ -42,15 +43,27 @@ export default function Homepage() {
   };
 
   const handleBuyToken = async () => {
-    console.log(DwarTokenContract);
     try {
       // const options = {
       //   value: ethers.utils.parseEther((0.000008 * tokenAmount).toString()),
       // };
       // const result = await DwarTokenContract.buyTokens(tokenAmount, options);
-      const result = await DwarTokenContract.buyTokens(20);
-      toast.success("You bought dwar tokens successfully!");
+      const result = await DwarCharacterContract.mintDwarCharacter(1);
+      toast.success("You bought a Dwar Character successfully!");
       console.log(result);
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error(error.data.message);
+    }
+  };
+
+  const handleApprove = async () => {
+    try {
+      const approvedResult = await DwarTokenContract.approve(
+        DwarCharacterAddress,
+        ethers.constants.MaxUint256
+      );
+      console.log("approvedResult", approvedResult);
     } catch (error) {
       console.error("Error:", error);
       toast.error(error.data.message);
@@ -62,7 +75,7 @@ export default function Homepage() {
   return (
     <>
       <Grid container sx={{ px: 20 }} alignItems="center">
-        <Grid item md={3} sm={6}>
+        <Grid item md={4} sm={6}>
           <Box
             component="img"
             src="/presale/character-egg.gif"
@@ -70,7 +83,7 @@ export default function Homepage() {
             sx={{ cursor: "pointer", mt: -3 }}
           />
         </Grid>
-        <Grid item md={3} sm={6}>
+        <Grid item md={4} sm={6}>
           <Box
             component="img"
             src="/presale/mount-egg.gif"
@@ -78,7 +91,7 @@ export default function Homepage() {
             sx={{ cursor: "pointer" }}
           />
         </Grid>
-        <Grid item md={3} sm={6}>
+        <Grid item md={4} sm={6}>
           <Box
             component="img"
             src="/presale/pet-egg.gif"
@@ -86,47 +99,45 @@ export default function Homepage() {
             sx={{ cursor: "pointer", mt: "45px" }}
           />
         </Grid>
-        <Grid item md={3} sm={6}>
-          <Box
-            component="img"
-            src="/presale/dwar_token.png"
-            onClick={() => handleModal("token")}
-            sx={{ cursor: "pointer", width: 250 }}
-          />
-        </Grid>
       </Grid>
 
       <Grid container sx={{ px: 20, pb: 10, mt: -8 }} alignItems="center">
-        <Grid item md={3} sm={6}>
+        <Grid item md={4} sm={6}>
           <Box
             component="img"
             src="/presale/buy.png"
             onClick={() => handleModal("character")}
             sx={{ cursor: "pointer", width: 120, mx: "auto" }}
           />
+          <Stack
+            justifyContent="center"
+            alignItems="center"
+            onClick={handleApprove}
+            sx={{
+              cursor: "pointer",
+              width: 120,
+              mx: "auto",
+              height: 60,
+              bgcolor: "yellow",
+            }}
+          >
+            APPROVE
+          </Stack>
         </Grid>
-        <Grid item md={3} sm={6}>
+        <Grid item md={4} sm={6}>
           <Box
             component="img"
             src="/presale/buy.png"
             onClick={() => handleModal("mount")}
-            sx={{ cursor: "pointer", width: 120, ml: 20 }}
+            sx={{ cursor: "pointer", width: 120, ml: 30 }}
           />
         </Grid>
-        <Grid item md={3} sm={6}>
+        <Grid item md={4} sm={6}>
           <Box
             component="img"
             src="/presale/buy.png"
             onClick={() => handleModal("pet")}
-            sx={{ cursor: "pointer", width: 120, ml: 14 }}
-          />
-        </Grid>
-        <Grid item md={3} sm={6}>
-          <Box
-            component="img"
-            src="/presale/buy.png"
-            onClick={() => handleModal("dwar")}
-            sx={{ cursor: "pointer", width: 120, ml: 8 }}
+            sx={{ cursor: "pointer", width: 120, ml: 24 }}
           />
         </Grid>
       </Grid>
@@ -181,35 +192,6 @@ export default function Homepage() {
               }}
             />
           )}
-
-          <TextField
-            type="number"
-            label="Token Amount"
-            sx={{
-              position: "absolute",
-              left: "50%",
-              top: "40%",
-              transform: "translateX(-50%)",
-              width: 0.8,
-            }}
-            value={tokenAmount}
-            onChange={(e) => setTokenAmount(e.target.value)}
-            placeholder="Please input the token number you want to buy"
-          />
-
-          <Typography
-            variant="h5"
-            sx={{
-              position: "absolute",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: 100,
-              top: '70%',
-              cursor: "pointer",
-            }}
-          >
-            BusdBalance: {busdBalance && busdBalance}
-          </Typography>
 
           <Box
             component="img"

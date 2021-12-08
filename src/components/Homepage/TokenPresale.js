@@ -31,22 +31,14 @@ import { BusdBalance } from "components/ConnectButton";
 // }
 
 export default function Homepage() {
-  const [presaleModal, setPresaleModal] = useState(false);
-  const [currentPresale, setCurrentPresale] = useState();
-  const [tokenAmount, setTokenAmount] = useState();
   const [busdAmount, setBusdAmount] = useState();
-  const { library, account } = useEthers();
+  const { library } = useEthers();
   const signer = library?.getSigner();
-  const DwarCharacterContract = getDwarCharacterContract(signer);
   const DwarTokenContract = getDwarTokenContract(signer);
   const BusdContract = getERC20Contract(signer);
 
   const busdBalance = BusdBalance();
 
-  const handleModal = (type) => {
-    setPresaleModal(true);
-    setCurrentPresale(type);
-  };
 
   const handleBuyMax = () => {
     setBusdAmount(busdBalance);
