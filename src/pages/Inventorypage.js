@@ -84,10 +84,15 @@ export default function Inventorypage() {
                 CHARACTER
               </Typography>
 
-              <Stack direction="row" alignItems="center" spacing={2}>
+              <Stack
+                direction="row"
+                alignItems="center"
+                justifyContent="center"
+                spacing={2}
+              >
                 <Box
                   component="img"
-                  src="/prevArrow.png"
+                  src="/inventory/prevArrow.png"
                   onClick={() => CharacterSliderRef.current.slickPrev()}
                 />
                 <Box
@@ -113,7 +118,7 @@ export default function Inventorypage() {
                                 borderRadius: 1,
                               }}
                             >
-                              {index === 0 && (
+                              {index === 0 && ownedCharacter && (
                                 <Box
                                   onClick={() =>
                                     navigate(
@@ -134,7 +139,7 @@ export default function Inventorypage() {
                 </Box>
                 <Box
                   component="img"
-                  src="/nextArrow.png"
+                  src="/inventory/nextArrow.png"
                   onClick={() => CharacterSliderRef.current.slickNext()}
                 />
               </Stack>
@@ -145,10 +150,15 @@ export default function Inventorypage() {
                 PET
               </Typography>
 
-              <Stack direction="row" alignItems="center" spacing={2}>
+              <Stack
+                direction="row"
+                alignItems="center"
+                justifyContent="center"
+                spacing={2}
+              >
                 <Box
                   component="img"
-                  src="/prevArrow.png"
+                  src="/inventory/prevArrow.png"
                   onClick={() => PetSliderRef.current.slickPrev()}
                 />
                 <Box
@@ -184,7 +194,7 @@ export default function Inventorypage() {
                 </Box>
                 <Box
                   component="img"
-                  src="/nextArrow.png"
+                  src="/inventory/nextArrow.png"
                   onClick={() => CharacterSliderRef.current.slickNext()}
                 />
               </Stack>
@@ -195,10 +205,15 @@ export default function Inventorypage() {
                 Mount
               </Typography>
 
-              <Stack direction="row" alignItems="center" spacing={2}>
+              <Stack
+                direction="row"
+                alignItems="center"
+                justifyContent="center"
+                spacing={2}
+              >
                 <Box
                   component="img"
-                  src="/prevArrow.png"
+                  src="/inventory/prevArrow.png"
                   onClick={() => MountSliderRef.current.slickPrev()}
                 />
                 <Box
@@ -237,7 +252,7 @@ export default function Inventorypage() {
                 </Box>
                 <Box
                   component="img"
-                  src="/nextArrow.png"
+                  src="/inventory/nextArrow.png"
                   onClick={() => CharacterSliderRef.current.slickNext()}
                 />
               </Stack>
