@@ -89,7 +89,7 @@ export default function Inventorypage() {
             <Box sx={{ position: "relative", my: 5 }}>
               <Box
                 component="img"
-                // src="/cha.png"
+                // src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${id}.png`}
                 src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${id}.png`}
                 sx={{ width: 400 }}
               />

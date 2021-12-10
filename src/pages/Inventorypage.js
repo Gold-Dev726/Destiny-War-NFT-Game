@@ -99,7 +99,7 @@ export default function Inventorypage() {
                 >
                   <Box sx={{ pt: 2, pb: 1 }}>
                     <Slider {...SliderSettings} ref={CharacterSliderRef}>
-                      {[...Array(7)].map((item, index) => (
+                      {[...Array(5)].map((item, index) => (
                         <Box>
                           <Stack alignItems="center">
                             <Stack
@@ -113,10 +113,14 @@ export default function Inventorypage() {
                                 borderRadius: 1,
                               }}
                             >
-                              <Box
-                                component="img"
-                                src="/presale/character-egg.gif"
-                              />
+                              {index === 0 && (
+                                <Box
+                                  component="img"
+                                  src="https://gateway.pinata.cloud/ipfs/QmVEFivQ2NDdm4FA2FTYWFi2nJRjPbc43XE8UMzdC5ZaPH/character_normal/1.png"
+                                  // src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/1.png`}
+                                  sx={{ width: 1, height: 1 }}
+                                />
+                              )}
                             </Stack>
                           </Stack>
                         </Box>
@@ -152,7 +156,7 @@ export default function Inventorypage() {
                 >
                   <Box sx={{ pt: 2, pb: 1 }}>
                     <Slider {...SliderSettings} ref={PetSliderRef}>
-                      {[...Array(7)].map((item, index) => (
+                      {[...Array(5)].map((item, index) => (
                         <Box>
                           <Stack alignItems="center">
                             <Stack
@@ -166,7 +170,7 @@ export default function Inventorypage() {
                                 borderRadius: 1,
                               }}
                             >
-                              <Box component="img" src="/presale/pet-egg.gif" />
+                              {/* <Box component="img" src="/presale/pet-egg.gif" /> */}
                             </Stack>
                           </Stack>
                         </Box>
@@ -202,7 +206,7 @@ export default function Inventorypage() {
                 >
                   <Box sx={{ pt: 2, pb: 1 }}>
                     <Slider {...SliderSettings} ref={MountSliderRef}>
-                      {[...Array(7)].map((item, index) => (
+                      {[...Array(5)].map((item, index) => (
                         <Box>
                           <Stack alignItems="center">
                             <Stack
@@ -216,10 +220,10 @@ export default function Inventorypage() {
                                 borderRadius: 1,
                               }}
                             >
-                              <Box
+                              {/* <Box
                                 component="img"
                                 src="/presale/mount-egg.gif"
-                              />
+                              /> */}
                             </Stack>
                           </Stack>
                         </Box>
@@ -236,7 +240,7 @@ export default function Inventorypage() {
             </Stack>
           </Stack>
         </Stack>
-        {/* <Stack direction="row" justifyContent="space-between" sx={{ width: 1 }}>
+        <Stack direction="row" justifyContent="space-between" sx={{ width: 1 }}>
           <Stack
             sx={{ cursor: "pointer" }}
             onClick={() => navigate(`/items/character/${ownedCharacter}`)}
@@ -325,7 +329,7 @@ export default function Inventorypage() {
               <Typography>No Pet</Typography>
             )}
           </Stack>
-        </Stack> */}
+        </Stack>
       </Container>
     </Box>
   );
