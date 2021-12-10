@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // material
 import {
   Box,
@@ -32,13 +32,13 @@ import { BusdBalance } from "components/ConnectButton";
 
 export default function Homepage() {
   const [busdAmount, setBusdAmount] = useState();
-  const { library } = useEthers();
+  const [approved, setApproved] = useState(false);
+  const { library, account } = useEthers();
   const signer = library?.getSigner();
   const DwarTokenContract = getDwarTokenContract(signer);
   const BusdContract = getERC20Contract(signer);
 
   const busdBalance = BusdBalance();
-
 
   const handleBuyMax = () => {
     setBusdAmount(busdBalance);
@@ -53,8 +53,8 @@ export default function Homepage() {
       toast.success("You bought dwar tokens successfully!");
       console.log(result);
     } catch (error) {
-      console.error("Error:", error);
-      toast.error(error.data.message);
+      console.log("Error:", error);
+      toast.error("error");
     }
   };
 
@@ -65,11 +65,33 @@ export default function Homepage() {
         ethers.constants.MaxUint256
       );
       console.log("approvedResult", approvedResult);
+      setApproved(true);
     } catch (error) {
       console.error("Error:", error);
       toast.error(error.data.message);
+      setApproved(false);
     }
   };
+
+  useEffect(() => {
+    console.log(BusdContract);
+    const checkAllowance = async () => {
+      try {
+        const result = await BusdContract.allowance(account, DwarTokenAddress);
+        const allowedBalance = ethers.utils.formatUnits(result);
+        console.log(allowedBalance);
+        if (allowedBalance > 0) {
+          setApproved(true);
+        } else {
+          setApproved(false);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        setApproved(false);
+      }
+    };
+    checkAllowance();
+  }, [account]);
 
   return (
     <Stack direction="row" sx={{ py: 10 }}>
@@ -140,34 +162,35 @@ export default function Homepage() {
           }}
           disabled
         />
-        <Box
-          component="img"
-          src="/token_presale/buy.png"
-          sx={{
-            position: "absolute",
-            left: "50%",
-            bottom: "25px",
-            transform: "translateX(-50%)",
-            width: 150,
-            cursor: "pointer",
-          }}
-          onClick={handleBuyToken}
-        />
-        <Button
-          variant="contained"
-          sx={{
-            position: "absolute",
-            left: "50%",
-            bottom: "0",
-            transform: "translateX(-50%)",
-            width: 150,
-            cursor: "pointer",
-          }}
-          onClick={handleApprove}
-        >
-          {" "}
-          APPROVE{" "}
-        </Button>
+        {approved ? (
+          <Box
+            component="img"
+            src="/token_presale/buy.png"
+            sx={{
+              position: "absolute",
+              left: "50%",
+              bottom: "25px",
+              transform: "translateX(-50%)",
+              width: 150,
+              cursor: "pointer",
+            }}
+            onClick={handleBuyToken}
+          />
+        ) : (
+          <Box
+            component="img"
+            src="/token_presale/approve.png"
+            sx={{
+              position: "absolute",
+              left: "50%",
+              bottom: "25px",
+              transform: "translateX(-50%)",
+              width: 150,
+              cursor: "pointer",
+            }}
+            onClick={handleApprove}
+          />
+        )}
       </Stack>
       <Stack sx={{ position: "relative" }}>
         <Box component="img" src="/token_presale/2.png" />

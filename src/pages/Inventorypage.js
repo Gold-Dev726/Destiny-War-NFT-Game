@@ -1,10 +1,11 @@
 // material
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Typography, Container, Stack } from "@mui/material";
 import { getDwarCharacterContract } from "utils/contractHelpers";
 import { useEthers } from "@usedapp/core";
 import { ethers } from "ethers";
+import Slider from "react-slick";
 import formatBigNumber from "utils/formatBigNumber";
 
 export default function Inventorypage() {
@@ -15,6 +16,19 @@ export default function Inventorypage() {
   const [ownedPet, setOwnedPet] = useState();
   const signer = library?.getSigner();
   const DwarCharacterContract = getDwarCharacterContract(signer);
+
+  const CharacterSliderRef = useRef();
+  const PetSliderRef = useRef();
+  const MountSliderRef = useRef();
+
+  const SliderSettings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    arrows: false,
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,17 +54,189 @@ export default function Inventorypage() {
   // normalImgUri();
   console.log("ownedChar", ownedCharacter);
   return (
-    <Box sx={{ background: "linear-gradient(#979e3f, #78b659)", mt: "-146px" }}>
+    <Box
+      sx={{
+        background: "url(/inventory/bg.png)",
+        mt: "-146px",
+        backgroundSize: "cover",
+        pb: 10,
+      }}
+    >
       <Container
         maxWidth="xl"
         sx={{
-          height: "90vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          pt: 20,
         }}
       >
-        <Stack direction="row" justifyContent="space-between" sx={{ width: 1 }}>
+        <Stack sx={{ width: 1 }}>
+          <Typography
+            textAlign="center"
+            variant="h2"
+            color="white"
+            fontWeight="bold"
+          >
+            INVENTORY
+          </Typography>
+
+          <Stack spacing={5}>
+            <Stack>
+              <Typography variant="h4" color="white" sx={{ ml: 20 }}>
+                CHARACTER
+              </Typography>
+
+              <Stack direction="row" alignItems="center" spacing={2}>
+                <Box
+                  component="img"
+                  src="/prevArrow.png"
+                  onClick={() => CharacterSliderRef.current.slickPrev()}
+                />
+                <Box
+                  sx={{
+                    width: 1200,
+                    bgcolor: "#261896",
+                    borderRadius: 2,
+                  }}
+                >
+                  <Box sx={{ pt: 2, pb: 1 }}>
+                    <Slider {...SliderSettings} ref={CharacterSliderRef}>
+                      {[...Array(7)].map((item, index) => (
+                        <Box>
+                          <Stack alignItems="center">
+                            <Stack
+                              justifyContent="center"
+                              alignItems="center"
+                              sx={{
+                                width: 150,
+                                height: 150,
+                                bgcolor: "#3323ac",
+                                border: "2px solid rgba(255, 255, 255, 0.3)",
+                                borderRadius: 1,
+                              }}
+                            >
+                              <Box
+                                component="img"
+                                src="/presale/character-egg.gif"
+                              />
+                            </Stack>
+                          </Stack>
+                        </Box>
+                      ))}
+                    </Slider>
+                  </Box>
+                </Box>
+                <Box
+                  component="img"
+                  src="/nextArrow.png"
+                  onClick={() => CharacterSliderRef.current.slickNext()}
+                />
+              </Stack>
+            </Stack>
+
+            <Stack>
+              <Typography variant="h4" color="white" sx={{ ml: 20 }}>
+                PET
+              </Typography>
+
+              <Stack direction="row" alignItems="center" spacing={2}>
+                <Box
+                  component="img"
+                  src="/prevArrow.png"
+                  onClick={() => PetSliderRef.current.slickPrev()}
+                />
+                <Box
+                  sx={{
+                    width: 1200,
+                    bgcolor: "#261896",
+                    borderRadius: 2,
+                  }}
+                >
+                  <Box sx={{ pt: 2, pb: 1 }}>
+                    <Slider {...SliderSettings} ref={PetSliderRef}>
+                      {[...Array(7)].map((item, index) => (
+                        <Box>
+                          <Stack alignItems="center">
+                            <Stack
+                              justifyContent="center"
+                              alignItems="center"
+                              sx={{
+                                width: 150,
+                                height: 150,
+                                bgcolor: "#3323ac",
+                                border: "2px solid rgba(255, 255, 255, 0.3)",
+                                borderRadius: 1,
+                              }}
+                            >
+                              <Box component="img" src="/presale/pet-egg.gif" />
+                            </Stack>
+                          </Stack>
+                        </Box>
+                      ))}
+                    </Slider>
+                  </Box>
+                </Box>
+                <Box
+                  component="img"
+                  src="/nextArrow.png"
+                  onClick={() => CharacterSliderRef.current.slickNext()}
+                />
+              </Stack>
+            </Stack>
+
+            <Stack>
+              <Typography variant="h4" color="white" sx={{ ml: 20 }}>
+                Mount
+              </Typography>
+
+              <Stack direction="row" alignItems="center" spacing={2}>
+                <Box
+                  component="img"
+                  src="/prevArrow.png"
+                  onClick={() => MountSliderRef.current.slickPrev()}
+                />
+                <Box
+                  sx={{
+                    width: 1200,
+                    bgcolor: "#261896",
+                    borderRadius: 2,
+                  }}
+                >
+                  <Box sx={{ pt: 2, pb: 1 }}>
+                    <Slider {...SliderSettings} ref={MountSliderRef}>
+                      {[...Array(7)].map((item, index) => (
+                        <Box>
+                          <Stack alignItems="center">
+                            <Stack
+                              justifyContent="center"
+                              alignItems="center"
+                              sx={{
+                                width: 150,
+                                height: 150,
+                                bgcolor: "#3323ac",
+                                border: "2px solid rgba(255, 255, 255, 0.3)",
+                                borderRadius: 1,
+                              }}
+                            >
+                              <Box
+                                component="img"
+                                src="/presale/mount-egg.gif"
+                              />
+                            </Stack>
+                          </Stack>
+                        </Box>
+                      ))}
+                    </Slider>
+                  </Box>
+                </Box>
+                <Box
+                  component="img"
+                  src="/nextArrow.png"
+                  onClick={() => CharacterSliderRef.current.slickNext()}
+                />
+              </Stack>
+            </Stack>
+          </Stack>
+        </Stack>
+        {/* <Stack direction="row" justifyContent="space-between" sx={{ width: 1 }}>
           <Stack
             sx={{ cursor: "pointer" }}
             onClick={() => navigate(`/items/character/${ownedCharacter}`)}
@@ -139,7 +325,7 @@ export default function Inventorypage() {
               <Typography>No Pet</Typography>
             )}
           </Stack>
-        </Stack>
+        </Stack> */}
       </Container>
     </Box>
   );

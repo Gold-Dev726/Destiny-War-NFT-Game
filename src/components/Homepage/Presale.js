@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // material
 import {
   Box,
@@ -29,6 +29,7 @@ import { DwarCharacterAddress } from "contracts/address";
 // }
 
 export default function Homepage() {
+  const [approved, setApproved] = useState(false);
   const [presaleModal, setPresaleModal] = useState(false);
   const [currentPresale, setCurrentPresale] = useState();
   const [tokenAmount, setTokenAmount] = useState();
@@ -44,10 +45,6 @@ export default function Homepage() {
 
   const handleBuyToken = async () => {
     try {
-      // const options = {
-      //   value: ethers.utils.parseEther((0.000008 * tokenAmount).toString()),
-      // };
-      // const result = await DwarTokenContract.buyTokens(tokenAmount, options);
       const result = await DwarCharacterContract.mintDwarCharacter(1);
       toast.success("You bought a Dwar Character successfully!");
       console.log(result);
@@ -64,13 +61,37 @@ export default function Homepage() {
         ethers.constants.MaxUint256
       );
       console.log("approvedResult", approvedResult);
+      toast.success("Approved successfully!");
+      setApproved(true);
     } catch (error) {
       console.error("Error:", error);
       toast.error(error.data.message);
+      setApproved(false);
     }
   };
 
-  const busdBalance = BusdBalance();
+  useEffect(() => {
+    console.log(DwarTokenContract);
+    const checkAllowance = async () => {
+      try {
+        const result = await DwarTokenContract.allowance(
+          account,
+          DwarCharacterAddress
+        );
+        const allowedBalance = ethers.utils.formatUnits(result);
+        console.log(allowedBalance);
+        if (allowedBalance > 0) {
+          setApproved(true);
+        } else {
+          setApproved(false);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        setApproved(false);
+      }
+    };
+    checkAllowance();
+  }, [account]);
 
   return (
     <>
@@ -80,7 +101,7 @@ export default function Homepage() {
             component="img"
             src="/presale/character-egg.gif"
             onClick={() => handleModal("character")}
-            sx={{ cursor: "pointer", mt: -3 }}
+            sx={{ cursor: "pointer", width: 400, mx: "auto" }}
           />
         </Grid>
         <Grid item md={4} sm={6}>
@@ -88,7 +109,7 @@ export default function Homepage() {
             component="img"
             src="/presale/mount-egg.gif"
             onClick={() => handleModal("mount")}
-            sx={{ cursor: "pointer" }}
+            sx={{ cursor: "pointer", width: 300, mx: "auto" }}
           />
         </Grid>
         <Grid item md={4} sm={6}>
@@ -96,40 +117,35 @@ export default function Homepage() {
             component="img"
             src="/presale/pet-egg.gif"
             onClick={() => handleModal("pet")}
-            sx={{ cursor: "pointer", mt: "45px" }}
+            sx={{ cursor: "pointer", width: 320, mx: "auto" }}
           />
         </Grid>
       </Grid>
 
-      <Grid container sx={{ px: 20, pb: 10, mt: -8 }} alignItems="center">
+      <Grid container sx={{ px: 20, pb: 10, mt: 5 }} alignItems="center">
         <Grid item md={4} sm={6}>
-          <Box
-            component="img"
-            src="/presale/buy.png"
-            onClick={() => handleModal("character")}
-            sx={{ cursor: "pointer", width: 120, mx: "auto" }}
-          />
-          <Stack
-            justifyContent="center"
-            alignItems="center"
-            onClick={handleApprove}
-            sx={{
-              cursor: "pointer",
-              width: 120,
-              mx: "auto",
-              height: 60,
-              bgcolor: "yellow",
-            }}
-          >
-            APPROVE
-          </Stack>
+          {approved ? (
+            <Box
+              component="img"
+              src="/presale/buy.png"
+              onClick={() => handleModal("character")}
+              sx={{ cursor: "pointer", width: 120, mx: "auto" }}
+            />
+          ) : (
+            <Box
+              component="img"
+              src="/presale/approve.png"
+              onClick={handleApprove}
+              sx={{ cursor: "pointer", width: 120, mx: "auto" }}
+            />
+          )}
         </Grid>
         <Grid item md={4} sm={6}>
           <Box
             component="img"
             src="/presale/buy.png"
             onClick={() => handleModal("mount")}
-            sx={{ cursor: "pointer", width: 120, ml: 30 }}
+            sx={{ cursor: "pointer", width: 120, mx: "auto" }}
           />
         </Grid>
         <Grid item md={4} sm={6}>
@@ -137,7 +153,7 @@ export default function Homepage() {
             component="img"
             src="/presale/buy.png"
             onClick={() => handleModal("pet")}
-            sx={{ cursor: "pointer", width: 120, ml: 24 }}
+            sx={{ cursor: "pointer", width: 120, mx: "auto" }}
           />
         </Grid>
       </Grid>
