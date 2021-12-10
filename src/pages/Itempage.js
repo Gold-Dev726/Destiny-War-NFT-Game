@@ -10,10 +10,14 @@ import formatBigNumber from "utils/formatBigNumber";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import AllInboxIcon from "@mui/icons-material/AllInbox";
 
-function StatsItem({ title, min, max, showMax = true, isPercent = false }) {
-  const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-  const randomPercent = (min, max) =>
-    (Math.random() * (max - min) + min).toFixed(2);
+function StatsItem({
+  title,
+  min,
+  max,
+  current,
+  showMax = true,
+  isPercent = false,
+}) {
   return (
     <Stack direction="row" sx={{ width: 160 }} spacing={1}>
       <Typography color="#28f0a5">{title}</Typography>
@@ -28,7 +32,7 @@ function StatsItem({ title, min, max, showMax = true, isPercent = false }) {
           border: "1px solid #4c7718",
         }}
       >
-        {showMax ? `${random(min, max + 1)}/${max}` : random(min, max + 1)}
+        {showMax ? `${current}/${max}` : current}
       </Typography>
     </Stack>
   );
@@ -55,7 +59,7 @@ export default function Inventorypage() {
         const StatsOfCharacter = await DwarCharacterContract.getItemProperty(
           id
         );
-        console.log(StatsOfCharacter)
+        console.log(StatsOfCharacter);
 
         setOwnedCharacter(formatBigNumber(OwnedCharacter));
         setOwnerOfCharacter(OwnerOfCharacter);
@@ -197,13 +201,19 @@ export default function Inventorypage() {
             <Typography color="#28f0a5">STATS</Typography>
             <Stack direction="row" spacing={5}>
               <Stack spacing={1}>
-                <StatsItem title="HP" min={70} max={110} />
-                <StatsItem title="MP" min={20} max={50} />
-                <StatsItem title="PA" min={10} max={30} />
-                <StatsItem title="PD" min={10} max={50} />
-                <StatsItem title="MA" min={10} max={20} />
-                <StatsItem title="MD" min={10} max={50} />
-                <StatsItem title="Dodge" min={30} max={50} showMax={false} />
+                <StatsItem title="HP" min={70} max={110} current={78} />
+                <StatsItem title="MP" min={20} max={50} current={36} />
+                <StatsItem title="PA" min={10} max={30} current={22} />
+                <StatsItem title="PD" min={10} max={50} current={46} />
+                <StatsItem title="MA" min={10} max={20} current={12} />
+                <StatsItem title="MD" min={10} max={50} current={32} />
+                <StatsItem
+                  title="Dodge"
+                  min={30}
+                  max={50}
+                  current={21}
+                  showMax={false}
+                />
                 <Stack direction="row" sx={{ width: 160 }} spacing={1}>
                   <Typography color="#28f0a5">CH</Typography>
                   <Typography
@@ -217,16 +227,46 @@ export default function Inventorypage() {
                       border: "1px solid #4c7718",
                     }}
                   >
-                    {(Math.random() * 3 + 2).toFixed(2)}%
+                    4.17%
                   </Typography>
                 </Stack>
               </Stack>
               <Stack spacing={1}>
-                <StatsItem title="CON" min={20} max={30} showMax={false} />
-                <StatsItem title="SPI" min={20} max={30} showMax={false} />
-                <StatsItem title="STR" min={20} max={30} showMax={false} />
-                <StatsItem title="CPS" min={20} max={30} showMax={false} />
-                <StatsItem title="DEX" min={20} max={30} showMax={false} />
+                <StatsItem
+                  title="CON"
+                  min={20}
+                  max={30}
+                  current={23}
+                  showMax={false}
+                />
+                <StatsItem
+                  title="SPI"
+                  min={20}
+                  max={30}
+                  current={27}
+                  showMax={false}
+                />
+                <StatsItem
+                  title="STR"
+                  min={20}
+                  max={30}
+                  current={24}
+                  showMax={false}
+                />
+                <StatsItem
+                  title="CPS"
+                  min={20}
+                  max={30}
+                  current={29}
+                  showMax={false}
+                />
+                <StatsItem
+                  title="DEX"
+                  min={20}
+                  max={30}
+                  current={27}
+                  showMax={false}
+                />
               </Stack>
             </Stack>
           </Stack>

@@ -115,9 +115,13 @@ export default function Inventorypage() {
                             >
                               {index === 0 && (
                                 <Box
+                                  onClick={() =>
+                                    navigate(
+                                      `/items/character/${ownedCharacter}`
+                                    )
+                                  }
                                   component="img"
-                                  src="https://gateway.pinata.cloud/ipfs/QmVEFivQ2NDdm4FA2FTYWFi2nJRjPbc43XE8UMzdC5ZaPH/character_normal/1.png"
-                                  // src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/1.png`}
+                                  src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${ownedCharacter}.png`}
                                   sx={{ width: 1, height: 1 }}
                                 />
                               )}
@@ -240,7 +244,7 @@ export default function Inventorypage() {
             </Stack>
           </Stack>
         </Stack>
-        <Stack direction="row" justifyContent="space-between" sx={{ width: 1 }}>
+        {/* <Stack direction="row" justifyContent="space-between" sx={{ width: 1 }}>
           <Stack
             sx={{ cursor: "pointer" }}
             onClick={() => navigate(`/items/character/${ownedCharacter}`)}
@@ -329,7 +333,7 @@ export default function Inventorypage() {
               <Typography>No Pet</Typography>
             )}
           </Stack>
-        </Stack>
+        </Stack> */}
       </Container>
     </Box>
   );
