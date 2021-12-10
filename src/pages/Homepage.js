@@ -239,7 +239,7 @@ export default function Homepage() {
         </Container>
       </Stack>
 
-      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+      {/* <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
 
       <Stack
         id="tokenomic"
@@ -259,13 +259,6 @@ export default function Homepage() {
           </MotionInView>
         </Stack>
         <Container maxWidth="xl">
-          {/* <Stack direction="row" justifyContent="center" sx={{ mb: 10 }}>
-            <Box
-              component="img"
-              src="/tokenomics/tokenomic.png"
-              sx={{ width: "60%" }}
-            />
-          </Stack> */}
           <Box sx={{ position: "relative", height: 700, ml: -5 }}>
             <Box
               component="img"
@@ -337,7 +330,7 @@ export default function Homepage() {
             />
           </MotionInView>
         </Stack>
-      </Stack>
+      </Stack> */}
 
       <Box
         component="img"

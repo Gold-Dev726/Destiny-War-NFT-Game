@@ -5,6 +5,8 @@ import { Box, Typography, Container, Stack } from "@mui/material";
 import Unity, { UnityContext } from "react-unity-webgl";
 import { styled } from "@mui/material/styles";
 import { keyframes } from "@mui/system";
+import * as web3 from "game/web3.min";
+import * as web3config from "game/web3config";
 
 const RainbowLight = keyframes`
 0% {
