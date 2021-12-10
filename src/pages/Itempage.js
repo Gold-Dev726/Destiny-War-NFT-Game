@@ -20,16 +20,16 @@ function StatsItem({
 }) {
   return (
     <Stack direction="row" sx={{ width: 160 }} spacing={1}>
-      <Typography color="#28f0a5">{title}</Typography>
+      <Typography color="white">{title}</Typography>
       <Typography
         textAlign="right"
         color="#28f0a5"
         sx={{
-          bgcolor: "#181b0f",
+          bgcolor: "#152e6a",
           flexGrow: 1,
           pr: 1,
           borderRadius: 1,
-          border: "1px solid #4c7718",
+          border: "1px solid rgba(255, 255, 255, 0.6)",
         }}
       >
         {showMax ? `${current}/${max}` : current}
@@ -73,18 +73,19 @@ export default function Inventorypage() {
   }, [account, id]);
 
   const isOwner = account === ownerOfCharacter;
-  console.log(statsOfCharacter);
+  console.log(isOwner, ownerOfCharacter);
   return (
-    <Box sx={{ background: "#2e311e", mt: "-146px" }}>
+    <Box
+      sx={{
+        background: "linear-gradient(#260381, #0177fe)",
+        backgroundSize: "cover",
+        mt: "-146px",
+      }}
+    >
       <Container maxWidth="xl" sx={{ pt: 20, pb: 10 }}>
         <Stack direction="row" alignItems="center">
-          <ArrowLeftIcon sx={{ fontSize: 50, color: "#181b0f" }} />
-          <Link
-            href="/inventory"
-            underline="none"
-            fontSize={30}
-            color="#28f0a5"
-          >
+          <ArrowLeftIcon sx={{ fontSize: 50, color: "#0078ff" }} />
+          <Link href="/inventory" underline="none" fontSize={30} color="white">
             BACK
           </Link>
         </Stack>
@@ -151,43 +152,43 @@ export default function Inventorypage() {
           </Stack>
 
           <Stack flex={1} alignItems="center" spacing={3}>
-            {isOwner && (
-              <Stack direction="row" justifyContent="center" spacing={3}>
-                <Button
-                  onClick={() => setModalOpen(true)}
-                  variant="contained"
-                  sx={{
-                    color: "#28f0a5",
-                    bgcolor: "#3b4721",
-                    px: 4,
-                    fontSize: 20,
-                    borderRadius: 1,
-                    border: "1px solid #4c7718",
-                  }}
-                >
-                  SALE
-                </Button>
-                <Button
-                  onClick={() => setModalOpen(true)}
-                  variant="contained"
-                  sx={{
-                    color: "#28f0a5",
-                    bgcolor: "#3b4721",
-                    px: 4,
-                    fontSize: 20,
-                    borderRadius: 1,
-                    border: "1px solid #4c7718",
-                  }}
-                  startIcon={<AllInboxIcon />}
-                >
-                  GIFT
-                </Button>
-              </Stack>
-            )}
+            {/* {isOwner && ( */}
+            <Stack direction="row" justifyContent="center" spacing={3}>
+              <Button
+                onClick={() => setModalOpen(true)}
+                variant="contained"
+                sx={{
+                  color: "white",
+                  bgcolor: "#1143c6",
+                  px: 4,
+                  fontSize: 20,
+                  borderRadius: 1,
+                  border: "1px solid #4c7718",
+                }}
+              >
+                SALE
+              </Button>
+              <Button
+                onClick={() => setModalOpen(true)}
+                variant="contained"
+                sx={{
+                  color: "white",
+                  bgcolor: "#1143c6",
+                  px: 4,
+                  fontSize: 20,
+                  borderRadius: 1,
+                  border: "1px solid #4c7718",
+                }}
+                startIcon={<AllInboxIcon />}
+              >
+                GIFT
+              </Button>
+            </Stack>
+            {/* )} */}
             <Stack
               sx={{
-                color: "#28f0a5",
-                bgcolor: "#3b4721",
+                color: "white",
+                bgcolor: "#2926ae",
                 p: 2,
                 borderRadius: 1,
                 border: "1px solid #4c7718",
@@ -195,7 +196,8 @@ export default function Inventorypage() {
             >
               <Typography>Breed Count: 0</Typography>
               <Typography>
-                Owner: {ownerOfCharacter ? ownerOfCharacter : "Private"}
+                Owner: {account}
+                {/* Owner: {ownerOfCharacter ? ownerOfCharacter : "Private"} */}
               </Typography>
             </Stack>
             <Typography color="#28f0a5">STATS</Typography>
@@ -215,16 +217,16 @@ export default function Inventorypage() {
                   showMax={false}
                 />
                 <Stack direction="row" sx={{ width: 160 }} spacing={1}>
-                  <Typography color="#28f0a5">CH</Typography>
+                  <Typography color="white">CH</Typography>
                   <Typography
                     textAlign="right"
                     color="#28f0a5"
                     sx={{
-                      bgcolor: "#181b0f",
+                      bgcolor: "#152e6a",
                       flexGrow: 1,
                       pr: 1,
                       borderRadius: 1,
-                      border: "1px solid #4c7718",
+                      border: "1px solid rgba(255, 255, 255, 0.7)",
                     }}
                   >
                     4.17%
