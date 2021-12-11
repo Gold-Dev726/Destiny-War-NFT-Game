@@ -5,7 +5,7 @@ import MainLayout from "layouts";
 import Homepage from "pages/Homepage";
 import Presalepage from "pages/Presalepage";
 import Inventorypage from "pages/Inventorypage";
-import Gamepage from "pages/Gamepage";
+import Newgame from "pages/Newgame";
 import Itempage from "pages/Itempage";
 import Videopage from "pages/Videopage";
 import Loading from "components/Loading";
@@ -31,7 +31,7 @@ export default function Router() {
         { path: "/", element: <Homepage /> },
         { path: "/presale", element: <Presalepage /> },
         { path: "/inventory", element: <Inventorypage /> },
-        { path: "/game", element: <Gamepage /> },
+        { path: "/game", element: <Newgame /> },
         { path: "/items/character/:id", element: <Itempage /> },
         { path: "/landing", element: <Videopage /> },
       ],

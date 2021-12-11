@@ -9,7 +9,11 @@ import {
   Typography,
   TextField,
   InputBase,
+  Container,
+  LinearProgress,
+  linearProgressClasses,
 } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 import SwipeableViews from "react-swipeable-views";
 import { virtualize, bindKeyboard } from "react-swipeable-views-utils";
@@ -29,6 +33,24 @@ import { BusdBalance } from "components/ConnectButton";
 //   return (
 //   );
 // }
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 18,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor: "#a14900",
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: "yellow",
+  },
+}));
+
+const BoxStyle = styled(Stack)(({ theme }) => ({
+  backgroundColor: "rgba(234, 178, 18, 0.7)",
+  boxShadow: "0px 0px 10px 3px white",
+  padding: "32px 64px",
+}));
 
 export default function Homepage() {
   const [busdAmount, setBusdAmount] = useState();
@@ -68,10 +90,25 @@ export default function Homepage() {
       setApproved(true);
     } catch (error) {
       console.error("Error:", error);
-      toast.error(error.data.message);
+      // toast.error(error.data.message);
       setApproved(false);
     }
   };
+
+  // const presalePercent = async () => {
+  //   try {
+  //     const approvedResult = await DwarTokenAddress.balance(
+  //       DwarTokenAddress,
+  //       ethers.constants.MaxUint256
+  //     );
+  //     console.log("approvedResult", approvedResult);
+  //     setApproved(true);
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //     // toast.error(error.data.message);
+  //     setApproved(false);
+  //   }
+  // };
 
   useEffect(() => {
     console.log(BusdContract);
@@ -94,110 +131,288 @@ export default function Homepage() {
   }, [account]);
 
   return (
-    <Stack direction="row" sx={{ py: 10 }}>
-      <Stack sx={{ position: "relative" }}>
-        <Box component="img" src="/token_presale/1.png" />
-        <Stack
-          fullWidth
-          direction="row"
-          justifyContent="flex-end"
-          sx={{
-            position: "absolute",
-            // border: "1px solid red",
-            top: "46%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            fontSize: 40,
-            width: 0.8,
-          }}
-        >
-          <Typography color="black">Balance: {busdBalance}</Typography>
-        </Stack>
-        <Stack
-          direction="row"
-          fullWidth
-          spacing={5}
-          alignItems="center"
-          sx={{
-            position: "absolute",
-            top: "53%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: 0.8,
-          }}
-        >
+    <>
+      <Stack direction="row" sx={{ py: 10 }}>
+        <Stack sx={{ position: "relative" }}>
+          <Box component="img" src="/token_presale/1.png" />
+          <Stack
+            fullWidth
+            direction="row"
+            justifyContent="flex-end"
+            sx={{
+              position: "absolute",
+              // border: "1px solid red",
+              top: "46%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              fontSize: 40,
+              width: 0.8,
+            }}
+          >
+            <Typography color="black">Balance: {busdBalance}</Typography>
+          </Stack>
+          <Stack
+            direction="row"
+            fullWidth
+            spacing={5}
+            alignItems="center"
+            sx={{
+              position: "absolute",
+              top: "53%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: 0.8,
+            }}
+          >
+            <InputBase
+              type="number"
+              value={busdAmount}
+              onChange={(e) => setBusdAmount(e.target.value)}
+              sx={{ fontSize: 40, height: 50 }}
+              fullWidth
+            />
+            <Typography
+              variant="h3"
+              color="#a75108"
+              sx={{
+                cursor: "pointer",
+                transition: "all 0.3s",
+                "&:hover": { transform: "scale(1.05)" },
+              }}
+              onClick={handleBuyMax}
+            >
+              BUY&nbsp;MAX
+            </Typography>
+          </Stack>
           <InputBase
             type="number"
-            value={busdAmount}
-            onChange={(e) => setBusdAmount(e.target.value)}
-            sx={{ fontSize: 40, height: 50 }}
+            value={busdAmount * 100}
             fullWidth
-          />
-          <Typography
-            variant="h3"
-            color="#a75108"
             sx={{
-              cursor: "pointer",
-              transition: "all 0.3s",
-              "&:hover": { transform: "scale(1.05)" },
+              position: "absolute",
+              // border: "1px solid red",
+              top: "72%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              fontSize: 40,
+              width: 0.8,
+              height: 50,
             }}
-            onClick={handleBuyMax}
-          >
-            BUY&nbsp;MAX
-          </Typography>
+            disabled
+          />
         </Stack>
-        <InputBase
-          type="number"
-          value={busdAmount * 100}
-          fullWidth
-          sx={{
-            position: "absolute",
-            // border: "1px solid red",
-            top: "72%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            fontSize: 40,
-            width: 0.8,
-            height: 50,
-          }}
-          disabled
-        />
-        {approved ? (
-          <Box
-            component="img"
-            src="/token_presale/buy.png"
-            sx={{
-              position: "absolute",
-              left: "50%",
-              bottom: "25px",
-              transform: "translateX(-50%)",
-              width: 150,
-              cursor: "pointer",
-            }}
-            onClick={handleBuyToken}
-          />
-        ) : (
-          <Box
-            component="img"
-            src="/token_presale/approve.png"
-            sx={{
-              position: "absolute",
-              left: "50%",
-              bottom: "25px",
-              transform: "translateX(-50%)",
-              width: 150,
-              cursor: "pointer",
-            }}
-            onClick={handleApprove}
-          />
-        )}
+        <Stack sx={{ position: "relative" }}>
+          <Box component="img" src="/token_presale/2.png" />
+        </Stack>
+        <Stack sx={{ position: "relative" }}>
+          <Box component="img" src="/token_presale/3.png" />
+        </Stack>
       </Stack>
-      <Stack sx={{ position: "relative" }}>
-        <Box component="img" src="/token_presale/2.png" />
+
+      <Stack direction="row" sx={{ py: 10, px: 10, width: 1 }} spacing={3}>
+        <Stack width={650}>
+          <BoxStyle>
+            <Typography variant="h3" align="center" color="white">
+              $DWAR INITIAL TOKEN OFFERING
+            </Typography>
+            <Typography
+              variant="h4"
+              align="center"
+              color="white"
+              sx={{ mt: 3 }}
+            >
+              The goal is to seel initial token to raise funds for liquidity
+              pool and further development of the game. <br />
+              By purchasing our initial token, you will be able to participate
+              in our kickstart initiative and purchase NFT's ahead of time.
+              Following that, we'll release the expedition mini-game while we
+              work on the main game.
+            </Typography>
+
+            <Stack>
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Typography variant="h2" color="#a75108">
+                  BALANCE
+                </Typography>
+                <Typography variant="h4" color="#a75108">
+                  BALANCE
+                </Typography>
+              </Stack>
+              <Stack
+                direction="row"
+                fullWidth
+                spacing={5}
+                alignItems="center"
+                sx={{
+                  bgcolor: "#f6e082",
+                  borderRadius: "12px",
+                  px: 2,
+                  py: "4px",
+                }}
+              >
+                <InputBase
+                  type="number"
+                  value={busdAmount}
+                  onChange={(e) => setBusdAmount(e.target.value)}
+                  sx={{ fontSize: 40, height: 50 }}
+                  fullWidth
+                />
+                <Typography
+                  variant="h3"
+                  color="#a75108"
+                  sx={{
+                    cursor: "pointer",
+                    transition: "all 0.3s",
+                    "&:hover": { transform: "scale(1.05)" },
+                  }}
+                  onClick={handleBuyMax}
+                >
+                  BUY&nbsp;MAX
+                </Typography>
+              </Stack>
+              <Typography align="center" variant="h4" color="#a75108">
+                $BUSD AMOUNT
+              </Typography>
+            </Stack>
+
+            <Stack>
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Typography variant="h2" color="#a75108">
+                  TOTAL BALANCE
+                </Typography>
+                {/* <Typography variant="h4" color="#a75108">
+                  BALANCE
+                </Typography> */}
+              </Stack>
+              <Stack
+                direction="row"
+                fullWidth
+                spacing={5}
+                alignItems="center"
+                sx={{
+                  bgcolor: "#f6e082",
+                  borderRadius: "12px",
+                  px: 2,
+                  py: "4px",
+                }}
+              >
+                <InputBase
+                  type="number"
+                  value={busdAmount * 100}
+                  onChange={(e) => setBusdAmount(e.target.value)}
+                  sx={{ fontSize: 40, height: 50 }}
+                  fullWidth
+                  disabled
+                />
+              </Stack>
+              <Typography align="center" variant="h4" color="#a75108">
+                $DWAR AMOUNT
+              </Typography>
+            </Stack>
+            <Stack direction="row" justifyContent="center" sx={{ mt: 2 }}>
+              {approved ? (
+                <Box
+                  component="img"
+                  src="/token_presale/buy.png"
+                  sx={{
+                    width: 150,
+                    cursor: "pointer",
+                  }}
+                  onClick={handleBuyToken}
+                />
+              ) : (
+                <Box
+                  component="img"
+                  src="/token_presale/approve.png"
+                  sx={{
+                    width: 150,
+                    cursor: "pointer",
+                  }}
+                  onClick={handleApprove}
+                />
+              )}
+            </Stack>
+          </BoxStyle>
+        </Stack>
+        <Stack width={500}>
+          <BoxStyle>
+            <Typography variant="h3" align="center" color="white">
+              TOKEN SALE INFORMATION
+            </Typography>
+            <Typography
+              variant="h4"
+              align="center"
+              color="white"
+              sx={{ mt: 3 }}
+            >
+              TOKEN NAME: DESTINY WAR TOKEN <br />
+              TOKEN SYMBOL: DWAR <br />
+              TOKEN PRICE: 1 DWAR = $0.01 <br />
+              MINIMUM: 20BUSD <br />
+              MAXIMUM: 2500BUSD <br />
+              ACCEPTED TOKEN: BUSD <br />
+            </Typography>
+          </BoxStyle>
+          <BoxStyle>
+            <Stack alignItems="center" sx={{ my: 5 }}>
+              <Box
+                component="img"
+                src="/token_presale/dwar_token.png"
+                sx={{ width: 160 }}
+              />
+            </Stack>
+            <Typography variant="h4" color="white" align="center">
+              TOKEN INITIAL SUPPLY: 300000000
+            </Typography>
+            <BorderLinearProgress variant="determinate" value={0} />
+            <Typography variant="h4" color="white" align="center">
+              0/300000000
+            </Typography>
+          </BoxStyle>
+        </Stack>
+        <Stack flexGrow={1}>
+          <BoxStyle>
+            <Typography variant="h3" align="center" color="white">
+              DWAR PRESALE STATS
+            </Typography>
+            <Typography variant="h4" align="center" color="#a14900">
+              PRESALE GOAL
+            </Typography>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="flex-end"
+              sx={{ width: 1 }}
+            >
+              <Typography variant="h4" color="white">
+                0 DWAR
+              </Typography>
+              <Typography
+                variant="h2"
+                color="white"
+                sx={{ transform: "translateX(50%)" }}
+              >
+                0%
+              </Typography>
+              <Typography variant="h4" color="white">
+                300M DWAR
+              </Typography>
+            </Stack>
+            <BorderLinearProgress variant="determinate" value={50} />
+            <Typography variant="h2" align="center" color="#a14900">
+              TOKEN PRIVATE SALE <br /> DEC 18, 2021
+            </Typography>
+          </BoxStyle>
+        </Stack>
       </Stack>
-      <Stack sx={{ position: "relative" }}>
-        <Box component="img" src="/token_presale/3.png" />
-      </Stack>
-    </Stack>
+    </>
   );
 }
