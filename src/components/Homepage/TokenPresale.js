@@ -135,7 +135,7 @@ export default function Homepage() {
 
   return (
     <>
-      <Stack direction="row" sx={{ py: 10 }}>
+      {/* <Stack direction="row" sx={{ py: 10 }}>
         <Stack sx={{ position: "relative" }}>
           <Box component="img" src="/token_presale/1.png" />
           <Stack
@@ -210,7 +210,7 @@ export default function Homepage() {
         <Stack sx={{ position: "relative" }}>
           <Box component="img" src="/token_presale/3.png" />
         </Stack>
-      </Stack>
+      </Stack> */}
 
       <Stack direction="row" sx={{ py: 10, px: 10, width: 1 }} spacing={3}>
         <Stack width={650}>
