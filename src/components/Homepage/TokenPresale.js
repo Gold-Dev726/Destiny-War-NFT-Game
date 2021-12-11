@@ -26,7 +26,7 @@ import { BusdAddress, DwarTokenAddress } from "../../contracts/address";
 import { ethers } from "ethers";
 import { toast } from "react-toastify";
 import { useEthers } from "@usedapp/core";
-import { BusdBalance } from "components/ConnectButton";
+import { BusdBalance, DwarBalance } from "components/ConnectButton";
 // function slideRenderer(params) {
 //   const { index, key } = params;
 //   console.log(index);
@@ -61,6 +61,7 @@ export default function Homepage() {
   const BusdContract = getERC20Contract(signer);
 
   const busdBalance = BusdBalance();
+  const dwarBalance = DwarBalance(DwarTokenAddress);
 
   const handleBuyMax = () => {
     setBusdAmount(busdBalance);
@@ -129,6 +130,8 @@ export default function Homepage() {
     };
     checkAllowance();
   }, [account]);
+
+  console.log("dwarBalance", dwarBalance);
 
   return (
     <>
@@ -372,9 +375,12 @@ export default function Homepage() {
             <Typography variant="h4" color="white" align="center">
               TOKEN INITIAL SUPPLY: 300000000
             </Typography>
-            <BorderLinearProgress variant="determinate" value={0} />
+            <BorderLinearProgress
+              variant="determinate"
+              value={((300000000 - dwarBalance) / 300000000) * 100}
+            />
             <Typography variant="h4" color="white" align="center">
-              0/300000000
+              {300000000 - dwarBalance}/300000000
             </Typography>
           </BoxStyle>
         </Stack>
@@ -393,22 +399,29 @@ export default function Homepage() {
               sx={{ width: 1 }}
             >
               <Typography variant="h4" color="white">
-                0 DWAR
+                {300000000 - dwarBalance} DWAR
               </Typography>
               <Typography
-                variant="h2"
+                variant="h3"
                 color="white"
-                sx={{ transform: "translateX(50%)" }}
               >
-                0%
+                {(((300000000 - dwarBalance) / 300000000) * 100).toFixed(4)}%
               </Typography>
               <Typography variant="h4" color="white">
                 300M DWAR
               </Typography>
             </Stack>
-            <BorderLinearProgress variant="determinate" value={50} />
+            <BorderLinearProgress
+              variant="determinate"
+              value={((300000000 - dwarBalance) / 300000000) * 100}
+            />
             <Typography variant="h2" align="center" color="#a14900">
               TOKEN PRIVATE SALE <br /> DEC 18, 2021
+            </Typography>
+          </BoxStyle>
+          <BoxStyle>
+            <Typography variant="h3" align="center" color="white">
+              DWAR PRESALE EVENT
             </Typography>
           </BoxStyle>
         </Stack>

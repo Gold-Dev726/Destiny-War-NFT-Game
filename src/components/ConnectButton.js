@@ -1,6 +1,6 @@
 import { Button, Box, Stack, Typography } from "@mui/material";
 import { useEthers, useEtherBalance, useTokenBalance } from "@usedapp/core";
-import { TestBusdAddress, BusdAddress } from "contracts/address";
+import { TestBusdAddress, BusdAddress, DwarTokenAddress } from "contracts/address";
 import { ethers } from "ethers";
 
 // export function DwarBalance() {
@@ -15,6 +15,13 @@ import { ethers } from "ethers";
 export function BusdBalance() {
   const { account } = useEthers();
   const busdBalanceBigNumber = useTokenBalance(TestBusdAddress, account);
+  const busdBalance =
+    busdBalanceBigNumber && ethers.utils.formatUnits(busdBalanceBigNumber, 18);
+  return busdBalance;
+}
+
+export function DwarBalance(account) {
+  const busdBalanceBigNumber = useTokenBalance(DwarTokenAddress, account);
   const busdBalance =
     busdBalanceBigNumber && ethers.utils.formatUnits(busdBalanceBigNumber, 18);
   return busdBalance;
