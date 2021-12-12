@@ -96,6 +96,17 @@ export default function Homepage() {
     }
   };
 
+  useEffect(() => {
+    const fetchTxs = async () => {
+      const result = await fetch(
+        "https://api.etherscan.io/api?module=account&action=txlistinternal&address=0x116795fcfBC210E5114f2e7FaCDCD5BC6525194D&startblock=0&endblock=9999999&page=1&offset=10&sort=asc&apikey=UZ7MMCU9IGSEYT6PZWUNCAW35WQJENQTBP"
+      );
+      const data = await result.json();
+      console.log("result", data);
+    };
+    fetchTxs();
+  }, []);
+
   // const presalePercent = async () => {
   //   try {
   //     const approvedResult = await DwarTokenAddress.balance(
@@ -401,10 +412,7 @@ export default function Homepage() {
               <Typography variant="h4" color="white">
                 {300000000 - dwarBalance} DWAR
               </Typography>
-              <Typography
-                variant="h3"
-                color="white"
-              >
+              <Typography variant="h3" color="white">
                 {(((300000000 - dwarBalance) / 300000000) * 100).toFixed(4)}%
               </Typography>
               <Typography variant="h4" color="white">
@@ -422,6 +430,21 @@ export default function Homepage() {
           <BoxStyle>
             <Typography variant="h3" align="center" color="white">
               DWAR PRESALE EVENT
+            </Typography>
+          </BoxStyle>
+          <BoxStyle>
+            <Typography variant="h3" align="center" color="white">
+              0x438...72237 &nbsp;&nbsp; Buyed 15000 DWAR
+            </Typography>
+          </BoxStyle>
+          <BoxStyle>
+            <Typography variant="h3" align="center" color="white">
+              0x912...e32f5 &nbsp;&nbsp; Buyed 7000 DWAR
+            </Typography>
+          </BoxStyle>
+          <BoxStyle>
+            <Typography variant="h3" align="center" color="white">
+              0x103...a1654 &nbsp;&nbsp; Buyed 4000 DWAR
             </Typography>
           </BoxStyle>
         </Stack>
