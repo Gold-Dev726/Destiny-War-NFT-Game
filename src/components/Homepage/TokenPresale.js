@@ -55,6 +55,11 @@ const BoxStyle = styled(Stack)(({ theme }) => ({
 export default function Homepage() {
   const [busdAmount, setBusdAmount] = useState();
   const [approved, setApproved] = useState(false);
+  const [transactions, setTransactions] = useState([
+    { account: "0x438Aa0f9941384Db5331715715050E8C68F72237", dwar: 2500 },
+    { account: "0xd34708803b94952f3964985B91D72178bc44E987", dwar: 15000 },
+    { account: "0xdB9B8A143c9a524CC20ec19Fc10CE514f21705f1", dwar: 3000 },
+  ]);
   const { library, account } = useEthers();
   const signer = library?.getSigner();
   const DwarTokenContract = getDwarTokenContract(signer);
@@ -75,6 +80,8 @@ export default function Homepage() {
       );
       toast.success("You bought dwar tokens successfully!");
       console.log(result);
+      const temp = [...transactions, { account, dwar: busdAmount * 100 }];
+      setTransactions(temp);
     } catch (error) {
       console.log("Error:", error);
       toast.error("error");
@@ -143,6 +150,7 @@ export default function Homepage() {
   }, [account]);
 
   console.log("dwarBalance", dwarBalance);
+  console.log("tranactions", transactions);
 
   return (
     <>
@@ -432,21 +440,14 @@ export default function Homepage() {
               DWAR PRESALE EVENT
             </Typography>
           </BoxStyle>
-          <BoxStyle>
-            <Typography variant="h3" align="center" color="white">
-              0x438...72237 &nbsp;&nbsp; Buyed 15000 DWAR
-            </Typography>
-          </BoxStyle>
-          <BoxStyle>
-            <Typography variant="h3" align="center" color="white">
-              0x912...e32f5 &nbsp;&nbsp; Buyed 7000 DWAR
-            </Typography>
-          </BoxStyle>
-          <BoxStyle>
-            <Typography variant="h3" align="center" color="white">
-              0x103...a1654 &nbsp;&nbsp; Buyed 4000 DWAR
-            </Typography>
-          </BoxStyle>
+          {transactions.slice(-3).reverse().map((item) => (
+            <BoxStyle>
+              <Typography variant="h3" align="center" color="white">
+                {`${item.account.slice(0, 5)}...${item.account.slice(-5)}`}{" "}
+                &nbsp;&nbsp; Buyed {item.dwar} DWAR
+              </Typography>
+            </BoxStyle>
+          ))}
         </Stack>
       </Stack>
     </>
