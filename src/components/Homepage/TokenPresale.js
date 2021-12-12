@@ -56,9 +56,9 @@ export default function Homepage() {
   const [busdAmount, setBusdAmount] = useState();
   const [approved, setApproved] = useState(false);
   const [transactions, setTransactions] = useState([
-    { account: "0x438Aa0f9941384Db5331715715050E8C68F72237", dwar: 2500 },
-    { account: "0xd34708803b94952f3964985B91D72178bc44E987", dwar: 15000 },
-    { account: "0xdB9B8A143c9a524CC20ec19Fc10CE514f21705f1", dwar: 3000 },
+    { account: "0x438Aa0f9941384Db5331715715050E8C68F72237", amount: 25 },
+    { account: "0xd34708803b94952f3964985B91D72178bc44E987", amount: 150 },
+    { account: "0xdB9B8A143c9a524CC20ec19Fc10CE514f21705f1", amount: 30 },
   ]);
   const { library, account } = useEthers();
   const signer = library?.getSigner();
@@ -80,7 +80,7 @@ export default function Homepage() {
       );
       toast.success("You bought dwar tokens successfully!");
       console.log(result);
-      const temp = [...transactions, { account, dwar: busdAmount * 100 }];
+      const temp = [...transactions, { account, amount: busdAmount }];
       setTransactions(temp);
     } catch (error) {
       console.log("Error:", error);
@@ -440,14 +440,27 @@ export default function Homepage() {
               DWAR PRESALE EVENT
             </Typography>
           </BoxStyle>
-          {transactions.slice(-3).reverse().map((item) => (
-            <BoxStyle>
-              <Typography variant="h3" align="center" color="white">
-                {`${item.account.slice(0, 5)}...${item.account.slice(-5)}`}{" "}
-                &nbsp;&nbsp; Buyed {item.dwar} DWAR
-              </Typography>
-            </BoxStyle>
-          ))}
+          {transactions
+            .slice(-3)
+            .reverse()
+            .map((item) => (
+              <BoxStyle>
+                <Typography fontSize={22} color="white">
+                  ({`${item.account.slice(0, 5)}...${item.account.slice(-5)}`})
+                  &nbsp;&nbsp;{" "}
+                  <Typography fontSize={22} component="span" color="#a14900">
+                    has bought DWAR TOKEN!
+                  </Typography>
+                  <Stack direction="row" justifyContent="space-between">
+                    <Typography>{item.amount} BUSD</Typography>
+                    <Typography>-</Typography>
+                    <Typography>{item.amount * 100} DWAR</Typography>
+                    <Typography>-</Typography>
+                    <Typography color="#a14900">20 seconds ago</Typography>
+                  </Stack>
+                </Typography>
+              </BoxStyle>
+            ))}
         </Stack>
       </Stack>
     </>
