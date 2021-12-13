@@ -101,7 +101,7 @@ export default function Homepage() {
             alignItems="center"
             sx={{ px: { xs: 2, md: 18 }, py: 10 }}
           >
-            <Typography variant="h4" sx={{ mt: 5, color: "white" }}>
+            <Typography variant="h4" sx={{ color: "white" }}>
               Destiny War is bringing back the classic MMORPG gameplay, Interact
               to many players, friends, and family to enjoy the excitement and
               intensity of being a warrior. Explore the new virtual world do
