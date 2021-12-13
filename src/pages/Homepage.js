@@ -388,16 +388,15 @@ export default function Homepage() {
         </Stack>
         <Container maxWidth="xl">
           <Slider {...RoadmapSliderSettings} ref={RoadmapSliderRef}>
-            {[...Array(9)].map((item, index) => (
+            {[...Array(12)].map((item, index) => (
               <Box key={index}>
                 <Box
                   src={`/roadmap/${index + 1}.png`}
                   sx={{
-                    width: 496,
-                    height: 460,
+                    width: 450,
+                    height: 490,
                     background: `url(/roadmap/${index + 1}.png)`,
                     backgroundSize: "cover",
-                    backgroundPosition: "-80px",
                   }}
                 />
               </Box>
