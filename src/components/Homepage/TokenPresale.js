@@ -58,6 +58,13 @@ const EventStyle = styled(Stack)(({ theme }) => ({
   padding: "16px 64px",
 }));
 
+const TitleStyle = styled(Typography)(({ theme }) => ({
+  fontFamily: "American",
+  color: "#a75108",
+  textShadow: "0px 0px 10px #ffffff",
+  lineHeight: 1.2,
+}));
+
 export default function Homepage() {
   const [busdAmount, setBusdAmount] = useState();
   const [approved, setApproved] = useState(false);
@@ -257,18 +264,14 @@ export default function Homepage() {
               work on the main game.
             </Typography>
 
-            <Stack>
+            <Stack sx={{ mt: 3 }}>
               <Stack
                 direction="row"
                 justifyContent="space-between"
                 alignItems="center"
               >
-                <Typography variant="h2" color="#a75108">
-                  BALANCE
-                </Typography>
-                <Typography variant="h4" color="#a75108">
-                  BALANCE
-                </Typography>
+                <TitleStyle fontSize={38}>BALANCE</TitleStyle>
+                <TitleStyle>BALANCE</TitleStyle>
               </Stack>
               <Stack
                 direction="row"
@@ -289,9 +292,8 @@ export default function Homepage() {
                   sx={{ fontSize: 40, height: 50 }}
                   fullWidth
                 />
-                <Typography
-                  variant="h3"
-                  color="#a75108"
+                <TitleStyle
+                  fontSize={32}
                   sx={{
                     cursor: "pointer",
                     transition: "all 0.3s",
@@ -299,23 +301,21 @@ export default function Homepage() {
                   }}
                   onClick={handleBuyMax}
                 >
-                  BUY&nbsp;MAX
-                </Typography>
+                  BUYMAX
+                </TitleStyle>
               </Stack>
-              <Typography align="center" variant="h4" color="#a75108">
+              <TitleStyle align="center" fontSize={24}>
                 $BUSD AMOUNT
-              </Typography>
+              </TitleStyle>
             </Stack>
 
-            <Stack>
+            <Stack sx={{ mt: 2 }}>
               <Stack
                 direction="row"
                 justifyContent="space-between"
                 alignItems="center"
               >
-                <Typography variant="h2" color="#a75108">
-                  TOTAL BALANCE
-                </Typography>
+                <TitleStyle fontSize={38}>TOTAL BALANCE</TitleStyle>
                 {/* <Typography variant="h4" color="#a75108">
                   BALANCE
                 </Typography> */}
@@ -341,10 +341,11 @@ export default function Homepage() {
                   disabled
                 />
               </Stack>
-              <Typography align="center" variant="h4" color="#a75108">
+              <TitleStyle fontSize={24} align="center">
                 $DWAR AMOUNT
-              </Typography>
+              </TitleStyle>
             </Stack>
+
             <Stack direction="row" justifyContent="center" sx={{ mt: 2 }}>
               {approved ? (
                 <Box
@@ -397,16 +398,16 @@ export default function Homepage() {
                 sx={{ width: 160 }}
               />
             </Stack>
-            <Typography variant="h4" color="white" align="center">
+            <TitleStyle fontSize={28} align="center">
               TOKEN INITIAL SUPPLY: 300000000
-            </Typography>
+            </TitleStyle>
             <BorderLinearProgress
               variant="determinate"
               value={((300000000 - dwarBalance) / 300000000) * 100}
             />
-            <Typography variant="h4" color="white" align="center">
+            <TitleStyle fontSize={28} align="center">
               {300000000 - dwarBalance}/300000000
-            </Typography>
+            </TitleStyle>
           </BoxStyle>
         </Stack>
         <Stack flexGrow={1}>
@@ -437,9 +438,9 @@ export default function Homepage() {
               variant="determinate"
               value={((300000000 - dwarBalance) / 300000000) * 100}
             />
-            <Typography variant="h2" align="center" color="#a14900">
+            <TitleStyle fontSize={40} align="center">
               TOKEN PRIVATE SALE <br /> DEC 18, 2021
-            </Typography>
+            </TitleStyle>
           </BoxStyle>
           <BoxStyle>
             <Typography variant="h3" align="center" color="white">
