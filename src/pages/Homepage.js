@@ -108,12 +108,6 @@ export default function Homepage() {
               your daily quest to collect rewards and grind digital assets and
               turn them into REAL MONEY!
             </Typography>
-            <Typography variant="h4" sx={{ mt: 3, color: "white" }}>
-              We will be selling a total of 50000 Warriors in our pre-sale,
-              Every warrior will get a random wing, random costume, and Destiny
-              box. Our minimum target is to sell 20000 and after that we will be
-              releasing the beta game after 1 month.
-            </Typography>
           </Stack>
         </Container>
       </Stack>
@@ -125,7 +119,7 @@ export default function Homepage() {
         sx={{
           mt: "-16px",
           background: "url(token_presale/bg.png)",
-          backgroundSize: '120% 100%'
+          backgroundSize: "120% 100%",
         }}
         alignItems="center"
       >
@@ -144,6 +138,20 @@ export default function Homepage() {
         alignItems="center"
       >
         <Box component="img" src="/presale/presale_btn.png" sx={{ mt: -4 }} />
+        <Container maxWidth="xl">
+          <Typography
+            variant="h4"
+            align="center"
+            sx={{ mt: 3, color: "white", mb: 4 }}
+          >
+            NFT PRESALE We will "only" be selling a total of 50000 Warriors,
+            Pets, and Mounts in our pre-sale, Every warrior will get a random
+            wing, random costume, and Destiny box. When all 150000 is sold, We
+            will no longer be selling except thru the marketplace that will come
+            from players who bred and sell their nft's.
+          </Typography>
+        </Container>
+
         <Presale />
       </Stack>
 
