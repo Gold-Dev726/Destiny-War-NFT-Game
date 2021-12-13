@@ -52,6 +52,12 @@ const BoxStyle = styled(Stack)(({ theme }) => ({
   padding: "32px 64px",
 }));
 
+const EventStyle = styled(Stack)(({ theme }) => ({
+  backgroundColor: "rgba(234, 178, 18, 0.7)",
+  boxShadow: "0px 0px 10px 3px white",
+  padding: "16px 64px",
+}));
+
 export default function Homepage() {
   const [busdAmount, setBusdAmount] = useState();
   const [approved, setApproved] = useState(false);
@@ -444,7 +450,7 @@ export default function Homepage() {
             .slice(-3)
             .reverse()
             .map((item) => (
-              <BoxStyle>
+              <EventStyle>
                 <Typography fontSize={22} color="white">
                   ({`${item.account.slice(0, 5)}...${item.account.slice(-5)}`})
                   &nbsp;&nbsp;{" "}
@@ -459,7 +465,7 @@ export default function Homepage() {
                     <Typography color="#a14900">20 seconds ago</Typography>
                   </Stack>
                 </Typography>
-              </BoxStyle>
+              </EventStyle>
             ))}
         </Stack>
       </Stack>

@@ -1,6 +1,6 @@
 // web3.jslib
 const tokenAddress = "0x79fDe167C18C51892BE4B559b60d9420c02afd05";
-const gameContractAddress = "0xe8d4a24Cb568E65B53087b806CCF13da13FCF8E7";
+const gameContractAddress = "0x7dC32D001Ac588Ab2694908f775Bc385B1d45cEe";
 let tokenContract, gameContract;
 
 const tokenContractABI = [
