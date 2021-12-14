@@ -154,7 +154,7 @@ export default function MainNavbar() {
       </Typography> */}
       <Typography
         component={Link}
-        href="/https://destinywar.gitbook.io/destiny-war-/"
+        href="https://destinywar.gitbook.io/destiny-war-/"
         target="_blank"
         variant="h4"
         color="#47350b"
