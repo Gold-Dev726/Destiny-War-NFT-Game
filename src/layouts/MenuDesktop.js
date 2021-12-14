@@ -142,9 +142,19 @@ export default function MainNavbar() {
         </MenuItem>
       </Menu>
 
-      <Typography
+      {/* <Typography
         component={Link}
         href={Whitepaper}
+        target="_blank"
+        variant="h4"
+        color="#47350b"
+        sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}
+      >
+        WHITEPAPER
+      </Typography> */}
+      <Typography
+        component={Link}
+        href="/https://destinywar.gitbook.io/destiny-war-/"
         target="_blank"
         variant="h4"
         color="#47350b"
