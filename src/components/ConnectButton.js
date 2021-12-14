@@ -1,6 +1,10 @@
 import { Button, Box, Stack, Typography } from "@mui/material";
 import { useEthers, useEtherBalance, useTokenBalance } from "@usedapp/core";
-import { TestBusdAddress, BusdAddress, DwarTokenAddress } from "contracts/address";
+import {
+  TestBusdAddress,
+  BusdAddress,
+  DwarTokenAddress,
+} from "contracts/address";
 import { ethers } from "ethers";
 
 // export function DwarBalance() {
@@ -31,6 +35,8 @@ export default function ConnectButton({ sx }) {
   const { activateBrowserWallet, deactivate, account } = useEthers();
   const balance = useEtherBalance(account);
   const bnbBalance = balance && ethers.utils.formatEther(balance);
+  const busdBalance = BusdBalance();
+  console.log("busdBalance:", busdBalance);
   return (
     <>
       {account ? (
@@ -57,7 +63,7 @@ export default function ConnectButton({ sx }) {
               fontSize={12}
               fontStyle="AmericanCaptain"
             >
-              {Number(bnbBalance).toFixed(2)} BNB
+              {Number(busdBalance).toFixed(2)} BUSD
             </Typography>
             <Typography
               color="#47350B"
