@@ -23,16 +23,18 @@ const SocialIcon = styled((props) => (
     direction="row"
     alignItems="center"
     justifyContent="flex-end"
-    spacing={4}
+    spacing={2}
     {...props}
   />
 ))(({ theme }) => ({
-  height: 72,
-  width: 200,
-  paddingRight: 20,
-  background: "#42472b",
+  height: 50,
+  width: 140,
+  paddingRight: 14,
+  background: "rgba(255, 255, 255, 0.2)",
+  border: "1px solid rgba(255, 255, 255, 0.7)",
+  borderLeft: "none",
   borderRadius: "0 50px 50px 0",
-  transform: "translateX(-120px)",
+  transform: "translateX(-90px)",
   transition: "all 0.5s",
   cursor: "pointer",
   "&:hover": {
@@ -47,26 +49,34 @@ export default function MainNavbar() {
   const isHome = pathname === "/";
 
   return (
-    <Stack spacing={4} sx={{ zIndex: 9999, position: "fixed", top: "50%", transform: 'translateY(-50%)' }}>
+    <Stack
+      spacing={4}
+      sx={{
+        zIndex: 9999,
+        position: "fixed",
+        top: "50%",
+        transform: "translateY(-50%)",
+      }}
+    >
       <SocialIcon>
         <Typography color="white">FaceBook</Typography>
-        <Icon icon={facebookIcon} fontSize={40} color="#28f0a5" />
+        <Icon icon={facebookIcon} fontSize={30} color="#28f0a5" />
       </SocialIcon>
       <SocialIcon>
         <Typography color="white">Discord</Typography>
-        <Icon icon={discordIcon} fontSize={40} color="#28f0a5" />
+        <Icon icon={discordIcon} fontSize={30} color="#28f0a5" />
       </SocialIcon>
       <SocialIcon>
         <Typography color="white">Instagram</Typography>
-        <Icon icon={instagramIcon} fontSize={40} color="#28f0a5" />
+        <Icon icon={instagramIcon} fontSize={30} color="#28f0a5" />
       </SocialIcon>
       <SocialIcon>
         <Typography color="white">Telegram</Typography>
-        <Icon icon={telegramIcon} fontSize={40} color="#28f0a5" />
+        <Icon icon={telegramIcon} fontSize={30} color="#28f0a5" />
       </SocialIcon>
       <SocialIcon>
         <Typography color="white">Youtube</Typography>
-        <Icon icon={youtubeIcon} fontSize={40} color="#28f0a5" />
+        <Icon icon={youtubeIcon} fontSize={30} color="#28f0a5" />
       </SocialIcon>
     </Stack>
   );
