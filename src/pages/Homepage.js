@@ -113,7 +113,11 @@ export default function Homepage() {
         </Container>
       </Stack>
 
-      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+      <Box
+        component="img"
+        src="/divider.png"
+        sx={{ width: 1, mt: "-65px", position: "relative", zIndex: 1 }}
+      />
 
       <Box sx={{ position: "relative" }}>
         <Stack
@@ -160,7 +164,11 @@ export default function Homepage() {
         </Stack>
       </Box>
 
-      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+      <Box
+        component="img"
+        src="/divider.png"
+        sx={{ width: 1, mt: "-65px", position: "relative", zIndex: 1 }}
+      />
 
       <Box sx={{ position: "relative" }}>
         <Stack
