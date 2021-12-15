@@ -28,6 +28,31 @@ export default function Inventorypage() {
     slidesToShow: 5,
     slidesToScroll: 5,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
 
   useEffect(() => {
@@ -80,7 +105,11 @@ export default function Inventorypage() {
 
           <Stack spacing={5}>
             <Stack>
-              <Typography variant="h4" color="white" sx={{ ml: 20 }}>
+              <Typography
+                variant="h4"
+                color="white"
+                sx={{ ml: { xs: 10, md: 20 } }}
+              >
                 CHARACTER
               </Typography>
 
@@ -94,10 +123,11 @@ export default function Inventorypage() {
                   component="img"
                   src="/inventory/prevArrow.png"
                   onClick={() => CharacterSliderRef.current.slickPrev()}
+                  sx={{ width: { xs: 30, md: "initial" } }}
                 />
                 <Box
                   sx={{
-                    width: 1200,
+                    width: { xs: 200, md: 1200 },
                     bgcolor: "#261896",
                     borderRadius: 2,
                   }}
@@ -111,8 +141,8 @@ export default function Inventorypage() {
                               justifyContent="center"
                               alignItems="center"
                               sx={{
-                                width: 150,
-                                height: 150,
+                                width: { xs: 80, md: 150 },
+                                height: { xs: 80, md: 150 },
                                 bgcolor: "#3323ac",
                                 border: "2px solid rgba(255, 255, 255, 0.3)",
                                 borderRadius: 1,
@@ -141,12 +171,17 @@ export default function Inventorypage() {
                   component="img"
                   src="/inventory/nextArrow.png"
                   onClick={() => CharacterSliderRef.current.slickNext()}
+                  sx={{ width: { xs: 30, md: "initial" } }}
                 />
               </Stack>
             </Stack>
 
             <Stack>
-              <Typography variant="h4" color="white" sx={{ ml: 20 }}>
+              <Typography
+                variant="h4"
+                color="white"
+                sx={{ ml: { xs: 10, md: 20 } }}
+              >
                 PET
               </Typography>
 
@@ -160,10 +195,11 @@ export default function Inventorypage() {
                   component="img"
                   src="/inventory/prevArrow.png"
                   onClick={() => PetSliderRef.current.slickPrev()}
+                  sx={{ width: { xs: 30, md: "initial" } }}
                 />
                 <Box
                   sx={{
-                    width: 1200,
+                    width: { xs: 200, md: 1200 },
                     bgcolor: "#261896",
                     borderRadius: 2,
                   }}
@@ -177,8 +213,8 @@ export default function Inventorypage() {
                               justifyContent="center"
                               alignItems="center"
                               sx={{
-                                width: 150,
-                                height: 150,
+                                width: { xs: 80, md: 150 },
+                                height: { xs: 80, md: 150 },
                                 bgcolor: "#3323ac",
                                 border: "2px solid rgba(255, 255, 255, 0.3)",
                                 borderRadius: 1,
@@ -196,12 +232,17 @@ export default function Inventorypage() {
                   component="img"
                   src="/inventory/nextArrow.png"
                   onClick={() => CharacterSliderRef.current.slickNext()}
+                  sx={{ width: { xs: 30, md: "initial" } }}
                 />
               </Stack>
             </Stack>
 
             <Stack>
-              <Typography variant="h4" color="white" sx={{ ml: 20 }}>
+              <Typography
+                variant="h4"
+                color="white"
+                sx={{ ml: { xs: 10, md: 20 } }}
+              >
                 Mount
               </Typography>
 
@@ -215,10 +256,11 @@ export default function Inventorypage() {
                   component="img"
                   src="/inventory/prevArrow.png"
                   onClick={() => MountSliderRef.current.slickPrev()}
+                  sx={{ width: { xs: 30, md: "initial" } }}
                 />
                 <Box
                   sx={{
-                    width: 1200,
+                    width: { xs: 200, md: 1200 },
                     bgcolor: "#261896",
                     borderRadius: 2,
                   }}
@@ -232,8 +274,8 @@ export default function Inventorypage() {
                               justifyContent="center"
                               alignItems="center"
                               sx={{
-                                width: 150,
-                                height: 150,
+                                width: { xs: 80, md: 150 },
+                                height: { xs: 80, md: 150 },
                                 bgcolor: "#3323ac",
                                 border: "2px solid rgba(255, 255, 255, 0.3)",
                                 borderRadius: 1,
@@ -254,6 +296,7 @@ export default function Inventorypage() {
                   component="img"
                   src="/inventory/nextArrow.png"
                   onClick={() => CharacterSliderRef.current.slickNext()}
+                  sx={{ width: { xs: 30, md: "initial" } }}
                 />
               </Stack>
             </Stack>

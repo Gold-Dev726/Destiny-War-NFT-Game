@@ -26,15 +26,21 @@ export default function Homepage() {
       <Box
         component="img"
         src="/divider.png"
-        sx={{ width: 1, mt: "-65px", zIndex: 10 }}
+        sx={{ width: 1, mt: { xs: "-12px", md: "-65px" }, zIndex: 10 }}
       />
 
-      <Stack sx={{ position: "relative", zIndex: 10, mt: "-16px" }}>
+      <Stack
+        sx={{ position: "relative", zIndex: 10, mt: { xs: "-3px", md: -2 } }}
+      >
         <Stack
           alignItems="center"
           sx={{ width: 1, position: "absolute", top: 0 }}
         >
-          <Stack direction="row" justifyContent="center" sx={{ my: 3 }}>
+          <Stack
+            direction="row"
+            justifyContent="center"
+            sx={{ my: { xs: 0, md: 3 } }}
+          >
             {/* <MotionInView variants={varFadeInUp}> */}
             <Box
               component="img"
@@ -43,7 +49,7 @@ export default function Homepage() {
             />
             {/* </MotionInView> */}
           </Stack>
-          <Stack
+          {/* <Stack
             direction="row"
             justifyContent="center"
             sx={{ mb: 5 }}
@@ -51,7 +57,7 @@ export default function Homepage() {
           >
             <CarouselArrow direction="prev" onClick={handleBack} />
             <CarouselArrow direction="next" onClick={handleNext} />
-          </Stack>
+          </Stack> */}
         </Stack>
       </Stack>
       <SwipeableViews
@@ -71,7 +77,7 @@ export default function Homepage() {
       <Box
         component="img"
         src="/divider.png"
-        sx={{ width: 1, mt: "-65px", zIndex: 10 }}
+        sx={{ width: 1, mt: { xs: "-12px", md: "-65px" }, zIndex: 10 }}
       />
     </>
   );

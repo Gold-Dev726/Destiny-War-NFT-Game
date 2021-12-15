@@ -81,7 +81,7 @@ export default function Homepage() {
         sx={{
           background: "url(/bg.png)",
           backgroundSize: "100% 100%",
-          height: { xs: "80vh", md: "160vh" },
+          height: { xs: "70vh", md: "160vh" },
         }}
       >
         <Stack
@@ -102,9 +102,13 @@ export default function Homepage() {
         </Stack>
       </Stack>
 
-      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+      <Box
+        component="img"
+        src="/divider.png"
+        sx={{ width: 1, mt: { xs: "-12px", md: "-65px" } }}
+      />
 
-      <Stack sx={{ bgcolor: "#523f8e", mt: "-16px" }}>
+      <Stack sx={{ bgcolor: "#523f8e", mt: { xs: "-3px", md: -2 } }}>
         <Container maxWidth="xl">
           <Stack
             textAlign="center"
@@ -126,14 +130,19 @@ export default function Homepage() {
       <Box
         component="img"
         src="/divider.png"
-        sx={{ width: 1, mt: "-65px", position: "relative", zIndex: 1 }}
+        sx={{
+          width: 1,
+          mt: { xs: "-12px", md: "-65px" },
+          position: "relative",
+          zIndex: 1,
+        }}
       />
 
       <Box sx={{ position: "relative" }}>
         <Stack
           id="presale"
           sx={{
-            mt: "-16px",
+            mt: { xs: "-3px", md: -2 },
             background: "url(token_presale/bg.png)",
             backgroundSize: "120% 100%",
           }}
@@ -147,7 +156,7 @@ export default function Homepage() {
           <TokenPresale />
         </Stack>
 
-        {/* <Stack
+        <Stack
           id="presale"
           sx={{
             background:
@@ -171,20 +180,25 @@ export default function Homepage() {
             PRESALE COUNTDOWN
           </Typography>
           <TokenCountDown />
-        </Stack> */}
+        </Stack>
       </Box>
 
       <Box
         component="img"
         src="/divider.png"
-        sx={{ width: 1, mt: "-65px", position: "relative", zIndex: 1 }}
+        sx={{
+          width: 1,
+          mt: { xs: "-12px", md: "-65px" },
+          position: "relative",
+          zIndex: 1,
+        }}
       />
 
       <Box sx={{ position: "relative" }}>
         <Stack
           id="presale"
           sx={{
-            mt: "-16px",
+            mt: { xs: "-3px", md: -2 },
             background: "linear-gradient(#5b3342, #8d532a)",
           }}
           alignItems="center"
@@ -241,7 +255,7 @@ export default function Homepage() {
       {/* <Stack
         id="presale"
         sx={{
-          mt: "-16px",
+          mt: { xs: "-3px", md: -2 },
           background: "linear-gradient(#5b3342, #8d532a)",
         }}
         alignItems="center"
@@ -275,7 +289,7 @@ export default function Homepage() {
       <Stack
         id="expedition"
         sx={{
-          mt: "-16px",
+          mt: { xs: "-3px", md: -2 },
         }}
       >
         <Box component="img" src="/expedition.png" />
@@ -286,9 +300,9 @@ export default function Homepage() {
       <Stack
         id="scroll"
         sx={{
-          mt: "-16px",
+          mt: { xs: "-3px", md: -2 },
           background: "url(/scrolls/scroll_bg.png)",
-          backgroundSize: "contained",
+          backgroundSize: "cover",
         }}
       >
         <Stack
@@ -300,18 +314,23 @@ export default function Homepage() {
             <Box
               component="img"
               src="/scrolls/crafting_scroll.png"
-              sx={{ width: { xs: 200, md: 400 } }}
+              sx={{ width: { xs: 300, md: 400 } }}
             />
           </MotionInView>
         </Stack>
         <Container maxWidth="xl">
-          <Stack direction="row" justifyContent="space-between" sx={{ mb: 10 }}>
-            <Stack alignItems="center" spacing={4}>
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            justifyContent="space-between"
+            sx={{ mb: 10 }}
+            spacing={{ xs: 5, md: 0 }}
+          >
+            <Stack alignItems="center" spacing={{ xs: 2, md: 4 }}>
               <Box
                 component="img"
                 src="/scrolls/weapon.png"
                 sx={{
-                  width: 300,
+                  width: { xs: 200, md: 300 },
                   cursor: "pointer",
                   "&:hover": {
                     animation: `${zoomIn} 0.7s linear infinite alternate`,
@@ -321,15 +340,15 @@ export default function Homepage() {
               <Box
                 component="img"
                 src="/scrolls/weapon_text.png"
-                sx={{ width: 260 }}
+                sx={{ width: { xs: 180, md: 260 } }}
               />
             </Stack>
-            <Stack alignItems="center" spacing={4}>
+            <Stack alignItems="center" spacing={{ xs: 2, md: 4 }}>
               <Box
                 component="img"
                 src="/scrolls/armor.png"
                 sx={{
-                  width: 300,
+                  width: { xs: 200, md: 300 },
                   cursor: "pointer",
                   "&:hover": {
                     animation: `${zoomIn} 0.7s linear infinite alternate`,
@@ -339,15 +358,15 @@ export default function Homepage() {
               <Box
                 component="img"
                 src="/scrolls/armor_text.png"
-                sx={{ width: 260 }}
+                sx={{ width: { xs: 180, md: 260 } }}
               />
             </Stack>
-            <Stack alignItems="center" spacing={4}>
+            <Stack alignItems="center" spacing={{ xs: 2, md: 4 }}>
               <Box
                 component="img"
                 src="/scrolls/accessory.png"
                 sx={{
-                  width: 300,
+                  width: { xs: 200, md: 300 },
                   cursor: "pointer",
                   "&:hover": {
                     animation: `${zoomIn} 0.7s linear infinite alternate`,
@@ -357,7 +376,7 @@ export default function Homepage() {
               <Box
                 component="img"
                 src="/scrolls/accessory_text.png"
-                sx={{ width: 260 }}
+                sx={{ width: { xs: 180, md: 260 } }}
               />
             </Stack>
           </Stack>
@@ -369,7 +388,7 @@ export default function Homepage() {
       <Stack
         id="tokenomic"
         sx={{
-          mt: "-16px",
+          mt: { xs: "-3px", md: -2 },
           background: "url(/tokenomics/tokenomic_bg.png)",
           backgroundSize: "contained",
         }}
@@ -460,13 +479,13 @@ export default function Homepage() {
       <Box
         component="img"
         src="/divider.png"
-        sx={{ width: 1, mt: "-65px", zIndex: 999 }}
+        sx={{ width: 1, mt: { xs: "-12px", md: "-65px" }, zIndex: 999 }}
       />
 
       <Stack
         id="roadmap"
         sx={{
-          mt: "-16px",
+          mt: { xs: "-3px", md: -2 },
           background: "url(/mapbg.jpg)",
           backgroundSize: "cover",
         }}
@@ -533,7 +552,11 @@ export default function Homepage() {
         </Container>
       </Stack>
 
-      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
+      <Box
+        component="img"
+        src="/divider.png"
+        sx={{ width: 1, mt: { xs: "-12px", md: "-65px" } }}
+      />
     </Box>
   );
 }

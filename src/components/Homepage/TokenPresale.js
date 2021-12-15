@@ -252,7 +252,7 @@ export default function Homepage() {
 
       <Stack
         direction={{ xs: "column", md: "row" }}
-        sx={{ p: { xs: 2, md: 10 }, width: 1 }}
+        sx={{ p: { xs: 2, md: 10 }, pb: { xs: 6, md: 10 }, width: 1 }}
         spacing={3}
       >
         <Stack sx={{ maxWidth: 650, width: 1 }}>

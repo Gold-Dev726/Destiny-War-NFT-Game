@@ -1,6 +1,6 @@
 // material
 import { styled } from "@mui/material/styles";
-import { Box, Container, Typography, Stack } from "@mui/material";
+import { Box, Container, Typography, Stack, Hidden } from "@mui/material";
 // hooks
 import useCountdown from "hooks/useCountdown";
 
@@ -45,11 +45,7 @@ export default function TokenCountDown() {
   return (
     <Container>
       <Box sx={{ margin: "auto", textAlign: "center" }}>
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          justifyContent="center"
-          spacing={3}
-        >
+        <Stack direction="row" justifyContent="center" spacing={3}>
           <NumberStyle>
             <Typography fontFamily="American" fontSize={{ xs: 30, md: 70 }}>
               {countdown.days} DAYS
@@ -67,12 +63,13 @@ export default function TokenCountDown() {
               {countdown.minutes} MINS
             </Typography>
           </NumberStyle>
-
-          <NumberStyle>
-            <Typography fontFamily="American" fontSize={{ xs: 30, md: 70 }}>
-              {countdown.seconds} SECS
-            </Typography>
-          </NumberStyle>
+          <Hidden mdDown>
+            <NumberStyle>
+              <Typography fontFamily="American" fontSize={{ xs: 30, md: 70 }}>
+                {countdown.seconds} SECS
+              </Typography>
+            </NumberStyle>
+          </Hidden>
         </Stack>
       </Box>
     </Container>

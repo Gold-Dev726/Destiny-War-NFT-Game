@@ -61,7 +61,7 @@ function MenuMobileItem({ item, isOpen, isActive, onOpen }) {
         sx={{
           ...(isActive && {
             color: "primary.main",
-            fontWeight: "fontWeightMedium",
+
             bgcolor: (theme) =>
               alpha(
                 theme.palette.primary.main,
@@ -70,8 +70,11 @@ function MenuMobileItem({ item, isOpen, isActive, onOpen }) {
           }),
         }}
       >
-        <ListItemIcon>{icon}</ListItemIcon>
-        <ListItemText disableTypography primary={title} />
+        {/* <ListItemIcon>{icon}</ListItemIcon> */}
+        <ListItemText
+          primary={title}
+          sx={{ color: "#47350b", px: 3, fontFamily: "American" }}
+        />
       </ListItemStyle>
     );
   }
@@ -84,7 +87,6 @@ function MenuMobileItem({ item, isOpen, isActive, onOpen }) {
       sx={{
         ...(isActive && {
           color: "primary.main",
-          fontWeight: "fontWeightMedium",
           bgcolor: (theme) =>
             alpha(
               theme.palette.primary.main,
@@ -93,8 +95,11 @@ function MenuMobileItem({ item, isOpen, isActive, onOpen }) {
         }),
       }}
     >
-      <ListItemIcon>{icon}</ListItemIcon>
-      <ListItemText disableTypography primary={title} />
+      {/* <ListItemIcon>{icon}</ListItemIcon> */}
+      <ListItemText
+        sx={{ color: "#47350b", px: 3, fontFamily: "American" }}
+        primary={title}
+      />
     </ListItemStyle>
   );
 }
@@ -130,7 +135,7 @@ export default function MenuMobile({ isOffset, isHome }) {
         direction="row"
         alignItems="center"
         justifyContent="space-between"
-        sx={{ width: 1 }}
+        sx={{ width: 1, px: 3, mt: -2 }}
       >
         <IconButton
           onClick={handleDrawerOpen}
@@ -140,7 +145,7 @@ export default function MenuMobile({ isOffset, isHome }) {
             ...(isOffset && { color: "text.primary" }),
           }}
         >
-          <MenuIcon sx={{ color: "white" }} />
+          <MenuIcon sx={{ color: "#47350b" }} />
         </IconButton>
         <ConnectButton />
       </Stack>
@@ -148,7 +153,7 @@ export default function MenuMobile({ isOffset, isHome }) {
         open={mobileOpen}
         onClose={handleDrawerClose}
         ModalProps={{ keepMounted: true }}
-        PaperProps={{ sx: { pb: 5, width: 260 } }}
+        PaperProps={{ sx: { pb: 5, width: 260, background: "#ddd58e" } }}
       >
         <Scrollbar>
           <Link component={RouterLink} to="/" sx={{ display: "inline-flex" }}>

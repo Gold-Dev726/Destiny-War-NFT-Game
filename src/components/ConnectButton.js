@@ -52,6 +52,7 @@ export default function ConnectButton({ sx }) {
               fontStyle: "AmericanCaptain",
               border: "1px solid #47350B",
               color: "#47350B",
+              transform: { xs: "scale(0.9)", md: "inherit" },
               ...sx,
             }}
           >
@@ -86,6 +87,7 @@ export default function ConnectButton({ sx }) {
             fontStyle: "AmericanCaptain",
             border: "1px solid #47350B",
             color: "#47350B",
+            transform: { xs: "scale(0.9)", md: "inherit" },
             ...sx,
           }}
         >
