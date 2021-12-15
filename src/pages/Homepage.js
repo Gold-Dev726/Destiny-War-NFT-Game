@@ -18,6 +18,7 @@ import TokenPresale from "components/Homepage/TokenPresale";
 import TokenCountDown from "components/TokenCountDown";
 import Presale from "components/Homepage/Presale";
 import Team from "components/Homepage/Team";
+import CarouselArrow from "components/CarouselArrow";
 import { makeStyles } from "@mui/styles";
 import { keyframes } from "@mui/system";
 
@@ -38,19 +39,6 @@ const useStyles = makeStyles({
 });
 
 export default function Homepage() {
-  const [presaleModal, setPresaleModal] = useState(false);
-  const [currentPresale, setCurrentPresale] = useState(0);
-  const location = useLocation();
-  const target = location.hash.slice(1);
-  useEffect(() => {
-    scroller.scrollTo(target, {
-      duration: 1500,
-      delay: 100,
-      smooth: true,
-    });
-  }, [target]);
-
-  const TeamSliderRef = useRef();
   const RoadmapSliderRef = useRef();
 
   const RoadmapSliderSettings = {
@@ -60,15 +48,31 @@ export default function Homepage() {
     slidesToShow: 3,
     slidesToScroll: 3,
     arrows: false,
-  };
-
-  const TeamSliderSettings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -77,9 +81,7 @@ export default function Homepage() {
         sx={{
           background: "url(/bg.png)",
           backgroundSize: "100% 100%",
-          height: "160vh",
-          // position: "relative",
-          // mt: "-146px"
+          height: { xs: "80vh", md: "160vh" },
         }}
       >
         <Stack
@@ -88,7 +90,15 @@ export default function Homepage() {
           alignItems="center"
           sx={{ px: { xs: 2, md: 18 } }}
         >
-          <Box component="img" src="/logo.png" sx={{ mt: 15, width: 800 }} />
+          <Box
+            component="img"
+            src="/logo.png"
+            sx={{
+              mt: { xs: 18, md: 15 },
+              maxWidth: 800,
+              width: { xs: 240, md: 800 },
+            }}
+          />
         </Stack>
       </Stack>
 
@@ -132,12 +142,12 @@ export default function Homepage() {
           <Box
             component="img"
             src="/presale/presale_btn.png"
-            sx={{ mt: -4, zIndex: 2 }}
+            sx={{ mt: -4, zIndex: 2, width: { xs: 160, md: "initial" } }}
           />
           <TokenPresale />
         </Stack>
 
-        <Stack
+        {/* <Stack
           id="presale"
           sx={{
             background:
@@ -155,13 +165,13 @@ export default function Homepage() {
           <Typography
             color="#ffae00"
             fontFamily="American"
-            fontSize={70}
+            fontSize={{ xs: 40, md: 70 }}
             sx={{ textShadow: "3px 3px 5px #000000" }}
           >
             PRESALE COUNTDOWN
           </Typography>
           <TokenCountDown />
-        </Stack>
+        </Stack> */}
       </Box>
 
       <Box
@@ -182,7 +192,7 @@ export default function Homepage() {
           <Box
             component="img"
             src="/presale/presale_btn.png"
-            sx={{ mt: -4, zIndex: 2 }}
+            sx={{ mt: -4, zIndex: 2, width: { xs: 160, md: "initial" } }}
           />
           <Container maxWidth="xl">
             <Typography
@@ -219,7 +229,7 @@ export default function Homepage() {
           <Typography
             color="#ffae00"
             fontFamily="American"
-            fontSize={70}
+            fontSize={{ xs: 40, md: 70 }}
             sx={{ textShadow: "3px 3px 5px #000000" }}
           >
             PRESALE COUNTDOWN
@@ -281,12 +291,16 @@ export default function Homepage() {
           backgroundSize: "contained",
         }}
       >
-        <Stack direction="row" justifyContent="center" sx={{ mt: 10, mb: 5 }}>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          sx={{ mt: { xs: 5, md: 10 }, mb: 5 }}
+        >
           <MotionInView variants={varFadeInUp}>
             <Box
               component="img"
               src="/scrolls/crafting_scroll.png"
-              sx={{ width: 400 }}
+              sx={{ width: { xs: 200, md: 400 } }}
             />
           </MotionInView>
         </Stack>
@@ -457,9 +471,17 @@ export default function Homepage() {
           backgroundSize: "cover",
         }}
       >
-        <Stack direction="row" justifyContent="center" sx={{ mt: 10, mb: 5 }}>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          sx={{ mt: { xs: 5, md: 10 }, mb: 5 }}
+        >
           <MotionInView variants={varFadeInUp}>
-            <Box component="img" src="/texts/roadmap.png" />
+            <Box
+              component="img"
+              src="/texts/roadmap.png"
+              sx={{ width: { xs: 200, md: "initial" } }}
+            />
           </MotionInView>
         </Stack>
         <Stack
@@ -468,25 +490,13 @@ export default function Homepage() {
           sx={{ mb: 5 }}
           spacing={5}
         >
-          <Box
-            component="img"
-            src="/prevArrow.png"
+          <CarouselArrow
+            direction="prev"
             onClick={() => RoadmapSliderRef.current.slickPrev()}
-            sx={{
-              cursor: "pointer",
-              transition: "all 0.3s",
-              "&:hover": { transform: "scale(1.1)" },
-            }}
           />
-          <Box
-            component="img"
-            src="/nextArrow.png"
+          <CarouselArrow
+            direction="next"
             onClick={() => RoadmapSliderRef.current.slickNext()}
-            sx={{
-              cursor: "pointer",
-              transition: "all 0.3s",
-              "&:hover": { transform: "scale(1.1)" },
-            }}
           />
         </Stack>
         <Container maxWidth="xl">
@@ -494,19 +504,20 @@ export default function Homepage() {
             {[...Array(12)].map((item, index) => (
               <Box key={index}>
                 <Box
+                  component="img"
                   src={`/roadmap/${index + 1}.png`}
-                  sx={{
-                    width: 450,
-                    height: 490,
-                    background: `url(/roadmap/${index + 1}.png)`,
-                    backgroundSize: "cover",
-                  }}
+                  // sx={{
+                  //   width: 450,
+                  //   height: 490,
+                  //   background: `url(/roadmap/${index + 1}.png)`,
+                  //   backgroundSize: "cover",
+                  // }}
                 />
               </Box>
             ))}
           </Slider>
           <Stack direction="row">
-            <Box
+            {/* <Box
               component="img"
               src="/walking_character.gif"
               sx={{
@@ -517,21 +528,12 @@ export default function Homepage() {
                   to: { transform: "translateX(300%)" },
                 },
               }}
-            />
+            /> */}
           </Stack>
         </Container>
       </Stack>
 
       <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px" }} />
-
-      {/* <Stack
-        sx={{
-          mt: "-16px",
-          backgroundSize: "contained",
-        }}
-      >
-        <Presale />
-      </Stack> */}
     </Box>
   );
 }

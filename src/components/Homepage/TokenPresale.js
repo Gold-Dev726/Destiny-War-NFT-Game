@@ -50,12 +50,18 @@ const BoxStyle = styled(Stack)(({ theme }) => ({
   backgroundColor: "rgba(234, 178, 18, 0.7)",
   boxShadow: "0px 0px 10px 3px white",
   padding: "32px 64px",
+  [theme.breakpoints.down("md")]: {
+    padding: "8px",
+  },
 }));
 
 const EventStyle = styled(Stack)(({ theme }) => ({
   backgroundColor: "rgba(234, 178, 18, 0.7)",
   boxShadow: "0px 0px 10px 3px white",
   padding: "16px 64px",
+  [theme.breakpoints.down("md")]: {
+    padding: "8px",
+  },
 }));
 
 const TitleStyle = styled(Typography)(({ theme }) => ({
@@ -244,8 +250,12 @@ export default function Homepage() {
         </Stack>
       </Stack> */}
 
-      <Stack direction="row" sx={{ py: 10, px: 10, width: 1 }} spacing={3}>
-        <Stack width={650}>
+      <Stack
+        direction={{ xs: "column", md: "row" }}
+        sx={{ p: { xs: 2, md: 10 }, width: 1 }}
+        spacing={3}
+      >
+        <Stack sx={{ maxWidth: 650, width: 1 }}>
           <BoxStyle>
             <Typography variant="h3" align="center" color="white">
               $DWAR INITIAL TOKEN OFFERING
@@ -271,7 +281,7 @@ export default function Homepage() {
                 alignItems="center"
               >
                 <TitleStyle fontSize={38}>BALANCE</TitleStyle>
-                <TitleStyle>BALANCE</TitleStyle>
+                {/* <TitleStyle>BALANCE</TitleStyle> */}
               </Stack>
               <Stack
                 direction="row"
@@ -371,7 +381,7 @@ export default function Homepage() {
             </Stack>
           </BoxStyle>
         </Stack>
-        <Stack width={500}>
+        <Stack sx={{ maxWidth: 500, width: 1 }}>
           <BoxStyle>
             <Typography variant="h3" align="center" color="white">
               TOKEN SALE INFORMATION
@@ -391,11 +401,11 @@ export default function Homepage() {
             </Typography>
           </BoxStyle>
           <BoxStyle>
-            <Stack alignItems="center" sx={{ my: 5 }}>
+            <Stack alignItems="center" sx={{ my: { xs: 2, md: 5 } }}>
               <Box
                 component="img"
                 src="/token_presale/dwar_token.png"
-                sx={{ width: 160 }}
+                sx={{ width: { xs: 80, md: 160 } }}
               />
             </Stack>
             <TitleStyle fontSize={28} align="center">

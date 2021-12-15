@@ -3,14 +3,8 @@ import { useState } from "react";
 import { Box, Stack, Dialog, Button, Grid, Typography } from "@mui/material";
 
 import SwipeableViews from "react-swipeable-views";
+import CarouselArrow from "components/CarouselArrow";
 import { virtualize, bindKeyboard } from "react-swipeable-views-utils";
-
-// function slideRenderer(params) {
-//   const { index, key } = params;
-//   console.log(index);
-//   return (
-//   );
-// }
 
 export default function Homepage() {
   const [presaleModal, setPresaleModal] = useState(false);
@@ -29,7 +23,11 @@ export default function Homepage() {
   };
   return (
     <>
-      <Box component="img" src="/divider.png" sx={{ width: 1, mt: "-65px", zIndex: 10 }} />
+      <Box
+        component="img"
+        src="/divider.png"
+        sx={{ width: 1, mt: "-65px", zIndex: 10 }}
+      />
 
       <Stack sx={{ position: "relative", zIndex: 10, mt: "-16px" }}>
         <Stack
@@ -51,26 +49,8 @@ export default function Homepage() {
             sx={{ mb: 5 }}
             spacing={5}
           >
-            <Box
-              component="img"
-              src="/prevArrow.png"
-              onClick={handleBack}
-              sx={{
-                cursor: "pointer",
-                transition: "all 0.3s",
-                "&:hover": { transform: "scale(1.1)" },
-              }}
-            />
-            <Box
-              component="img"
-              src="/nextArrow.png"
-              onClick={handleNext}
-              sx={{
-                cursor: "pointer",
-                transition: "all 0.3s",
-                "&:hover": { transform: "scale(1.1)" },
-              }}
-            />
+            <CarouselArrow direction="prev" onClick={handleBack} />
+            <CarouselArrow direction="next" onClick={handleNext} />
           </Stack>
         </Stack>
       </Stack>

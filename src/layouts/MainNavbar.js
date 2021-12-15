@@ -53,7 +53,7 @@ export default function MainNavbar() {
             alignItems: "center",
             justifyContent: "center",
             background: "url(/topbar.png)",
-            backgroundSize: "cover",
+            backgroundSize: { xs: "100% 100%", md: "cover" },
             height: 1,
           }}
         >

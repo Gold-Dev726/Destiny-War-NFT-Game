@@ -21,7 +21,7 @@ const SeparatorStyle = styled(Typography)(({ theme }) => ({
   },
 }));
 
-const NumberStyle = styled(Box)({
+const NumberStyle = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -31,7 +31,11 @@ const NumberStyle = styled(Box)({
   height: 80,
   borderRadius: 6,
   border: "1px solid rgba(255, 255, 255, 0.7)",
-});
+  [theme.breakpoints.down("md")]: {
+    width: 100,
+    height: 50,
+  },
+}));
 
 // ----------------------------------------------------------------------
 
@@ -41,27 +45,31 @@ export default function TokenCountDown() {
   return (
     <Container>
       <Box sx={{ margin: "auto", textAlign: "center" }}>
-        <Stack direction="row" justifyContent="center" spacing={3}>
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          justifyContent="center"
+          spacing={3}
+        >
           <NumberStyle>
-            <Typography fontFamily="American" fontSize={70}>
+            <Typography fontFamily="American" fontSize={{ xs: 30, md: 70 }}>
               {countdown.days} DAYS
             </Typography>
           </NumberStyle>
 
           <NumberStyle>
-            <Typography fontFamily="American" fontSize={70}>
+            <Typography fontFamily="American" fontSize={{ xs: 30, md: 70 }}>
               {countdown.hours} HRS
             </Typography>
           </NumberStyle>
 
           <NumberStyle>
-            <Typography fontFamily="American" fontSize={70}>
+            <Typography fontFamily="American" fontSize={{ xs: 30, md: 70 }}>
               {countdown.minutes} MINS
             </Typography>
           </NumberStyle>
 
           <NumberStyle>
-            <Typography fontFamily="American" fontSize={70}>
+            <Typography fontFamily="American" fontSize={{ xs: 30, md: 70 }}>
               {countdown.seconds} SECS
             </Typography>
           </NumberStyle>

@@ -1,4 +1,4 @@
-import { Button, Box, Stack, Typography } from "@mui/material";
+import { Button, Box, Stack, Typography, Hidden } from "@mui/material";
 import { useEthers, useEtherBalance, useTokenBalance } from "@usedapp/core";
 import {
   TestBusdAddress,
@@ -57,20 +57,22 @@ export default function ConnectButton({ sx }) {
           >
             Connected!
           </Button>
-          <Stack>
-            <Typography
-              color="#47350B"
-              fontSize={12}
-              fontStyle="AmericanCaptain"
-            >
-              {Number(busdBalance).toFixed(2)} BUSD
-            </Typography>
-            <Typography
-              color="#47350B"
-              fontSize={12}
-              fontStyle="AmericanCaptain"
-            >{`${account.slice(0, 5)}...${account.slice(-5)}`}</Typography>
-          </Stack>
+          <Hidden mdDown>
+            <Stack>
+              <Typography
+                color="#47350B"
+                fontSize={12}
+                fontStyle="AmericanCaptain"
+              >
+                {Number(busdBalance).toFixed(2)} BUSD
+              </Typography>
+              <Typography
+                color="#47350B"
+                fontSize={12}
+                fontStyle="AmericanCaptain"
+              >{`${account.slice(0, 5)}...${account.slice(-5)}`}</Typography>
+            </Stack>
+          </Hidden>
         </>
       ) : (
         <Button
