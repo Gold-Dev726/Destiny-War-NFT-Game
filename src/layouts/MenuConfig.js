@@ -11,6 +11,33 @@ const menuConfig = [
     // icon: <Box component="img" src="/icons/uniswap.svg" sx={{ width: 24 }} />,
   },
   {
+    title: "MORE",
+    path: "/more",
+    children: [
+      {
+        title: "CLASS",
+        path: "class",
+      },
+      {
+        title: "NFT SCROLL",
+        path: "scroll",
+      },
+      {
+        title: "TOKENOMICS",
+        path: "tokenomics",
+      },
+      {
+        title: "EXPEDITION",
+        path: "expedition",
+      },
+      {
+        title: "ROADMAP",
+        path: "roadmap",
+      },
+    ],
+    // icon: <Box component="img" src="/icons/uniswap.svg" sx={{ width: 24 }} />,
+  },
+  {
     title: "INVENTORY",
     path: "/inventory",
     // icon: <Box component="img" src="/icons/dextools.png" sx={{ width: 20 }} />,

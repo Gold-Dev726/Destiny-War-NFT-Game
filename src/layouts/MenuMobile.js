@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import { NavLink as RouterLink, useLocation } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 import { useEthers } from "@usedapp/core";
 // material
 import { alpha, styled } from "@mui/material/styles";
@@ -16,7 +17,9 @@ import {
   IconButton,
   Stack,
   Button,
+  Collapse,
 } from "@mui/material";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 // components
 import Logo from "components/Logo";
 import Scrollbar from "components/Scrollbar";
@@ -50,7 +53,8 @@ MenuMobileItem.propTypes = {
 };
 
 function MenuMobileItem({ item, isOpen, isActive, onOpen }) {
-  const { title, path, icon } = item;
+  const { title, path, icon, children } = item;
+  const [open, setOpen] = useState(false);
 
   if (path === "/whitepaper") {
     return (
@@ -76,6 +80,50 @@ function MenuMobileItem({ item, isOpen, isActive, onOpen }) {
           sx={{ color: "#47350b", px: 3, fontFamily: "American" }}
         />
       </ListItemStyle>
+    );
+  }
+
+  if (children) {
+    return (
+      <>
+        <ListItemStyle
+          onClick={() => setOpen(!open)}
+          sx={{
+            ...(isActive && {
+              color: "primary.main",
+
+              bgcolor: (theme) =>
+                alpha(
+                  theme.palette.primary.main,
+                  theme.palette.action.selectedOpacity
+                ),
+            }),
+          }}
+        >
+          {/* <ListItemIcon>{icon}</ListItemIcon> */}
+          <Stack direction="row" alignItems="center">
+            <ListItemText
+              primary={title}
+              sx={{ color: "#47350b", px: 3, fontFamily: "American" }}
+            />
+            <ArrowDropDownIcon
+              sx={{ color: "#47350b", transform: "scaleY(3)", mt: "-4px" }}
+            />
+          </Stack>
+        </ListItemStyle>
+        <Collapse in={open} timeout="auto" unmountOnExit sx={{ ml: 3 }}>
+          {children.map((item) => (
+            <ListItemStyle key={item.title} onClick={onOpen}>
+              <ScrollLink to={item.path} spy smooth onClick={onOpen}>
+                <ListItemText
+                  sx={{ color: "#47350b", px: 3, fontFamily: "American" }}
+                  primary={item.title}
+                />
+              </ScrollLink>
+            </ListItemStyle>
+          ))}
+        </Collapse>
+      </>
     );
   }
 
@@ -165,7 +213,7 @@ export default function MenuMobile({ isOffset, isHome }) {
                 key={link.title}
                 item={link}
                 isOpen={open}
-                onOpen={handleOpen}
+                onOpen={handleDrawerClose}
                 isActive={pathname === link.path}
               />
             ))}

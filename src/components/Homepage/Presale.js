@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 // material
 import {
   Box,
@@ -8,6 +8,8 @@ import {
   Grid,
   Typography,
   TextField,
+  Container,
+  Hidden,
 } from "@mui/material";
 
 import SwipeableViews from "react-swipeable-views";
@@ -21,6 +23,8 @@ import { toast } from "react-toastify";
 import { useEthers } from "@usedapp/core";
 import { BusdBalance } from "components/ConnectButton";
 import { DwarCharacterAddress } from "contracts/address";
+import Slider from "react-slick";
+import CarouselArrow from "components/CarouselArrow";
 // function slideRenderer(params) {
 //   const { index, key } = params;
 //   console.log(index);
@@ -29,6 +33,16 @@ import { DwarCharacterAddress } from "contracts/address";
 // }
 
 export default function Homepage() {
+  const EggSliderRef = useRef();
+
+  const EggSliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+  };
   const [approved, setApproved] = useState(false);
   const [presaleModal, setPresaleModal] = useState(false);
   const [currentPresale, setCurrentPresale] = useState();
@@ -94,69 +108,161 @@ export default function Homepage() {
   }, [account]);
 
   return (
-    <>
-      <Grid container sx={{ px: 20 }} alignItems="center">
-        <Grid item md={4} sm={6}>
-          <Box
-            component="img"
-            src="/presale/character-egg.gif"
-            onClick={() => handleModal("character")}
-            sx={{ cursor: "pointer", width: 400, mx: "auto" }}
-          />
-        </Grid>
-        <Grid item md={4} sm={6}>
-          <Box
-            component="img"
-            src="/presale/mount-egg.gif"
-            onClick={() => handleModal("mount")}
-            sx={{ cursor: "pointer", width: 300, mx: "auto" }}
-          />
-        </Grid>
-        <Grid item md={4} sm={6}>
-          <Box
-            component="img"
-            src="/presale/pet-egg.gif"
-            onClick={() => handleModal("pet")}
-            sx={{ cursor: "pointer", width: 320, mx: "auto" }}
-          />
-        </Grid>
-      </Grid>
+    <Container maxWidth="xl">
+      <Hidden mdDown>
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          justifyContent="space-between"
+          alignItems="center"
+          spacing={5}
+          sx={{ width: 1, pb: 5 }}
+        >
+          <Stack>
+            <Box
+              component="img"
+              src="/presale/character-egg.gif"
+              onClick={() => handleModal("character")}
+              sx={{ cursor: "pointer", width: 400, mx: "auto", mb: 5 }}
+            />
+            {approved ? (
+              <Box
+                component="img"
+                src="/presale/buy.png"
+                onClick={() => handleModal("character")}
+                sx={{ cursor: "pointer", width: 120, mx: "auto" }}
+              />
+            ) : (
+              <Box
+                component="img"
+                src="/presale/approve.png"
+                onClick={handleApprove}
+                sx={{ cursor: "pointer", width: 120, mx: "auto" }}
+              />
+            )}
+          </Stack>
 
-      <Grid container sx={{ px: 20, pb: 10, mt: 5 }} alignItems="center">
-        <Grid item md={4} sm={6}>
-          {approved ? (
+          <Stack>
+            <Box
+              component="img"
+              src="/presale/mount-egg.gif"
+              onClick={() => handleModal("mount")}
+              sx={{ cursor: "pointer", width: 300, mx: "auto", mb: 5, mt: 3 }}
+            />
             <Box
               component="img"
               src="/presale/buy.png"
-              onClick={() => handleModal("character")}
+              onClick={() => handleModal("mount")}
               sx={{ cursor: "pointer", width: 120, mx: "auto" }}
             />
-          ) : (
+          </Stack>
+
+          <Stack>
             <Box
               component="img"
-              src="/presale/approve.png"
-              onClick={handleApprove}
+              src="/presale/pet-egg.gif"
+              onClick={() => handleModal("pet")}
+              sx={{ cursor: "pointer", width: 320, mx: "auto", mb: 5, mt: 3 }}
+            />
+            <Box
+              component="img"
+              src="/presale/buy.png"
+              onClick={() => handleModal("pet")}
               sx={{ cursor: "pointer", width: 120, mx: "auto" }}
             />
-          )}
-        </Grid>
-        <Grid item md={4} sm={6}>
-          <Box
-            component="img"
-            src="/presale/buy.png"
-            onClick={() => handleModal("mount")}
-            sx={{ cursor: "pointer", width: 120, mx: "auto" }}
-          />
-        </Grid>
-        <Grid item md={4} sm={6}>
-          <Box
-            component="img"
-            src="/presale/buy.png"
-            onClick={() => handleModal("pet")}
-            sx={{ cursor: "pointer", width: 120, mx: "auto" }}
-          />
-        </Grid>
-      </Grid>
+          </Stack>
+        </Stack>
+      </Hidden>
+
+      <Hidden mdUp>
+        <Box sx={{ pb: 5 }}>
+          <Stack
+            direction="row"
+            justifyContent="center"
+            sx={{ mb: 5 }}
+            spacing={5}
+          >
+            <CarouselArrow
+              direction="prev"
+              onClick={() => EggSliderRef.current.slickPrev()}
+            />
+            <CarouselArrow
+              direction="next"
+              onClick={() => EggSliderRef.current.slickNext()}
+            />
+          </Stack>
+
+          <Slider {...EggSliderSettings} ref={EggSliderRef}>
+            <Box>
+              <Stack>
+                <Box
+                  component="img"
+                  src="/presale/character-egg.gif"
+                  onClick={() => handleModal("character")}
+                  sx={{ cursor: "pointer", width: 200, mx: "auto", mb: 5 }}
+                />
+                {approved ? (
+                  <Box
+                    component="img"
+                    src="/presale/buy.png"
+                    onClick={() => handleModal("character")}
+                    sx={{ cursor: "pointer", width: 100, mx: "auto" }}
+                  />
+                ) : (
+                  <Box
+                    component="img"
+                    src="/presale/approve.png"
+                    onClick={handleApprove}
+                    sx={{ cursor: "pointer", width: 100, mx: "auto" }}
+                  />
+                )}
+              </Stack>
+            </Box>
+            <Box>
+              <Stack>
+                <Box
+                  component="img"
+                  src="/presale/mount-egg.gif"
+                  onClick={() => handleModal("mount")}
+                  sx={{
+                    cursor: "pointer",
+                    width: 160,
+                    mx: "auto",
+                    mb: 5,
+                  }}
+                />
+                <Box
+                  component="img"
+                  src="/presale/buy.png"
+                  onClick={() => handleModal("mount")}
+                  sx={{ cursor: "pointer", width: 100, mx: "auto" }}
+                />
+              </Stack>
+            </Box>
+
+            <Box>
+              <Stack>
+                <Box
+                  component="img"
+                  src="/presale/pet-egg.gif"
+                  onClick={() => handleModal("pet")}
+                  sx={{
+                    cursor: "pointer",
+                    width: 160,
+                    mx: "auto",
+                    mb: 5,
+                  }}
+                />
+                <Box
+                  component="img"
+                  src="/presale/buy.png"
+                  onClick={() => handleModal("pet")}
+                  sx={{ cursor: "pointer", width: 100, mx: "auto" }}
+                />
+              </Stack>
+            </Box>
+          </Slider>
+        </Box>
+      </Hidden>
 
       <Dialog
         open={presaleModal}
@@ -292,6 +398,6 @@ export default function Homepage() {
           <Button variant="contained">Next</Button>
         </Stack>
       </Dialog> */}
-    </>
+    </Container>
   );
 }
