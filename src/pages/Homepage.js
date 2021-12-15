@@ -17,6 +17,7 @@ import { useLocation } from "react-router-dom";
 import { Link, Element, scroller } from "react-scroll";
 import TokenPresale from "components/Homepage/TokenPresale";
 import TokenCountDown from "components/TokenCountDown";
+import NftCountDown from "components/NftCountDown";
 import Presale from "components/Homepage/Presale";
 import Roadmap from "components/Homepage/Roadmap";
 import Team from "components/Homepage/Team";
@@ -225,7 +226,7 @@ export default function Homepage() {
           >
             PRESALE COUNTDOWN
           </Typography>
-          <TokenCountDown />
+          <NftCountDown />
         </Stack>
       </Box>
       {/* ----------------Original NFT Presale------------- */}
