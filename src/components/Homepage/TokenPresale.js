@@ -75,9 +75,9 @@ export default function Homepage() {
   const [busdAmount, setBusdAmount] = useState();
   const [approved, setApproved] = useState(false);
   const [transactions, setTransactions] = useState([
-    { account: "0x438Aa0f9941384Db5331715715050E8C68F72237", amount: 25 },
-    { account: "0xd34708803b94952f3964985B91D72178bc44E987", amount: 150 },
-    { account: "0xdB9B8A143c9a524CC20ec19Fc10CE514f21705f1", amount: 30 },
+    // { account: "0x438Aa0f9941384Db5331715715050E8C68F72237", amount: 25 },
+    // { account: "0xd34708803b94952f3964985B91D72178bc44E987", amount: 150 },
+    // { account: "0xdB9B8A143c9a524CC20ec19Fc10CE514f21705f1", amount: 30 },
   ]);
   const { library, account } = useEthers();
   const signer = library?.getSigner();
