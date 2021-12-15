@@ -12,7 +12,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import ConnectButton from "components/ConnectButton";
-import Whitepaper from "./whitepaper.pdf";
+// import Whitepaper from "./whitepaper.pdf";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 // ----------------------------------------------------------------------
 
@@ -101,7 +101,7 @@ export default function MainNavbar() {
             NFT SCROLL
           </Typography>
         </MenuItem>
-        <MenuItem>
+        {/* <MenuItem>
           <Typography
             onClick={handleClose}
             variant="h4"
@@ -113,7 +113,7 @@ export default function MainNavbar() {
           >
             TOKENOMICS
           </Typography>
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem>
           <Typography
             onClick={handleClose}
@@ -178,8 +178,8 @@ export default function MainNavbar() {
         PRE-SALE
       </Typography>
       <Typography
-        component={RouterLink}
-        to="/#"
+        // component={RouterLink}
+        // to="/#"
         variant="h4"
         color="#47350b"
         sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}

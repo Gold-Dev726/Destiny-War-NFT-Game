@@ -26,7 +26,7 @@ import Scrollbar from "components/Scrollbar";
 import ConnectButton from "components/ConnectButton";
 //
 import menuConfig from "./MenuConfig";
-import Whitepaper from "./whitepaper.pdf";
+// import Whitepaper from "./whitepaper.pdf";
 
 // ----------------------------------------------------------------------
 

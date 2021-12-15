@@ -22,10 +22,10 @@ const menuConfig = [
         title: "NFT SCROLL",
         path: "scroll",
       },
-      {
-        title: "TOKENOMICS",
-        path: "tokenomics",
-      },
+      // {
+      //   title: "TOKENOMICS",
+      //   path: "tokenomics",
+      // },
       {
         title: "EXPEDITION",
         path: "expedition",
@@ -49,12 +49,12 @@ const menuConfig = [
   },
   {
     title: "PRE-SALE",
-    path: "/presale",
+    path: "/#",
     // icon: <Box component="img" src="/icons/etherscan.svg" sx={{ width: 20 }} />,
   },
   {
     title: "MARKETPLACE",
-    path: "/marketplace",
+    path: "/#",
     // icon: <Box component="img" src="/icons/etherscan.svg" sx={{ width: 20 }} />,
   },
 ];

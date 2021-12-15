@@ -416,7 +416,8 @@ export default function Homepage() {
               value={((300000000 - dwarBalance) / 300000000) * 100}
             />
             <TitleStyle fontSize={28} align="center">
-              {300000000 - dwarBalance}/300000000
+              {/* {300000000 - dwarBalance}/300000000 */}
+              0
             </TitleStyle>
           </BoxStyle>
         </Stack>
@@ -435,10 +436,12 @@ export default function Homepage() {
               sx={{ width: 1 }}
             >
               <Typography variant="h4" color="white">
-                {300000000 - dwarBalance} DWAR
+                {/* {300000000 - dwarBalance} DWAR */}
+                0 DWAR
               </Typography>
               <Typography variant="h3" color="white">
-                {(((300000000 - dwarBalance) / 300000000) * 100).toFixed(4)}%
+                {/* {(((300000000 - dwarBalance) / 300000000) * 100).toFixed(4)}% */}
+                0%
               </Typography>
               <Typography variant="h4" color="white">
                 300M DWAR

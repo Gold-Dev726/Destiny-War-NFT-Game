@@ -18,7 +18,7 @@ import ConnectButton from "components/ConnectButton";
 import { Icon } from "@iconify/react";
 import twitterFill from "@iconify/icons-cib/twitter";
 import discordFill from "@iconify/icons-cib/discord";
-import Whitepaper from "./whitepaper.pdf";
+// import Whitepaper from "./whitepaper.pdf";
 import MenuDesktop from "./MenuDesktop";
 import MenuMobile from "./MenuMobile";
 // ----------------------------------------------------------------------
