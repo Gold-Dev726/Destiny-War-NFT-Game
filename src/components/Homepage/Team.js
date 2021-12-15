@@ -26,7 +26,7 @@ export default function Homepage() {
       <Box
         component="img"
         src="/divider.png"
-        sx={{ width: 1, mt: { xs: "-12px", md: "-65px" }, zIndex: 10 }}
+        sx={{ width: 1, mt: { xs: "-16px", md: "-65px" }, zIndex: 10 }}
       />
 
       <Stack
@@ -77,7 +77,7 @@ export default function Homepage() {
       <Box
         component="img"
         src="/divider.png"
-        sx={{ width: 1, mt: { xs: "-12px", md: "-65px" }, zIndex: 10 }}
+        sx={{ width: 1, mt: { xs: "-16px", md: "-65px" }, zIndex: 10 }}
       />
     </>
   );

@@ -105,7 +105,7 @@ export default function Homepage() {
       <Box
         component="img"
         src="/divider.png"
-        sx={{ width: 1, mt: { xs: "-12px", md: "-65px" } }}
+        sx={{ width: 1, mt: { xs: "-16px", md: "-65px" } }}
       />
 
       <Stack sx={{ bgcolor: "#523f8e", mt: { xs: "-3px", md: -2 } }}>
@@ -132,7 +132,7 @@ export default function Homepage() {
         src="/divider.png"
         sx={{
           width: 1,
-          mt: { xs: "-12px", md: "-65px" },
+          mt: { xs: "-16px", md: "-65px" },
           position: "relative",
           zIndex: 1,
         }}
@@ -188,7 +188,7 @@ export default function Homepage() {
         src="/divider.png"
         sx={{
           width: 1,
-          mt: { xs: "-12px", md: "-65px" },
+          mt: { xs: "-16px", md: "-65px" },
           position: "relative",
           zIndex: 1,
         }}
@@ -330,7 +330,7 @@ export default function Homepage() {
                 component="img"
                 src="/scrolls/weapon.png"
                 sx={{
-                  width: { xs: 200, md: 300 },
+                  width: { xs: 160, md: 300 },
                   cursor: "pointer",
                   "&:hover": {
                     animation: `${zoomIn} 0.7s linear infinite alternate`,
@@ -340,7 +340,7 @@ export default function Homepage() {
               <Box
                 component="img"
                 src="/scrolls/weapon_text.png"
-                sx={{ width: { xs: 180, md: 260 } }}
+                sx={{ width: { xs: 160, md: 260 } }}
               />
             </Stack>
             <Stack alignItems="center" spacing={{ xs: 2, md: 4 }}>
@@ -348,7 +348,7 @@ export default function Homepage() {
                 component="img"
                 src="/scrolls/armor.png"
                 sx={{
-                  width: { xs: 200, md: 300 },
+                  width: { xs: 160, md: 300 },
                   cursor: "pointer",
                   "&:hover": {
                     animation: `${zoomIn} 0.7s linear infinite alternate`,
@@ -358,7 +358,7 @@ export default function Homepage() {
               <Box
                 component="img"
                 src="/scrolls/armor_text.png"
-                sx={{ width: { xs: 180, md: 260 } }}
+                sx={{ width: { xs: 160, md: 260 } }}
               />
             </Stack>
             <Stack alignItems="center" spacing={{ xs: 2, md: 4 }}>
@@ -366,7 +366,7 @@ export default function Homepage() {
                 component="img"
                 src="/scrolls/accessory.png"
                 sx={{
-                  width: { xs: 200, md: 300 },
+                  width: { xs: 160, md: 300 },
                   cursor: "pointer",
                   "&:hover": {
                     animation: `${zoomIn} 0.7s linear infinite alternate`,
@@ -376,7 +376,7 @@ export default function Homepage() {
               <Box
                 component="img"
                 src="/scrolls/accessory_text.png"
-                sx={{ width: { xs: 180, md: 260 } }}
+                sx={{ width: { xs: 160, md: 260 } }}
               />
             </Stack>
           </Stack>
@@ -479,7 +479,7 @@ export default function Homepage() {
       <Box
         component="img"
         src="/divider.png"
-        sx={{ width: 1, mt: { xs: "-12px", md: "-65px" }, zIndex: 999 }}
+        sx={{ width: 1, mt: { xs: "-16px", md: "-65px" }, zIndex: 999 }}
       />
 
       <Stack
@@ -525,6 +525,7 @@ export default function Homepage() {
                 <Box
                   component="img"
                   src={`/roadmap/${index + 1}.png`}
+                  sx={{ width: { xs: 260, md: "initial" }, mx: "auto" }}
                   // sx={{
                   //   width: 450,
                   //   height: 490,
@@ -555,7 +556,7 @@ export default function Homepage() {
       <Box
         component="img"
         src="/divider.png"
-        sx={{ width: 1, mt: { xs: "-12px", md: "-65px" } }}
+        sx={{ width: 1, mt: { xs: "-16px", md: "-65px" } }}
       />
     </Box>
   );
