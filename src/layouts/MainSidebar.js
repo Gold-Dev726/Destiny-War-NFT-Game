@@ -9,21 +9,24 @@ import {
   Toolbar,
   Container,
   Typography,
+  Link,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
 import facebookIcon from "@iconify/icons-cib/facebook";
 import discordIcon from "@iconify/icons-cib/discord";
-import instagramIcon from "@iconify/icons-cib/instagram";
+import twitterIcon from "@iconify/icons-cib/twitter";
 import telegramIcon from "@iconify/icons-cib/telegram";
 import youtubeIcon from "@iconify/icons-cib/youtube";
 // ----------------------------------------------------------------------
 
 const SocialIcon = styled((props) => (
   <Stack
+    component={Link}
     direction="row"
     alignItems="center"
     justifyContent="flex-end"
     spacing={2}
+    target="_blank"
     {...props}
   />
 ))(({ theme }) => ({
@@ -58,19 +61,19 @@ export default function MainNavbar() {
         transform: "translateY(-50%)",
       }}
     >
-      <SocialIcon>
+      <SocialIcon href="https://www.facebook.com/gaming/DestinyWarNFTGame">
         <Typography color="white">FaceBook</Typography>
         <Icon icon={facebookIcon} fontSize={30} color="#28f0a5" />
       </SocialIcon>
-      <SocialIcon>
+      <SocialIcon href="https://discord.gg/Yj8aPDzkUt">
         <Typography color="white">Discord</Typography>
         <Icon icon={discordIcon} fontSize={30} color="#28f0a5" />
       </SocialIcon>
-      <SocialIcon>
-        <Typography color="white">Instagram</Typography>
-        <Icon icon={instagramIcon} fontSize={30} color="#28f0a5" />
+      <SocialIcon href="https://twitter.com/DestinyWarNFT">
+        <Typography color="white">Twitter</Typography>
+        <Icon icon={twitterIcon} fontSize={30} color="#28f0a5" />
       </SocialIcon>
-      <SocialIcon>
+      <SocialIcon href="https://t.me/DestinyWarOfficialGroup">
         <Typography color="white">Telegram</Typography>
         <Icon icon={telegramIcon} fontSize={30} color="#28f0a5" />
       </SocialIcon>

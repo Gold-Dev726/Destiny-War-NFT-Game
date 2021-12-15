@@ -2,7 +2,7 @@ import { Stack, Box, Typography, Container, IconButton } from "@mui/material";
 import { Icon } from "@iconify/react";
 import facebookIcon from "@iconify/icons-cib/facebook";
 import discordIcon from "@iconify/icons-cib/discord";
-import instagramIcon from "@iconify/icons-cib/instagram";
+import twitterIcon from "@iconify/icons-cib/twitter";
 import telegramIcon from "@iconify/icons-cib/telegram";
 import youtubeIcon from "@iconify/icons-cib/youtube";
 export default function MainFooter() {
@@ -19,6 +19,8 @@ export default function MainFooter() {
                 transition: "all 0.2s",
                 "&:hover": { transform: "scale(1.2)" },
               }}
+              target="_blank"
+              href="https://www.facebook.com/gaming/DestinyWarNFTGame"
             >
               <Icon icon={facebookIcon} fontSize={24} color="grey" />
             </IconButton>
@@ -27,6 +29,8 @@ export default function MainFooter() {
                 transition: "all 0.2s",
                 "&:hover": { transform: "scale(1.2)" },
               }}
+              target="_blank"
+              href="https://discord.gg/Yj8aPDzkUt"
             >
               <Icon icon={discordIcon} fontSize={24} color="grey" />
             </IconButton>
@@ -35,14 +39,18 @@ export default function MainFooter() {
                 transition: "all 0.2s",
                 "&:hover": { transform: "scale(1.2)" },
               }}
+              target="_blank"
+              href="https://twitter.com/DestinyWarNFT"
             >
-              <Icon icon={instagramIcon} fontSize={24} color="grey" />
+              <Icon icon={twitterIcon} fontSize={24} color="grey" />
             </IconButton>
             <IconButton
               sx={{
                 transition: "all 0.2s",
                 "&:hover": { transform: "scale(1.2)" },
               }}
+              target="_blank"
+              href="https://t.me/DestinyWarOfficialGroup"
             >
               <Icon icon={telegramIcon} fontSize={24} color="grey" />
             </IconButton>
