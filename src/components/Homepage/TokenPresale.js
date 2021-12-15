@@ -449,7 +449,7 @@ export default function Homepage() {
               value={((300000000 - dwarBalance) / 300000000) * 100}
             />
             <TitleStyle fontSize={40} align="center">
-              TOKEN PRIVATE SALE <br /> DEC 18, 2021
+              TOKEN PRIVATE SALE <br /> DEC 20, 2021
             </TitleStyle>
           </BoxStyle>
           <BoxStyle>
