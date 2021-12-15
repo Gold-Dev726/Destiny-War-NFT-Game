@@ -55,7 +55,7 @@ function MenuMobileItem({ item, isOpen, isActive, onOpen }) {
   if (path === "/whitepaper") {
     return (
       <ListItemStyle
-        href={Whitepaper}
+        href="https://destinywar.gitbook.io/destiny-war-/"
         target="_blank"
         component={Link}
         sx={{
