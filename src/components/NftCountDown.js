@@ -40,7 +40,7 @@ const NumberStyle = styled(Box)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function TokenCountDown() {
-  const countdown = useCountdown(new Date("12/22/2021"));
+  const countdown = useCountdown(new Date(2021, 11, 22, 23));
 
   return (
     <Container>
