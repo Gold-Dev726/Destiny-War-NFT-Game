@@ -178,8 +178,8 @@ export default function MainNavbar() {
         PRE-SALE
       </Typography>
       <Typography
-        // component={RouterLink}
-        // to="/#"
+        component={RouterLink}
+        to="/marketplace"
         variant="h4"
         color="#47350b"
         sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}

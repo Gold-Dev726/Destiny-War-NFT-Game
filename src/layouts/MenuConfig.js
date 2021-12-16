@@ -54,7 +54,7 @@ const menuConfig = [
   },
   {
     title: "MARKETPLACE",
-    path: "/#",
+    path: "/marketplace",
     // icon: <Box component="img" src="/icons/etherscan.svg" sx={{ width: 20 }} />,
   },
 ];

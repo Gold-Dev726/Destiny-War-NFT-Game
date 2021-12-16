@@ -1305,7 +1305,7 @@ function _emscripten_asm_const_id(code, a0) {
  return ASM_CONSTS[code](a0);
 }
 STATIC_BASE = GLOBAL_BASE;
-STATICTOP = STATIC_BASE + 2653440;
+STATICTOP = STATIC_BASE + 2654416;
 __ATINIT__.push({
  func: (function() {
   __GLOBAL__sub_I_AccessibilityScriptingClasses_cpp();
@@ -3359,12 +3359,45 @@ __ATINIT__.push({
   ___emscripten_environ_constructor();
  })
 });
-var STATIC_BUMP = 2653440;
+var STATIC_BUMP = 2654416;
 Module["STATIC_BASE"] = STATIC_BASE;
 Module["STATIC_BUMP"] = STATIC_BUMP;
 var tempDoublePtr = STATICTOP;
 STATICTOP += 16;
 assert(tempDoublePtr % 8 == 0);
+function _CheckReward(obj) {
+ if (window.ethereum) gameContract = new web3.eth.Contract(gameContractABI, gameContractAddress);
+ gameContract.methods.checkReward().send({
+  from: walletAddress
+ }).then((function(result) {
+  result = "Success";
+  function getPtrFromString(str) {
+   var bufferSize = lengthBytesUTF8(str) + 1;
+   var buffer = _malloc(bufferSize);
+   stringToUTF8(str, buffer, bufferSize);
+   return buffer;
+  }
+  var buffer = getPtrFromString(result);
+  Runtime.dynCall("vi", obj, [ buffer ]);
+  return result;
+ }));
+}
+function _ClaimReward(obj) {
+ if (window.ethereum) gameContract = new web3.eth.Contract(gameContractABI, gameContractAddress);
+ gameContract.methods.claimReward().send({
+  from: walletAddress
+ }).then((function(result) {
+  function getPtrFromString(str) {
+   var bufferSize = lengthBytesUTF8(str) + 1;
+   var buffer = _malloc(bufferSize);
+   stringToUTF8(str, buffer, bufferSize);
+   return buffer;
+  }
+  var buffer = getPtrFromString(result);
+  Runtime.dynCall("vi", obj, [ buffer ]);
+  return result;
+ }));
+}
 function _Connect() {
  if (window.ethereum) {
   web3 = new Web3(window.ethereum);
@@ -3733,6 +3766,44 @@ function _NewAccount(_name, _avatarId, obj, rejectObj) {
   }));
  }
 }
+function _PlayMountExpedition(_mountId, obj) {
+ if (window.ethereum) {
+  if (!gameContract) gameContract = new web3.eth.Contract(gameContractABI, gameContractAddress);
+  gameContract.methods.playMountExpedition(web3.utils.toWei(_mountId.toString(), "wei")).send({
+   from: walletAddress
+  }).then((function(result) {
+   result = "Success";
+   function getPtrFromString(str) {
+    var bufferSize = lengthBytesUTF8(str) + 1;
+    var buffer = _malloc(bufferSize);
+    stringToUTF8(str, buffer, bufferSize);
+    return buffer;
+   }
+   var buffer = getPtrFromString(result);
+   Runtime.dynCall("vi", obj, [ buffer ]);
+   return result;
+  }));
+ }
+}
+function _PlayPetExpedition(_petId, obj) {
+ if (window.ethereum) {
+  if (!gameContract) gameContract = new web3.eth.Contract(gameContractABI, gameContractAddress);
+  gameContract.methods.playPetExpedition(web3.utils.toWei(_petId.toString(), "wei")).send({
+   from: walletAddress
+  }).then((function(result) {
+   result = "Success";
+   function getPtrFromString(str) {
+    var bufferSize = lengthBytesUTF8(str) + 1;
+    var buffer = _malloc(bufferSize);
+    stringToUTF8(str, buffer, bufferSize);
+    return buffer;
+   }
+   var buffer = getPtrFromString(result);
+   Runtime.dynCall("vi", obj, [ buffer ]);
+   return result;
+  }));
+ }
+}
 function _Retrieve(obj) {
  if (window.ethereum) {
   gameContract = new web3.eth.Contract(gameContractABI, gameContractAddress);
@@ -3742,7 +3813,14 @@ function _Retrieve(obj) {
    if (result.name.length > 0) {
     result = {
      playerName: result.name,
-     playerAvatar: parseInt(result.avatarId)
+     playerAvatar: parseInt(result.avatarId),
+     rewardToClaim: parseInt(result.rewardToClaim),
+     petUsable: result.petUsable,
+     mountUsable: result.mountUsable,
+     petExpeditionStartTime: parseInt(result.petExpeditionStartTime),
+     petExpeditionDuration: parseInt(result.petExpeditionDuration),
+     mountExpeditionStartTime: parseInt(result.mountExpeditionStartTime),
+     mountExpeditionDuration: parseInt(result.mountExpeditionDuration)
     };
     result = JSON.stringify(result);
    } else {
@@ -15517,8 +15595,8 @@ function nullFunc_vjji(x) {
  err("Build with ASSERTIONS=2 for more info.");
  abort(x);
 }
-Module["wasmTableSize"] = 56677;
-Module["wasmMaxTableSize"] = 56677;
+Module["wasmTableSize"] = 56685;
+Module["wasmMaxTableSize"] = 56685;
 function invoke_dddi(index, a1, a2, a3) {
  var sp = stackSave();
  try {
@@ -18563,6 +18641,8 @@ Module.asmLibraryArg = {
  "invoke_vijjii": invoke_vijjii,
  "invoke_vjiiii": invoke_vjiiii,
  "invoke_vjji": invoke_vjji,
+ "_CheckReward": _CheckReward,
+ "_ClaimReward": _ClaimReward,
  "_Connect": _Connect,
  "_GetWalletAddress": _GetWalletAddress,
  "_JS_Cursor_SetImage": _JS_Cursor_SetImage,
@@ -18604,6 +18684,8 @@ Module.asmLibraryArg = {
  "_JS_SystemInfo_HasFullscreen": _JS_SystemInfo_HasFullscreen,
  "_JS_SystemInfo_HasWebGL": _JS_SystemInfo_HasWebGL,
  "_NewAccount": _NewAccount,
+ "_PlayMountExpedition": _PlayMountExpedition,
+ "_PlayPetExpedition": _PlayPetExpedition,
  "_Retrieve": _Retrieve,
  "__ZSt18uncaught_exceptionv": __ZSt18uncaught_exceptionv,
  "___atomic_compare_exchange_8": ___atomic_compare_exchange_8,
