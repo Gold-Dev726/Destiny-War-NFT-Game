@@ -3817,8 +3817,10 @@ function _Retrieve(obj) {
      rewardToClaim: parseInt(result.rewardToClaim),
      petUsable: result.petUsable,
      mountUsable: result.mountUsable,
+     petInExpedition: parseInt(result.petInExpedition),
      petExpeditionStartTime: parseInt(result.petExpeditionStartTime),
      petExpeditionDuration: parseInt(result.petExpeditionDuration),
+     mountInExpedition: parseInt(result.mountInExpedition),
      mountExpeditionStartTime: parseInt(result.mountExpeditionStartTime),
      mountExpeditionDuration: parseInt(result.mountExpeditionDuration)
     };

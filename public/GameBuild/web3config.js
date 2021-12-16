@@ -1,6 +1,6 @@
 // web3.jslib
 const tokenAddress = "0x79fDe167C18C51892BE4B559b60d9420c02afd05";
-const gameContractAddress = "0x0C72b0eC4a47D4cf89441bf38adc7007f2CeA3Af";
+const gameContractAddress = "0x1D7fD4bb51f606D7d9b2601EcEd8835414aed3BB";
 let tokenContract, gameContract;
 
 const tokenContractABI = [{
@@ -206,14 +206,16 @@ const tokenContractABI = [{
     }
 ];
 
-const gameContractABI = [{
+const gameContractABI = [
+    {
         "inputs": [],
         "stateMutability": "nonpayable",
         "type": "constructor"
     },
     {
         "anonymous": false,
-        "inputs": [{
+        "inputs": [
+            {
                 "indexed": true,
                 "internalType": "address",
                 "name": "previousOwner",
@@ -238,13 +240,21 @@ const gameContractABI = [{
     },
     {
         "inputs": [],
+        "name": "claimRemainToken",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
         "name": "claimReward",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
     },
     {
-        "inputs": [{
+        "inputs": [
+            {
                 "internalType": "string",
                 "name": "_name",
                 "type": "string"
@@ -263,31 +273,37 @@ const gameContractABI = [{
     {
         "inputs": [],
         "name": "owner",
-        "outputs": [{
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-        }],
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
         "stateMutability": "view",
         "type": "function"
     },
     {
-        "inputs": [{
-            "internalType": "uint256",
-            "name": "_mountId",
-            "type": "uint256"
-        }],
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_mountId",
+                "type": "uint256"
+            }
+        ],
         "name": "playMountExpedition",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
     },
     {
-        "inputs": [{
-            "internalType": "uint256",
-            "name": "_petId",
-            "type": "uint256"
-        }],
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_petId",
+                "type": "uint256"
+            }
+        ],
         "name": "playPetExpedition",
         "outputs": [],
         "stateMutability": "nonpayable",
@@ -296,69 +312,83 @@ const gameContractABI = [{
     {
         "inputs": [],
         "name": "retrieve",
-        "outputs": [{
-            "components": [{
-                    "internalType": "string",
-                    "name": "name",
-                    "type": "string"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "avatarId",
-                    "type": "uint256"
-                },
-                {
-                    "internalType": "bool",
-                    "name": "petUsable",
-                    "type": "bool"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "petExpeditionStartTime",
-                    "type": "uint256"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "petExpeditionDuration",
-                    "type": "uint256"
-                },
-                {
-                    "internalType": "bool",
-                    "name": "mountUsable",
-                    "type": "bool"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "mountExpeditionStartTime",
-                    "type": "uint256"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "mountExpeditionDuration",
-                    "type": "uint256"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "rewardToClaim",
-                    "type": "uint256"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "lastClaimTime",
-                    "type": "uint256"
-                }
-            ],
-            "internalType": "struct Player",
-            "name": "",
-            "type": "tuple"
-        }],
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "string",
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "avatarId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "petUsable",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "petInExpedition",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "petExpeditionStartTime",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "petExpeditionDuration",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "mountUsable",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "mountInExpedition",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "mountExpeditionStartTime",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "mountExpeditionDuration",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "rewardToClaim",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "lastClaimTime",
+                        "type": "uint256"
+                    }
+                ],
+                "internalType": "struct Player",
+                "name": "",
+                "type": "tuple"
+            }
+        ],
         "stateMutability": "view",
         "type": "function"
     },
     {
         "inputs": [],
         "name": "retrieveAvailablity",
-        "outputs": [{
+        "outputs": [
+            {
                 "internalType": "uint256",
                 "name": "",
                 "type": "uint256"
@@ -375,20 +405,24 @@ const gameContractABI = [{
     {
         "inputs": [],
         "name": "retrieveBalance",
-        "outputs": [{
-            "internalType": "uint256",
-            "name": "balance",
-            "type": "uint256"
-        }],
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "balance",
+                "type": "uint256"
+            }
+        ],
         "stateMutability": "view",
         "type": "function"
     },
     {
-        "inputs": [{
-            "internalType": "address",
-            "name": "newOwner",
-            "type": "address"
-        }],
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
         "name": "transferOwnership",
         "outputs": [],
         "stateMutability": "nonpayable",
