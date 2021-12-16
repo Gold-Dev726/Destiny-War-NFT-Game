@@ -13,7 +13,6 @@ export default function Inventorypage() {
   const signer = library?.getSigner();
   const DwarCharacterContract = getDwarCharacterContract(signer);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -44,15 +43,12 @@ export default function Inventorypage() {
         mt: "-146px",
         backgroundSize: "cover",
         pb: 10,
+        height: "90vh",
       }}
     >
-      <Container
-        maxWidth="xl"
-        sx={{
-          pt: 20,
-        }}
-      >
-      </Container>
+      <Stack alignItems="center" justifyContent="center" sx={{ height: 1 }}>
+        <Box component="img" src="/maintenance.gif" sx={{ width: 700 }} />
+      </Stack>
     </Box>
   );
 }

@@ -6,6 +6,7 @@ import Homepage from "pages/Homepage";
 import Presalepage from "pages/Presalepage";
 import Inventorypage from "pages/Inventorypage";
 import Newgame from "pages/Newgame";
+import Marketpage from "pages/Marketpage";
 import Itempage from "pages/Itempage";
 import Videopage from "pages/Videopage";
 import Loading from "components/Loading";
@@ -31,6 +32,7 @@ export default function Router() {
         { path: "/", element: <Homepage /> },
         { path: "/presale", element: <Presalepage /> },
         { path: "/inventory", element: <Inventorypage /> },
+        { path: "/marketplace", element: <Marketpage /> },
         { path: "/game", element: <Newgame /> },
         { path: "/items/character/:id", element: <Itempage /> },
         { path: "/landing", element: <Videopage /> },

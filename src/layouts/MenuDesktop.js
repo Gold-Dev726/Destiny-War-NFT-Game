@@ -35,7 +35,12 @@ export default function MainNavbar() {
         to="/"
         variant="h4"
         color="#47350b"
-        sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}
+        sx={{
+          textDecoration: "none",
+          fontFamily: "AmericanCaptain",
+          transition: 'all 0.3s',
+          "&:hover": { color: "white" },
+        }}
       >
         HOME
       </Typography>
@@ -44,7 +49,12 @@ export default function MainNavbar() {
         to="/inventory"
         variant="h4"
         color="#47350b"
-        sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}
+        sx={{
+          textDecoration: "none",
+          fontFamily: "AmericanCaptain",
+          transition: 'all 0.3s',
+          "&:hover": { color: "white" },
+        }}
       >
         INVENTORY
       </Typography>
@@ -58,7 +68,12 @@ export default function MainNavbar() {
         // onMouseOver={handleClick}
         onClick={handleClick}
         // onMouseLeave={handleClose}
-        sx={{ cursor: "pointer", fontFamily: "AmericanCaptain" }}
+        sx={{
+          cursor: "pointer",
+          fontFamily: "AmericanCaptain",
+          transition: 'all 0.3s',
+          "&:hover": { color: "white" },
+        }}
       >
         MORE
         <ArrowDropDownIcon
@@ -83,7 +98,12 @@ export default function MainNavbar() {
             to="class"
             spy
             smooth
-            sx={{ color: "#47350b", fontFamily: "AmericanCaptain" }}
+            sx={{
+              color: "#47350b",
+              fontFamily: "AmericanCaptain",
+              transition: 'all 0.3s',
+              "&:hover": { color: "white" },
+            }}
           >
             CLASS
           </Typography>
@@ -96,7 +116,12 @@ export default function MainNavbar() {
             to="scroll"
             spy
             smooth
-            sx={{ color: "#47350b", fontFamily: "AmericanCaptain" }}
+            sx={{
+              color: "#47350b",
+              fontFamily: "AmericanCaptain",
+              transition: 'all 0.3s',
+              "&:hover": { color: "white" },
+            }}
           >
             NFT SCROLL
           </Typography>
@@ -109,7 +134,8 @@ export default function MainNavbar() {
             to="tokenomic"
             spy
             smooth
-            sx={{ color: "#47350b", fontFamily: "AmericanCaptain" }}
+   
+   transition: 'all 0.3s',         sx={{ color: "#47350b", fontFamily: "AmericanCaptain", "&:hover": {color: "white"} }}
           >
             TOKENOMICS
           </Typography>
@@ -122,7 +148,12 @@ export default function MainNavbar() {
             to="expedition"
             spy
             smooth
-            sx={{ color: "#47350b", fontFamily: "AmericanCaptain" }}
+            sx={{
+              color: "#47350b",
+              fontFamily: "AmericanCaptain",
+              transition: 'all 0.3s',
+              "&:hover": { color: "white" },
+            }}
           >
             EXPEDITION
           </Typography>
@@ -135,7 +166,12 @@ export default function MainNavbar() {
             to="roadmap"
             spy
             smooth
-            sx={{ color: "#47350b", fontFamily: "AmericanCaptain" }}
+            sx={{
+              color: "#47350b",
+              fontFamily: "AmericanCaptain",
+              transition: 'all 0.3s',
+              "&:hover": { color: "white" },
+            }}
           >
             ROADMAP
           </Typography>
@@ -148,7 +184,8 @@ export default function MainNavbar() {
         target="_blank"
         variant="h4"
         color="#47350b"
-        sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}
+   
+   transition: 'all 0.3s',     sx={{ textDecoration: "none", fontFamily: "AmericanCaptain", "&:hover": {color: "white"} }}
       >
         WHITEPAPER
       </Typography> */}
@@ -158,7 +195,12 @@ export default function MainNavbar() {
         target="_blank"
         variant="h4"
         color="#47350b"
-        sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}
+        sx={{
+          textDecoration: "none",
+          fontFamily: "AmericanCaptain",
+          transition: 'all 0.3s',
+          "&:hover": { color: "white" },
+        }}
       >
         WHITEPAPER
       </Typography>
@@ -172,6 +214,8 @@ export default function MainNavbar() {
         sx={{
           textDecoration: "none",
           fontFamily: "AmericanCaptain",
+          transition: 'all 0.3s',
+          "&:hover": { color: "white" },
           cursor: "pointer",
         }}
       >
@@ -182,7 +226,12 @@ export default function MainNavbar() {
         to="/marketplace"
         variant="h4"
         color="#47350b"
-        sx={{ textDecoration: "none", fontFamily: "AmericanCaptain" }}
+        sx={{
+          textDecoration: "none",
+          fontFamily: "AmericanCaptain",
+          transition: 'all 0.3s',
+          "&:hover": { color: "white" },
+        }}
       >
         MARKETPLACE
       </Typography>
