@@ -134,7 +134,7 @@ export default function Homepage() {
           <TokenPresale />
         </Stack>
 
-        <Stack
+        {/* <Stack
           id="presale"
           sx={{
             background:
@@ -158,7 +158,7 @@ export default function Homepage() {
             PRESALE COUNTDOWN
           </Typography>
           <TokenCountDown />
-        </Stack>
+        </Stack> */}
       </Box>
 
       <Box
