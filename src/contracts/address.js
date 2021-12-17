@@ -1,8 +1,8 @@
 export const DwarCharacterAddress =
   "0x208f2d946fE14B2e18F2FC4742F0c9FEa9Edf7d8";
-export const DwarTokenAddress = "0x116795fcfBC210E5114f2e7FaCDCD5BC6525194D";
+export const DwarTokenAddress = "0xFC9B1C2D8A6E5f6e86F1fd1548A5009653210BfC";
 
-export const TestBusdAddress = "0xbe1056D64F22F3075cb05629C006Eb75C543c878";
+export const TestBusdAddress = "0x82e1A7007F24418e81Cb9e55B35D4847b749b69A";
 export const BusdAddress = "0xe9e7cea3dedca5984780bafc599bd69add087d56";
 
 export const normalImageURI =

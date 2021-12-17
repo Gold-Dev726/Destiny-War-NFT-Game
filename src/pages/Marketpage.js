@@ -39,8 +39,8 @@ export default function Inventorypage() {
   return (
     <Box
       sx={{
-        background: "url(/inventory/bg.png)",
-        background: 'linear-gradient(#56d5ff, #4c4af6)',
+        // background: "url(/inventory/bg.png)",
+        background: "linear-gradient(#56d5ff, #4c4af6)",
         mt: "-146px",
         backgroundSize: "cover",
         pb: 10,
