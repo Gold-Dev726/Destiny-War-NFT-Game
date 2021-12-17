@@ -27,6 +27,7 @@ import { ethers } from "ethers";
 import { toast } from "react-toastify";
 import { useEthers } from "@usedapp/core";
 import { BusdBalance, DwarBalance } from "components/ConnectButton";
+import { MetamaskErrorMessage } from "utils/MetamaskErrorMessage";
 // function slideRenderer(params) {
 //   const { index, key } = params;
 //   console.log(index);
@@ -103,7 +104,7 @@ export default function Homepage() {
       setTransactions(temp);
     } catch (error) {
       console.log("Error:", error);
-      toast.error("error");
+      toast.error(MetamaskErrorMessage(error));
     }
   };
 
@@ -416,8 +417,7 @@ export default function Homepage() {
               value={((300000000 - dwarBalance) / 300000000) * 100}
             />
             <TitleStyle fontSize={28} align="center">
-              {/* {300000000 - dwarBalance}/300000000 */}
-              0
+              {/* {300000000 - dwarBalance}/300000000 */}0
             </TitleStyle>
           </BoxStyle>
         </Stack>
@@ -436,8 +436,7 @@ export default function Homepage() {
               sx={{ width: 1 }}
             >
               <Typography variant="h4" color="white">
-                {/* {300000000 - dwarBalance} DWAR */}
-                0 DWAR
+                {/* {300000000 - dwarBalance} DWAR */}0 DWAR
               </Typography>
               <Typography variant="h3" color="white">
                 {/* {(((300000000 - dwarBalance) / 300000000) * 100).toFixed(4)}% */}
