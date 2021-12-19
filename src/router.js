@@ -3,6 +3,7 @@ import { Navigate, useRoutes, useLocation } from "react-router-dom";
 
 import MainLayout from "layouts";
 import Homepage from "pages/Homepage";
+import Adminpage from "pages/Adminpage";
 import Presalepage from "pages/Presalepage";
 import Inventorypage from "pages/Inventorypage";
 import Newgame from "pages/Newgame";
@@ -36,6 +37,7 @@ export default function Router() {
         { path: "/game", element: <Newgame /> },
         { path: "/items/character/:id", element: <Itempage /> },
         { path: "/landing", element: <Videopage /> },
+        { path: "/admin", element: <Adminpage /> },
       ],
     },
   ]);

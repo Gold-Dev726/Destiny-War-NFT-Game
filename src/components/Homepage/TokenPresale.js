@@ -29,6 +29,7 @@ import { useEthers } from "@usedapp/core";
 import { BusdBalance, DwarBalance } from "components/ConnectButton";
 import { MetamaskErrorMessage } from "utils/MetamaskErrorMessage";
 import { registerToken } from "utils/wallet";
+import Moment from "react-moment";
 // function slideRenderer(params) {
 //   const { index, key } = params;
 //   console.log(index);
@@ -126,10 +127,10 @@ export default function Homepage() {
   useEffect(() => {
     const fetchTxs = async () => {
       const result = await fetch(
-        "https://api.etherscan.io/api?module=account&action=txlistinternal&address=0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6&startblock=0&endblock=9999999&page=1&offset=10&sort=asc&apikey=UZ7MMCU9IGSEYT6PZWUNCAW35WQJENQTBP"
+        "https://api.bscscan.com/api?module=account&action=tokentx&contractaddress=0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6&page=1&offset=3&startblock=0&endblock=999999999&sort=asc&apikey=F6K6ICXJDRGGRHBR67WAAKBU4TA72INHZ3"
       );
       const data = await result.json();
-      console.log("result", data);
+      setTransactions(data.result);
     };
     fetchTxs();
   }, []);
@@ -153,7 +154,8 @@ export default function Homepage() {
     checkAllowance();
   }, [account]);
 
-  console.log("dwarBalance", dwarBalance);
+  console.log("date", new Date(Date.now() - 1639922649));
+
   console.log("tranactions", transactions);
 
   return (
@@ -386,27 +388,28 @@ export default function Homepage() {
               DWAR PRESALE EVENT
             </Typography>
           </BoxStyle>
-          {transactions
-            .slice(-3)
-            .reverse()
-            .map((item) => (
-              <EventStyle>
-                <Typography fontSize={22} color="white">
-                  ({`${item.account.slice(0, 5)}...${item.account.slice(-5)}`})
-                  &nbsp;&nbsp;{" "}
-                  <Typography fontSize={22} component="span" color="#a14900">
-                    has bought DWAR TOKEN!
-                  </Typography>
-                  <Stack direction="row" justifyContent="space-between">
-                    <Typography>{item.amount} BUSD</Typography>
-                    <Typography>-</Typography>
-                    <Typography>{item.amount * 100} DWAR</Typography>
-                    <Typography>-</Typography>
-                    <Typography color="#a14900">20 seconds ago</Typography>
-                  </Stack>
+          {transactions.map((item) => (
+            <EventStyle>
+              <Typography fontSize={22} color="white">
+                ({`${item.to.slice(0, 5)}...${item.to.slice(-5)}`}) &nbsp;&nbsp;{" "}
+                <Typography fontSize={22} component="span" color="#a14900">
+                  has bought DWAR TOKEN!
                 </Typography>
-              </EventStyle>
-            ))}
+                <Stack direction="row" justifyContent="space-between">
+                  <Typography>{item.value / 10 ** 20} BUSD</Typography>
+                  <Typography>-</Typography>
+                  <Typography>{item.value / 10 ** 18} DWAR</Typography>
+                  <Typography>-</Typography>
+                  <Typography color="#a14900">
+                    <Moment fromNow ago>
+                      {new Date(Number(item.timeStamp + "000")).toString()}
+                    </Moment>{" "}
+                    ago
+                  </Typography>
+                </Stack>
+              </Typography>
+            </EventStyle>
+          ))}
         </Stack>
       </Stack>
     </>

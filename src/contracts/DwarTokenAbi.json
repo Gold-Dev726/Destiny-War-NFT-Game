@@ -2,13 +2,8 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "initialSupply",
-        "type": "uint256"
-      },
-      {
         "internalType": "address",
-        "name": "busdAddress",
+        "name": "_busdAddress",
         "type": "address"
       }
     ],
@@ -89,12 +84,25 @@
     "name": "BUSD",
     "outputs": [
       {
-        "internalType": "contract IERC20",
+        "internalType": "contract ERC20",
         "name": "",
         "type": "address"
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "addAddressToWhitelist",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -275,11 +283,50 @@
     "inputs": [
       {
         "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "reserve",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bool",
+        "name": "_allow",
+        "type": "bool"
+      }
+    ],
+    "name": "setAllow",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
         "name": "_price",
         "type": "uint256"
       }
     ],
     "name": "setPrice",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bool",
+        "name": "_isPrivateSale",
+        "type": "bool"
+      }
+    ],
+    "name": "setPrivateSale",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -392,6 +439,26 @@
   {
     "inputs": [],
     "name": "withdraw",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "withdrawAllTokens",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "withdrawTokens",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
