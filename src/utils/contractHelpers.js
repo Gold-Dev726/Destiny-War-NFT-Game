@@ -6,6 +6,7 @@ import {
   DwarCharacterAddress,
   DwarTokenAddress,
   TestBusdAddress,
+  BusdAddress
 } from "contracts/address.js";
 import getRpcUrl from "utils/getRpcUrl";
 
@@ -26,5 +27,5 @@ export const getDwarTokenContract = (signer) => {
 };
 
 export const getERC20Contract = (signer) => {
-  return getContract(ERC20Abi, TestBusdAddress, signer);
+  return getContract(ERC20Abi, BusdAddress, signer);
 };

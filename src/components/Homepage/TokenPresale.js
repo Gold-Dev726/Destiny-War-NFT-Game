@@ -28,6 +28,7 @@ import { toast } from "react-toastify";
 import { useEthers } from "@usedapp/core";
 import { BusdBalance, DwarBalance } from "components/ConnectButton";
 import { MetamaskErrorMessage } from "utils/MetamaskErrorMessage";
+import { registerToken } from "utils/wallet";
 // function slideRenderer(params) {
 //   const { index, key } = params;
 //   console.log(index);
@@ -93,10 +94,9 @@ export default function Homepage() {
   };
 
   const handleBuyToken = async () => {
-    console.log(DwarTokenContract);
     try {
       const result = await DwarTokenContract.buyTokens(
-        (busdAmount * 10 ** 18).toString()
+        ethers.utils.parseEther(busdAmount)
       );
       toast.success("You bought dwar tokens successfully!");
       console.log(result);
@@ -126,7 +126,7 @@ export default function Homepage() {
   useEffect(() => {
     const fetchTxs = async () => {
       const result = await fetch(
-        "https://api.etherscan.io/api?module=account&action=txlistinternal&address=0x116795fcfBC210E5114f2e7FaCDCD5BC6525194D&startblock=0&endblock=9999999&page=1&offset=10&sort=asc&apikey=UZ7MMCU9IGSEYT6PZWUNCAW35WQJENQTBP"
+        "https://api.etherscan.io/api?module=account&action=txlistinternal&address=0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6&startblock=0&endblock=9999999&page=1&offset=10&sort=asc&apikey=UZ7MMCU9IGSEYT6PZWUNCAW35WQJENQTBP"
       );
       const data = await result.json();
       console.log("result", data);
@@ -134,23 +134,8 @@ export default function Homepage() {
     fetchTxs();
   }, []);
 
-  // const presalePercent = async () => {
-  //   try {
-  //     const approvedResult = await DwarTokenAddress.balance(
-  //       DwarTokenAddress,
-  //       ethers.constants.MaxUint256
-  //     );
-  //     console.log("approvedResult", approvedResult);
-  //     setApproved(true);
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //     // toast.error(error.data.message);
-  //     setApproved(false);
-  //   }
-  // };
 
   useEffect(() => {
-    console.log(BusdContract);
     const checkAllowance = async () => {
       try {
         const result = await BusdContract.allowance(account, DwarTokenAddress);
@@ -174,83 +159,9 @@ export default function Homepage() {
 
   return (
     <>
-      {/* <Stack direction="row" sx={{ py: 10 }}>
-        <Stack sx={{ position: "relative" }}>
-          <Box component="img" src="/token_presale/1.png" />
-          <Stack
-            fullWidth
-            direction="row"
-            justifyContent="flex-end"
-            sx={{
-              position: "absolute",
-              // border: "1px solid red",
-              top: "46%",
-              left: "50%",
-              transform: "translateX(-50%)",
-              fontSize: 40,
-              width: 0.8,
-            }}
-          >
-            <Typography color="black">Balance: {busdBalance}</Typography>
-          </Stack>
-          <Stack
-            direction="row"
-            fullWidth
-            spacing={5}
-            alignItems="center"
-            sx={{
-              position: "absolute",
-              top: "53%",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: 0.8,
-            }}
-          >
-            <InputBase
-              type="number"
-              value={busdAmount}
-              onChange={(e) => setBusdAmount(e.target.value)}
-              sx={{ fontSize: 40, height: 50 }}
-              fullWidth
-            />
-            <Typography
-              variant="h3"
-              color="#a75108"
-              sx={{
-                cursor: "pointer",
-                transition: "all 0.3s",
-                "&:hover": { transform: "scale(1.05)" },
-              }}
-              onClick={handleBuyMax}
-            >
-              BUY&nbsp;MAX
-            </Typography>
-          </Stack>
-          <InputBase
-            type="number"
-            value={busdAmount * 100}
-            fullWidth
-            sx={{
-              position: "absolute",
-              // border: "1px solid red",
-              top: "72%",
-              left: "50%",
-              transform: "translateX(-50%)",
-              fontSize: 40,
-              width: 0.8,
-              height: 50,
-            }}
-            disabled
-          />
-        </Stack>
-        <Stack sx={{ position: "relative" }}>
-          <Box component="img" src="/token_presale/2.png" />
-        </Stack>
-        <Stack sx={{ position: "relative" }}>
-          <Box component="img" src="/token_presale/3.png" />
-        </Stack>
-      </Stack> */}
-
+    <Stack>
+      <Button variant="contained" onClick={() => registerToken("0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6", "DWAR", 18, "https://gateway.pinata.cloud/ipfs/QmSwcvrwmvB9BhcghfFZwGeRZ3ATdG3Tk3nWUU8YHHv9Ff")}>Add $DWAR to Metamask</Button>
+    </Stack>
       <Stack
         direction={{ xs: "column", md: "row" }}
         sx={{ p: { xs: 2, md: 10 }, pb: { xs: 6, md: 10 }, width: 1 }}
@@ -417,7 +328,7 @@ export default function Homepage() {
               value={((300000000 - dwarBalance) / 300000000) * 100}
             />
             <TitleStyle fontSize={28} align="center">
-              {/* {300000000 - dwarBalance}/300000000 */}0
+              {300000000 - dwarBalance}/300000000
             </TitleStyle>
           </BoxStyle>
         </Stack>
@@ -436,11 +347,10 @@ export default function Homepage() {
               sx={{ width: 1 }}
             >
               <Typography variant="h4" color="white">
-                {/* {300000000 - dwarBalance} DWAR */}0 DWAR
+                {300000000 - dwarBalance} DWAR
               </Typography>
               <Typography variant="h3" color="white">
-                {/* {(((300000000 - dwarBalance) / 300000000) * 100).toFixed(4)}% */}
-                0%
+                {(((300000000 - dwarBalance) / 300000000) * 100).toFixed(4)}%
               </Typography>
               <Typography variant="h4" color="white">
                 300M DWAR

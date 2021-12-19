@@ -18,7 +18,7 @@ import { ethers } from "ethers";
 
 export function BusdBalance() {
   const { account } = useEthers();
-  const busdBalanceBigNumber = useTokenBalance(TestBusdAddress, account);
+  const busdBalanceBigNumber = useTokenBalance(BusdAddress, account);
   const busdBalance =
     busdBalanceBigNumber && ethers.utils.formatUnits(busdBalanceBigNumber, 18);
   return busdBalance;
