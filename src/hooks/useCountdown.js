@@ -33,10 +33,10 @@ export default function useCountdown(date) {
     )}`.slice(-2);
 
     setCountdown({
-      days: getDays || "000",
-      hours: getHours || "000",
-      minutes: getMinutes || "000",
-      seconds: getSeconds || "000",
+      days: getDays || "00",
+      hours: getHours || "00",
+      minutes: getMinutes || "00",
+      seconds: getSeconds || "00",
     });
   };
 

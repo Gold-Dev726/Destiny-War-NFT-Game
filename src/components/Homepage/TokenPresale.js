@@ -134,7 +134,6 @@ export default function Homepage() {
     fetchTxs();
   }, []);
 
-
   useEffect(() => {
     const checkAllowance = async () => {
       try {
@@ -159,16 +158,34 @@ export default function Homepage() {
 
   return (
     <>
-    <Stack>
-      <Button variant="contained" onClick={() => registerToken("0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6", "DWAR", 18, "https://gateway.pinata.cloud/ipfs/QmSwcvrwmvB9BhcghfFZwGeRZ3ATdG3Tk3nWUU8YHHv9Ff")}>Add $DWAR to Metamask</Button>
-    </Stack>
       <Stack
         direction={{ xs: "column", md: "row" }}
         sx={{ p: { xs: 2, md: 10 }, pb: { xs: 6, md: 10 }, width: 1 }}
         spacing={3}
       >
         <Stack sx={{ maxWidth: 650, width: 1 }}>
-          <BoxStyle>
+          <BoxStyle sx={{ position: "relative" }}>
+            <Box
+              component="img"
+              src="/token_presale/add_token.png"
+              variant="contained"
+              onClick={() =>
+                registerToken(
+                  "0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6",
+                  "DWAR",
+                  18,
+                  "https://gateway.pinata.cloud/ipfs/QmSwcvrwmvB9BhcghfFZwGeRZ3ATdG3Tk3nWUU8YHHv9Ff"
+                )
+              }
+              sx={{
+                position: "absolute",
+                top: -60,
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: 260,
+                cursor: "pointer",
+              }}
+            />
             <Typography variant="h3" align="center" color="white">
               $DWAR INITIAL TOKEN OFFERING
             </Typography>
