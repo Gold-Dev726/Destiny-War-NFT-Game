@@ -1,9 +1,20 @@
 // material
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Box, Typography, Container, Stack, Link, Button } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Container,
+  Stack,
+  Link,
+  Button,
+  Popover,
+  InputBase,
+} from "@mui/material";
 import { getDwarCharacterContract } from "utils/contractHelpers";
 import { useEthers } from "@usedapp/core";
+import { toast } from "react-toastify";
+import { MetamaskErrorMessage } from "utils/MetamaskErrorMessage";
 import { ethers } from "ethers";
 import Dialog from "@mui/material/Dialog";
 import formatBigNumber from "utils/formatBigNumber";
@@ -42,13 +53,37 @@ export default function Inventorypage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
+
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const giftOpen = Boolean(anchorEl);
+
   const { library, account } = useEthers();
   const [tokenURI, setTokenURI] = useState();
+  const [giftAddress, setGiftAddress] = useState();
   const [ownerOfCharacter, setOwnerOfCharacter] = useState();
   const [stat1OfCharacter, setStat1OfCharacter] = useState();
   const [stat2OfCharacter, setStat2OfCharacter] = useState();
   const signer = library?.getSigner();
   const DwarCharacterContract = getDwarCharacterContract(signer);
+
+  const handleGift = async () => {
+    try {
+      const result = await DwarCharacterContract.giftNFT(id, giftAddress);
+      toast.success("You gift a character successfully!");
+    } catch (error) {
+      console.log("Error:", error);
+      toast.error(MetamaskErrorMessage(error));
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -192,21 +227,60 @@ export default function Inventorypage() {
                 SALE
               </Button>
               {isOwner && (
-                <Button
-                  onClick={() => setModalOpen(true)}
-                  variant="contained"
-                  sx={{
-                    color: "white",
-                    bgcolor: "#1143c6",
-                    px: 4,
-                    fontSize: 20,
-                    borderRadius: 1,
-                    border: "1px solid #4c7718",
-                  }}
-                  startIcon={<AllInboxIcon />}
-                >
-                  GIFT
-                </Button>
+                <>
+                  <Button
+                    onClick={handleClick}
+                    variant="contained"
+                    sx={{
+                      color: "white",
+                      bgcolor: "#1143c6",
+                      px: 4,
+                      fontSize: 20,
+                      borderRadius: 1,
+                      border: "1px solid #4c7718",
+                    }}
+                    startIcon={<AllInboxIcon />}
+                  >
+                    GIFT
+                  </Button>
+                  <Popover
+                    open={giftOpen}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "center",
+                    }}
+                    transformOrigin={{
+                      vertical: "bottom",
+                      horizontal: "center",
+                    }}
+                    PaperProps={{
+                      sx: {
+                        color: "white",
+                        bgcolor: "#2926ae",
+                        p: 2,
+                        borderRadius: 1,
+                        border: "1px solid #4c7718",
+                      },
+                    }}
+                  >
+                    <Stack direction="row" alignItems="center">
+                      <InputBase
+                        sx={{ color: "white", width: 360 }}
+                        onChange={(e) => setGiftAddress(e.target.value)}
+                        value={giftAddress}
+                      />
+                      <Button
+                        variant="contained"
+                        onClick={handleGift}
+                        disabled={!giftAddress}
+                      >
+                        Gift
+                      </Button>
+                    </Stack>
+                  </Popover>
+                </>
               )}
             </Stack>
             <Stack
