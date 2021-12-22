@@ -10,8 +10,10 @@ import {
   TextField,
   Container,
   Hidden,
+  LinearProgress,
+  linearProgressClasses,
 } from "@mui/material";
-
+import { styled } from "@mui/material/styles";
 import SwipeableViews from "react-swipeable-views";
 import { virtualize, bindKeyboard } from "react-swipeable-views-utils";
 import {
@@ -26,12 +28,20 @@ import { DwarCharacterAddress } from "contracts/address";
 import Slider from "react-slick";
 import CarouselArrow from "components/CarouselArrow";
 import { MetamaskErrorMessage } from "utils/MetamaskErrorMessage";
-// function slideRenderer(params) {
-//   const { index, key } = params;
-//   console.log(index);
-//   return (
-//   );
-// }
+import formatBigNumber from "utils/formatBigNumber";
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 12,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor: "#261b04",
+    border: '2px solid #47350b'
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 2,
+    backgroundColor: "yellow",
+  },
+}));
 
 export default function Homepage() {
   const EggSliderRef = useRef();
@@ -48,6 +58,7 @@ export default function Homepage() {
   const [presaleModal, setPresaleModal] = useState(false);
   const [currentPresale, setCurrentPresale] = useState();
   const [tokenAmount, setTokenAmount] = useState();
+  const [totalSupply, setTotalSupply] = useState();
   const { library, account } = useEthers();
   const signer = library?.getSigner();
   const DwarCharacterContract = getDwarCharacterContract(signer);
@@ -86,7 +97,14 @@ export default function Homepage() {
   };
 
   useEffect(() => {
-    console.log(DwarTokenContract);
+    const getTotalSupply = async () => {
+      try {
+        const result = await DwarCharacterContract.totalSupply();
+        setTotalSupply(formatBigNumber(result));
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
     const checkAllowance = async () => {
       try {
         const result = await DwarTokenContract.allowance(
@@ -106,6 +124,7 @@ export default function Homepage() {
       }
     };
     checkAllowance();
+    getTotalSupply();
   }, [account]);
 
   return (
@@ -316,6 +335,13 @@ export default function Homepage() {
             }}
             onClick={handleBuyToken}
           />
+           <Stack
+            direction="row"
+            justifyContent="center"
+            sx={{ position: "absolute", bottom: 130, width: 1 }}
+          >
+            <Typography>{totalSupply}</Typography>
+          </Stack>
           <Stack
             direction="row"
             alignItems="center"
@@ -335,7 +361,7 @@ export default function Homepage() {
             >
               <Typography>50000</Typography>
             </Stack>
-            <Stack
+            {/* <Stack
               sx={{
                 width: 200,
                 height: 20,
@@ -349,7 +375,8 @@ export default function Homepage() {
                 src="/presale/loading.png"
                 sx={{ width: 200 }}
               />
-            </Stack>
+            </Stack> */}
+            <BorderLinearProgress sx={{width: 200}} variant="determinate" value={totalSupply} />
             <Stack
               alignItems="center"
               justifyContent="center"
@@ -361,7 +388,7 @@ export default function Homepage() {
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <Typography>50000</Typography>
+              <Typography>{50000 - totalSupply}</Typography>
             </Stack>
           </Stack>
         </Stack>
