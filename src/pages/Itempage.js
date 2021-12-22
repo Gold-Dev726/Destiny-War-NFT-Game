@@ -108,13 +108,14 @@ export default function Inventorypage() {
                   top: "25%",
                   left: "50%",
                   transform: "translateX(-50%)",
-                  background: 'black',
-                  color: 'white',
-                  borderRadius: '2px',
-                  width: 68
+                  background: "black",
+                  color: "white",
+                  borderRadius: "2px",
+                  px: 2,
+                  boxShadow: "0px 0px 4px 1px white",
                 }}
               >
-                #{id}233
+                #{id}
               </Typography>
               <Typography
                 variant="h5"
@@ -123,10 +124,11 @@ export default function Inventorypage() {
                   position: "absolute",
                   bottom: "8px",
                   right: "8px",
-                  background: 'black',
-                  color: '#31d15a',
-                  borderRadius: '4px',
-                  width: 54
+                  background: "black",
+                  color: "#31d15a",
+                  borderRadius: "4px",
+                  width: 54,
+                  boxShadow: "0px 0px 4px 1px white",
                 }}
               >
                 ORIGIN
