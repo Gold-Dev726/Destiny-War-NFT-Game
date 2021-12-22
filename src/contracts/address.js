@@ -1,5 +1,5 @@
 export const DwarCharacterAddress =
-  "0x834dAbAf0fBA4a1743BF553Bd9fCBc40242B6b1d";  //
+  "0x1cB3b3d51Cc4734FcbB0E17543786e2AFe949fC9";  //
 
 // export const DwarTokenAddress = "0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6"; 
 export const DwarTokenAddress = "0xC7882C5a8D91fd269e1F204ac17A0966aBeA2Da5";
