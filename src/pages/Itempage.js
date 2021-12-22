@@ -42,30 +42,23 @@ export default function Inventorypage() {
   const { id } = useParams();
   const [modalOpen, setModalOpen] = useState(false);
   const { library, account } = useEthers();
-  const [ownedCharacter, setOwnedCharacter] = useState();
   const [ownerOfCharacter, setOwnerOfCharacter] = useState();
-  const [statsOfCharacter, setStatsOfCharacter] = useState();
+  const [stat1OfCharacter, setStat1OfCharacter] = useState();
+  const [stat2OfCharacter, setStat2OfCharacter] = useState();
   const signer = library?.getSigner();
   const DwarCharacterContract = getDwarCharacterContract(signer);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const OwnedCharacter = await DwarCharacterContract.tokenOfOwnerByIndex(
-          account,
-          0
-        );
         const OwnerOfCharacter = await DwarCharacterContract.ownerOf(id);
-        const StatsOfCharacter = await DwarCharacterContract.getItemProperty(
-          id
-        );
-        console.log(StatsOfCharacter);
-
-        setOwnedCharacter(formatBigNumber(OwnedCharacter));
+        const Stat1OfCharacter = await DwarCharacterContract.getStat1(id);
+        const Stat2OfCharacter = await DwarCharacterContract.getStat2(id);
         setOwnerOfCharacter(OwnerOfCharacter);
-        setStatsOfCharacter(StatsOfCharacter);
+        setStat1OfCharacter(Stat1OfCharacter);
+        setStat2OfCharacter(Stat2OfCharacter);
+        console.log(Stat1OfCharacter, Stat2OfCharacter)
       } catch (error) {
-        setOwnedCharacter(null);
         setOwnerOfCharacter(null);
       }
     };
@@ -111,7 +104,7 @@ export default function Inventorypage() {
                 #{id}
               </Typography>
             </Box>
-            <Stack direction="row" alignItems="center">
+            {/* <Stack direction="row" alignItems="center">
               <Box component="img" src="/hatch/egg.png" sx={{ width: 50 }} />
               <Stack alignItems="center" spacing={1}>
                 {isOwner && (
@@ -148,7 +141,7 @@ export default function Inventorypage() {
                 src="/hatch/character_head.png"
                 sx={{ width: 70 }}
               />
-            </Stack>
+            </Stack> */}
           </Stack>
 
           <Stack flex={1} alignItems="center" spacing={3}>
@@ -196,24 +189,24 @@ export default function Inventorypage() {
             >
               <Typography>Breed Count: 0</Typography>
               <Typography>
-                Owner: {account}
-                {/* Owner: {ownerOfCharacter ? ownerOfCharacter : "Private"} */}
+                {/* Owner: {account} */}
+                Owner: {ownerOfCharacter ? ownerOfCharacter : "Private"}
               </Typography>
             </Stack>
             <Typography color="#28f0a5">STATS</Typography>
             <Stack direction="row" spacing={5}>
               <Stack spacing={1}>
-                <StatsItem title="HP" min={70} max={110} current={78} />
-                <StatsItem title="MP" min={20} max={50} current={36} />
-                <StatsItem title="PA" min={10} max={30} current={22} />
-                <StatsItem title="PD" min={10} max={50} current={46} />
-                <StatsItem title="MA" min={10} max={20} current={12} />
-                <StatsItem title="MD" min={10} max={50} current={32} />
+                <StatsItem title="HP" min={200} max={200} current={200} />
+                <StatsItem title="MP" min={20} max={150} current={150} />
+                <StatsItem title="PA" min={10} max={70} current={50} />
+                <StatsItem title="PD" min={10} max={100} current={80} />
+                <StatsItem title="MA" min={10} max={70} current={50} />
+                <StatsItem title="MD" min={10} max={100} current={80} />
                 <StatsItem
                   title="Dodge"
                   min={30}
-                  max={50}
-                  current={21}
+                  max={10}
+                  current={10}
                   showMax={false}
                 />
                 <Stack direction="row" sx={{ width: 160 }} spacing={1}>
@@ -229,7 +222,7 @@ export default function Inventorypage() {
                       border: "1px solid rgba(255, 255, 255, 0.7)",
                     }}
                   >
-                    4.17%
+                    3.3%
                   </Typography>
                 </Stack>
               </Stack>
@@ -238,35 +231,35 @@ export default function Inventorypage() {
                   title="CON"
                   min={20}
                   max={30}
-                  current={23}
+                  current={0}
                   showMax={false}
                 />
                 <StatsItem
                   title="SPI"
                   min={20}
                   max={30}
-                  current={27}
+                  current={0}
                   showMax={false}
                 />
                 <StatsItem
                   title="STR"
                   min={20}
                   max={30}
-                  current={24}
+                  current={0}
                   showMax={false}
                 />
                 <StatsItem
                   title="CPS"
                   min={20}
                   max={30}
-                  current={29}
+                  current={0}
                   showMax={false}
                 />
                 <StatsItem
                   title="DEX"
                   min={20}
                   max={30}
-                  current={27}
+                  current={0}
                   showMax={false}
                 />
               </Stack>

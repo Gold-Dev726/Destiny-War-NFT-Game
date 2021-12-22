@@ -77,11 +77,7 @@ const TitleStyle = styled(Typography)(({ theme }) => ({
 export default function Homepage() {
   const [busdAmount, setBusdAmount] = useState();
   const [approved, setApproved] = useState(false);
-  const [transactions, setTransactions] = useState([
-    // { account: "0x438Aa0f9941384Db5331715715050E8C68F72237", amount: 25 },
-    // { account: "0xd34708803b94952f3964985B91D72178bc44E987", amount: 150 },
-    // { account: "0xdB9B8A143c9a524CC20ec19Fc10CE514f21705f1", amount: 30 },
-  ]);
+  const [transactions, setTransactions] = useState([]);
   const { library, account } = useEthers();
   const signer = library?.getSigner();
   const DwarTokenContract = getDwarTokenContract(signer);
@@ -100,9 +96,6 @@ export default function Homepage() {
         ethers.utils.parseEther(busdAmount)
       );
       toast.success("You bought dwar tokens successfully!");
-      console.log(result);
-      const temp = [...transactions, { account, amount: busdAmount }];
-      setTransactions(temp);
     } catch (error) {
       console.log("Error:", error);
       toast.error(MetamaskErrorMessage(error));
@@ -127,10 +120,14 @@ export default function Homepage() {
   useEffect(() => {
     const fetchTxs = async () => {
       const result = await fetch(
-        "https://api.bscscan.com/api?module=account&action=tokentx&contractaddress=0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6&page=1&offset=3&startblock=0&endblock=999999999&sort=asc&apikey=F6K6ICXJDRGGRHBR67WAAKBU4TA72INHZ3"
+        "https://api.bscscan.com/api?module=account&action=tokentx&contractaddress=0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6&page=1&offset=10&startblock=0&endblock=999999999&sort=desc&apikey=F6K6ICXJDRGGRHBR67WAAKBU4TA72INHZ3"
       );
       const data = await result.json();
-      setTransactions(data.result);
+      const transactions = data.result.filter(
+        (item) => item.from === item.contractAddress
+      );
+      console.log(transactions, data.result);
+      setTransactions(transactions.slice(0, 5));
     };
     fetchTxs();
   }, []);
@@ -154,15 +151,13 @@ export default function Homepage() {
     checkAllowance();
   }, [account]);
 
-  console.log("date", new Date(Date.now() - 1639922649));
-
-  console.log("tranactions", transactions);
+  const SoldBalance = 300000000 - dwarBalance;
 
   return (
     <>
       <Stack
         direction={{ xs: "column", md: "row" }}
-        sx={{ p: { xs: 2, md: 10 }, pb: { xs: 6, md: 10 }, width: 1 }}
+        sx={{ p: { xs: 2, md: 10 }, py: { xs: 6, md: 10 }, width: 1 }}
         spacing={3}
       >
         <Stack sx={{ maxWidth: 650, width: 1 }}>
@@ -188,7 +183,12 @@ export default function Homepage() {
                 cursor: "pointer",
               }}
             />
-            <Typography variant="h3" align="center" color="white">
+            <Typography
+              variant="h3"
+              align="center"
+              color="white"
+              sx={{ pt: { xs: 5, md: 0 } }}
+            >
               $DWAR INITIAL TOKEN OFFERING
             </Typography>
             <Typography
@@ -197,7 +197,7 @@ export default function Homepage() {
               color="white"
               sx={{ mt: 3 }}
             >
-              The goal is to seel initial token to raise funds for liquidity
+              The goal is to sell initial token to raise funds for liquidity
               pool and further development of the game. <br />
               By purchasing our initial token, you will be able to participate
               in our kickstart initiative and purchase NFT's ahead of time.
@@ -344,10 +344,10 @@ export default function Homepage() {
             </TitleStyle>
             <BorderLinearProgress
               variant="determinate"
-              value={((300000000 - dwarBalance) / 300000000) * 100}
+              value={(SoldBalance / 300000000) * 100}
             />
             <TitleStyle fontSize={28} align="center">
-              {300000000 - dwarBalance}/300000000
+              {SoldBalance}/300000000
             </TitleStyle>
           </BoxStyle>
         </Stack>
@@ -366,10 +366,10 @@ export default function Homepage() {
               sx={{ width: 1 }}
             >
               <Typography variant="h4" color="white">
-                {300000000 - dwarBalance} DWAR
+                {SoldBalance} DWAR
               </Typography>
               <Typography variant="h3" color="white">
-                {(((300000000 - dwarBalance) / 300000000) * 100).toFixed(4)}%
+                {((SoldBalance / 300000000) * 100).toFixed(4)}%
               </Typography>
               <Typography variant="h4" color="white">
                 300M DWAR
@@ -377,28 +377,32 @@ export default function Homepage() {
             </Stack>
             <BorderLinearProgress
               variant="determinate"
-              value={((300000000 - dwarBalance) / 300000000) * 100}
+              value={(SoldBalance / 300000000) * 100}
             />
             <TitleStyle fontSize={40} align="center">
               TOKEN PRIVATE SALE <br /> DEC 20, 2021
             </TitleStyle>
           </BoxStyle>
-          <BoxStyle>
+          <BoxStyle sx={{ py: 2 }}>
             <Typography variant="h3" align="center" color="white">
               DWAR PRESALE EVENT
             </Typography>
           </BoxStyle>
-          {transactions.map((item) => (
-            <EventStyle>
-              <Typography fontSize={22} color="white">
-                ({`${item.to.slice(0, 5)}...${item.to.slice(-5)}`}) &nbsp;&nbsp;{" "}
-                <Typography fontSize={22} component="span" color="#a14900">
+          {transactions?.map((item) => (
+            <EventStyle sx={{ py: "2px" }}>
+              <Typography fontSize={18} color="white">
+                ({`${item?.to?.slice(0, 5)}...${item?.to?.slice(-5)}`}) &nbsp;&nbsp;{" "}
+                <Typography fontSize={18} component="span" color="#a14900">
                   has bought DWAR TOKEN!
                 </Typography>
                 <Stack direction="row" justifyContent="space-between">
-                  <Typography>{item.value / 10 ** 20} BUSD</Typography>
-                  <Typography>-</Typography>
-                  <Typography>{item.value / 10 ** 18} DWAR</Typography>
+                  <Typography>
+                    {Math.round(item.value / 10 ** 20)} BUSD
+                  </Typography>
+                  <Typography>-></Typography>
+                  <Typography>
+                    {Math.round(item.value / 10 ** 18)} DWAR
+                  </Typography>
                   <Typography>-</Typography>
                   <Typography color="#a14900">
                     <Moment fromNow ago>

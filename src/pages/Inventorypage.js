@@ -11,7 +11,8 @@ import formatBigNumber from "utils/formatBigNumber";
 export default function Inventorypage() {
   const navigate = useNavigate();
   const { library, account } = useEthers();
-  const [ownedCharacter, setOwnedCharacter] = useState();
+  const [ownedCharacters, setOwnedCharacters] = useState([]);
+  const [ownedCharacterImages, setOwnedCharacterImages] = useState([])
   const [ownedMount, setOwnedMount] = useState();
   const [ownedPet, setOwnedPet] = useState();
   const signer = library?.getSigner();
@@ -55,20 +56,24 @@ export default function Inventorypage() {
     ],
   };
 
+  const realTokenURI = async (tokenId) => {
+    const result = await DwarCharacterContract.getCharacter(tokenId);
+    return result[1];
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const OwnedCharacter = await DwarCharacterContract.tokenOfOwnerByIndex(
-          account,
-          0
-        );
-        setOwnedCharacter(formatBigNumber(OwnedCharacter));
+        const result = await DwarCharacterContract.tokensOfOwner(account);
+        const OwnedCharacters = result.map((item) => formatBigNumber(item));
+        setOwnedCharacters(OwnedCharacters);
       } catch (error) {
-        setOwnedCharacter(null);
+        setOwnedCharacters(null);
       }
     };
     if (account) fetchData();
-  }, [DwarCharacterContract, account]);
+    console.log("DSFDS");
+  }, [account]);
 
   // const normalImgUri = async () => {
   //   const uri = await DwarCharacterContract.normalImgUri();
@@ -76,8 +81,7 @@ export default function Inventorypage() {
   //   return uri;
   // };
 
-  // normalImgUri();
-  console.log("ownedChar", ownedCharacter);
+  console.log("Owned", ownedCharacters);
   return (
     <Box
       sx={{
@@ -134,36 +138,56 @@ export default function Inventorypage() {
                 >
                   <Box sx={{ pt: 2, pb: 1 }}>
                     <Slider {...SliderSettings} ref={CharacterSliderRef}>
-                      {[...Array(5)].map((item, index) => (
-                        <Box>
-                          <Stack alignItems="center">
-                            <Stack
-                              justifyContent="center"
-                              alignItems="center"
-                              sx={{
-                                width: { xs: 80, md: 150 },
-                                height: { xs: 80, md: 150 },
-                                bgcolor: "#3323ac",
-                                border: "2px solid rgba(255, 255, 255, 0.3)",
-                                borderRadius: 1,
-                              }}
-                            >
-                              {index === 0 && ownedCharacter && (
-                                <Box
-                                  onClick={() =>
-                                    navigate(
-                                      `/items/character/${ownedCharacter}`
-                                    )
-                                  }
-                                  component="img"
-                                  src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${ownedCharacter}.png`}
-                                  sx={{ width: 1, height: 1 }}
+                      {ownedCharacters.length > 0
+                        ? ownedCharacters.map((item, index) => (
+                            <Box>
+                              <Stack alignItems="center">
+                                <Stack
+                                  justifyContent="center"
+                                  alignItems="center"
+                                  sx={{
+                                    width: { xs: 80, md: 150 },
+                                    height: { xs: 80, md: 150 },
+                                    bgcolor: "#3323ac",
+                                    border:
+                                      "2px solid rgba(255, 255, 255, 0.3)",
+                                    borderRadius: 1,
+                                  }}
+                                >
+                                  <Box
+                                    onClick={() =>
+                                      navigate(`/items/character/${item}`)
+                                    }
+                                    component="img"
+                                    src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${item}.png`}
+                                    sx={{
+                                      width: 1,
+                                      height: 1,
+                                      cursor: "pointer",
+                                    }}
+                                  />
+                                </Stack>
+                              </Stack>
+                            </Box>
+                          ))
+                        : [...Array(5)].map((item, index) => (
+                            <Box>
+                              <Stack alignItems="center">
+                                <Stack
+                                  justifyContent="center"
+                                  alignItems="center"
+                                  sx={{
+                                    width: { xs: 80, md: 150 },
+                                    height: { xs: 80, md: 150 },
+                                    bgcolor: "#3323ac",
+                                    border:
+                                      "2px solid rgba(255, 255, 255, 0.3)",
+                                    borderRadius: 1,
+                                  }}
                                 />
-                              )}
-                            </Stack>
-                          </Stack>
-                        </Box>
-                      ))}
+                              </Stack>
+                            </Box>
+                          ))}
                     </Slider>
                   </Box>
                 </Box>

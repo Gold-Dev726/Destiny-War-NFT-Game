@@ -67,6 +67,7 @@ export default function Inventorypage() {
           pt: 20,
         }}
       >
+        <Button variant="contained" onClick={handleAllow}>Allow</Button>
         <Button variant="contained" onClick={handleWithdraw}>Withdraw</Button>
       </Container>
     </Box>

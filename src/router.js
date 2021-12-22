@@ -4,6 +4,7 @@ import { Navigate, useRoutes, useLocation } from "react-router-dom";
 import MainLayout from "layouts";
 import Homepage from "pages/Homepage";
 import Adminpage from "pages/Adminpage";
+import Devpage from "pages/Devpage";
 import Presalepage from "pages/Presalepage";
 import Inventorypage from "pages/Inventorypage";
 import Newgame from "pages/Newgame";
@@ -11,6 +12,8 @@ import Marketpage from "pages/Marketpage";
 import Itempage from "pages/Itempage";
 import Videopage from "pages/Videopage";
 import Loading from "components/Loading";
+import AdminGuard from "guards/AdminGuard";
+import Admin2Guard from "guards/Admin2Guard";
 
 const Loadable = (Component) => (props) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -37,7 +40,22 @@ export default function Router() {
         { path: "/game", element: <Newgame /> },
         { path: "/items/character/:id", element: <Itempage /> },
         { path: "/landing", element: <Videopage /> },
-        { path: "/admin", element: <Adminpage /> },
+        {
+          path: "/admin",
+          element: (
+            <AdminGuard>
+              <Adminpage />
+            </AdminGuard>
+          ),
+        },
+        {
+          path: "/adminrolepage",
+          element: (
+            <Admin2Guard>
+              <Devpage />
+            </Admin2Guard>
+          ),
+        },
       ],
     },
   ]);

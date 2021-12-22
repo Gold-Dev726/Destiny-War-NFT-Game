@@ -203,7 +203,7 @@ export default function Homepage() {
           <Presale />
         </Stack>
 
-        <Stack
+        {/* <Stack
           id="presale"
           sx={{
             background:
@@ -227,7 +227,7 @@ export default function Homepage() {
             PRESALE COUNTDOWN
           </Typography>
           <NftCountDown />
-        </Stack>
+        </Stack> */}
       </Box>
       {/* ----------------Original NFT Presale------------- */}
       {/* <Stack

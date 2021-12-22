@@ -5,7 +5,6 @@ import ERC20Abi from "contracts/ERC20Abi.json";
 import {
   DwarCharacterAddress,
   DwarTokenAddress,
-  TestBusdAddress,
   BusdAddress
 } from "contracts/address.js";
 import getRpcUrl from "utils/getRpcUrl";

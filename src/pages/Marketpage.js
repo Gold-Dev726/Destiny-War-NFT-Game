@@ -35,7 +35,6 @@ export default function Inventorypage() {
   // };
 
   // normalImgUri();
-  console.log("ownedChar", ownedCharacter);
   return (
     <Box
       sx={{

@@ -25,6 +25,7 @@ import { BusdBalance } from "components/ConnectButton";
 import { DwarCharacterAddress } from "contracts/address";
 import Slider from "react-slick";
 import CarouselArrow from "components/CarouselArrow";
+import { MetamaskErrorMessage } from "utils/MetamaskErrorMessage";
 // function slideRenderer(params) {
 //   const { index, key } = params;
 //   console.log(index);
@@ -59,12 +60,12 @@ export default function Homepage() {
 
   const handleBuyToken = async () => {
     try {
-      const result = await DwarCharacterContract.mintDwarCharacter(1);
+      const result = await DwarCharacterContract.mintNFTs(1);
       toast.success("You bought a Dwar Character successfully!");
       console.log(result);
     } catch (error) {
       console.error("Error:", error);
-      toast.error(error.data.message);
+      toast.error(MetamaskErrorMessage(error));
     }
   };
 
@@ -79,7 +80,7 @@ export default function Homepage() {
       setApproved(true);
     } catch (error) {
       console.error("Error:", error);
-      toast.error(error.data.message);
+      toast.error(MetamaskErrorMessage(error));
       setApproved(false);
     }
   };
@@ -289,31 +290,18 @@ export default function Homepage() {
               transform: "translateX(-50%)",
             }}
           />
-          {currentPresale === "character" ? (
-            <Box
-              component="img"
-              src={`/presale/${currentPresale}-egg.gif`}
-              sx={{
-                position: "absolute",
-                left: "50%",
-                top: 0,
-                transform: "translateX(-50%)",
-                width: 320,
-              }}
-            />
-          ) : (
-            <Box
-              component="img"
-              src={`/presale/${currentPresale}-egg.png`}
-              sx={{
-                position: "absolute",
-                left: "50%",
-                top: 100,
-                transform: "translateX(-50%)",
-                width: 180,
-              }}
-            />
-          )}
+
+          <Box
+            component="img"
+            src={`/presale/${currentPresale}-egg.png`}
+            sx={{
+              position: "absolute",
+              left: "50%",
+              top: 100,
+              transform: "translateX(-50%)",
+              width: 180,
+            }}
+          />
 
           <Box
             component="img"

@@ -27,6 +27,7 @@ const config = {
   // readOnlyChainId: ChainId.BSCTestnet,
 };
 
+
 ReactDOM.render(
   <StrictMode>
     <DAppProvider config={config}>
