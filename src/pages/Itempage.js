@@ -52,7 +52,8 @@ function StatsItem({
 export default function Inventorypage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [modalOpen, setModalOpen] = useState(false);
+  const [giftModalOpen, setGiftModalOpen] = useState(false);
+  const [saleModalOpen, setSaleModalOpen] = useState(false);
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -213,7 +214,8 @@ export default function Inventorypage() {
             {/* {isOwner && ( */}
             <Stack direction="row" justifyContent="center" spacing={3}>
               <Button
-                onClick={() => setModalOpen(true)}
+                disabled={!isOwner}
+                onClick={() => setSaleModalOpen(true)}
                 variant="contained"
                 sx={{
                   color: "white",
@@ -226,62 +228,22 @@ export default function Inventorypage() {
               >
                 SALE
               </Button>
-              {isOwner && (
-                <>
-                  <Button
-                    onClick={handleClick}
-                    variant="contained"
-                    sx={{
-                      color: "white",
-                      bgcolor: "#1143c6",
-                      px: 4,
-                      fontSize: 20,
-                      borderRadius: 1,
-                      border: "1px solid #4c7718",
-                    }}
-                    startIcon={<AllInboxIcon />}
-                  >
-                    GIFT
-                  </Button>
-                  <Popover
-                    open={giftOpen}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "center",
-                    }}
-                    transformOrigin={{
-                      vertical: "bottom",
-                      horizontal: "center",
-                    }}
-                    PaperProps={{
-                      sx: {
-                        color: "white",
-                        bgcolor: "#2926ae",
-                        p: 2,
-                        borderRadius: 1,
-                        border: "1px solid #4c7718",
-                      },
-                    }}
-                  >
-                    <Stack direction="row" alignItems="center">
-                      <InputBase
-                        sx={{ color: "white", width: 360 }}
-                        onChange={(e) => setGiftAddress(e.target.value)}
-                        value={giftAddress}
-                      />
-                      <Button
-                        variant="contained"
-                        onClick={handleGift}
-                        disabled={!giftAddress}
-                      >
-                        Gift
-                      </Button>
-                    </Stack>
-                  </Popover>
-                </>
-              )}
+              <Button
+                disabled={!isOwner}
+                onClick={() => setGiftModalOpen(true)}
+                variant="contained"
+                sx={{
+                  color: "white",
+                  bgcolor: "#1143c6",
+                  px: 4,
+                  fontSize: 20,
+                  borderRadius: 1,
+                  border: "1px solid #4c7718",
+                }}
+                startIcon={<AllInboxIcon />}
+              >
+                GIFT
+              </Button>
             </Stack>
             <Stack
               sx={{
@@ -373,7 +335,7 @@ export default function Inventorypage() {
         </Stack>
       </Container>
 
-      <Dialog onClose={() => setModalOpen(false)} open={modalOpen}>
+      <Dialog onClose={() => setSaleModalOpen(false)} open={saleModalOpen}>
         <Typography
           sx={{
             color: "yellow",
@@ -386,6 +348,54 @@ export default function Inventorypage() {
         >
           This feature is not yet avalable
         </Typography>
+      </Dialog>
+
+      <Dialog
+        onClose={() => setGiftModalOpen(false)}
+        open={giftModalOpen}
+        PaperProps={{
+          sx: {
+            color: "white",
+            bgcolor: "#2926ae",
+            p: 2,
+            borderRadius: 1,
+            border: "1px solid #4c7718",
+          },
+        }}
+      >
+        <Typography
+          sx={{
+            color: "yellow",
+          }}
+        >
+          Gift your Dwar Character
+        </Typography>
+        <Stack
+          direction="row"
+          alignItems="center"
+          sx={{
+            border: "1px solid rgba(255, 255, 255, 0.3)",
+            borderRadius: "4px",
+            px: 2,
+            mt: 1,
+          }}
+        >
+          <InputBase
+            sx={{ color: "white", width: 360, height: 40 }}
+            onChange={(e) => setGiftAddress(e.target.value)}
+            value={giftAddress}
+            placeholder="Receiver's Metamask wallet address"
+          />
+        </Stack>
+        <Stack direction="row" justifyContent="flex-end" sx={{ mt: 3 }}>
+          <Button
+            variant="contained"
+            onClick={handleGift}
+            disabled={!giftAddress}
+          >
+            Gift
+          </Button>
+        </Stack>
       </Dialog>
     </Box>
   );
