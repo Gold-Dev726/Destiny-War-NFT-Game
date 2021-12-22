@@ -153,7 +153,7 @@ export default function Inventorypage() {
                                       "2px solid rgba(255, 255, 255, 0.3)",
                                     borderRadius: 1,
                                   }}
-                                >
+                                > 
                                   <Box
                                     onClick={() =>
                                       navigate(`/items/character/${item}`)
