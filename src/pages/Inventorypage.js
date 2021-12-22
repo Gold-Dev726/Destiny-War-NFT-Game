@@ -12,7 +12,7 @@ export default function Inventorypage() {
   const navigate = useNavigate();
   const { library, account } = useEthers();
   const [ownedCharacters, setOwnedCharacters] = useState([]);
-  const [ownedCharacterImages, setOwnedCharacterImages] = useState([])
+  const [ownedCharacterImages, setOwnedCharacterImages] = useState([]);
   const [ownedMount, setOwnedMount] = useState();
   const [ownedPet, setOwnedPet] = useState();
   const signer = library?.getSigner();
@@ -66,13 +66,23 @@ export default function Inventorypage() {
       try {
         const result = await DwarCharacterContract.tokensOfOwner(account);
         const OwnedCharacters = result.map((item) => formatBigNumber(item));
-        setOwnedCharacters(OwnedCharacters);
+        const array = [];
+        for (let i = 0; i < OwnedCharacters.length; i++) {
+          const characterResult = await DwarCharacterContract.getCharacter(
+            OwnedCharacters[i]
+          );
+
+          array.push({
+            tokenId: OwnedCharacters[i],
+            tokenURI: characterResult[1],
+          });
+        }
+        setOwnedCharacters(array);
       } catch (error) {
         setOwnedCharacters(null);
       }
     };
     if (account) fetchData();
-    console.log("DSFDS");
   }, [account]);
 
   // const normalImgUri = async () => {
@@ -153,13 +163,16 @@ export default function Inventorypage() {
                                       "2px solid rgba(255, 255, 255, 0.3)",
                                     borderRadius: 1,
                                   }}
-                                > 
+                                >
                                   <Box
                                     onClick={() =>
-                                      navigate(`/items/character/${item}`)
+                                      navigate(
+                                        `/items/character/${item.tokenId}`
+                                      )
                                     }
                                     component="img"
-                                    src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${item}.png`}
+                                    src={item.tokenURI}
+                                    // src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${item}.png`}
                                     sx={{
                                       width: 1,
                                       height: 1,

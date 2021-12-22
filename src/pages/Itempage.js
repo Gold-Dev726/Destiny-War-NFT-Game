@@ -1,6 +1,6 @@
 // material
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Box, Typography, Container, Stack, Link, Button } from "@mui/material";
 import { getDwarCharacterContract } from "utils/contractHelpers";
 import { useEthers } from "@usedapp/core";
@@ -40,8 +40,10 @@ function StatsItem({
 
 export default function Inventorypage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const { library, account } = useEthers();
+  const [tokenURI, setTokenURI] = useState();
   const [ownerOfCharacter, setOwnerOfCharacter] = useState();
   const [stat1OfCharacter, setStat1OfCharacter] = useState();
   const [stat2OfCharacter, setStat2OfCharacter] = useState();
@@ -51,13 +53,15 @@ export default function Inventorypage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const realTokenImage = await DwarCharacterContract.getCharacter(id);
         const OwnerOfCharacter = await DwarCharacterContract.ownerOf(id);
         const Stat1OfCharacter = await DwarCharacterContract.getStat1(id);
         const Stat2OfCharacter = await DwarCharacterContract.getStat2(id);
         setOwnerOfCharacter(OwnerOfCharacter);
         setStat1OfCharacter(Stat1OfCharacter);
         setStat2OfCharacter(Stat2OfCharacter);
-        console.log(Stat1OfCharacter, Stat2OfCharacter)
+        setTokenURI(realTokenImage[1]);
+        console.log(Stat1OfCharacter, Stat2OfCharacter);
       } catch (error) {
         setOwnerOfCharacter(null);
       }
@@ -76,11 +80,16 @@ export default function Inventorypage() {
       }}
     >
       <Container maxWidth="xl" sx={{ pt: 20, pb: 10 }}>
-        <Stack direction="row" alignItems="center">
+        <Stack
+          direction="row"
+          alignItems="center"
+          onClick={() => navigate(-1)}
+          sx={{ cursor: "pointer" }}
+        >
           <ArrowLeftIcon sx={{ fontSize: 50, color: "#0078ff" }} />
-          <Link href="/inventory" underline="none" fontSize={30} color="white">
+          <Typography fontSize={30} color="white">
             BACK
-          </Link>
+          </Typography>
         </Stack>
         <Stack direction="row" spacing={10}>
           <Stack flex={1} alignItems="center">
@@ -88,20 +97,39 @@ export default function Inventorypage() {
               <Box
                 component="img"
                 // src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${id}.png`}
-                src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${id}.png`}
+                src={tokenURI}
                 sx={{ width: 400 }}
               />
               <Typography
-                variant="h3"
-                fontFamily="BerlinFB"
+                variant="h4"
+                align="center"
                 sx={{
                   position: "absolute",
                   top: "25%",
                   left: "50%",
                   transform: "translateX(-50%)",
+                  background: 'black',
+                  color: 'white',
+                  borderRadius: '2px',
+                  width: 68
                 }}
               >
-                #{id}
+                #{id}233
+              </Typography>
+              <Typography
+                variant="h5"
+                align="center"
+                sx={{
+                  position: "absolute",
+                  bottom: "8px",
+                  right: "8px",
+                  background: 'black',
+                  color: '#31d15a',
+                  borderRadius: '4px',
+                  width: 54
+                }}
+              >
+                ORIGIN
               </Typography>
             </Box>
             {/* <Stack direction="row" alignItems="center">
