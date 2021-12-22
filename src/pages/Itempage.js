@@ -191,23 +191,24 @@ export default function Inventorypage() {
               >
                 SALE
               </Button>
-              <Button
-                onClick={() => setModalOpen(true)}
-                variant="contained"
-                sx={{
-                  color: "white",
-                  bgcolor: "#1143c6",
-                  px: 4,
-                  fontSize: 20,
-                  borderRadius: 1,
-                  border: "1px solid #4c7718",
-                }}
-                startIcon={<AllInboxIcon />}
-              >
-                GIFT
-              </Button>
+              {isOwner && (
+                <Button
+                  onClick={() => setModalOpen(true)}
+                  variant="contained"
+                  sx={{
+                    color: "white",
+                    bgcolor: "#1143c6",
+                    px: 4,
+                    fontSize: 20,
+                    borderRadius: 1,
+                    border: "1px solid #4c7718",
+                  }}
+                  startIcon={<AllInboxIcon />}
+                >
+                  GIFT
+                </Button>
+              )}
             </Stack>
-            {/* )} */}
             <Stack
               sx={{
                 color: "white",
