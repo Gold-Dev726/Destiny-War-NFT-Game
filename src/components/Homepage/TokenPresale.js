@@ -391,27 +391,32 @@ export default function Homepage() {
           {transactions?.map((item) => (
             <EventStyle sx={{ py: "2px" }}>
               <Typography fontSize={18} color="white">
-                ({`${item?.to?.slice(0, 5)}...${item?.to?.slice(-5)}`}) &nbsp;&nbsp;{" "}
+                ({`${item?.to?.slice(0, 5)}...${item?.to?.slice(-5)}`})
+                &nbsp;&nbsp;{" "}
                 <Typography fontSize={18} component="span" color="#a14900">
                   has bought DWAR TOKEN!
                 </Typography>
-                <Stack direction="row" justifyContent="space-between">
-                  <Typography>
-                    {Math.round(item.value / 10 ** 20)} BUSD
-                  </Typography>
-                  <Typography>-></Typography>
-                  <Typography>
-                    {Math.round(item.value / 10 ** 18)} DWAR
-                  </Typography>
-                  <Typography>-</Typography>
-                  <Typography color="#a14900">
-                    <Moment fromNow ago>
-                      {new Date(Number(item.timeStamp + "000")).toString()}
-                    </Moment>{" "}
-                    ago
-                  </Typography>
-                </Stack>
               </Typography>
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                sx={{ color: "white" }}
+              >
+                <Typography>
+                  {Math.round(item.value / 10 ** 20)} BUSD
+                </Typography>
+                <Typography>-></Typography>
+                <Typography>
+                  {Math.round(item.value / 10 ** 18)} DWAR
+                </Typography>
+                <Typography>-</Typography>
+                <Typography color="#a14900">
+                  <Moment fromNow ago>
+                    {new Date(Number(item.timeStamp + "000")).toString()}
+                  </Moment>{" "}
+                  ago
+                </Typography>
+              </Stack>
             </EventStyle>
           ))}
         </Stack>

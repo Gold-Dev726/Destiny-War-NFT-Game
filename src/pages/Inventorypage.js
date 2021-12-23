@@ -2,7 +2,10 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Typography, Container, Stack } from "@mui/material";
-import { getDwarCharacterContract } from "utils/contractHelpers";
+import {
+  getDwarCharacterContract,
+  getDwarMountContract,
+} from "utils/contractHelpers";
 import { useEthers } from "@usedapp/core";
 import { ethers } from "ethers";
 import Slider from "react-slick";
@@ -12,11 +15,11 @@ export default function Inventorypage() {
   const navigate = useNavigate();
   const { library, account } = useEthers();
   const [ownedCharacters, setOwnedCharacters] = useState([]);
-  const [ownedCharacterImages, setOwnedCharacterImages] = useState([]);
-  const [ownedMount, setOwnedMount] = useState();
-  const [ownedPet, setOwnedPet] = useState();
+  const [ownedMounts, setOwnedMounts] = useState([]);
+
   const signer = library?.getSigner();
   const DwarCharacterContract = getDwarCharacterContract(signer);
+  const DwarMountContract = getDwarMountContract(signer);
 
   const CharacterSliderRef = useRef();
   const PetSliderRef = useRef();
@@ -56,13 +59,8 @@ export default function Inventorypage() {
     ],
   };
 
-  const realTokenURI = async (tokenId) => {
-    const result = await DwarCharacterContract.getCharacter(tokenId);
-    return result[1];
-  };
-
   useEffect(() => {
-    const fetchData = async () => {
+    const getOwnedCharacters = async () => {
       try {
         const result = await DwarCharacterContract.tokensOfOwner(account);
         const OwnedCharacters = result.map((item) => formatBigNumber(item));
@@ -71,7 +69,6 @@ export default function Inventorypage() {
           const characterResult = await DwarCharacterContract.getCharacter(
             OwnedCharacters[i]
           );
-
           array.push({
             tokenId: OwnedCharacters[i],
             tokenURI: characterResult[1],
@@ -79,10 +76,35 @@ export default function Inventorypage() {
         }
         setOwnedCharacters(array);
       } catch (error) {
+        console.log("chaerror", error);
         setOwnedCharacters(null);
       }
     };
-    if (account) fetchData();
+
+    const getOwnedMounts = async () => {
+      try {
+        const result = await DwarMountContract.tokensOfOwner(account);
+        const OwnedMounts = result.map((item) => formatBigNumber(item));
+        const array = [];
+        for (let i = 0; i < OwnedMounts.length; i++) {
+          const mountResult = await DwarMountContract.getMount(OwnedMounts[i]);
+          array.push({
+            tokenId: OwnedMounts[i],
+            tokenURI: mountResult[1],
+            tokenStar: mountResult[2],
+          });
+        }
+        setOwnedMounts(array);
+      } catch (error) {
+        console.log("mounterror", error);
+        setOwnedMounts(null);
+      }
+    };
+
+    if (account) {
+      getOwnedMounts();
+      getOwnedCharacters();
+    }
   }, [account]);
 
   // const normalImgUri = async () => {
@@ -92,6 +114,7 @@ export default function Inventorypage() {
   // };
 
   console.log("Owned", ownedCharacters);
+  console.log("OwnedMounts", ownedMounts);
   return (
     <Box
       sx={{
@@ -148,7 +171,7 @@ export default function Inventorypage() {
                 >
                   <Box sx={{ pt: 2, pb: 1 }}>
                     <Slider {...SliderSettings} ref={CharacterSliderRef}>
-                      {ownedCharacters.length > 0
+                      {ownedCharacters?.length > 0
                         ? ownedCharacters.map((item, index) => (
                             <Box>
                               <Stack alignItems="center">
@@ -304,28 +327,59 @@ export default function Inventorypage() {
                 >
                   <Box sx={{ pt: 2, pb: 1 }}>
                     <Slider {...SliderSettings} ref={MountSliderRef}>
-                      {[...Array(5)].map((item, index) => (
-                        <Box>
-                          <Stack alignItems="center">
-                            <Stack
-                              justifyContent="center"
-                              alignItems="center"
-                              sx={{
-                                width: { xs: 80, md: 150 },
-                                height: { xs: 80, md: 150 },
-                                bgcolor: "#3323ac",
-                                border: "2px solid rgba(255, 255, 255, 0.3)",
-                                borderRadius: 1,
-                              }}
-                            >
-                              {/* <Box
-                                component="img"
-                                src="/presale/mount-egg.gif"
-                              /> */}
-                            </Stack>
-                          </Stack>
-                        </Box>
-                      ))}
+                      {ownedMounts?.length > 0
+                        ? ownedMounts.map((item, index) => (
+                            <Box>
+                              <Stack alignItems="center">
+                                <Stack
+                                  justifyContent="center"
+                                  alignItems="center"
+                                  sx={{
+                                    width: { xs: 80, md: 150 },
+                                    height: { xs: 80, md: 150 },
+                                    bgcolor: "#3323ac",
+                                    border:
+                                      "2px solid rgba(255, 255, 255, 0.3)",
+                                    borderRadius: 1,
+                                  }}
+                                >
+                                  <Box
+                                    onClick={() =>
+                                      navigate(
+                                        `/items/mount/${item.tokenId}`
+                                      )
+                                    }
+                                    component="img"
+                                    src={item.tokenURI}
+                                    // src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${item}.png`}
+                                    sx={{
+                                      width: 1,
+                                      height: 1,
+                                      cursor: "pointer",
+                                    }}
+                                  />
+                                </Stack>
+                              </Stack>
+                            </Box>
+                          ))
+                        : [...Array(5)].map((item, index) => (
+                            <Box>
+                              <Stack alignItems="center">
+                                <Stack
+                                  justifyContent="center"
+                                  alignItems="center"
+                                  sx={{
+                                    width: { xs: 80, md: 150 },
+                                    height: { xs: 80, md: 150 },
+                                    bgcolor: "#3323ac",
+                                    border:
+                                      "2px solid rgba(255, 255, 255, 0.3)",
+                                    borderRadius: 1,
+                                  }}
+                                />
+                              </Stack>
+                            </Box>
+                          ))}
                     </Slider>
                   </Box>
                 </Box>

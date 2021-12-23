@@ -18,13 +18,19 @@ import SwipeableViews from "react-swipeable-views";
 import { virtualize, bindKeyboard } from "react-swipeable-views-utils";
 import {
   getDwarCharacterContract,
+  getDwarMountContract,
+  getDwarPetContract,
   getDwarTokenContract,
 } from "utils/contractHelpers";
 import { ethers } from "ethers";
 import { toast } from "react-toastify";
 import { useEthers } from "@usedapp/core";
 import { BusdBalance } from "components/ConnectButton";
-import { DwarCharacterAddress } from "contracts/address";
+import {
+  DwarCharacterAddress,
+  DwarMountAddress,
+  DwarPetAddress,
+} from "contracts/address";
 import Slider from "react-slick";
 import CarouselArrow from "components/CarouselArrow";
 import { MetamaskErrorMessage } from "utils/MetamaskErrorMessage";
@@ -35,7 +41,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   borderRadius: 5,
   [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor: "#261b04",
-    border: '2px solid #47350b'
+    border: "2px solid #47350b",
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 2,
@@ -54,14 +60,23 @@ export default function Homepage() {
     slidesToScroll: 1,
     arrows: false,
   };
-  const [approved, setApproved] = useState(false);
+  const [characterApproved, setCharacterApproved] = useState(false);
+  const [mountApproved, setMountApproved] = useState(false);
+  const [petApproved, setPetApproved] = useState(false);
+
+  const [characterTotalSupply, setCharacterTotalSupply] = useState();
+  const [mountTotalSupply, setMountTotalSupply] = useState();
+  const [petTotalSupply, setPetTotalSupply] = useState();
+
   const [presaleModal, setPresaleModal] = useState(false);
   const [currentPresale, setCurrentPresale] = useState();
   const [tokenAmount, setTokenAmount] = useState();
-  const [totalSupply, setTotalSupply] = useState();
+
   const { library, account } = useEthers();
   const signer = library?.getSigner();
+
   const DwarCharacterContract = getDwarCharacterContract(signer);
+  const DwarMountContract = getDwarMountContract(signer);
   const DwarTokenContract = getDwarTokenContract(signer);
 
   const handleModal = (type) => {
@@ -71,60 +86,132 @@ export default function Homepage() {
 
   const handleBuyToken = async () => {
     try {
-      const result = await DwarCharacterContract.mintNFTs(1);
-      toast.success("You bought a Dwar Character successfully!");
-      console.log(result);
+      if (currentPresale === "character") {
+        const result = await DwarCharacterContract.mintNFTs(1);
+        toast.success("You bought a Dwar Character successfully!");
+        console.log(result);
+      } else if (currentPresale === "mount") {
+        const result = await DwarMountContract.mintNFTs(1);
+        toast.success("You bought a Dwar Mount successfully!");
+        console.log(result);
+      }
     } catch (error) {
       console.error("Error:", error);
       toast.error(MetamaskErrorMessage(error));
     }
   };
 
-  const handleApprove = async () => {
+  const handleCharacterApprove = async () => {
     try {
-      const approvedResult = await DwarTokenContract.approve(
+      const characterApprovedResult = await DwarTokenContract.approve(
         DwarCharacterAddress,
         ethers.constants.MaxUint256
       );
-      console.log("approvedResult", approvedResult);
+      console.log("characterApprovedResult", characterApprovedResult);
       toast.success("Approved successfully!");
-      setApproved(true);
+      setCharacterApproved(true);
     } catch (error) {
       console.error("Error:", error);
       toast.error(MetamaskErrorMessage(error));
-      setApproved(false);
+      setCharacterApproved(false);
+    }
+  };
+
+  const handleMountApprove = async () => {
+    try {
+      const characterApprovedResult = await DwarTokenContract.approve(
+        DwarMountAddress,
+        ethers.constants.MaxUint256
+      );
+      console.log("characterApprovedResult", characterApprovedResult);
+      toast.success("Approved successfully!");
+      setMountApproved(true);
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error(MetamaskErrorMessage(error));
+      setMountApproved(false);
+    }
+  };
+
+  const currentTotalSupply = () => {
+    if (currentPresale === "character") {
+      return characterTotalSupply;
+    } else if (currentPresale === "mount") {
+      return mountTotalSupply;
+    } else {
+      return petTotalSupply;
     }
   };
 
   useEffect(() => {
-    const getTotalSupply = async () => {
+    const getCharacterTotalSupply = async () => {
       try {
         const result = await DwarCharacterContract.totalSupply();
-        setTotalSupply(formatBigNumber(result));
+        setCharacterTotalSupply(formatBigNumber(result));
       } catch (error) {
         console.error("Error:", error);
       }
     };
-    const checkAllowance = async () => {
+
+    const getMountTotalSupply = async () => {
+      try {
+        const result = await DwarMountContract.totalSupply();
+        setMountTotalSupply(formatBigNumber(result));
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    // const getPetTotalSupply = async () => {
+    //   try {
+    //     const result = await DwarPetContract.totalSupply();
+    //     setPetTotalSupply(formatBigNumber(result));
+    //   } catch (error) {
+    //     console.error("Error:", error);
+    //   }
+    // };
+
+    const checkCharacterAllowance = async () => {
       try {
         const result = await DwarTokenContract.allowance(
           account,
           DwarCharacterAddress
         );
         const allowedBalance = ethers.utils.formatUnits(result);
-        console.log(allowedBalance);
         if (allowedBalance > 0) {
-          setApproved(true);
+          setCharacterApproved(true);
         } else {
-          setApproved(false);
+          setCharacterApproved(false);
         }
       } catch (error) {
         console.error("Error:", error);
-        setApproved(false);
+        setCharacterApproved(false);
       }
     };
-    checkAllowance();
-    getTotalSupply();
+
+    const checkMountAllowance = async () => {
+      try {
+        const result = await DwarTokenContract.allowance(
+          account,
+          DwarMountAddress
+        );
+        const allowedBalance = ethers.utils.formatUnits(result);
+        if (allowedBalance > 0) {
+          setMountApproved(true);
+        } else {
+          setMountApproved(false);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        setMountApproved(false);
+      }
+    };
+
+    checkCharacterAllowance();
+    checkMountAllowance();
+    // checkPetAllowance();
+    getCharacterTotalSupply();
+    getMountTotalSupply();
   }, [account]);
 
   return (
@@ -144,7 +231,7 @@ export default function Homepage() {
               onClick={() => handleModal("character")}
               sx={{ cursor: "pointer", width: 400, mx: "auto", mb: 5 }}
             />
-            {approved ? (
+            {characterApproved ? (
               <Box
                 component="img"
                 src="/presale/buy.png"
@@ -155,7 +242,7 @@ export default function Homepage() {
               <Box
                 component="img"
                 src="/presale/approve.png"
-                onClick={handleApprove}
+                onClick={handleCharacterApprove}
                 sx={{ cursor: "pointer", width: 120, mx: "auto" }}
               />
             )}
@@ -168,12 +255,21 @@ export default function Homepage() {
               onClick={() => handleModal("mount")}
               sx={{ cursor: "pointer", width: 300, mx: "auto", mb: 5, mt: 3 }}
             />
-            <Box
-              component="img"
-              src="/presale/buy.png"
-              onClick={() => handleModal("mount")}
-              sx={{ cursor: "pointer", width: 120, mx: "auto" }}
-            />
+            {mountApproved ? (
+              <Box
+                component="img"
+                src="/presale/buy.png"
+                onClick={() => handleModal("mount")}
+                sx={{ cursor: "pointer", width: 120, mx: "auto" }}
+              />
+            ) : (
+              <Box
+                component="img"
+                src="/presale/approve.png"
+                onClick={handleMountApprove}
+                sx={{ cursor: "pointer", width: 120, mx: "auto" }}
+              />
+            )}
           </Stack>
 
           <Stack>
@@ -220,7 +316,7 @@ export default function Homepage() {
                   onClick={() => handleModal("character")}
                   sx={{ cursor: "pointer", width: 200, mx: "auto", mb: 5 }}
                 />
-                {approved ? (
+                {characterApproved ? (
                   <Box
                     component="img"
                     src="/presale/buy.png"
@@ -231,7 +327,7 @@ export default function Homepage() {
                   <Box
                     component="img"
                     src="/presale/approve.png"
-                    onClick={handleApprove}
+                    onClick={handleCharacterApprove}
                     sx={{ cursor: "pointer", width: 100, mx: "auto" }}
                   />
                 )}
@@ -335,12 +431,12 @@ export default function Homepage() {
             }}
             onClick={handleBuyToken}
           />
-           <Stack
+          <Stack
             direction="row"
             justifyContent="center"
             sx={{ position: "absolute", bottom: 130, width: 1 }}
           >
-            <Typography>{totalSupply}</Typography>
+            <Typography>{currentTotalSupply()}</Typography>
           </Stack>
           <Stack
             direction="row"
@@ -361,22 +457,11 @@ export default function Homepage() {
             >
               <Typography>50000</Typography>
             </Stack>
-            {/* <Stack
-              sx={{
-                width: 200,
-                height: 20,
-                background: "url(/presale/loading_bg.png)",
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-              }}
-            >
-              <Box
-                component="img"
-                src="/presale/loading.png"
-                sx={{ width: 200 }}
-              />
-            </Stack> */}
-            <BorderLinearProgress sx={{width: 200}} variant="determinate" value={totalSupply} />
+            <BorderLinearProgress
+              sx={{ width: 200 }}
+              variant="determinate"
+              value={(currentTotalSupply() / 50000) * 100}
+            />
             <Stack
               alignItems="center"
               justifyContent="center"
@@ -388,31 +473,11 @@ export default function Homepage() {
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <Typography>{50000 - totalSupply}</Typography>
+              <Typography>{50000 - currentTotalSupply()}</Typography>
             </Stack>
           </Stack>
         </Stack>
       </Dialog>
-      {/* <Dialog
-        open={presaleModal}
-        onClose={() => setPresaleModal(false)}
-        PaperProps={{ sx: { background: "transparent" } }}
-        // sx={{ height: "500px" }}
-      >
-        <Stack direction="row" alignItems="center">
-          <Button variant="contained">Prev</Button>
-          <SwipeableViews
-            enableMouseEvents
-            index={currentPresale}
-            onChangeIndex={(index) => setCurrentPresale(index)}
-          >
-            <Box component="img" src={`/presale/presale1.jpg`} />
-            <Box component="img" src={`/presale/presale2.jpg`} />
-            <Box component="img" src={`/presale/presale3.jpg`} />
-          </SwipeableViews>
-          <Button variant="contained">Next</Button>
-        </Stack>
-      </Dialog> */}
     </Container>
   );
 }
