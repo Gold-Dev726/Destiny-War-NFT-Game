@@ -127,9 +127,8 @@ export default function Inventorypage() {
                 align="center"
                 sx={{
                   position: "absolute",
-                  top: "25%",
-                  left: "50%",
-                  transform: "translateX(-50%)",
+                  top: "18px",
+                  left: "10px",
                   background: "black",
                   color: "white",
                   borderRadius: "2px",
