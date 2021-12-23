@@ -101,7 +101,7 @@ export default function Inventorypage() {
         mt: "-146px",
       }}
     >
-      <Container maxWidth="xl" sx={{ pt: 12, pb: 10 }}>
+      <Container maxWidth="xl" sx={{ height: "calc(100vh - 108px)", pt: 20 }}>
         <Stack
           direction="row"
           alignItems="center"
