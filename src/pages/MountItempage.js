@@ -101,7 +101,7 @@ export default function Inventorypage() {
         mt: "-146px",
       }}
     >
-      <Container maxWidth="xl" sx={{ pt: 20, pb: 10 }}>
+      <Container maxWidth="xl" sx={{ pt: 15, pb: 22 }}>
         <Stack
           direction="row"
           alignItems="center"
@@ -113,14 +113,14 @@ export default function Inventorypage() {
             BACK
           </Typography>
         </Stack>
-        <Stack direction="row" spacing={10}>
-          <Stack flex={1} alignItems="center">
+        <Stack direction="row" justifyContent="center" spacing={10}>
+          <Stack alignItems="center">
             <Box sx={{ position: "relative", my: 5 }}>
               <Box
                 component="img"
                 // src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${id}.png`}
                 src={tokenURI}
-                sx={{ width: 400 }}
+                sx={{ width: 500 }}
               />
               <Typography
                 variant="h4"
@@ -195,7 +195,7 @@ export default function Inventorypage() {
             </Stack> */}
           </Stack>
 
-          <Stack flex={1} alignItems="center" spacing={3}>
+          <Stack alignItems="center" spacing={3}>
             {/* {isOwner && ( */}
             <Stack direction="row" justifyContent="center" spacing={3}>
               <Button
