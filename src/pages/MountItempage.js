@@ -113,7 +113,7 @@ export default function Inventorypage() {
             BACK
           </Typography>
         </Stack>
-        <Stack direction="row" justifyContent="center" spacing={10}>
+        <Stack direction="row" justifyContent="center" alignItems="center" spacing={10}>
           <Stack alignItems="center">
             <Box sx={{ position: "relative", my: 5 }}>
               <Box
