@@ -1,8 +1,20 @@
 // material
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Button, Typography, Container, Stack } from "@mui/material";
-import { getDwarTokenContract } from "utils/contractHelpers";
+import {
+  Box,
+  Button,
+  Typography,
+  Container,
+  Stack,
+  TextField,
+} from "@mui/material";
+import {
+  getDwarTokenContract,
+  getDwarCharacterContract,
+  getDwarMountContract,
+  getDwarPetContract,
+} from "utils/contractHelpers";
 import { useEthers } from "@usedapp/core";
 import { MetamaskErrorMessage } from "utils/MetamaskErrorMessage";
 import { ethers } from "ethers";
@@ -11,9 +23,13 @@ import formatBigNumber from "utils/formatBigNumber";
 
 export default function Inventorypage() {
   const navigate = useNavigate();
+  const [amount, setAmount] = useState();
   const { library, account } = useEthers();
   const signer = library?.getSigner();
   const DwarTokenContract = getDwarTokenContract(signer);
+  const DwarCharacterContract = getDwarCharacterContract(signer);
+  const DwarMountContract = getDwarMountContract(signer);
+  const DwarPetContract = getDwarPetContract(signer);
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -37,6 +53,17 @@ export default function Inventorypage() {
       console.log(result);
     } catch (error) {
       console.log("Error:", error);
+      toast.error("Network error!, You can withdraw after few minutes");
+    }
+  };
+
+  const handleMintCharacter = async () => {
+    try {
+      const result = await DwarCharacterContract.reserveNFTs(amount);
+      toast.success("You mint characters successfully!");
+      console.log(result);
+    } catch (error) {
+      console.log("Error:", error);
       toast.error(MetamaskErrorMessage(error));
     }
   };
@@ -56,7 +83,13 @@ export default function Inventorypage() {
           pt: 20,
         }}
       >
-        <Button variant="contained" onClick={handleWithdraw}>Withdraw</Button>
+        <Button variant="contained" onClick={handleWithdraw}>
+          Withdraw
+        </Button>
+        <TextField value={amount} onChange={(e) => setAmount(e.target.value)} />
+        <Button variant="contained" onClick={handleMintCharacter}>
+          Mint Characters
+        </Button>
       </Container>
     </Box>
   );
