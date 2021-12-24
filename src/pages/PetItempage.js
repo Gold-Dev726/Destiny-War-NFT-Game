@@ -127,9 +127,9 @@ export default function Inventorypage() {
             BACK
           </Typography>
         </Stack>
-        <Stack direction="row" justifyContent="center" spacing={10}>
+        <Stack direction="row" justifyContent="center" alignItems="center" spacing={10}>
           <Stack alignItems="center">
-            <Box sx={{ position: "relative", my: 5 }}>
+            <Box sx={{ position: "relative", my: 2 }}>
               <Box
                 component="img"
                 // src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${id}.png`}
@@ -152,44 +152,29 @@ export default function Inventorypage() {
                 #{id}
               </Typography>
             </Box>
-            {/* <Stack direction="row" alignItems="center">
-              <Box component="img" src="/hatch/egg.png" sx={{ width: 50 }} />
-              <Stack alignItems="center" spacing={1}>
-                {isOwner && (
-                  <Button
-                    onClick={() => setModalOpen(true)}
-                    variant="contained"
-                    sx={{
-                      color: "#28f0a5",
-                      bgcolor: "#3b4721",
-                      px: 2,
-                      py: 0,
-                      fontSize: 16,
-                      borderRadius: 1,
-                      border: "1px solid #4c7718",
-                    }}
-                  >
-                    HATCH
-                  </Button>
-                )}
-                <Box
-                  sx={{
-                    width: 400,
-                    height: 10,
-                    border: "1px solid #4c7718",
-                    bgcolor: "#3b4721",
-                  }}
-                />
-                <Typography fontSize={16} color="#28f0a5">
-                  35 Days
-                </Typography>
-              </Stack>
-              <Box
-                component="img"
-                src="/hatch/character_head.png"
-                sx={{ width: 70 }}
-              />
-            </Stack> */}
+
+            <Stack
+              sx={{
+                color: "white",
+                bgcolor: "#1a0b5e",
+                p: 2,
+                borderRadius: 1,
+                border: "1px solid #4c7718",
+                width: 1,
+              }}
+            >
+              <Typography
+                variant="h3"
+                fontFamily="American"
+                sx={{ letterSpacing: "1px" }}
+                align="center"
+              >
+                SKILLS
+              </Typography>
+              <Typography color="#28f0a5" variant="h4" align="center">
+                YOU CAN CHOOSE YOUR PET SKILL IN THE <br /> OFFICIAL GAME
+              </Typography>
+            </Stack>
           </Stack>
 
           <Stack alignItems="center" spacing={3}>
