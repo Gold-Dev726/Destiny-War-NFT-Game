@@ -33,7 +33,7 @@ export default function Inventorypage() {
     infinite: false,
     speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToScroll: 1,
     arrows: false,
     responsive: [
       {
@@ -185,7 +185,7 @@ export default function Inventorypage() {
                   component="img"
                   src="/inventory/prevArrow.png"
                   onClick={() => CharacterSliderRef.current.slickPrev()}
-                  sx={{ width: { xs: 30, md: "initial" } }}
+                  sx={{ width: { xs: 30, md: "initial" }, cursor: 'pointer' }}
                 />
                 <Box
                   sx={{
@@ -256,7 +256,7 @@ export default function Inventorypage() {
                   component="img"
                   src="/inventory/nextArrow.png"
                   onClick={() => CharacterSliderRef.current.slickNext()}
-                  sx={{ width: { xs: 30, md: "initial" } }}
+                  sx={{ width: { xs: 30, md: "initial" }, cursor: 'pointer' }}
                 />
               </Stack>
             </Stack>
@@ -280,7 +280,7 @@ export default function Inventorypage() {
                   component="img"
                   src="/inventory/prevArrow.png"
                   onClick={() => PetSliderRef.current.slickPrev()}
-                  sx={{ width: { xs: 30, md: "initial" } }}
+                  sx={{ width: { xs: 30, md: "initial" }, cursor: 'pointer' }}
                 />
                 <Box
                   sx={{
@@ -348,8 +348,8 @@ export default function Inventorypage() {
                 <Box
                   component="img"
                   src="/inventory/nextArrow.png"
-                  onClick={() => CharacterSliderRef.current.slickNext()}
-                  sx={{ width: { xs: 30, md: "initial" } }}
+                  onClick={() => PetSliderRef.current.slickNext()}
+                  sx={{ width: { xs: 30, md: "initial" }, cursor: 'pointer' }}
                 />
               </Stack>
             </Stack>
@@ -373,7 +373,7 @@ export default function Inventorypage() {
                   component="img"
                   src="/inventory/prevArrow.png"
                   onClick={() => MountSliderRef.current.slickPrev()}
-                  sx={{ width: { xs: 30, md: "initial" } }}
+                  sx={{ width: { xs: 30, md: "initial" }, cursor: 'pointer' }}
                 />
                 <Box
                   sx={{
@@ -441,8 +441,8 @@ export default function Inventorypage() {
                 <Box
                   component="img"
                   src="/inventory/nextArrow.png"
-                  onClick={() => CharacterSliderRef.current.slickNext()}
-                  sx={{ width: { xs: 30, md: "initial" } }}
+                  onClick={() => MountSliderRef.current.slickNext()}
+                  sx={{ width: { xs: 30, md: "initial" }, cursor: 'pointer' }}
                 />
               </Stack>
             </Stack>
