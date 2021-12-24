@@ -5,8 +5,8 @@ export const DwarMountAddress = "0xfe67fb9C411049F8F2A3E15B59a96bD0939d4cAB"; //
 
 export const DwarPetAddress = "0xD556Be2846DC9da80C3551D83c42A7Ad94bdADD8"; //
 
-// export const DwarTokenAddress = "0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6";
-export const DwarTokenAddress = "0xC7882C5a8D91fd269e1F204ac17A0966aBeA2Da5";
+export const DwarTokenAddress = "0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6";
+// export const DwarTokenAddress = "0xC7882C5a8D91fd269e1F204ac17A0966aBeA2Da5";
 
 // export const BusdAddress = "0xe9e7cea3dedca5984780bafc599bd69add087d56";
 export const BusdAddress = "0x82e1A7007F24418e81Cb9e55B35D4847b749b69A";

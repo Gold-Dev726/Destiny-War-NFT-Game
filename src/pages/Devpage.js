@@ -15,6 +15,7 @@ export default function Inventorypage() {
   const signer = library?.getSigner();
   const DwarTokenContract = getDwarTokenContract(signer);
 
+  console.log(DwarTokenContract)
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
@@ -43,7 +44,7 @@ export default function Inventorypage() {
 
   const handleAllow = async () => {
     try {
-      const result = await DwarTokenContract.setAllow(true);
+      const result = await DwarTokenContract.setAllow(false);
       toast.success("You bought dwar tokens successfully!");
       console.log(result);
     } catch (error) {
