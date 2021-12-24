@@ -68,6 +68,28 @@ export default function Inventorypage() {
     }
   };
 
+  const handleMintMount = async () => {
+    try {
+      const result = await DwarMountContract.reserveNFTs(amount);
+      toast.success("You mint mounts successfully!");
+      console.log(result);
+    } catch (error) {
+      console.log("Error:", error);
+      toast.error(MetamaskErrorMessage(error));
+    }
+  };
+
+  const handleMintPet = async () => {
+    try {
+      const result = await DwarPetContract.reserveNFTs(amount);
+      toast.success("You mint pets successfully!");
+      console.log(result);
+    } catch (error) {
+      console.log("Error:", error);
+      toast.error(MetamaskErrorMessage(error));
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -87,8 +109,14 @@ export default function Inventorypage() {
           Withdraw
         </Button>
         <TextField value={amount} onChange={(e) => setAmount(e.target.value)} />
-        <Button variant="contained" onClick={handleMintCharacter}>
+        <Button variant="contained" color="error" onClick={handleMintCharacter}>
           Mint Characters
+        </Button>
+        <Button variant="contained" color="warning" onClick={handleMintMount}>
+          Mint Mounts
+        </Button>
+        <Button variant="contained" color="info" onClick={handleMintPet}>
+          Mint Pets
         </Button>
       </Container>
     </Box>
