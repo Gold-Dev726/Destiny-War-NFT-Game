@@ -41,17 +41,6 @@ export default function Inventorypage() {
     }
   };
 
-  const handleAllow = async () => {
-    try {
-      const result = await DwarTokenContract.setAllow(true);
-      toast.success("You bought dwar tokens successfully!");
-      console.log(result);
-    } catch (error) {
-      console.log("Error:", error);
-      toast.error(MetamaskErrorMessage(error));
-    }
-  };
-
   return (
     <Box
       sx={{
