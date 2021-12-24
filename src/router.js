@@ -11,6 +11,7 @@ import Newgame from "pages/Newgame";
 import Marketpage from "pages/Marketpage";
 import Itempage from "pages/Itempage";
 import MountItempage from "pages/MountItempage";
+import PetItempage from "pages/PetItempage";
 import Videopage from "pages/Videopage";
 import Loading from "components/Loading";
 import AdminGuard from "guards/AdminGuard";
@@ -41,6 +42,7 @@ export default function Router() {
         { path: "/game", element: <Newgame /> },
         { path: "/items/character/:id", element: <Itempage /> },
         { path: "/items/mount/:id", element: <MountItempage /> },
+        { path: "/items/pet/:id", element: <PetItempage /> },
         { path: "/landing", element: <Videopage /> },
         {
           path: "/admin",

@@ -5,6 +5,7 @@ import { Box, Typography, Container, Stack } from "@mui/material";
 import {
   getDwarCharacterContract,
   getDwarMountContract,
+  getDwarPetContract,
 } from "utils/contractHelpers";
 import { useEthers } from "@usedapp/core";
 import { ethers } from "ethers";
@@ -16,10 +17,12 @@ export default function Inventorypage() {
   const { library, account } = useEthers();
   const [ownedCharacters, setOwnedCharacters] = useState([]);
   const [ownedMounts, setOwnedMounts] = useState([]);
+  const [ownedPets, setOwnedPets] = useState([]);
 
   const signer = library?.getSigner();
   const DwarCharacterContract = getDwarCharacterContract(signer);
   const DwarMountContract = getDwarMountContract(signer);
+  const DwarPetContract = getDwarPetContract(signer);
 
   const CharacterSliderRef = useRef();
   const PetSliderRef = useRef();
@@ -101,9 +104,30 @@ export default function Inventorypage() {
       }
     };
 
+    const getOwnedPets = async () => {
+      try {
+        const result = await DwarPetContract.tokensOfOwner(account);
+        const OwnedPets = result.map((item) => formatBigNumber(item));
+        const array = [];
+        console.log("OwnedPetsnum", OwnedPets)
+        for (let i = 0; i < OwnedPets.length; i++) {
+          const petResult = await DwarPetContract.getPet(OwnedPets[i]);
+          array.push({
+            tokenId: OwnedPets[i],
+            tokenURI: petResult[1],
+          });
+        }
+        setOwnedPets(array);
+      } catch (error) {
+        console.log("peterror", error);
+        setOwnedPets(null);
+      }
+    };
+
     if (account) {
       getOwnedMounts();
       getOwnedCharacters();
+      getOwnedPets();
     }
   }, [account]);
 
@@ -115,6 +139,7 @@ export default function Inventorypage() {
 
   console.log("Owned", ownedCharacters);
   console.log("OwnedMounts", ownedMounts);
+  console.log("OwnedPets", ownedPets);
   return (
     <Box
       sx={{
@@ -266,25 +291,57 @@ export default function Inventorypage() {
                 >
                   <Box sx={{ pt: 2, pb: 1 }}>
                     <Slider {...SliderSettings} ref={PetSliderRef}>
-                      {[...Array(5)].map((item, index) => (
-                        <Box>
-                          <Stack alignItems="center">
-                            <Stack
-                              justifyContent="center"
-                              alignItems="center"
-                              sx={{
-                                width: { xs: 80, md: 150 },
-                                height: { xs: 80, md: 150 },
-                                bgcolor: "#3323ac",
-                                border: "2px solid rgba(255, 255, 255, 0.3)",
-                                borderRadius: 1,
-                              }}
-                            >
-                              {/* <Box component="img" src="/presale/pet-egg.gif" /> */}
-                            </Stack>
-                          </Stack>
-                        </Box>
-                      ))}
+                      {ownedPets?.length > 0
+                        ? ownedPets.map((item, index) => (
+                            <Box>
+                              <Stack alignItems="center">
+                                <Stack
+                                  justifyContent="center"
+                                  alignItems="center"
+                                  sx={{
+                                    width: { xs: 80, md: 150 },
+                                    height: { xs: 80, md: 150 },
+                                    bgcolor: "#3323ac",
+                                    border:
+                                      "2px solid rgba(255, 255, 255, 0.3)",
+                                    borderRadius: 1,
+                                  }}
+                                >
+                                  <Box
+                                    onClick={() =>
+                                      navigate(`/items/pet/${item.tokenId}`)
+                                    }
+                                    component="img"
+                                    src={item.tokenURI}
+                                    // src={`${process.env.REACT_APP_CHARACTER_NORMAL_IMAGE_URL}/${item}.png`}
+                                    sx={{
+                                      width: 1,
+                                      height: 1,
+                                      cursor: "pointer",
+                                    }}
+                                  />
+                                </Stack>
+                              </Stack>
+                            </Box>
+                          ))
+                        : [...Array(5)].map((item, index) => (
+                            <Box>
+                              <Stack alignItems="center">
+                                <Stack
+                                  justifyContent="center"
+                                  alignItems="center"
+                                  sx={{
+                                    width: { xs: 80, md: 150 },
+                                    height: { xs: 80, md: 150 },
+                                    bgcolor: "#3323ac",
+                                    border:
+                                      "2px solid rgba(255, 255, 255, 0.3)",
+                                    borderRadius: 1,
+                                  }}
+                                />
+                              </Stack>
+                            </Box>
+                          ))}
                     </Slider>
                   </Box>
                 </Box>
@@ -345,9 +402,7 @@ export default function Inventorypage() {
                                 >
                                   <Box
                                     onClick={() =>
-                                      navigate(
-                                        `/items/mount/${item.tokenId}`
-                                      )
+                                      navigate(`/items/mount/${item.tokenId}`)
                                     }
                                     component="img"
                                     src={item.tokenURI}

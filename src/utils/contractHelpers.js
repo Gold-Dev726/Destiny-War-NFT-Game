@@ -1,13 +1,13 @@
 import { ethers } from "ethers";
 import DwarCharacterAbi from "contracts/DwarCharacterAbi.json";
 import DwarMountAbi from "contracts/DwarMountAbi.json";
-// import DwarPetAbi from "contracts/DwarPetAbi.json";
+import DwarPetAbi from "contracts/DwarPetAbi.json";
 import DwarTokenAbi from "contracts/DwarTokenAbi.json";
 import ERC20Abi from "contracts/ERC20Abi.json";
 import {
   DwarCharacterAddress,
   DwarMountAddress,
-  // DwarPetAddress,
+  DwarPetAddress,
   DwarTokenAddress,
   BusdAddress
 } from "contracts/address.js";
@@ -29,9 +29,9 @@ export const getDwarMountContract = (signer) => {
   return getContract(DwarMountAbi, DwarMountAddress, signer);
 };
 
-// export const getDwarPetContract = (signer) => {
-//   return getContract(DwarPetAbi, DwarPetAddress, signer);
-// };
+export const getDwarPetContract = (signer) => {
+  return getContract(DwarPetAbi, DwarPetAddress, signer);
+};
 
 export const getDwarTokenContract = (signer) => {
   return getContract(DwarTokenAbi, DwarTokenAddress, signer);

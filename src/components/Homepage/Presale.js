@@ -77,6 +77,7 @@ export default function Homepage() {
 
   const DwarCharacterContract = getDwarCharacterContract(signer);
   const DwarMountContract = getDwarMountContract(signer);
+  const DwarPetContract = getDwarPetContract(signer);
   const DwarTokenContract = getDwarTokenContract(signer);
 
   const handleModal = (type) => {
@@ -93,6 +94,10 @@ export default function Homepage() {
       } else if (currentPresale === "mount") {
         const result = await DwarMountContract.mintNFTs(1);
         toast.success("You bought a Dwar Mount successfully!");
+        console.log(result);
+      } else {
+        const result = await DwarPetContract.mintNFTs(1);
+        toast.success("You bought a Dwar Pet successfully!");
         console.log(result);
       }
     } catch (error) {
@@ -133,6 +138,21 @@ export default function Homepage() {
     }
   };
 
+  const handlePetApprove = async () => {
+    try {
+      const characterApprovedResult = await DwarTokenContract.approve(
+        DwarPetAddress,
+        ethers.constants.MaxUint256
+      );
+      toast.success("Approved successfully!");
+      setPetApproved(true);
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error(MetamaskErrorMessage(error));
+      setPetApproved(false);
+    }
+  };
+
   const currentTotalSupply = () => {
     if (currentPresale === "character") {
       return characterTotalSupply;
@@ -162,14 +182,14 @@ export default function Homepage() {
       }
     };
 
-    // const getPetTotalSupply = async () => {
-    //   try {
-    //     const result = await DwarPetContract.totalSupply();
-    //     setPetTotalSupply(formatBigNumber(result));
-    //   } catch (error) {
-    //     console.error("Error:", error);
-    //   }
-    // };
+    const getPetTotalSupply = async () => {
+      try {
+        const result = await DwarPetContract.totalSupply();
+        setPetTotalSupply(formatBigNumber(result));
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
 
     const checkCharacterAllowance = async () => {
       try {
@@ -207,11 +227,30 @@ export default function Homepage() {
       }
     };
 
+    const checkPetAllowance = async () => {
+      try {
+        const result = await DwarTokenContract.allowance(
+          account,
+          DwarPetAddress
+        );
+        const allowedBalance = ethers.utils.formatUnits(result);
+        if (allowedBalance > 0) {
+          setPetApproved(true);
+        } else {
+          setPetApproved(false);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        setPetApproved(false);
+      }
+    };
+
     checkCharacterAllowance();
     checkMountAllowance();
-    // checkPetAllowance();
+    checkPetAllowance();
     getCharacterTotalSupply();
     getMountTotalSupply();
+    getPetTotalSupply();
   }, [account]);
 
   return (
@@ -279,12 +318,21 @@ export default function Homepage() {
               onClick={() => handleModal("pet")}
               sx={{ cursor: "pointer", width: 320, mx: "auto", mb: 5, mt: 3 }}
             />
-            <Box
-              component="img"
-              src="/presale/buy.png"
-              onClick={() => handleModal("pet")}
-              sx={{ cursor: "pointer", width: 120, mx: "auto" }}
-            />
+            {petApproved ? (
+              <Box
+                component="img"
+                src="/presale/buy.png"
+                onClick={() => handleModal("pet")}
+                sx={{ cursor: "pointer", width: 120, mx: "auto" }}
+              />
+            ) : (
+              <Box
+                component="img"
+                src="/presale/approve.png"
+                onClick={handlePetApprove}
+                sx={{ cursor: "pointer", width: 120, mx: "auto" }}
+              />
+            )}
           </Stack>
         </Stack>
       </Hidden>
@@ -346,12 +394,21 @@ export default function Homepage() {
                     mb: 5,
                   }}
                 />
-                <Box
-                  component="img"
-                  src="/presale/buy.png"
-                  onClick={() => handleModal("mount")}
-                  sx={{ cursor: "pointer", width: 100, mx: "auto" }}
-                />
+                {mountApproved ? (
+                  <Box
+                    component="img"
+                    src="/presale/buy.png"
+                    onClick={() => handleModal("mount")}
+                    sx={{ cursor: "pointer", width: 100, mx: "auto" }}
+                  />
+                ) : (
+                  <Box
+                    component="img"
+                    src="/presale/approve.png"
+                    onClick={handleMountApprove}
+                    sx={{ cursor: "pointer", width: 100, mx: "auto" }}
+                  />
+                )}
               </Stack>
             </Box>
 
@@ -368,12 +425,21 @@ export default function Homepage() {
                     mb: 5,
                   }}
                 />
-                <Box
-                  component="img"
-                  src="/presale/buy.png"
-                  onClick={() => handleModal("pet")}
-                  sx={{ cursor: "pointer", width: 100, mx: "auto" }}
-                />
+                {petApproved ? (
+                  <Box
+                    component="img"
+                    src="/presale/buy.png"
+                    onClick={() => handleModal("pet")}
+                    sx={{ cursor: "pointer", width: 100, mx: "auto" }}
+                  />
+                ) : (
+                  <Box
+                    component="img"
+                    src="/presale/approve.png"
+                    onClick={handlePetApprove}
+                    sx={{ cursor: "pointer", width: 100, mx: "auto" }}
+                  />
+                )}
               </Stack>
             </Box>
           </Slider>

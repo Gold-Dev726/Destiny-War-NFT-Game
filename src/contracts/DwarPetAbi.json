@@ -8,12 +8,7 @@
       },
       {
         "internalType": "string",
-        "name": "_normalURI",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "_rareURI",
+        "name": "_baseTokenURI",
         "type": "string"
       }
     ],
@@ -154,32 +149,6 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "NORMAL_SUPPLY",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "RARE_SUPPLY",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "address",
@@ -224,35 +193,6 @@
         "internalType": "string",
         "name": "",
         "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "characters",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "string",
-        "name": "tokenURI",
-        "type": "string"
-      },
-      {
-        "internalType": "bool",
-        "name": "isRare",
-        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -324,7 +264,7 @@
         "type": "uint256"
       }
     ],
-    "name": "getCharacter",
+    "name": "getPet",
     "outputs": [
       {
         "internalType": "uint256",
@@ -335,11 +275,6 @@
         "internalType": "string",
         "name": "",
         "type": "string"
-      },
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -398,7 +333,7 @@
             "type": "uint256"
           }
         ],
-        "internalType": "struct DestinyWarCharacter.Stat1",
+        "internalType": "struct DestinyWarPet.Stat1",
         "name": "",
         "type": "tuple"
       }
@@ -444,7 +379,7 @@
             "type": "uint256"
           }
         ],
-        "internalType": "struct DestinyWarCharacter.Stat2",
+        "internalType": "struct DestinyWarPet.Stat2",
         "name": "",
         "type": "tuple"
       }
@@ -548,19 +483,6 @@
   },
   {
     "inputs": [],
-    "name": "normalTokenURI",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "owner",
     "outputs": [
       {
@@ -586,6 +508,30 @@
         "internalType": "address",
         "name": "",
         "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "pets",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "tokenURI",
+        "type": "string"
       }
     ],
     "stateMutability": "view",
@@ -618,19 +564,6 @@
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "rareTokenURI",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
       }
     ],
     "stateMutability": "view",
@@ -845,19 +778,6 @@
   {
     "inputs": [
       {
-        "internalType": "string",
-        "name": "_normalTokenURI",
-        "type": "string"
-      }
-    ],
-    "name": "setNormalURI",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "uint256",
         "name": "_price",
         "type": "uint256"
@@ -871,129 +791,12 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "_rarePerNormal",
-        "type": "uint256"
-      }
-    ],
-    "name": "setRarePerNormal",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_rareTokenURI",
-        "type": "string"
-      }
-    ],
-    "name": "setRareURI",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "_address",
         "type": "address"
       }
     ],
     "name": "setRewardAddress",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_hp",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_mp",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_pa",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_pd",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_ma",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_md",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_dodge",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_ch",
-        "type": "uint256"
-      }
-    ],
-    "name": "setStat1",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_con",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_spi",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_str",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_cps",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_dex",
-        "type": "uint256"
-      }
-    ],
-    "name": "setStat2",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
