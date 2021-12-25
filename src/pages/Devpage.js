@@ -111,18 +111,6 @@ export default function Inventorypage() {
         </Stack>
       </Container>
 
-      <Container maxWidth="xl">
-        <Stack direction="row">
-          
-        <TextField
-            value={twoStarPerOne}
-            onChange={(e) => setTwoStarPerOne(e.target.value)}
-          />
-          <Button size="large" variant="contained" onClick={handleSet}>
-            Set TwoStarPerOne
-          </Button>
-        </Stack>
-      </Container>
     </Box>
   );
 }
