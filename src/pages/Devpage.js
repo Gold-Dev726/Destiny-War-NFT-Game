@@ -24,6 +24,7 @@ export default function Inventorypage() {
   const DwarPetContract = getDwarPetContract(signer);
 
   const [newURI, setNewURI] = useState();
+  const [twoStarPerOne, setTwoStarPerOne] = useState();
 
   console.log(DwarTokenContract);
   // useEffect(() => {
@@ -74,10 +75,10 @@ export default function Inventorypage() {
     }
   }
 
-  const handleMint = async () => {
+  const handleSet = async () => {
     try {
-      const result = await DwarMountContract.mintNFTs(1);
-      toast.success("You bought dwar tokens successfully!");
+      const result = await DwarMountContract.twoStarPerOneStar(5);
+      toast.success("You setted successfully!");
       console.log(result);
     } catch (error) {
       console.log("Error:", error);
@@ -123,8 +124,12 @@ export default function Inventorypage() {
       <Container maxWidth="xl">
         <Stack direction="row">
           
-          <Button size="large" variant="contained" onClick={handleMint}>
-            Mint Mount
+        <TextField
+            value={twoStarPerOne}
+            onChange={(e) => setTwoStarPerOne(e.target.value)}
+          />
+          <Button size="large" variant="contained" onClick={handleSet}>
+            Set TwoStarPerOne
           </Button>
         </Stack>
       </Container>
