@@ -36,7 +36,7 @@ export default function Router() {
       children: [
         { path: "/", element: <Homepage /> },
         { path: "/presale", element: <Presalepage /> },
-        { path: "/inventory", element: <Inventorypage /> },
+        { path: "/inventories", element: <Inventorypage /> },
         { path: "/marketplace", element: <Marketpage /> },
         { path: "/game", element: <Newgame /> },
         { path: "/items/character/:id", element: <Itempage /> },
@@ -50,14 +50,14 @@ export default function Router() {
             </AdminGuard>
           ),
         },
-        // {
-        //   path: "/adminrolepage",
-        //   element: (
-        //     <Admin2Guard>
-        //       <Devpage />
-        //     </Admin2Guard>
-        //   ),
-        // },
+        {
+          path: "/adminrolepage",
+          element: (
+            <Admin2Guard>
+              <Devpage />
+            </Admin2Guard>
+          ),
+        },
       ],
     },
   ]);

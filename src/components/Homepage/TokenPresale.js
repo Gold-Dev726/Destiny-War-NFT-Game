@@ -120,13 +120,14 @@ export default function Homepage() {
   useEffect(() => {
     const fetchTxs = async () => {
       const result = await fetch(
-        "https://api.bscscan.com/api?module=account&action=tokentx&contractaddress=0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6&page=1&offset=10&startblock=0&endblock=999999999&sort=desc&apikey=F6K6ICXJDRGGRHBR67WAAKBU4TA72INHZ3"
+        "https://api.bscscan.com/api?module=account&action=tokentx&contractaddress=0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6&page=1&offset=100&startblock=0&endblock=999999999&sort=desc&apikey=F6K6ICXJDRGGRHBR67WAAKBU4TA72INHZ3"
       );
       const data = await result.json();
+      console.log(data)
+
       const transactions = data.result.filter(
         (item) => item.from === item.contractAddress
       );
-      console.log(transactions, data.result);
       setTransactions(transactions.slice(0, 5));
     };
     fetchTxs();
@@ -152,6 +153,9 @@ export default function Homepage() {
   }, [account]);
 
   const SoldBalance = 300000000 - dwarBalance;
+
+  console.log("transactions", transactions);
+
 
   return (
     <>
@@ -403,7 +407,7 @@ export default function Homepage() {
                 sx={{ color: "white" }}
               >
                 <Typography>
-                  {Math.round(item.value / 10 ** 20)} BUSD
+                  {(item.value / 10 ** 20).toFixed(2)} BUSD
                 </Typography>
                 <Typography>-></Typography>
                 <Typography>

@@ -39,7 +39,7 @@ const menuConfig = [
   },
   {
     title: "INVENTORY",
-    path: "/inventory",
+    path: "/inventories",
     // icon: <Box component="img" src="/icons/dextools.png" sx={{ width: 20 }} />,
   },
   {

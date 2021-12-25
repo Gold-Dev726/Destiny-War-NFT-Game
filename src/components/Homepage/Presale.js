@@ -85,6 +85,8 @@ export default function Homepage() {
     setCurrentPresale(type);
   };
 
+  console.log("Mount", DwarMountContract);
+
   const handleBuyToken = async () => {
     try {
       if (currentPresale === "character") {
@@ -92,6 +94,7 @@ export default function Homepage() {
         toast.success("You bought a Dwar Character successfully!");
         console.log(result);
       } else if (currentPresale === "mount") {
+        console.log("mint-mount")
         const result = await DwarMountContract.mintNFTs(1);
         toast.success("You bought a Dwar Mount successfully!");
         console.log(result);
@@ -449,8 +452,9 @@ export default function Homepage() {
       <Dialog
         open={presaleModal}
         onClose={() => setPresaleModal(false)}
-        PaperProps={{ sx: { background: "transparent" } }}
-        // sx={{ height: "500px" }}
+        PaperProps={{
+          sx: { background: "transparent", mx: { xs: '2px', md: "inherit" } },
+        }}
       >
         <Stack
           direction="row"
@@ -478,9 +482,9 @@ export default function Homepage() {
             sx={{
               position: "absolute",
               left: "50%",
-              top: 100,
+              top: { xs: 50, md: 100 },
               transform: "translateX(-50%)",
-              width: 180,
+              width: { xs: 140, md: 180 },
             }}
           />
 
@@ -492,7 +496,7 @@ export default function Homepage() {
               left: "50%",
               top: "60%",
               transform: "translateX(-50%)",
-              width: 100,
+              width: { xs: 80, md: 100 },
               cursor: "pointer",
             }}
             onClick={handleBuyToken}
@@ -500,22 +504,29 @@ export default function Homepage() {
           <Stack
             direction="row"
             justifyContent="center"
-            sx={{ position: "absolute", bottom: 130, width: 1 }}
+            sx={{ position: "absolute", bottom: { xs: 80, md: 130 }, width: 1 }}
           >
-            <Typography>{currentTotalSupply()}</Typography>
+            <Typography fontSize={{ xs: 14, md: 18 }}>
+              {currentTotalSupply() && currentTotalSupply().toFixed(0)}
+            </Typography>
           </Stack>
           <Stack
             direction="row"
             alignItems="center"
             justifyContent="space-between"
-            sx={{ position: "absolute", bottom: 20, width: 1, px: "58px" }}
+            sx={{
+              position: "absolute",
+              bottom: { xs: 0, md: 20 },
+              width: 1,
+              px: { xs: "28px", md: "58px" },
+            }}
           >
             <Stack
               alignItems="center"
               justifyContent="center"
               sx={{
-                width: 70,
-                height: 90,
+                width: { xs: 60, md: 70 },
+                height: { xs: 70, md: 90 },
                 background: "url(/presale/egg.png)",
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
@@ -524,7 +535,7 @@ export default function Homepage() {
               <Typography>50000</Typography>
             </Stack>
             <BorderLinearProgress
-              sx={{ width: 200 }}
+              sx={{ width: { xs: 140, md: 200 } }}
               variant="determinate"
               value={(currentTotalSupply() / 50000) * 100}
             />
@@ -532,8 +543,8 @@ export default function Homepage() {
               alignItems="center"
               justifyContent="center"
               sx={{
-                width: 70,
-                height: 90,
+                width: { xs: 60, md: 70 },
+                height: { xs: 70, md: 90 },
                 background: "url(/presale/egg.png)",
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",

@@ -1,8 +1,13 @@
 // material
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Button, Typography, Container, Stack } from "@mui/material";
-import { getDwarTokenContract } from "utils/contractHelpers";
+import { Box, Button, Typography, Container, Stack, TextField } from "@mui/material";
+import {
+  getDwarTokenContract,
+  getDwarCharacterContract,
+  getDwarMountContract,
+  getDwarPetContract,
+} from "utils/contractHelpers";
 import { useEthers } from "@usedapp/core";
 import { MetamaskErrorMessage } from "utils/MetamaskErrorMessage";
 import { ethers } from "ethers";
@@ -14,8 +19,13 @@ export default function Inventorypage() {
   const { library, account } = useEthers();
   const signer = library?.getSigner();
   const DwarTokenContract = getDwarTokenContract(signer);
+  const DwarCharacterContract = getDwarCharacterContract(signer);
+  const DwarMountContract = getDwarMountContract(signer);
+  const DwarPetContract = getDwarPetContract(signer);
 
-  console.log(DwarTokenContract)
+  const [newURI, setNewURI] = useState();
+
+  console.log(DwarTokenContract);
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
@@ -53,6 +63,28 @@ export default function Inventorypage() {
     }
   };
 
+  const handleChangeURI = async () => {
+    try {
+      const result = await DwarCharacterContract.setNormalURI(newURI);
+      toast.success("You bought dwar tokens successfully!");
+      console.log(result);
+    } catch (error) {
+      console.log("Error:", error);
+      toast.error(MetamaskErrorMessage(error));
+    }
+  }
+
+  const handleMint = async () => {
+    try {
+      const result = await DwarMountContract.mintNFTs(1);
+      toast.success("You bought dwar tokens successfully!");
+      console.log(result);
+    } catch (error) {
+      console.log("Error:", error);
+      toast.error(MetamaskErrorMessage(error));
+    }
+  }
+
   return (
     <Box
       sx={{
@@ -68,8 +100,33 @@ export default function Inventorypage() {
           pt: 20,
         }}
       >
-        <Button variant="contained" onClick={handleAllow}>Allow</Button>
-        <Button variant="contained" onClick={handleWithdraw}>Withdraw</Button>
+        <Button variant="contained" onClick={handleAllow}>
+          Allow
+        </Button>
+        <Button variant="contained" onClick={handleWithdraw}>
+          Withdraw
+        </Button>
+      </Container>
+
+      <Container maxWidth="xl">
+        <Stack direction="row">
+          <TextField
+            value={newURI}
+            onChange={(e) => setNewURI(e.target.value)}
+          />
+          <Button size="large" variant="contained">
+            Set CharacterURI
+          </Button>
+        </Stack>
+      </Container>
+
+      <Container maxWidth="xl">
+        <Stack direction="row">
+          
+          <Button size="large" variant="contained" onClick={handleMint}>
+            Mint Mount
+          </Button>
+        </Stack>
       </Container>
     </Box>
   );
