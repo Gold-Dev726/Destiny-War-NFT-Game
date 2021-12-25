@@ -99,7 +99,7 @@ export default function Inventorypage() {
         </Button>
       </Container>
 
-      <Container maxWidth="xl">
+      {/* <Container maxWidth="xl">
         <Stack direction="row">
           <TextField
             value={newURI}
@@ -109,7 +109,7 @@ export default function Inventorypage() {
             Set CharacterURI
           </Button>
         </Stack>
-      </Container>
+      </Container> */}
 
     </Box>
   );
