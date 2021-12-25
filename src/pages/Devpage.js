@@ -75,16 +75,6 @@ export default function Inventorypage() {
     }
   }
 
-  const handleSet = async () => {
-    try {
-      const result = await DwarMountContract.setTwoStarPerOneStar(5);
-      toast.success("You setted successfully!");
-      console.log(result);
-    } catch (error) {
-      console.log("Error:", error);
-      toast.error(MetamaskErrorMessage(error));
-    }
-  }
 
   return (
     <Box
