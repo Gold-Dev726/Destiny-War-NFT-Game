@@ -17,23 +17,21 @@ export default function MainLayout() {
 
   return (
     <>
-      {/* <Scrollbar> */}
-        <Box
-          sx={{
-            height: 1,
-            minHeight: "100vh",
-          }}
-        >
-          <Hidden smDown>
-            <MainSidebar />
-          </Hidden>
-          <MainNavbar />
-          <Box>
-            <Outlet />
-          </Box>
-          <MainFooter />
+      <Box
+        sx={{
+          height: 1,
+          minHeight: "100vh",
+        }}
+      >
+        <Hidden smDown>
+          <MainSidebar />
+        </Hidden>
+        <MainNavbar />
+        <Box>
+          <Outlet />
         </Box>
-      {/* </Scrollbar> */}
+        <MainFooter />
+      </Box>
       {/* <ParticlesBg num={12} color="#ffffff" type="square" bg={true} /> */}
     </>
   );
