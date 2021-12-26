@@ -32,7 +32,6 @@ export default function MainLayout() {
         </Box>
         <MainFooter />
       </Box>
-      {/* <ParticlesBg num={12} color="#ffffff" type="square" bg={true} /> */}
     </>
   );
 }
