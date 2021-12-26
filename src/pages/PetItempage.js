@@ -79,7 +79,7 @@ export default function Inventorypage() {
   const handleGift = async () => {
     try {
       const result = await DwarPetContract.giftNFT(id, giftAddress);
-      toast.success("You gift a character successfully!");
+      toast.success("You gift a pet successfully!");
     } catch (error) {
       console.log("Error:", error);
       toast.error(MetamaskErrorMessage(error));

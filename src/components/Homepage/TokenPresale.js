@@ -120,10 +120,10 @@ export default function Homepage() {
   useEffect(() => {
     const fetchTxs = async () => {
       const result = await fetch(
-        "https://api.bscscan.com/api?module=account&action=tokentx&contractaddress=0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6&page=1&offset=100&startblock=0&endblock=999999999&sort=desc&apikey=F6K6ICXJDRGGRHBR67WAAKBU4TA72INHZ3"
+        "https://api.bscscan.com/api?module=account&action=tokentx&contractaddress=0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6&page=1&offset=50&startblock=0&endblock=999999999&sort=desc&apikey=F6K6ICXJDRGGRHBR67WAAKBU4TA72INHZ3"
       );
       const data = await result.json();
-      console.log(data)
+      console.log("data", data.result)
 
       const transactions = data.result.filter(
         (item) => item.from === item.contractAddress

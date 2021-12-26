@@ -1,7 +1,14 @@
 // material
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Button, Typography, Container, Stack, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  Container,
+  Stack,
+  TextField,
+} from "@mui/material";
 import {
   getDwarTokenContract,
   getDwarCharacterContract,
@@ -66,15 +73,51 @@ export default function Inventorypage() {
 
   const handleChangeURI = async () => {
     try {
-      const result = await DwarCharacterContract.setNormalURI(newURI);
+      const result = await DwarCharacterContract.setRareURI(newURI);
       toast.success("You bought dwar tokens successfully!");
       console.log(result);
     } catch (error) {
       console.log("Error:", error);
       toast.error(MetamaskErrorMessage(error));
     }
-  }
+  };
 
+  const handleChangeMountURI = async () => {
+    try {
+      const result = await DwarMountContract.setBaseURI(newURI);
+      toast.success("You bought dwar tokens successfully!");
+      console.log(result);
+    } catch (error) {
+      console.log("Error:", error);
+      toast.error(MetamaskErrorMessage(error));
+    }
+  };
+
+  const handleChangePetURI = async () => {
+    try {
+      const result = await DwarPetContract.setBaseURI(newURI);
+      toast.success("You bought dwar tokens successfully!");
+      console.log(result);
+    } catch (error) {
+      console.log("Error:", error);
+      toast.error(MetamaskErrorMessage(error));
+    }
+  };
+
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const result = await DwarCharacterContract.normalTokenURI();
+        console.log("GOLD")
+        console.log("result", result);
+        // console.log("result", formatBigNumber(result));
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetch();
+  }, [account]);
 
   return (
     <Box
@@ -105,12 +148,35 @@ export default function Inventorypage() {
             value={newURI}
             onChange={(e) => setNewURI(e.target.value)}
           />
-          <Button size="large" variant="contained">
+          <Button size="large" variant="contained" onClick={handleChangeURI}>
             Set CharacterURI
           </Button>
         </Stack>
       </Container>
 
+      <Container maxWidth="xl">
+        <Stack direction="row">
+          <TextField
+            value={newURI}
+            onChange={(e) => setNewURI(e.target.value)}
+          />
+          <Button size="large" variant="contained" onClick={handleChangeMountURI}>
+            Set MountURI
+          </Button>
+        </Stack>
+      </Container>
+
+      <Container maxWidth="xl">
+        <Stack direction="row">
+          <TextField
+            value={newURI}
+            onChange={(e) => setNewURI(e.target.value)}
+          />
+          <Button size="large" variant="contained" onClick={handleChangePetURI}>
+            Set PetURI
+          </Button>
+        </Stack>
+      </Container>
     </Box>
   );
 }
