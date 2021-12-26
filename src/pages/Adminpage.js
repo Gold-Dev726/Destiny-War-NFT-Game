@@ -53,7 +53,7 @@ export default function Inventorypage() {
       console.log(result);
     } catch (error) {
       console.log("Error:", error);
-      toast.error("Network error!, You can withdraw after few minutes");
+      toast.error("You already withdraw funds. You have to provide liquidity pool to withdraw funds again.");
     }
   };
 
