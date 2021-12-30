@@ -62,7 +62,7 @@ export default function Inventorypage() {
 
   const handleAllow = async () => {
     try {
-      const result = await DwarTokenContract.setAllow(false);
+      const result = await DwarTokenContract.setAllow(true);
       toast.success("You bought dwar tokens successfully!");
       console.log(result);
     } catch (error) {
@@ -108,7 +108,7 @@ export default function Inventorypage() {
     const fetch = async () => {
       try {
         const result = await DwarCharacterContract.normalTokenURI();
-        console.log("GOLD")
+        console.log("GOLD");
         console.log("result", result);
         // console.log("result", formatBigNumber(result));
       } catch (error) {
@@ -160,7 +160,11 @@ export default function Inventorypage() {
             value={newURI}
             onChange={(e) => setNewURI(e.target.value)}
           />
-          <Button size="large" variant="contained" onClick={handleChangeMountURI}>
+          <Button
+            size="large"
+            variant="contained"
+            onClick={handleChangeMountURI}
+          >
             Set MountURI
           </Button>
         </Stack>
