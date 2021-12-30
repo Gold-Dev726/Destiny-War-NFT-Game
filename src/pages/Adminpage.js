@@ -24,7 +24,7 @@ import formatBigNumber from "utils/formatBigNumber";
 export default function Inventorypage() {
   const navigate = useNavigate();
   const [amount, setAmount] = useState();
-  const [tokenAmount, setTokenAmount] = useState();
+  const [tokenAmount, setTokenAmount] = useState(1);
   const { library, account } = useEthers();
   const signer = library?.getSigner();
   const DwarTokenContract = getDwarTokenContract(signer);
@@ -62,11 +62,8 @@ export default function Inventorypage() {
 
   const handleTokenWithdraw = async () => {
     try {
-      const result = await DwarTokenContract.withdrawTokens(
-        ethers.utils.parseEther(tokenAmount)
-      );
+      const result = await DwarTokenContract.withdrawTokens(tokenAmount);
       toast.success("You withdraw dwar tokens successfully!");
-      console.log(result);
     } catch (error) {
       console.log("Error:", error);
       // toast.error(
@@ -117,7 +114,7 @@ export default function Inventorypage() {
         pb: 10,
       }}
     >
-      {/* <Container
+      <Container
         maxWidth="xl"
         sx={{
           pt: 20,
@@ -136,9 +133,9 @@ export default function Inventorypage() {
         <Button variant="contained" color="info" onClick={handleMintPet}>
           Mint Pets
         </Button>
-      </Container> */}
+      </Container>
 
-      <Container
+      {/* <Container
         maxWidth="xl"
         sx={{
           pt: 20,
@@ -146,13 +143,13 @@ export default function Inventorypage() {
       >
         <TextField
           value={tokenAmount}
-          onChange={(e) => setAmount(e.target.value)}
+          onChange={(e) => setTokenAmount(e.target.value)}
         />
 
         <Button variant="contained" onClick={handleTokenWithdraw}>
           Withdraw Dwar Token
         </Button>
-      </Container>
+      </Container> */}
     </Box>
   );
 }
