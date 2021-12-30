@@ -17,10 +17,6 @@ import AdminGuard from "guards/AdminGuard";
 import Admin2Guard from "guards/Admin2Guard";
 
 const Loadable = (Component) => (props) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { pathname } = useLocation();
-  const isDashboard = pathname.includes("/dashboard");
-
   return (
     <Suspense fallback={<Loading />}>
       <Component {...props} />
@@ -50,14 +46,14 @@ export default function Router() {
             </AdminGuard>
           ),
         },
-        {
-          path: "/adminrolepage",
-          element: (
-            <Admin2Guard>
-              <Devpage />
-            </Admin2Guard>
-          ),
-        },
+        // {
+        //   path: "/adminrolepage",
+        //   element: (
+        //     <Admin2Guard>
+        //       <Devpage />
+        //     </Admin2Guard>
+        //   ),
+        // },
       ],
     },
   ]);

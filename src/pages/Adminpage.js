@@ -24,6 +24,7 @@ import formatBigNumber from "utils/formatBigNumber";
 export default function Inventorypage() {
   const navigate = useNavigate();
   const [amount, setAmount] = useState();
+  const [tokenAmount, setTokenAmount] = useState();
   const { library, account } = useEthers();
   const signer = library?.getSigner();
   const DwarTokenContract = getDwarTokenContract(signer);
@@ -53,7 +54,24 @@ export default function Inventorypage() {
       console.log(result);
     } catch (error) {
       console.log("Error:", error);
-      toast.error("You already withdraw funds. You have to provide liquidity pool to withdraw funds again.");
+      toast.error(
+        "You already withdraw funds. You have to provide liquidity pool to withdraw funds again."
+      );
+    }
+  };
+
+  const handleTokenWithdraw = async () => {
+    try {
+      const result = await DwarTokenContract.withdrawTokens(
+        ethers.utils.parseEther(tokenAmount)
+      );
+      toast.success("You withdraw dwar tokens successfully!");
+      console.log(result);
+    } catch (error) {
+      console.log("Error:", error);
+      // toast.error(
+      //   "You already withdraw funds. You have to provide liquidity pool to withdraw funds again."
+      // );
     }
   };
 
@@ -99,7 +117,7 @@ export default function Inventorypage() {
         pb: 10,
       }}
     >
-      <Container
+      {/* <Container
         maxWidth="xl"
         sx={{
           pt: 20,
@@ -117,6 +135,22 @@ export default function Inventorypage() {
         </Button>
         <Button variant="contained" color="info" onClick={handleMintPet}>
           Mint Pets
+        </Button>
+      </Container> */}
+
+      <Container
+        maxWidth="xl"
+        sx={{
+          pt: 20,
+        }}
+      >
+        <TextField
+          value={tokenAmount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
+
+        <Button variant="contained" onClick={handleTokenWithdraw}>
+          Withdraw Dwar Token
         </Button>
       </Container>
     </Box>

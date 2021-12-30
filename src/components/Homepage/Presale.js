@@ -532,12 +532,12 @@ export default function Homepage() {
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <Typography>50000</Typography>
+              <Typography>10000</Typography>
             </Stack>
             <BorderLinearProgress
               sx={{ width: { xs: 140, md: 200 } }}
               variant="determinate"
-              value={(currentTotalSupply() / 50000) * 100}
+              value={(currentTotalSupply() / 10000) * 100}
             />
             <Stack
               alignItems="center"
@@ -550,7 +550,7 @@ export default function Homepage() {
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <Typography>{50000 - currentTotalSupply()}</Typography>
+              <Typography>{10000 - currentTotalSupply()}</Typography>
             </Stack>
           </Stack>
         </Stack>

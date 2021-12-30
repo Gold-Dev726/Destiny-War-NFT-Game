@@ -192,9 +192,9 @@ export default function Homepage() {
               align="center"
               sx={{ mt: 3, color: "white", mb: 4 }}
             >
-              NFT PRESALE We will "only" be selling a total of 50000 Warriors,
+              NFT PRESALE We will "only" be selling a total of 10000 Warriors,
               Pets, and Mounts in our pre-sale, Every warrior will get a random
-              wing, random costume, and Destiny box. When all 150000 is sold, We
+              wing, random costume, and Destiny box. When all 30000 is sold, We
               will no longer be selling except thru the marketplace that will
               come from players who bred and sell their nft's.
             </Typography>
