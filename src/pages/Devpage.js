@@ -71,6 +71,17 @@ export default function Inventorypage() {
     }
   };
 
+  const handleDeny = async () => {
+    try {
+      const result = await DwarTokenContract.setAllow(false);
+      toast.success("You bought dwar tokens successfully!");
+      console.log(result);
+    } catch (error) {
+      console.log("Error:", error);
+      toast.error(MetamaskErrorMessage(error));
+    }
+  };
+
   const handleChangeURI = async () => {
     try {
       const result = await DwarCharacterContract.setRareURI(newURI);
@@ -136,6 +147,9 @@ export default function Inventorypage() {
       >
         <Button variant="contained" onClick={handleAllow}>
           Allow
+        </Button>
+        <Button variant="contained" color="error" onClick={handleDeny}>
+          Deny
         </Button>
         <Button variant="contained" onClick={handleWithdraw}>
           Withdraw
