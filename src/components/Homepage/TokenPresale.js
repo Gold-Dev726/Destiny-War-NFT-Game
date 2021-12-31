@@ -123,7 +123,7 @@ export default function Homepage() {
         "https://api.bscscan.com/api?module=account&action=tokentx&contractaddress=0xCBABff9e4535E7DC28C6fcCFfF280E4DFF7ADbb6&page=1&offset=200&startblock=0&endblock=999999999&sort=desc&apikey=F6K6ICXJDRGGRHBR67WAAKBU4TA72INHZ3"
       );
       const data = await result.json();
-      console.log("data", data.result)
+      console.log("data", data.result);
 
       const transactions = data.result.filter(
         (item) => item.from === item.contractAddress
@@ -155,7 +155,6 @@ export default function Homepage() {
   const SoldBalance = 300000000 - dwarBalance;
 
   console.log("transactions", transactions);
-
 
   return (
     <>
@@ -279,7 +278,7 @@ export default function Homepage() {
               >
                 <InputBase
                   type="number"
-                  value={busdAmount * 100 / 30}
+                  value={(busdAmount * 100) / 30}
                   onChange={(e) => setBusdAmount(e.target.value)}
                   sx={{ fontSize: 40, height: 50 }}
                   fullWidth
@@ -407,7 +406,7 @@ export default function Homepage() {
                 sx={{ color: "white" }}
               >
                 <Typography>
-                  {(item.value / 10 ** 20).toFixed(2)} BUSD
+                  {Math.round(item.value / 10 ** 18 / 33.333).toFixed(2)} BUSD
                 </Typography>
                 <Typography>-></Typography>
                 <Typography>

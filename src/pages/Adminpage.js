@@ -117,6 +117,19 @@ export default function Inventorypage() {
     }
   };
 
+  useEffect(() => {
+    const fetchPrice = async () => {
+      try {
+        const result = await DwarTokenContract.tokenPrice();
+        const result1 = ethers.utils.formatUnits(result);
+        console.log("tokenPrice", result1);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+    fetchPrice();
+  }, [account]);
+
   return (
     <Box
       sx={{
@@ -159,7 +172,6 @@ export default function Inventorypage() {
           Change Price
         </Button>
       </Container>
-
 
       {/* <Container
         maxWidth="xl"
