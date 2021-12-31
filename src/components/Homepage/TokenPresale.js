@@ -279,7 +279,7 @@ export default function Homepage() {
               >
                 <InputBase
                   type="number"
-                  value={busdAmount * 100}
+                  value={busdAmount * 100 / 30}
                   onChange={(e) => setBusdAmount(e.target.value)}
                   sx={{ fontSize: 40, height: 50 }}
                   fullWidth
