@@ -278,7 +278,7 @@ export default function Homepage() {
               >
                 <InputBase
                   type="number"
-                  value={(busdAmount * 100) / 30}
+                  value={(busdAmount * 100) / 3}
                   onChange={(e) => setBusdAmount(e.target.value)}
                   sx={{ fontSize: 40, height: 50 }}
                   fullWidth
@@ -343,14 +343,14 @@ export default function Homepage() {
               />
             </Stack>
             <TitleStyle fontSize={28} align="center">
-              TOKEN INITIAL SUPPLY: 300000000
+              TOKEN INITIAL SUPPLY: 90000000
             </TitleStyle>
             <BorderLinearProgress
               variant="determinate"
-              value={(SoldBalance / 300000000) * 100}
+              value={(SoldBalance / 90000000) * 100}
             />
             <TitleStyle fontSize={28} align="center">
-              {SoldBalance}/300000000
+              {SoldBalance}/90000000
             </TitleStyle>
           </BoxStyle>
         </Stack>
@@ -372,15 +372,15 @@ export default function Homepage() {
                 {SoldBalance} DWAR
               </Typography>
               <Typography variant="h3" color="white">
-                {((SoldBalance / 300000000) * 100).toFixed(4)}%
+                {((SoldBalance / 90000000) * 100).toFixed(4)}%
               </Typography>
               <Typography variant="h4" color="white">
-                300M DWAR
+                90M DWAR
               </Typography>
             </Stack>
             <BorderLinearProgress
               variant="determinate"
-              value={(SoldBalance / 300000000) * 100}
+              value={(SoldBalance / 90000000) * 100}
             />
             <TitleStyle fontSize={40} align="center">
               TOKEN PRIVATE SALE <br /> DEC 20, 2021
