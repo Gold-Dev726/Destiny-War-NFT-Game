@@ -319,7 +319,7 @@ export default function Homepage() {
         <Stack sx={{ maxWidth: 500, width: 1 }}>
           <BoxStyle>
             <Typography variant="h3" align="center" color="white">
-              TOKEN SALE INFORMATION
+              TOKEN PRICE INFORMATION
             </Typography>
             <Typography
               variant="h4"
@@ -329,7 +329,7 @@ export default function Homepage() {
             >
               TOKEN NAME: DESTINY WAR TOKEN <br />
               TOKEN SYMBOL: DWAR <br />
-              TOKEN PRICE: 1 DWAR = $0.01 <br />
+              TOKEN PRICE: 1 DWAR = $0.03 <br />
               MINIMUM: 20BUSD <br />
               MAXIMUM: 2500BUSD <br />
               ACCEPTED TOKEN: BUSD <br />

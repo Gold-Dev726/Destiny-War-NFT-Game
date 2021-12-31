@@ -25,6 +25,7 @@ export default function Inventorypage() {
   const navigate = useNavigate();
   const [amount, setAmount] = useState();
   const [tokenAmount, setTokenAmount] = useState(1);
+  const [price, setPrice] = useState(0);
   const { library, account } = useEthers();
   const signer = library?.getSigner();
   const DwarTokenContract = getDwarTokenContract(signer);
@@ -55,7 +56,7 @@ export default function Inventorypage() {
     } catch (error) {
       console.log("Error:", error);
       toast.error(
-        "You already withdraw funds. You have to provide liquidity pool to withdraw funds again."
+        "The liquidity is locked now. You can withdraw funds after liquidity is unlocked."
       );
     }
   };
@@ -66,9 +67,20 @@ export default function Inventorypage() {
       toast.success("You withdraw dwar tokens successfully!");
     } catch (error) {
       console.log("Error:", error);
-      // toast.error(
-      //   "You already withdraw funds. You have to provide liquidity pool to withdraw funds again."
-      // );
+      toast.error(
+        "You already withdraw funds. You have to provide liquidity pool to withdraw funds again."
+      );
+    }
+  };
+
+  const handleChangePrice = async () => {
+    try {
+      const result = await DwarTokenContract.setPrice(
+        ethers.utils.parseEther(price)
+      );
+      toast.success("You set price successfully!");
+    } catch (error) {
+      console.log("Error:", error);
     }
   };
 
@@ -135,19 +147,38 @@ export default function Inventorypage() {
         </Button>
       </Container>
 
+      <Container
+        maxWidth="xl"
+        sx={{
+          pt: 20,
+        }}
+      >
+        <TextField value={price} onChange={(e) => setPrice(e.target.value)} />
+
+        <Button variant="contained" onClick={handleChangePrice}>
+          Change Price
+        </Button>
+      </Container>
+
+
       {/* <Container
         maxWidth="xl"
         sx={{
           pt: 20,
         }}
       >
-        <TextField
-          value={tokenAmount}
-          onChange={(e) => setTokenAmount(e.target.value)}
-        />
-
-        <Button variant="contained" onClick={handleTokenWithdraw}>
-          Withdraw Dwar Token
+        <Button variant="contained" onClick={handleWithdraw}>
+          Withdraw
+        </Button>
+        <TextField value={amount} onChange={(e) => setAmount(e.target.value)} />
+        <Button variant="contained" color="error" onClick={handleMintCharacter}>
+          Set Characters Price
+        </Button>
+        <Button variant="contained" color="warning" onClick={handleMintMount}>
+          Set Mounts Price
+        </Button>
+        <Button variant="contained" color="info" onClick={handleMintPet}>
+          Set Pets Price
         </Button>
       </Container> */}
     </Box>
