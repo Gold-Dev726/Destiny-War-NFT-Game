@@ -46,14 +46,14 @@ export default function Router() {
             </AdminGuard>
           ),
         },
-        {
-          path: "/adminrolepage",
-          element: (
-            <Admin2Guard>
-              <Devpage />
-            </Admin2Guard>
-          ),
-        },
+        // {
+        //   path: "/adminrolepage",
+        //   element: (
+        //     <Admin2Guard>
+        //       <Devpage />
+        //     </Admin2Guard>
+        //   ),
+        // },
       ],
     },
   ]);

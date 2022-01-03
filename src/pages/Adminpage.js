@@ -117,6 +117,45 @@ export default function Inventorypage() {
     }
   };
 
+  const handlePriceCharacter = async () => {
+    try {
+      const result = await DwarCharacterContract.setPrice(
+        ethers.utils.parseEther(price)
+      );
+      toast.success("You set price successfully!");
+      console.log(result);
+    } catch (error) {
+      console.log("Error:", error);
+      toast.error(MetamaskErrorMessage(error));
+    }
+  };
+
+  const handlePriceMount = async () => {
+    try {
+      const result = await DwarMountContract.setPrice(
+        ethers.utils.parseEther(price)
+      );
+      toast.success("You set price successfully!");
+      console.log(result);
+    } catch (error) {
+      console.log("Error:", error);
+      toast.error(MetamaskErrorMessage(error));
+    }
+  };
+
+  const handlePricePet = async () => {
+    try {
+      const result = await DwarPetContract.setPrice(
+        ethers.utils.parseEther(price)
+      );
+      toast.success("You set price successfully!");
+      console.log(result);
+    } catch (error) {
+      console.log("Error:", error);
+      toast.error(MetamaskErrorMessage(error));
+    }
+  };
+
   useEffect(() => {
     const fetchPrice = async () => {
       try {
@@ -139,7 +178,7 @@ export default function Inventorypage() {
         pb: 10,
       }}
     >
-      <Container
+      {/* <Container
         maxWidth="xl"
         sx={{
           pt: 20,
@@ -171,28 +210,29 @@ export default function Inventorypage() {
         <Button variant="contained" onClick={handleChangePrice}>
           Change Price
         </Button>
-      </Container>
+      </Container> */}
 
-      {/* <Container
+      <Container
         maxWidth="xl"
         sx={{
           pt: 20,
         }}
       >
-        <Button variant="contained" onClick={handleWithdraw}>
-          Withdraw
-        </Button>
-        <TextField value={amount} onChange={(e) => setAmount(e.target.value)} />
-        <Button variant="contained" color="error" onClick={handleMintCharacter}>
+        <TextField value={price} onChange={(e) => setPrice(e.target.value)} />
+        <Button
+          variant="contained"
+          color="error"
+          onClick={handlePriceCharacter}
+        >
           Set Characters Price
         </Button>
-        <Button variant="contained" color="warning" onClick={handleMintMount}>
+        <Button variant="contained" color="warning" onClick={handlePriceMount}>
           Set Mounts Price
         </Button>
-        <Button variant="contained" color="info" onClick={handleMintPet}>
+        <Button variant="contained" color="info" onClick={handlePricePet}>
           Set Pets Price
         </Button>
-      </Container> */}
+      </Container>
     </Box>
   );
 }

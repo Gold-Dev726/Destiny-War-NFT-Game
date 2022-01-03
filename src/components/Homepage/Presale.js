@@ -94,7 +94,7 @@ export default function Homepage() {
         toast.success("You bought a Dwar Character successfully!");
         console.log(result);
       } else if (currentPresale === "mount") {
-        console.log("mint-mount")
+        console.log("mint-mount");
         const result = await DwarMountContract.mintNFTs(1);
         toast.success("You bought a Dwar Mount successfully!");
         console.log(result);
@@ -453,7 +453,7 @@ export default function Homepage() {
         open={presaleModal}
         onClose={() => setPresaleModal(false)}
         PaperProps={{
-          sx: { background: "transparent", mx: { xs: '2px', md: "inherit" } },
+          sx: { background: "transparent", mx: { xs: "2px", md: "inherit" } },
         }}
       >
         <Stack
@@ -485,6 +485,19 @@ export default function Homepage() {
               top: { xs: 50, md: 100 },
               transform: "translateX(-50%)",
               width: { xs: 140, md: 180 },
+            }}
+          />
+
+          <Box
+            component="img"
+            src={`/presale/3000.png`}
+            sx={{
+              position: "absolute",
+              left: "50%",
+              top: "55%",
+              transform: "translateX(-50%)",
+              width: { xs: 80, md: 100 },
+              cursor: "pointer",
             }}
           />
 
