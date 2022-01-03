@@ -134,7 +134,7 @@ export default function Homepage() {
           <TokenPresale />
         </Stack>
 
-        {/* <Stack
+        <Stack
           id="presale"
           sx={{
             background:
@@ -153,12 +153,19 @@ export default function Homepage() {
             color="#ffae00"
             fontFamily="American"
             fontSize={{ xs: 40, md: 70 }}
-            sx={{ textShadow: "3px 3px 5px #000000" }}
+            sx={{
+              textShadow: "3px 3px 5px #000000",
+              border: "2px solid rgba(255, 255,255, 0.3)",
+              px: 1,
+              py: 1,
+              borderRadius: 1,
+              bgcolor: "#b53908",
+            }}
           >
-            PRESALE COUNTDOWN
+            TOKEN PRE-SALE HAS ENDED
           </Typography>
-          <TokenCountDown />
-        </Stack> */}
+          {/* <TokenCountDown /> */}
+        </Stack>
       </Box>
 
       <Box
