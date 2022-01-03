@@ -63,13 +63,16 @@ export default function Inventorypage() {
 
   const handleTokenWithdraw = async () => {
     try {
-      const result = await DwarTokenContract.withdrawTokens(tokenAmount);
+      const result = await DwarTokenContract.withdrawTokens(
+        ethers.utils.parseEther(tokenAmount)
+      );
       toast.success("You withdraw dwar tokens successfully!");
     } catch (error) {
       console.log("Error:", error);
-      toast.error(
-        "You already withdraw funds. You have to provide liquidity pool to withdraw funds again."
-      );
+      toast.error(MetamaskErrorMessage(error));
+      // toast.error(
+      //   "You already withdraw funds. You have to provide liquidity pool to withdraw funds again."
+      // );
     }
   };
 
@@ -178,6 +181,20 @@ export default function Inventorypage() {
         pb: 10,
       }}
     >
+      <Container
+        maxWidth="xl"
+        sx={{
+          pt: 20,
+        }}
+      >
+        <TextField
+          value={tokenAmount}
+          onChange={(e) => setTokenAmount(e.target.value)}
+        />
+        <Button variant="contained" onClick={handleTokenWithdraw}>
+          WithdrawTokens
+        </Button>
+      </Container>
       {/* <Container
         maxWidth="xl"
         sx={{
@@ -186,6 +203,9 @@ export default function Inventorypage() {
       >
         <Button variant="contained" onClick={handleWithdraw}>
           Withdraw
+        </Button>
+        <Button variant="contained" onClick={handleWithdraw}>
+          WithdrawAllTokens
         </Button>
         <TextField value={amount} onChange={(e) => setAmount(e.target.value)} />
         <Button variant="contained" color="error" onClick={handleMintCharacter}>
@@ -212,7 +232,7 @@ export default function Inventorypage() {
         </Button>
       </Container> */}
 
-      <Container
+      {/* <Container
         maxWidth="xl"
         sx={{
           pt: 20,
@@ -232,7 +252,7 @@ export default function Inventorypage() {
         <Button variant="contained" color="info" onClick={handlePricePet}>
           Set Pets Price
         </Button>
-      </Container>
+      </Container> */}
     </Box>
   );
 }
