@@ -494,7 +494,7 @@ export default function Homepage() {
             sx={{
               position: "absolute",
               left: "50%",
-              top: "55%",
+              top: "56%",
               transform: "translateX(-50%)",
               width: { xs: 80, md: 100 },
               cursor: "pointer",
@@ -507,7 +507,7 @@ export default function Homepage() {
             sx={{
               position: "absolute",
               left: "50%",
-              top: "60%",
+              top: "61%",
               transform: "translateX(-50%)",
               width: { xs: 80, md: 100 },
               cursor: "pointer",
