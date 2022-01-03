@@ -162,7 +162,7 @@ export default function Inventorypage() {
 
   const handleAddress = async () => {
     try {
-      const result = await DwarPetContract.setFounderAddress(text);
+      const result = await DwarCharacterContract.setLpAddress(text);
       toast.success("You set price successfully!");
       console.log(result);
     } catch (error) {
@@ -173,7 +173,7 @@ export default function Inventorypage() {
 
   const handleTokenAddress = async () => {
     try {
-      const result = await DwarCharacterContract.setDwarTokenAddress(text);
+      const result = await DwarPetContract.setDwarTokenAddress(text);
       toast.success("You set price successfully!");
       console.log(result);
     } catch (error) {
@@ -204,7 +204,7 @@ export default function Inventorypage() {
         pb: 10,
       }}
     >
-      <Container
+      {/* <Container
         maxWidth="xl"
         sx={{
           pt: 20,
@@ -217,7 +217,7 @@ export default function Inventorypage() {
         <Button variant="contained" onClick={handleTokenWithdraw}>
           WithdrawTokens
         </Button>
-      </Container>
+      </Container> */}
       {/* <Container
         maxWidth="xl"
         sx={{
@@ -289,7 +289,7 @@ export default function Inventorypage() {
         </Button>
       </Container> */}
 
-      <Container
+      {/* <Container
         maxWidth="xl"
         sx={{
           pt: 20,
@@ -299,7 +299,7 @@ export default function Inventorypage() {
         <Button variant="contained" color="error" onClick={handleTokenAddress}>
           Set Token Address
         </Button>
-      </Container>
+      </Container> */}
     </Box>
   );
 }

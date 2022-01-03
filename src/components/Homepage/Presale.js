@@ -21,6 +21,7 @@ import {
   getDwarMountContract,
   getDwarPetContract,
   getDwarTokenContract,
+  getERC20Contract
 } from "utils/contractHelpers";
 import { ethers } from "ethers";
 import { toast } from "react-toastify";
@@ -79,6 +80,7 @@ export default function Homepage() {
   const DwarMountContract = getDwarMountContract(signer);
   const DwarPetContract = getDwarPetContract(signer);
   const DwarTokenContract = getDwarTokenContract(signer);
+  const BusdContract = getERC20Contract(signer);
 
   const handleModal = (type) => {
     setPresaleModal(true);
@@ -111,7 +113,7 @@ export default function Homepage() {
 
   const handleCharacterApprove = async () => {
     try {
-      const characterApprovedResult = await DwarTokenContract.approve(
+      const characterApprovedResult = await BusdContract.approve(
         DwarCharacterAddress,
         ethers.constants.MaxUint256
       );
@@ -127,7 +129,7 @@ export default function Homepage() {
 
   const handleMountApprove = async () => {
     try {
-      const characterApprovedResult = await DwarTokenContract.approve(
+      const characterApprovedResult = await BusdContract.approve(
         DwarMountAddress,
         ethers.constants.MaxUint256
       );
@@ -143,7 +145,7 @@ export default function Homepage() {
 
   const handlePetApprove = async () => {
     try {
-      const characterApprovedResult = await DwarTokenContract.approve(
+      const characterApprovedResult = await BusdContract.approve(
         DwarPetAddress,
         ethers.constants.MaxUint256
       );
@@ -196,7 +198,7 @@ export default function Homepage() {
 
     const checkCharacterAllowance = async () => {
       try {
-        const result = await DwarTokenContract.allowance(
+        const result = await BusdContract.allowance(
           account,
           DwarCharacterAddress
         );
@@ -214,7 +216,7 @@ export default function Homepage() {
 
     const checkMountAllowance = async () => {
       try {
-        const result = await DwarTokenContract.allowance(
+        const result = await BusdContract.allowance(
           account,
           DwarMountAddress
         );
@@ -232,7 +234,7 @@ export default function Homepage() {
 
     const checkPetAllowance = async () => {
       try {
-        const result = await DwarTokenContract.allowance(
+        const result = await BusdContract.allowance(
           account,
           DwarPetAddress
         );
