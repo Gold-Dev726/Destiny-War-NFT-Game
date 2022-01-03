@@ -255,7 +255,7 @@ export default function Inventorypage() {
         </Button>
       </Container> */}
 
-      {/* <Container
+      <Container
         maxWidth="xl"
         sx={{
           pt: 20,
@@ -275,7 +275,7 @@ export default function Inventorypage() {
         <Button variant="contained" color="info" onClick={handlePricePet}>
           Set Pets Price
         </Button>
-      </Container> */}
+      </Container>
 
       {/* <Container
         maxWidth="xl"
