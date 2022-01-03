@@ -152,7 +152,7 @@ export default function Homepage() {
     checkAllowance();
   }, [account]);
 
-  const SoldBalance = 300000000 - dwarBalance;
+  const SoldBalance = 300500000 - dwarBalance;
 
   console.log("transactions", transactions);
 

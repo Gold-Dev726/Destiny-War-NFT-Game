@@ -26,6 +26,7 @@ export default function Inventorypage() {
   const [amount, setAmount] = useState();
   const [tokenAmount, setTokenAmount] = useState(1);
   const [price, setPrice] = useState(0);
+  const [text, setText] = useState(0);
   const { library, account } = useEthers();
   const signer = library?.getSigner();
   const DwarTokenContract = getDwarTokenContract(signer);
@@ -159,12 +160,34 @@ export default function Inventorypage() {
     }
   };
 
+  const handleAddress = async () => {
+    try {
+      const result = await DwarPetContract.setFounderAddress(text);
+      toast.success("You set price successfully!");
+      console.log(result);
+    } catch (error) {
+      console.log("Error:", error);
+      toast.error(MetamaskErrorMessage(error));
+    }
+  };
+
+  const handleTokenAddress = async () => {
+    try {
+      const result = await DwarCharacterContract.setDwarTokenAddress(text);
+      toast.success("You set price successfully!");
+      console.log(result);
+    } catch (error) {
+      console.log("Error:", error);
+      toast.error(MetamaskErrorMessage(error));
+    }
+  };
+
   useEffect(() => {
     const fetchPrice = async () => {
       try {
-        const result = await DwarTokenContract.tokenPrice();
-        const result1 = ethers.utils.formatUnits(result);
-        console.log("tokenPrice", result1);
+        const result = await DwarPetContract.founderAddress();
+        // const result1 = ethers.utils.formatUnits(result);
+        console.log("tokenPrice", result);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -253,6 +276,30 @@ export default function Inventorypage() {
           Set Pets Price
         </Button>
       </Container> */}
+
+      {/* <Container
+        maxWidth="xl"
+        sx={{
+          pt: 20,
+        }}
+      >
+        <TextField value={text} onChange={(e) => setText(e.target.value)} />
+        <Button variant="contained" color="error" onClick={handleAddress}>
+          Set Address
+        </Button>
+      </Container> */}
+
+      <Container
+        maxWidth="xl"
+        sx={{
+          pt: 20,
+        }}
+      >
+        <TextField value={text} onChange={(e) => setText(e.target.value)} />
+        <Button variant="contained" color="error" onClick={handleTokenAddress}>
+          Set Token Address
+        </Button>
+      </Container>
     </Box>
   );
 }

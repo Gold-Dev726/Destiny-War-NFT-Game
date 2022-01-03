@@ -490,7 +490,7 @@ export default function Homepage() {
 
           <Box
             component="img"
-            src={`/presale/3000.png`}
+            src={`/presale/30.png`}
             sx={{
               position: "absolute",
               left: "50%",
