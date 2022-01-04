@@ -162,7 +162,7 @@ export default function Inventorypage() {
 
   const handleAddress = async () => {
     try {
-      const result = await DwarCharacterContract.setLpAddress(text);
+      const result = await DwarCharacterContract.setRewardAddress(text);
       toast.success("You set price successfully!");
       console.log(result);
     } catch (error) {
@@ -218,7 +218,7 @@ export default function Inventorypage() {
           WithdrawTokens
         </Button>
       </Container> */}
-      {/* <Container
+      <Container
         maxWidth="xl"
         sx={{
           pt: 20,
@@ -227,7 +227,7 @@ export default function Inventorypage() {
         <Button variant="contained" onClick={handleWithdraw}>
           Withdraw
         </Button>
-        <Button variant="contained" onClick={handleWithdraw}>
+        {/* <Button variant="contained" onClick={handleWithdraw}>
           WithdrawAllTokens
         </Button>
         <TextField value={amount} onChange={(e) => setAmount(e.target.value)} />
@@ -239,10 +239,10 @@ export default function Inventorypage() {
         </Button>
         <Button variant="contained" color="info" onClick={handleMintPet}>
           Mint Pets
-        </Button>
+        </Button> */}
       </Container>
 
-      <Container
+      {/* <Container
         maxWidth="xl"
         sx={{
           pt: 20,
@@ -255,7 +255,7 @@ export default function Inventorypage() {
         </Button>
       </Container> */}
 
-      <Container
+      {/* <Container
         maxWidth="xl"
         sx={{
           pt: 20,
@@ -277,7 +277,7 @@ export default function Inventorypage() {
         </Button>
       </Container>
 
-      {/* <Container
+      <Container
         maxWidth="xl"
         sx={{
           pt: 20,
