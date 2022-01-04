@@ -275,7 +275,7 @@ export default function Inventorypage() {
         <Button variant="contained" color="info" onClick={handlePricePet}>
           Set Pets Price
         </Button>
-      </Container>
+      </Container> */}
 
       <Container
         maxWidth="xl"
@@ -287,7 +287,7 @@ export default function Inventorypage() {
         <Button variant="contained" color="error" onClick={handleAddress}>
           Set Address
         </Button>
-      </Container> */}
+      </Container>
 
       {/* <Container
         maxWidth="xl"
