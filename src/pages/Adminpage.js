@@ -162,7 +162,7 @@ export default function Inventorypage() {
 
   const handleAddress = async () => {
     try {
-      const result = await DwarCharacterContract.setRewardAddress(text);
+      const result = await DwarPetContract.setFounderAddress(text);
       toast.success("You set price successfully!");
       console.log(result);
     } catch (error) {
@@ -185,9 +185,27 @@ export default function Inventorypage() {
   useEffect(() => {
     const fetchPrice = async () => {
       try {
-        const result = await DwarPetContract.founderAddress();
+        const result1 = await DwarPetContract.charityAddress();
+        const result2 = await DwarPetContract.devAddress();
+        const result3 = await DwarPetContract.lpAddress();
+        const result4 = await DwarPetContract.founderAddress();
+        const result5 = await DwarPetContract.rewardAddress();
+
+        const result11 = await DwarCharacterContract.charityAddress();
+        const result12 = await DwarCharacterContract.devAddress();
+        const result13 = await DwarCharacterContract.lpAddress();
+        const result14 = await DwarCharacterContract.founderAddress();
+        const result15 = await DwarCharacterContract.rewardAddress();
+
+        const result21 = await DwarMountContract.charityAddress();
+        const result22 = await DwarMountContract.devAddress();
+        const result23 = await DwarMountContract.lpAddress();
+        const result24 = await DwarMountContract.founderAddress();
+        const result25 = await DwarMountContract.rewardAddress();
         // const result1 = ethers.utils.formatUnits(result);
-        console.log("tokenPrice", result);
+        console.log("tokenPrice", result1, result2, result3, result4, result5);
+        console.log("tokenPrice", result11, result12, result13, result14, result15);
+        console.log("tokenPrice", result21, result22, result23, result24, result25);
       } catch (error) {
         console.error("Error:", error);
       }

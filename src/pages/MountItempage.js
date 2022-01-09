@@ -101,7 +101,7 @@ export default function Inventorypage() {
         mt: "-146px",
       }}
     >
-      <Container maxWidth="xl" sx={{ height: "calc(100vh - 108px)", pt: 20 }}>
+      <Container maxWidth="xl" sx={{ minHeight: "calc(100vh - 108px)", pt: 20, pb: 5 }}>
         <Stack
           direction="row"
           alignItems="center"
@@ -113,7 +113,12 @@ export default function Inventorypage() {
             BACK
           </Typography>
         </Stack>
-        <Stack direction="row" justifyContent="center" alignItems="center" spacing={10}>
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          justifyContent="center"
+          alignItems="center"
+          spacing={10}
+        >
           <Stack alignItems="center">
             <Box sx={{ position: "relative", my: 5 }}>
               <Box
@@ -275,7 +280,9 @@ export default function Inventorypage() {
                   <Typography>
                     DODGE + {tokenStar === 1 ? 10 : tokenStar === 2 ? 15 : 18}
                   </Typography>
-                  <Typography>CRITICAL + {tokenStar === 1 ? 5 : tokenStar === 2 ? 7 : 10}%</Typography>
+                  <Typography>
+                    CRITICAL + {tokenStar === 1 ? 5 : tokenStar === 2 ? 7 : 10}%
+                  </Typography>
                 </Grid>
               </Grid>
             </Stack>
